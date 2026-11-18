@@ -74,7 +74,7 @@ Tracker_Randomlocke_P2/
 - **0.1** Subir los cambios pendientes de `extras` (repositorio de la Práctica 1), para partir de un código cerrado.
 - **0.2** Instalar Terraform y comprobar que habla con Docker Desktop.
 - **0.3** Preparar el repositorio. La aplicación ya está copiada (17 nov.): `app/` (sin `__pycache__`), `tests/`, `scripts/descargar_sprites.py`, `.env.*.example`, `.gitattributes`, `.editorconfig` y un `.gitignore` mínimo; el material de consulta está en `docs/referencia/` (local, no se publica). Falta: revisar lo copiado, completar el `.gitignore` para Terraform (estado, `.terraform/`, secretos), `git init`, crear el repositorio público y primer commit.
-- **0.4** Documentos base: esqueleto del README; diario y conceptos.
+- **0.4** Documentos base: diario y conceptos al día. Sin README hasta el 7.1 (decidido el 18 nov.: se escribe al final, cuando la arquitectura, los comandos y las salidas de los tests sean definitivos). Mientras tanto, cada fase deja anotadas en el diario las pruebas y sus salidas, para reutilizarlas en el README.
 
 ### Fase 1 · Terraform mínimo en dev (18 y 19 nov.)
 - **1.1** Estructura de carpetas, provider de Docker y `terraform init`. Qué es el estado.
