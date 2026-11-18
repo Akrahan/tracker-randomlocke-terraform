@@ -1,2 +1,3 @@
-entorno   = "dev"
-db_nombre = "randomlocke"
+entorno    = "dev"
+db_nombre  = "randomlocke"
+puerto_web = 8100

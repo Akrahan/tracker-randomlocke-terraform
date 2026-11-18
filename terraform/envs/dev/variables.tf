@@ -24,3 +24,8 @@ variable "db_password" {
   type        = string
   sensitive   = true
 }
+
+variable "puerto_web" {
+  description = "Puerto de tu ordenador por el que se abre la web"
+  type        = number
+}
