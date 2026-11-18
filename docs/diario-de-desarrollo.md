@@ -27,3 +27,12 @@
 - **Pruebas:** patrones del `.gitignore` probados con `git check-ignore` en un repositorio desechable (17 rutas: se ignoran el estado, los planes, `secrets.auto.tfvars`, `.terraform/`, `CLAUDE.md` y `docs/referencia/`; se suben `.terraform.lock.hcl`, `terraform.tfvars` y las plantillas). Saltos de línea LF. `app/` y `tests/` idénticos a `extras` (`diff -rq`). `git status` antes del commit: solo lo publicable. Repositorio en GitHub público con 3 commits y sin material local.
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Explicó el `.gitignore`, `git init`, `core.filemode`, los repositorios separados frente al monorepo y la autenticación con GitHub; revisó el `.gitignore` y el contenido antes del commit, y comprobó el repositorio publicado. El usuario escribió el `.gitignore` e hizo los commits y el push.
 - **Commit:** `chore: add git and editor configuration`, `chore: import Tracker Randomlocke app from Practice 1 (branch extras, commit 08dad64)`, `docs: add roadmap, development diary and study notes` (la entrada de este diario irá en el commit del paso 0.4).
+
+### [Paso 0.4: Documentos base]
+- **Fecha:** 18 nov. 2026
+- **Archivos:** `docs/diario-de-desarrollo.md`, `docs/hoja-de-ruta.md` y `docs/conceptos-para-estudiar.md` (entrada «Autenticación con GitHub: Git Credential Manager»). Sin README.
+- **Comandos:** `git add docs`, `git commit`, `git push`.
+- **Justificación:** el README se escribe al final (paso 7.1), cuando la arquitectura, los comandos y las salidas de los tests sean definitivos; hasta entonces, el diario recoge las pruebas de cada fase para reutilizarlas. Los mensajes de commit pasan a describir lo hecho, sin números de paso.
+- **Pruebas:** `git status` limpio y `main` sincronizada con GitHub (0 commits por subir).
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Redactó las entradas del diario y de los conceptos, anotó las decisiones en la hoja de ruta y comprobó que todo estaba subido. El usuario hizo los commits y los push.
+- **Commit:** `docs: record steps 0.2 and 0.3 in diary and update roadmap decisions` y `docs: explain GitHub authentication with Git Credential Manager`.

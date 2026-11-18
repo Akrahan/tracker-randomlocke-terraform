@@ -8,6 +8,7 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
    - [Infraestructura como código (IaC) y Terraform](#infraestructura-como-código-iac-y-terraform)
    - [Provider](#provider)
    - [Estado y ciclo plan/apply (idempotencia)](#estado-y-ciclo-planapply-idempotencia)
+   - [Estructura de ficheros y directorio raíz (root module)](#estructura-de-ficheros-y-directorio-raíz-root-module)
 2. Docker
 3. Red y balanceo
 4. Alta disponibilidad
@@ -43,6 +44,13 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
 - **Dónde y cómo se usa en mi proyecto:** en la prueba del paso 0.2, el primer `plan` dio `1 to add` (estado vacío), y tras el `apply` el segundo dio «No changes» porque código, estado y realidad coincidían. Habrá un estado por entorno (`envs/dev` y `envs/prod`), así que destruir uno no toca el otro. Con `terraform plan -out=plan.tfplan` y `terraform apply plan.tfplan` se aplica exactamente lo revisado.
 - **Por qué así:** el estado guarda valores en claro, contraseñas incluidas, así que **nunca va a Git** (`.gitignore`). En equipos se guarda en un *backend* remoto con bloqueo (por ejemplo S3 con bloqueo); aquí basta el estado local porque solo trabaja una persona. El `.terraform.lock.hcl` (versiones de los providers) sí va a Git; la carpeta `.terraform/` (los binarios descargados) no.
 - **Pregunta de defensa:** si borras a mano un contenedor con `docker rm` y luego haces `terraform plan`, ¿qué mostrará y por qué?
+
+### Estructura de ficheros y directorio raíz (root module)
+- **Qué es:** Terraform lee **todos los `.tf` de la carpeta donde se ejecuta** y los trata como un solo conjunto; el nombre de cada fichero no importa para Terraform, solo para las personas. Esa carpeta es el **root module** y tiene su propio `.terraform/`, su lock y su estado. Por convención se reparte así: `versions.tf` (versión de Terraform y providers), `providers.tf` (configuración del provider), `main.tf` (recursos), `variables.tf` (entradas), `outputs.tf` (salidas) y `terraform.tfvars` (valores).
+- **Para qué se usa:** encontrar rápido cada cosa y separar entornos: cada carpeta raíz es un despliegue independiente con su estado.
+- **Dónde y cómo se usa en mi proyecto:** `terraform/envs/dev/` es el root module de dev (y en la fase 2 lo será `terraform/envs/prod/`). Los comandos se ejecutan dentro de esa carpeta (`cd terraform/envs/dev && terraform init`) o con `terraform -chdir=terraform/envs/dev init`, que es lo que usará el Makefile. Las piezas reutilizables irán en `terraform/modules/`.
+- **Por qué así:** una carpeta por entorno da **estados separados**: un `destroy` en dev no puede tocar prod. Alternativa descartada: *workspaces* de Terraform (un mismo directorio con varios estados), que son más fáciles de confundir («¿en qué workspace estoy?») y no permiten diferencias de estructura entre entornos. `required_version` y la versión del provider se fijan para que el despliegue sea reproducible.
+- **Pregunta de defensa:** si escribes un recurso en `outputs.tf` en lugar de `main.tf`, ¿funciona? ¿Por qué se separan entonces en varios ficheros?
 
 ## Seguridad
 
