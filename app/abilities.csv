@@ -1,0 +1,285 @@
+id,name,description
+1,Hedor,Tiene un 10 % de probabilidad de hacer retroceder al objetivo con cada golpe.
+2,Llovizna,"Al entrar en combate, provoca lluvia de forma indefinida."
+3,Impulso,Sube la Velocidad un nivel al final de cada turno.
+4,Armadura Batalla,Protege de los golpes críticos.
+5,Robustez,"Evita que un ataque lo debilite si tiene todos los PS: se queda con 1 PS. Protege de los ataques que debilitan de un golpe, tenga los PS que tenga."
+6,Humedad,"Mientras está en combate, impiden funcionar Autodestrucción, Explosión y Detonación."
+7,Flexibilidad,Evita la parálisis.
+8,Velo Arena,"Multiplica la evasión por 1,25 durante una tormenta de arena. Protege del daño de la tormenta de arena."
+9,Electricidad Estática,Tiene un 30 % de probabilidad de paralizar por contacto a quien lo ataca.
+10,Absorbe Electricidad,Absorbe los ataques de tipo Eléctrico y recupera 1/4 de sus PS máximos.
+11,Absorbe Agua,Absorbe los ataques de tipo Agua y recupera 1/4 de sus PS máximos.
+12,Despiste,Evita el enamoramiento y protege de Seducción.
+13,Aclimatación,"Anula todos los efectos del clima, aunque el clima sigue activo."
+14,Ojo Compuesto,"Multiplica la precisión de sus ataques por 1,3."
+15,Insomnio,Evita el sueño.
+16,Cambio Color,"Al recibir un ataque con daño, cambia su tipo al de ese ataque."
+17,Inmunidad,Evita el envenenamiento.
+18,Absorbe Fuego,"Protege de los ataques de tipo Fuego. Tras bloquear uno, sus propios ataques de Fuego hacen ×1,5 de daño hasta que salga del combate."
+19,Polvo Escudo,Protege de los efectos secundarios de los ataques que recibe.
+20,Ritmo Propio,Evita la confusión.
+21,Ventosas,Evita que los ataques de otros Pokémon lo obliguen a salir del combate.
+22,Intimidación,"Al entrar en combate, baja un nivel el Ataque de los rivales."
+23,Sombra Trampa,Impide a los rivales huir o cambiarse.
+24,Piel Tosca,"Por contacto, quita a quien lo ataca 1/8 de sus PS máximos."
+25,Superguarda,Protege de los ataques con daño que no sean supereficaces.
+26,Levitación,Esquiva los ataques de tipo Tierra.
+27,Efecto Espora,"Tiene un 30 % de probabilidad de paralizar, envenenar o dormir por contacto a quien lo ataca."
+28,Sincronía,"Si lo queman, paralizan o envenenan, el Pokémon que lo causó sufre lo mismo."
+29,Cuerpo Puro,Evita que otros Pokémon le bajen las estadísticas.
+30,Cura Natural,Cura cualquier problema de estado grave al retirarse del combate.
+31,Pararrayos,"Atrae hacia sí, si puede, los ataques de tipo Eléctrico dirigidos a un solo objetivo. Los absorbe y sube un nivel su Ataque Especial."
+32,Dicha,Duplica la probabilidad de los efectos secundarios de sus ataques.
+33,Nado Rápido,Duplica la Velocidad durante la lluvia.
+34,Clorofila,Duplica la Velocidad con sol intenso.
+35,Iluminación,Duplica la frecuencia de encuentros con Pokémon salvajes.
+36,Calco,"Al entrar en combate, copia la habilidad de un rival."
+37,Potencia,Duplica el Ataque en combate.
+38,Punto Tóxico,Tiene un 30 % de probabilidad de envenenar por contacto a quien lo ataca.
+39,Fuerza Mental,Evita retroceder.
+40,Escudo Magma,Evita la congelación.
+41,Velo Agua,Evita las quemaduras.
+42,Imán,Impide huir o cambiarse a los rivales de tipo Acero.
+43,Insonorizar,Protege de los ataques basados en sonido.
+44,Cura Lluvia,Recupera 1/16 de sus PS máximos al final de cada turno durante la lluvia.
+45,Chorro Arena,"Al entrar en combate, provoca una tormenta de arena de forma indefinida."
+46,Presión,Los ataques dirigidos contra este Pokémon gastan 1 PP más.
+47,Sebo,Reduce a la mitad el daño de los ataques de tipo Fuego y Hielo.
+48,Madrugar,Hace que el sueño dure la mitad.
+49,Cuerpo Llama,Tiene un 30 % de probabilidad de quemar por contacto a quien lo ataca.
+50,Fuga,Garantiza la huida de los combates contra Pokémon salvajes.
+51,Vista Lince,Evita que le bajen la precisión.
+52,Corte Fuerte,Evita que otros Pokémon le bajen el Ataque.
+53,Recogida,Recoge los objetos usados o lanzados por otros Pokémon. También puede encontrar un objeto al terminar el combate.
+54,Ausente,Se salta uno de cada dos turnos.
+55,Entusiasmo,"Sus ataques físicos hacen ×1,5 de daño, pero su precisión se multiplica por 0,8."
+56,Gran Encanto,Tiene un 30 % de probabilidad de enamorar por contacto a quien lo ataca.
+57,Más,"Multiplica el Ataque Especial por 1,5 si un aliado tiene Más o Menos."
+58,Menos,"Multiplica el Ataque Especial por 1,5 si un aliado tiene Más o Menos."
+59,Predicción,Cambia el tipo y la forma de Castform según el clima.
+60,Viscosidad,Evita que otros Pokémon le quiten el objeto que lleva.
+61,Mudar,Tiene un 33 % de probabilidad de curarse de un problema de estado grave al final de cada turno.
+62,Agallas,"Multiplica el Ataque por 1,5 si tiene un problema de estado grave."
+63,Escama Especial,"Multiplica la Defensa por 1,5 si tiene un problema de estado grave."
+64,Lodo Líquido,Los rivales que usan ataques de drenaje reciben el daño que iban a recuperar.
+65,Espesura,"Sus ataques de tipo Planta hacen ×1,5 de daño con 1/3 de sus PS máximos o menos."
+66,Mar Llamas,"Sus ataques de tipo Fuego hacen ×1,5 de daño con 1/3 de sus PS máximos o menos."
+67,Torrente,"Sus ataques de tipo Agua hacen ×1,5 de daño con 1/3 de sus PS máximos o menos."
+68,Enjambre,"Sus ataques de tipo Bicho hacen ×1,5 de daño con 1/3 de sus PS máximos o menos."
+69,Cabeza Roca,Protege del daño de retroceso.
+70,Sequía,"Al entrar en combate, provoca sol intenso de forma indefinida."
+71,Trampa Arena,Impide a los rivales huir o cambiarse. No afecta a los de tipo Volador ni a los que están en el aire.
+72,Espíritu Vital,Evita el sueño.
+73,Humo Blanco,Evita que otros Pokémon le bajen las estadísticas.
+74,Energía Pura,Duplica el Ataque en combate.
+75,Caparazón,Protege de los golpes críticos.
+76,Bucle Aire,"Anula todos los efectos del clima, aunque el clima sigue activo."
+77,Tumbos,Duplica la evasión cuando está confuso.
+78,Electromotor,Absorbe los ataques de tipo Eléctrico y sube un nivel la Velocidad.
+79,Rivalidad,"Multiplica el daño por 1,25 contra Pokémon de su mismo género, y por 0,75 contra los del género contrario."
+80,Impasible,Sube un nivel la Velocidad al retroceder.
+81,Manto Níveo,"Multiplica la evasión por 1,25 durante el granizo. Protege del daño del granizo."
+82,Gula,Se come la baya que se activa con pocos PS en cuanto baja de la mitad de sus PS máximos.
+83,Irascible,Sube el Ataque al máximo (seis niveles) al recibir un golpe crítico.
+84,Liviano,Duplica la Velocidad al usar o perder el objeto que lleva.
+85,Ignífugo,Reduce a la mitad el daño de los ataques de tipo Fuego y de las quemaduras.
+86,Simple,"Duplica los cambios de sus estadísticas, con un límite de seis niveles arriba o abajo."
+87,Piel Seca,"Con sol intenso pierde 1/8 de sus PS máximos cada turno, y con lluvia los recupera. Los ataques de Fuego le hacen ×1,25 de daño; absorbe los de Agua y recupera 1/4 de sus PS máximos."
+88,Descarga,"Al entrar en combate, sube un nivel el Ataque o el Ataque Especial, según cuál sea la defensa más débil del rival."
+89,Puño Férreo,"Multiplica por 1,2 la potencia de los ataques de puñetazo."
+90,Antídoto,"Si está envenenado, recupera 1/8 de sus PS máximos cada turno en lugar de perderlos."
+91,Adaptable,"Sube el bonus por ataque del tipo propio de ×1,5 a ×2."
+92,Encadenado,Los ataques de dos a cinco golpes y Triple Patada golpean siempre el máximo de veces.
+93,Hidratación,"Durante la lluvia, cura cualquier problema de estado grave al final de cada turno."
+94,Poder Solar,"Con sol intenso, multiplica el Ataque Especial por 1,5, pero pierde 1/8 de sus PS máximos cada turno."
+95,Pies Rápidos,"Multiplica la Velocidad por 1,5 si tiene un problema de estado grave."
+96,Normalidad,Todos sus ataques pasan a ser de tipo Normal.
+97,Francotirador,Sus golpes críticos hacen ×3 de daño en lugar de ×2.
+98,Muro Mágico,Protege de todo daño que no venga directamente de un ataque.
+99,Indefenso,Todos los ataques que usa o que recibe aciertan siempre.
+100,Rezagado,Actúa el último entre los ataques de su misma prioridad.
+101,Experto,"Multiplica por 1,5 la potencia de los ataques de 60 de potencia base o menos."
+102,Defensa Hoja,"Con sol intenso, protege de los problemas de estado graves."
+103,Zoquete,Le impide usar en combate el objeto que lleva.
+104,Rompemoldes,Sus ataques ignoran las habilidades del objetivo que podrían frenarlos o impedirlos.
+105,Afortunado,Sube un nivel la probabilidad de golpe crítico de sus ataques.
+106,Detonación,"Si un ataque de contacto lo debilita, el atacante pierde 1/4 de sus PS máximos."
+107,Anticipación,"Al entrar en combate, avisa si un rival tiene un ataque supereficaz, Autodestrucción, Explosión o un ataque que debilita de un golpe."
+108,Alerta,"Al entrar en combate, revela el ataque más fuerte de los rivales."
+109,Ignorante,Ignora los cambios de estadísticas de otros Pokémon al calcular el daño y la precisión.
+110,Cromolente,Duplica el daño de sus ataques poco eficaces.
+111,Filtro,Reduce 1/4 el daño de los ataques supereficaces que recibe.
+112,Inicio Lento,"Al entrar en combate, reduce a la mitad su Ataque y su Velocidad durante cinco turnos."
+113,Intrépido,Sus ataques de tipo Normal y Lucha alcanzan a los Pokémon de tipo Fantasma.
+114,Colector,"Atrae hacia sí, si puede, los ataques de tipo Agua dirigidos a un solo objetivo. Los absorbe y sube un nivel su Ataque Especial."
+115,Gélido,"Durante el granizo, recupera 1/16 de sus PS máximos cada turno y no recibe daño del granizo."
+116,Roca Sólida,Reduce 1/4 el daño de los ataques supereficaces que recibe.
+117,Nevada,"Al entrar en combate, provoca granizo de forma indefinida."
+118,Recogemiel,Puede encontrar Miel al terminar el combate.
+119,Cacheo,"Al entrar en combate, revela el objeto que lleva un rival."
+120,Audaz,"Multiplica por 1,2 la potencia de los ataques con daño de retroceso."
+121,Multitipo,Cambia el tipo y la forma de Arceus según la tabla que lleve.
+122,Don Floral,"Con sol intenso, multiplica por 1,5 el Ataque y la Defensa Especial de sus aliados."
+123,Mal Sueño,Quita a los rivales dormidos 1/8 de sus PS máximos al final de cada turno.
+124,Hurto,Roba por contacto el objeto de quien lo ataca.
+125,Potencia Bruta,"Multiplica por 1,3 la potencia de los ataques con efecto secundario, pero anula ese efecto."
+126,Respondón,Invierte los cambios de estadísticas.
+127,Nerviosismo,Impide a los rivales comerse las bayas que llevan.
+128,Competitivo,Sube dos niveles el Ataque cuando le bajan cualquier estadística.
+129,Flaqueza,Reduce a la mitad su Ataque y su Ataque Especial con el 50 % de sus PS máximos o menos.
+130,Cuerpo Maldito,Tiene un 30 % de probabilidad de anular el ataque que lo golpea.
+131,Alma Cura,Tiene un 30 % de probabilidad de curar un problema de estado grave a cada aliado adyacente al final de cada turno. Solo sirve en combates dobles y triples.
+132,Compiescolta,"Reduce a ×0,75 todo el daño directo que reciben sus aliados."
+133,Armadura Frágil,"Al recibir un ataque físico, sube un nivel la Velocidad y baja un nivel la Defensa."
+134,Metal Pesado,Duplica su peso.
+135,Metal Liviano,Reduce su peso a la mitad.
+136,Multiescamas,Reduce a la mitad el daño recibido si tiene todos los PS.
+137,Ímpetu Tóxico,"Multiplica el Ataque por 1,5 si está envenenado."
+138,Ímpetu Ardiente,"Multiplica el Ataque Especial por 1,5 si está quemado."
+139,Cosecha,"Tiene un 50 % de probabilidad de recuperar una baya usada al final de cada turno, si no lleva otro objeto."
+140,Telepatía,Protege de los ataques con daño de sus aliados.
+141,Veleta,"Al final de cada turno, sube dos niveles una estadística al azar y baja un nivel otra."
+142,Funda,Protege del daño del clima.
+143,Toque Tóxico,Tiene un 30 % de probabilidad de envenenar por contacto al objetivo.
+144,Regeneración,Recupera 1/3 de sus PS máximos al retirarse del combate.
+145,Sacapecho,Protege de las bajadas de Defensa.
+146,Ímpetu Arena,Duplica la Velocidad durante una tormenta de arena. Protege del daño de la tormenta de arena.
+147,Piel Milagro,Reduce a exactamente el 50 % la precisión base de los ataques sin daño que recibe.
+148,Cálculo Final,"Multiplica por 1,3 la potencia de sus ataques si actúa el último."
+149,Ilusión,"Al salir, adopta el aspecto del último Pokémon consciente del equipo, hasta que reciba un ataque con daño."
+150,Impostor,Se transforma al entrar en combate.
+151,Allanamiento,"Ignora Pantalla de Luz, Reflejo y Velo Sagrado."
+152,Momia,"Por contacto, cambia a Momia la habilidad de quien lo ataca."
+153,Autoestima,Sube un nivel el Ataque al debilitar a un Pokémon.
+154,Justiciero,Sube un nivel el Ataque al recibir daño de un ataque de tipo Siniestro.
+155,Cobardía,"Sube un nivel la Velocidad al recibir un ataque de tipo Siniestro, Fantasma o Bicho."
+156,Espejo Mágico,Devuelve a su usuario la mayoría de los ataques sin daño.
+157,Herbívoro,Absorbe los ataques de tipo Planta y sube un nivel el Ataque.
+158,Bromista,Sube un nivel la prioridad de los ataques sin daño.
+159,Poder Arena,"Durante una tormenta de arena, multiplica por 1,3 la potencia de sus ataques de Roca, Tierra y Acero. Protege del daño de la tormenta de arena."
+160,Punta Acero,"Por contacto, quita a quien lo ataca 1/8 de sus PS máximos."
+161,Modo Daruma,"Al final de cada turno, cambia la forma de Darmanitan: Modo Daruma por debajo del 50 % de sus PS máximos y Modo Normal en otro caso."
+162,Tinovictoria,"Multiplica por 1,1 la precisión de sus aliados."
+163,Turbollama,Sus ataques ignoran las habilidades del objetivo que podrían frenarlos o impedirlos.
+164,Terravoltaje,Sus ataques ignoran las habilidades del objetivo que podrían frenarlos o impedirlos.
+165,Velo Aroma,Protege a sus aliados de los ataques que afectan a su estado mental.
+166,Velo Flor,Evita que otros Pokémon bajen las estadísticas de sus aliados de tipo Planta.
+167,Carrillo,"Recupera PS al comerse una baya, además del efecto de la baya."
+168,Mutatipo,Cambia su tipo al del ataque que va a usar.
+169,Pelaje Recio,Reduce a la mitad el daño de los ataques físicos.
+170,Prestidigitador,Roba el objeto del objetivo al usar un ataque con daño.
+171,Antibalas,"Protege de los ataques de balas, bolas y bombas."
+172,Tenacidad,Sube dos niveles el Ataque Especial cuando le bajan cualquier estadística.
+173,Mandíbula Fuerte,"Multiplica por 1,5 la potencia de los ataques de mordisco."
+174,Piel Helada,"Sus ataques de tipo Normal pasan a ser de tipo Hielo y multiplican su potencia por 1,3."
+175,Velo Dulce,Evita que sus aliados se duerman.
+176,Cambio Táctico,"Cambia a Aegislash a su Forma Filo antes de usar un ataque con daño, y a su Forma Escudo antes de usar Escudo Real."
+177,Alas Vendaval,Sube un nivel la prioridad de los ataques de tipo Volador.
+178,Megadisparador,"Multiplica por 1,5 la potencia de los ataques de aura y de pulso."
+179,Manto Frondoso,Sube la Defensa mientras esté activo el Campo de Hierba.
+180,Simbiosis,Pasa a un aliado el objeto que lleva cuando ese aliado gasta el suyo.
+181,Garra Dura,"Multiplica por 1,33 la potencia de los ataques de contacto."
+182,Piel Feérica,"Sus ataques de tipo Normal pasan a ser de tipo Hada y multiplican su potencia por 1,3."
+183,Baba,"Por contacto, baja un nivel la Velocidad de quien lo ataca."
+186,Aura Oscura,"Multiplica por 1,33 la potencia de los ataques de tipo Siniestro de todos los Pokémon en combate."
+187,Aura Feérica,"Multiplica por 1,33 la potencia de los ataques de tipo Hada de todos los Pokémon en combate."
+188,Rompeaura,Hace que Aura Oscura y Aura Feérica debiliten los ataques de sus tipos en lugar de reforzarlos.
+192,Firmeza,Sube un nivel la Defensa al recibir daño de un ataque.
+193,Huida,Se retira automáticamente cuando sus PS bajan de la mitad.
+194,Retirada,Se retira automáticamente cuando sus PS bajan de la mitad.
+195,Hidrorrefuerzo,Sube dos niveles la Defensa al recibir un ataque de tipo Agua.
+196,Ensañamiento,Sus ataques son siempre golpes críticos contra objetivos envenenados.
+197,Escudo Limitado,Cambia a Minior entre Forma Núcleo y Forma Meteorito. En Forma Meteorito evita los problemas de estado graves y la somnolencia.
+198,Vigilante,Duplica la potencia de sus ataques contra Pokémon que hayan entrado ese turno.
+199,Pompa,"Reduce a la mitad el daño de los ataques de Fuego, duplica el daño de sus ataques de Agua y evita las quemaduras."
+200,Acero Templado,"Multiplica por 1,5 la potencia de sus ataques de tipo Acero."
+201,Cólera,Sube un nivel el Ataque Especial cada vez que sus PS bajan de la mitad.
+202,Quitanieves,Duplica la Velocidad durante el granizo.
+203,Remoto,Sus ataques no hacen contacto.
+204,Voz Fluida,Sus ataques de sonido pasan a ser de tipo Agua.
+205,Primer Auxilio,Sube tres niveles la prioridad de sus ataques curativos.
+208,Banco,Wishiwashi adopta su Forma Banco con el 25 % de sus PS o más.
+209,Disfraz,Evita el primer daño que recibiría en combate.
+212,Corrosión,Puede envenenar a Pokémon de tipo Veneno y Acero.
+213,Letargo Perenne,Se comporta siempre como si estuviera dormido.
+214,Regia Presencia,Los rivales no pueden usar ataques con prioridad.
+215,Revés,"Si un ataque rival lo debilita, ese rival recibe un daño igual a los PS que le quedaban."
+216,Pareja de Baile,"Cuando otro Pokémon usa un ataque de danza, este lo usa justo después."
+217,Batería,"Multiplica por 1,3 la potencia de los ataques de sus aliados."
+218,Peluche,Reduce a la mitad el daño de los ataques de contacto. Duplica el daño de los ataques de tipo Fuego.
+219,Cuerpo Vívido,Los rivales no pueden usar ataques con prioridad.
+220,Coránima,Sube un nivel el Ataque Especial cada vez que se debilita cualquier Pokémon.
+222,Receptor,"Cuando se debilita un aliado, adquiere su habilidad."
+224,Ultraimpulso,Sube un nivel su estadística más alta al debilitar a otro Pokémon.
+225,Sistema Alfa,Cambia su tipo según la memoria que lleva.
+226,Electrogénesis,"Al entrar en combate, crea un Campo Eléctrico."
+227,Psicogénesis,"Al entrar en combate, crea un Campo Psíquico."
+228,Nebulogénesis,"Al entrar en combate, crea un Campo de Niebla."
+229,Herbogénesis,"Al entrar en combate, crea un Campo de Hierba."
+230,Guardia Metálica,Otros Pokémon no pueden bajarle las estadísticas.
+231,Guardia Espectro,"Con todos los PS, reduce a la mitad el daño normal de los ataques."
+232,Armadura Prisma,"Reduce a ×0,75 el daño de los ataques supereficaces."
+234,Espada Indómita,Sube el Ataque en combate.
+235,Escudo Recio,Sube la Defensa en combate.
+236,Líbero,Cambia el tipo del Pokémon al del último ataque que ha usado.
+237,Recogebolas,"Si no lleva objeto, recupera la Poké Ball del primer lanzamiento fallido del combate."
+238,Pelusa,"Al recibir un ataque, baja un nivel la Velocidad de los demás Pokémon en combate."
+239,Hélice Caudal,Ignora los ataques y habilidades que atraen ataques hacia sí.
+240,Coraza Reflejo,Devuelve los efectos que bajan estadísticas.
+241,Tragamisil,"Si un Cramorant con esta habilidad usa Surf o Buceo, captura una presa y cambia de forma según sus PS restantes."
+242,Acérrimo,Ignora los ataques y habilidades que atraen ataques hacia sí.
+243,Combustible,Sube mucho la Velocidad al recibir un ataque de tipo Fuego o Agua.
+244,Punk Rock,Potencia sus ataques de sonido y reduce a la mitad el daño de los que recibe.
+245,Expulsarena,Provoca una tormenta de arena al recibir un ataque.
+246,Escama de Hielo,Reduce a la mitad el daño de los ataques especiales.
+247,Maduración,Duplica el efecto de las bayas.
+248,Cara de Hielo,"Su cabeza de hielo aguanta un ataque físico, pero cambia de aspecto. El hielo se regenera cuando nieva."
+249,Fuente Energía,Estar a su lado potencia los ataques de sus aliados.
+251,Antibarrera,"Anula los efectos de Pantalla de Luz, Reflejo y Velo Aurora."
+252,Alma Acerada,Potencia los ataques de tipo Acero de sus aliados.
+253,Cuerpo Mortal,"Al recibir un ataque de contacto, tanto él como el atacante se debilitan en tres turnos, salvo que se retiren."
+254,Alma Errante,Intercambia su habilidad con la del rival por contacto.
+256,Gas Reactivo,Anula las habilidades de todos los Pokémon en combate.
+258,Mutapetito,Morpeko alterna cada turno entre Modo Saciado y Modo Voraz.
+260,Puño Invisible,Los ataques de contacto atraviesan Protección y Detección.
+262,Transistor,Potencia los ataques de tipo Eléctrico.
+263,Mandíbula Dragón,Potencia los ataques de tipo Dragón.
+264,Relincho Blanco,Sube el Ataque al debilitar a un Pokémon.
+265,Relincho Negro,Sube el Ataque Especial al debilitar a un Pokémon.
+268,Olor Persistente,"Por contacto, cambia a Olor Persistente la habilidad del atacante."
+269,Disemillar,Crea un Campo de Hierba al recibir un ataque.
+270,Termoconversión,Sube el Ataque al recibir un ataque de tipo Fuego. No puede quemarse.
+271,Coraza Ira,"Cuando sus PS bajan de la mitad, baja su Defensa y su Defensa Especial, y sube su Ataque, su Ataque Especial y su Velocidad."
+272,Sal Purificadora,Protege de los problemas de estado y reduce a la mitad el daño de los ataques de tipo Fantasma.
+273,Cuerpo Horneado,"Inmune a los ataques de tipo Fuego; al recibirlos, sube mucho su Defensa."
+274,Surcavientos,"Inmune a los ataques de viento; al recibirlos, sube un nivel su Ataque."
+275,Perro Guardián,"Sube el Ataque si intentan intimidarlo, y evita que lo obliguen a cambiarse."
+276,Transportarrocas,Potencia los ataques de tipo Roca.
+277,Energía Eólica,"Al recibir un ataque de viento, duplica la potencia de su siguiente ataque de tipo Eléctrico."
+278,Cambio Heroico,Se transforma en su Forma Heroica al retirarse.
+279,Comandar,Se mete en la boca de un Dondozo aliado si hay uno en el campo.
+280,Dinamo,"Al recibir un ataque, duplica la potencia de su siguiente ataque de tipo Eléctrico."
+281,Paleosíntesis,Sube su mejor estadística con sol intenso o si lleva Energía Potenciadora.
+282,Carga Cuark,Sube su mejor estadística en Campo Eléctrico o si lleva Energía Potenciadora.
+283,Cuerpo Áureo,Inmune a los ataques de estado.
+284,Caldero Debacle,Baja el Ataque Especial de todos los demás Pokémon.
+285,Espada Debacle,Baja la Defensa de todos los demás Pokémon.
+286,Tablilla Debacle,Baja el Ataque de todos los demás Pokémon.
+287,Abalorio Debacle,Baja la Defensa Especial de todos los demás Pokémon.
+288,Latido Oricalco,"Provoca sol intenso al entrar en combate, y sube el Ataque mientras dure."
+289,Motor Hadrónico,"Crea un Campo Eléctrico al entrar en combate, y sube el Ataque Especial mientras dure."
+290,Oportunista,Copia las subidas de estadísticas del rival.
+291,Rumia,Reutiliza una baya ya consumida al final del turno siguiente.
+292,Cortante,Potencia los ataques cortantes.
+293,General Supremo,Sube el Ataque y el Ataque Especial por cada Pokémon del equipo que haya sido debilitado.
+294,Unísono,"Al entrar en combate, copia los cambios de estadísticas de un aliado."
+295,Capa Tóxica,Esparce púas venenosas a los pies del equipo rival al recibir daño de un ataque físico.
+296,Cola Armadura,"Impide al rival usar ataques con prioridad, como Ataque Rápido."
+297,Geofagia,Recupera PS al recibir un ataque de tipo Tierra.
+298,Poder Fúngico,"Sus ataques de estado actúan los últimos, pero no les afecta la habilidad del rival."
+300,Néctar Dulce,"Una vez por combate, al entrar, baja un nivel la evasión de los rivales adyacentes."
+301,Hospitalidad,"Al entrar en combate, recupera el 25 % de los PS de un aliado."
+302,Cadena Tóxica,Puede envenenar gravemente al golpear a un rival con un ataque.
+304,Teracambio,"Al entrar en combate, Terapagos adopta su Forma Teracristal hasta el final del combate."
+307,Títere Tóxico,Los Pokémon envenenados por los ataques de Pecharunt también quedan confusos.

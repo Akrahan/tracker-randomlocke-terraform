@@ -1,0 +1,4499 @@
+kind,key,value
+ability,ADAPTABILITY,Adaptable
+ability,AERILATE,Piel Celeste
+ability,AFTERMATH,Detonación
+ability,AIRLOCK,Bucle Aire
+ability,ANALYTIC,Cálculo Final
+ability,ANGERPOINT,Irascible
+ability,ANGERSHELL,Coraza Ira
+ability,ANTICIPATION,Anticipación
+ability,ARENATRAP,Trampa Arena
+ability,ARMORTAIL,Cola Armadura
+ability,AROMAVEIL,Velo Aroma
+ability,ASONEGLASTRIER,Unidad Ecuestre
+ability,ASONESPECTRIER,Unidad Ecuestre
+ability,AURABREAK,Rompeaura
+ability,BADDREAMS,Mal Sueño
+ability,BALLFETCH,Recogebolas
+ability,BATTERY,Batería
+ability,BATTLEARMOR,Armadura Batalla
+ability,BATTLEBOND,Fuerte Afecto
+ability,BEADSOFRUIN,Abalorio Debacle
+ability,BEASTBOOST,Ultraimpulso
+ability,BERSERK,Cólera
+ability,BIGPECKS,Sacapecho
+ability,BLAZE,Mar Llamas
+ability,BULLETPROOF,Antibalas
+ability,CHEEKPOUCH,Carrillo
+ability,CHILLINGNEIGH,Relincho Blanco
+ability,CHLOROPHYLL,Clorofila
+ability,CLEARBODY,Cuerpo Puro
+ability,CLOUDNINE,Aclimatación
+ability,COLORCHANGE,Cambio Color
+ability,COMATOSE,Letargo Perenne
+ability,COMMANDER,Comandar
+ability,COMPETITIVE,Tenacidad
+ability,COMPOUNDEYES,Ojo Compuesto
+ability,CONTRARY,Respondón
+ability,CORROSION,Corrosión
+ability,COSTAR,Unísono
+ability,COTTONDOWN,Pelusa
+ability,CUDCHEW,Rumia
+ability,CURIOUSMEDICINE,Medicina Extraña
+ability,CURSEDBODY,Cuerpo Maldito
+ability,CUTECHARM,Gran Encanto
+ability,DAMP,Humedad
+ability,DANCER,Pareja de Baile
+ability,DARKAURA,Aura Oscura
+ability,DAUNTLESSSHIELD,Escudo Recio
+ability,DAZZLING,Cuerpo Vívido
+ability,DEFEATIST,Flaqueza
+ability,DEFIANT,Competitivo
+ability,DELTASTREAM,Ráfaga Delta
+ability,DESOLATELAND,Tierra del Ocaso
+ability,DISGUISE,Disfraz
+ability,DOWNLOAD,Descarga
+ability,DRAGONIZE,Piel Dragontina
+ability,DRAGONSMAW,Mandíbula Dragón
+ability,DRIZZLE,Llovizna
+ability,DROUGHT,Sequía
+ability,DRYSKIN,Piel Seca
+ability,EARLYBIRD,Madrugar
+ability,EARTHEATER,Geofagia
+ability,EFFECTSPORE,Efecto Espora
+ability,ELECTRICSURGE,Electrogénesis
+ability,ELECTROMORPHOSIS,Dinamo
+ability,EMBODYASPECT,Evocarrecuerdos
+ability,EMERGENCYEXIT,Retirada
+ability,FAIRYAURA,Aura Feérica
+ability,FILTER,Filtro
+ability,FLAMEBODY,Cuerpo Llama
+ability,FLAREBOOST,Ímpetu Ardiente
+ability,FLASHFIRE,Absorbe Fuego
+ability,FLOWERGIFT,Don Floral
+ability,FLOWERVEIL,Velo Flor
+ability,FLUFFY,Peluche
+ability,FORECAST,Predicción
+ability,FOREWARN,Alerta
+ability,FRIENDGUARD,Compiescolta
+ability,FRISK,Cacheo
+ability,FULLMETALBODY,Guardia Metálica
+ability,FURCOAT,Pelaje Recio
+ability,GALEWINGS,Alas Vendaval
+ability,GALVANIZE,Piel Eléctrica
+ability,GLUTTONY,Gula
+ability,GOODASGOLD,Cuerpo Áureo
+ability,GOOEY,Baba
+ability,GORILLATACTICS,Monotema
+ability,GRASSPELT,Manto Frondoso
+ability,GRASSYSURGE,Herbogénesis
+ability,GRIMNEIGH,Relincho Negro
+ability,GUARDDOG,Perro Guardián
+ability,GULPMISSILE,Tragamisil
+ability,GUTS,Agallas
+ability,HADRONENGINE,Motor Hadrónico
+ability,HARVEST,Cosecha
+ability,HEALER,Alma Cura
+ability,HEATPROOF,Ignífugo
+ability,HEAVYMETAL,Metal Pesado
+ability,HONEYGATHER,Recogemiel
+ability,HOSPITALITY,Hospitalidad
+ability,HUGEPOWER,Potencia
+ability,HUNGERSWITCH,Mutapetito
+ability,HUSTLE,Entusiasmo
+ability,HYDRATION,Hidratación
+ability,HYPERCUTTER,Corte Fuerte
+ability,ICEBODY,Gélido
+ability,ICEFACE,Cara de Hielo
+ability,ICESCALES,Escama de Hielo
+ability,ILLUMINATE,Iluminación
+ability,ILLUSION,Ilusión
+ability,IMMUNITY,Inmunidad
+ability,IMPOSTER,Impostor
+ability,INFILTRATOR,Allanamiento
+ability,INNARDSOUT,Revés
+ability,INNERFOCUS,Fuerza Mental
+ability,INSOMNIA,Insomnio
+ability,INTIMIDATE,Intimidación
+ability,INTREPIDSWORD,Espada Indómita
+ability,IRONBARBS,Punta Acero
+ability,IRONFIST,Puño Férreo
+ability,JUSTIFIED,Justiciero
+ability,KEENEYE,Vista Lince
+ability,KLUTZ,Zoquete
+ability,LEAFGUARD,Defensa Hoja
+ability,LEVITATE,Levitación
+ability,LIBERO,Líbero
+ability,LIGHTMETAL,Metal Liviano
+ability,LIGHTNINGROD,Pararrayos
+ability,LIMBER,Flexibilidad
+ability,LINGERINGAROMA,Olor Persistente
+ability,LIQUIDOOZE,Lodo Líquido
+ability,LIQUIDVOICE,Voz Fluida
+ability,LONGREACH,Remoto
+ability,MAGICBOUNCE,Espejo Mágico
+ability,MAGICGUARD,Muro Mágico
+ability,MAGICIAN,Prestidigitador
+ability,MAGMAARMOR,Escudo Magma
+ability,MAGNETPULL,Imán
+ability,MARVELSCALE,Escama Especial
+ability,MEGALAUNCHER,Megadisparador
+ability,MEGASOL,Megasolar
+ability,MERCILESS,Ensañamiento
+ability,MIMICRY,Mimetismo
+ability,MINDSEYE,Ojo Mental
+ability,MINUS,Menos
+ability,MIRRORARMOR,Coraza Reflejo
+ability,MISTYSURGE,Nebulogénesis
+ability,MOLDBREAKER,Rompemoldes
+ability,MOODY,Veleta
+ability,MOTORDRIVE,Electromotor
+ability,MOXIE,Autoestima
+ability,MULTISCALE,Multiescamas
+ability,MULTITYPE,Multitipo
+ability,MUMMY,Momia
+ability,MYCELIUMMIGHT,Poder Fúngico
+ability,NATURALCURE,Cura Natural
+ability,NEUROFORCE,Fuerza Cerebral
+ability,NEUTRALIZINGGAS,Gas Reactivo
+ability,NOGUARD,Indefenso
+ability,NORMALIZE,Normalidad
+ability,OBLIVIOUS,Despiste
+ability,OPPORTUNIST,Oportunista
+ability,ORICHALCUMPULSE,Latido Oricalco
+ability,OVERCOAT,Funda
+ability,OVERGROW,Espesura
+ability,OWNTEMPO,Ritmo Propio
+ability,PARENTALBOND,Amor Filial
+ability,PASTELVEIL,Velo Pastel
+ability,PERISHBODY,Cuerpo Mortal
+ability,PICKPOCKET,Hurto
+ability,PICKUP,Recogida
+ability,PIERCINGDRILL,Turbotaladro
+ability,PIXILATE,Piel Feérica
+ability,PLUS,Más
+ability,POISONHEAL,Antídoto
+ability,POISONPOINT,Punto Tóxico
+ability,POISONPUPPETEER,Títere Tóxico
+ability,POISONTOUCH,Toque Tóxico
+ability,POWERCONSTRUCT,Agrupamiento
+ability,POWEROFALCHEMY,Reacción Química
+ability,POWERSPOT,Fuente Energía
+ability,PRANKSTER,Bromista
+ability,PRESSURE,Presión
+ability,PRIMORDIALSEA,Mar del Albor
+ability,PRISMARMOR,Armadura Prisma
+ability,PROPELLERTAIL,Hélice Caudal
+ability,PROTEAN,Mutatipo
+ability,PROTOSYNTHESIS,Paleosíntesis
+ability,PSYCHICSURGE,Psicogénesis
+ability,PUNKROCK,Punk Rock
+ability,PUREPOWER,Energía Pura
+ability,PURIFYINGSALT,Sal Purificadora
+ability,QUARKDRIVE,Carga Cuark
+ability,QUEENLYMAJESTY,Regia Presencia
+ability,QUICKDRAW,Mano Rápida
+ability,QUICKFEET,Pies Rápidos
+ability,RAINDISH,Cura Lluvia
+ability,RATTLED,Cobardía
+ability,RECEIVER,Receptor
+ability,RECKLESS,Audaz
+ability,REFRIGERATE,Piel Helada
+ability,REGENERATOR,Regeneración
+ability,RIPEN,Maduración
+ability,RIVALRY,Rivalidad
+ability,RKSSYSTEM,Sistema Alfa
+ability,ROCKHEAD,Cabeza Roca
+ability,ROCKYPAYLOAD,Transportarrocas
+ability,ROUGHSKIN,Piel Tosca
+ability,RUNAWAY,Fuga
+ability,SANDFORCE,Poder Arena
+ability,SANDRUSH,Ímpetu Arena
+ability,SANDSPIT,Expulsarena
+ability,SANDSTREAM,Chorro Arena
+ability,SANDVEIL,Velo Arena
+ability,SAPSIPPER,Herbívoro
+ability,SCHOOLING,Banco
+ability,SCRAPPY,Intrépido
+ability,SCREENCLEANER,Antibarrera
+ability,SEEDSOWER,Disemillar
+ability,SERENEGRACE,Dicha
+ability,SHADOWSHIELD,Guardia Espectro
+ability,SHADOWTAG,Sombra Trampa
+ability,SHARPNESS,Cortante
+ability,SHEDSKIN,Mudar
+ability,SHEERFORCE,Potencia Bruta
+ability,SHELLARMOR,Caparazón
+ability,SHIELDDUST,Polvo Escudo
+ability,SHIELDSDOWN,Escudo Limitado
+ability,SIMPLE,Simple
+ability,SKILLLINK,Encadenado
+ability,SLOWSTART,Inicio Lento
+ability,SLUSHRUSH,Quitanieves
+ability,SNIPER,Francotirador
+ability,SNOWCLOAK,Manto Níveo
+ability,SNOWWARNING,Nevada
+ability,SOLARPOWER,Poder Solar
+ability,SOLIDROCK,Roca Sólida
+ability,SOULHEART,Coránima
+ability,SOUNDPROOF,Insonorizar
+ability,SPEEDBOOST,Impulso
+ability,SPICYSPRAY,Salpicante
+ability,STAKEOUT,Vigilante
+ability,STALL,Rezagado
+ability,STALWART,Acérrimo
+ability,STAMINA,Firmeza
+ability,STANCECHANGE,Cambio Táctico
+ability,STATIC,Electricidad Estática
+ability,STEADFAST,Impasible
+ability,STEAMENGINE,Combustible
+ability,STEELWORKER,Acero Templado
+ability,STEELYSPIRIT,Alma Acerada
+ability,STENCH,Hedor
+ability,STICKYHOLD,Viscosidad
+ability,STORMDRAIN,Colector
+ability,STRONGJAW,Mandíbula Fuerte
+ability,STURDY,Robustez
+ability,SUCTIONCUPS,Ventosas
+ability,SUPERLUCK,Afortunado
+ability,SUPERSWEETSYRUP,Néctar Dulce
+ability,SUPREMEOVERLORD,General Supremo
+ability,SURGESURFER,Cola Surf
+ability,SWARM,Enjambre
+ability,SWEETVEIL,Velo Dulce
+ability,SWIFTSWIM,Nado Rápido
+ability,SWORDOFRUIN,Espada Debacle
+ability,SYMBIOSIS,Simbiosis
+ability,SYNCHRONIZE,Sincronía
+ability,TABLETSOFRUIN,Tablilla Debacle
+ability,TANGLEDFEET,Tumbos
+ability,TANGLINGHAIR,Rizos Rebeldes
+ability,TECHNICIAN,Experto
+ability,TELEPATHY,Telepatía
+ability,TERAFORMZERO,Teraformación 0
+ability,TERASHELL,Teracaparazón
+ability,TERASHIFT,Teracambio
+ability,TERAVOLT,Terravoltaje
+ability,THERMALEXCHANGE,Termoconversión
+ability,THICKFAT,Sebo
+ability,TINTEDLENS,Cromolente
+ability,TORRENT,Torrente
+ability,TOUGHCLAWS,Garra Dura
+ability,TOXICBOOST,Ímpetu Tóxico
+ability,TOXICCHAIN,Cadena Tóxica
+ability,TOXICDEBRIS,Capa Tóxica
+ability,TRACE,Calco
+ability,TRANSISTOR,Transistor
+ability,TRIAGE,Primer Auxilio
+ability,TRUANT,Ausente
+ability,TURBOBLAZE,Turbollama
+ability,UNAWARE,Ignorante
+ability,UNBURDEN,Liviano
+ability,UNNERVE,Nerviosismo
+ability,UNSEENFIST,Puño Invisible
+ability,VESSELOFRUIN,Caldero Debacle
+ability,VICTORYSTAR,Tinovictoria
+ability,VITALSPIRIT,Espíritu Vital
+ability,VOLTABSORB,Absorbe Electricidad
+ability,WANDERINGSPIRIT,Alma Errante
+ability,WATERABSORB,Absorbe Agua
+ability,WATERBUBBLE,Pompa
+ability,WATERCOMPACTION,Hidrorrefuerzo
+ability,WATERVEIL,Velo Agua
+ability,WEAKARMOR,Armadura Frágil
+ability,WELLBAKEDBODY,Cuerpo Horneado
+ability,WHITESMOKE,Humo Blanco
+ability,WIMPOUT,Huida
+ability,WINDPOWER,Energía Eólica
+ability,WINDRIDER,Surcavientos
+ability,WONDERGUARD,Superguarda
+ability,WONDERSKIN,Piel Milagro
+ability,ZENMODE,Modo Daruma
+ability,ZEROTOHERO,Cambio Heroico
+item,ABILITYCAPSULE,Cáps. Habilidad
+item,ABILITYPATCH,Parche Habilidad
+item,ABILITYSHIELD,Escudo Habilidad
+item,ABILITYURGE,Habilitador
+item,ABOMASITE,Abomasnowita
+item,ABRACANDY,Caramelo Abra
+item,ABSOLITE,Absolita
+item,ABSOLITEZ,Absolita Z
+item,ABSORBBULB,Tubérculo
+item,ACADEMYBALL,Pelota Academia
+item,ACADEMYBOTTLE,Termo Academia
+item,ACADEMYCUP,Taza Academia
+item,ACADEMYTABLECLOTH,Mantel Academia
+item,ACROBIKE,Bici Acrobática
+item,ADAMANTCRYSTAL,Gran Diamansfera
+item,ADAMANTMINT,Menta Firme
+item,ADAMANTORB,Diamansfera
+item,ADRENALINEORB,Nerviosfera
+item,ADVENTURERULES,Guía de Aventura
+item,AERODACTYLCANDY,Caramelo Aerodactyl
+item,AERODACTYLITE,Aerodactylita
+item,AGGRONITE,Aggronita
+item,AGUAVBERRY,Baya Guaya
+item,AIPOMHAIR,Pelo de Aipom
+item,AIRBALLOON,Globo Helio
+item,AIRMAIL,Carta Aérea
+item,ALAKAZITE,Alakazamita
+item,ALOMOMOLAMUCUS,Secreción de Alomomola
+item,ALORAICHIUMZBAG,Alo-Raistal Z
+item,ALORAICHIUMZHELD,Alo-Raistal Z
+item,ALTARIANITE,Altarianita
+item,AMAZEMULCH,Abono Insólito
+item,AMPHAROSITE,Ampharosita
+item,AMULETCOIN,Moneda Amuleto
+item,ANTIDOTE,Antídoto
+item,APICOTBERRY,Baya Aricoc
+item,APPLE,Manzana
+item,APPLINJUICE,Zumo de Applin
+item,APRICORNBOX,Caja Bonguri
+item,AQUASUIT,Traje Aqua
+item,ARMORFOSSIL,Fósil Coraza
+item,ARMORITEORE,Duralium
+item,ARMORPASS,Pase Armadura
+item,ARROKUDASCALES,Escama de Arrokuda
+item,ARTICUNOCANDY,Caramelo Articuno
+item,ASPEARBERRY,Baya Perasi
+item,ASSAULTVEST,Chaleco Asalto
+item,AUDINITE,Audinita
+item,AURORATICKET,Ori-Ticket
+item,AUSPICIOUSARMOR,Armadura Auspiciosa
+item,AUTOGRAPH,Autógrafo
+item,AVOCADO,Aguacate
+item,AWAKENING,Despertar
+item,AXEWSCALES,Escama de Axew
+item,AZUREFLUTE,Flauta Azur
+item,AZURILLFUR,Pelo de Azurill
+item,BABIRIBERRY,Baya Baribá
+item,BACHSFOODTIN,Lata de Bach
+item,BACON,Panceta
+item,BAGONSCALES,Escama de Bagon
+item,BAGUETTE,Barra de Pan
+item,BALMMUSHROOM,Seta Aroma
+item,BANANA,Plátano
+item,BANDAUTOGRAPH,Autógrafo Grupo
+item,BANETTITE,Banettita
+item,BARBARACITE,Barbaraclita
+item,BARBOACHSLIME,Secreción de Barboach
+item,BARREDCUP,Taza Raya Horizontal
+item,BASCULINFANG,Colmillo de Basculin
+item,BASEMENTKEY,Llave Sótano
+item,BASEMENTKEYGOLDENROD,Llave Sótano
+item,BASEMENTKEYNEWMAUVILLE,Llave del Sótano
+item,BASIL,Albahaca
+item,BATTLEPOCKET,Bolsillo Combate
+item,BATTLETABLECLOTH,Mantel Combate
+item,BAXCALIBRITE,Baxcaliburita
+item,BEACHGLASS,Cristal Marino
+item,BEADMAIL,Carta Imagen
+item,BEASTBALL,Ente Ball
+item,BEEDRILLITE,Beedrillita
+item,BELLSPROUTCANDY,Caramelo Bellsprout
+item,BELLSPROUTVINE,Liana de Bellsprout
+item,BELUEBERRY,Baya Andano
+item,BERGMITEICE,Hielo de Bergmite
+item,BERRYJUICE,Zumo de Baya
+item,BERRYPOTS,Plantabayas
+item,BERRYPOUCH,Saco Bayas
+item,BERRYSWEET,Confite Fruto
+item,BICYCLE,Bici
+item,BIGBAMBOOSHOOT,Bambú Grande
+item,BIGMALASADA,Malasada Maxi
+item,BIGMUSHROOM,Seta Grande
+item,BIGNUGGET,Maxipepita
+item,BIGPEARL,Perla Grande
+item,BIGROOT,Raíz Grande
+item,BIKEGREEN,Bici
+item,BIKEVOUCHER,Bono Bici
+item,BIKEYELLOW,Bici
+item,BINDINGBAND,Banda Atadura
+item,BITTERHERBAMYSTICA,Especia Oculta Amarga
+item,BLACKAPRICORN,Bonguri Negro
+item,BLACKAUGURITE,Mineral Negro
+item,BLACKBELT,Cinturón Negro
+item,BLACKFLUTE,Flauta Negra
+item,BLACKGLASSES,Gafas de Sol
+item,BLACKMANEHAIR,Crin Negra
+item,BLACKSLUDGE,Lodo Negro
+item,BLANKPLATE,Tabla Neutra
+item,BLASTOISINITE,Blastoisita
+item,BLAZIKENITE,Blazikenita
+item,BLOOMMAIL,Carta Flores
+item,BLUEAPRICORN,Bonguri Azul
+item,BLUEBOTTLE,Termo Azul
+item,BLUECARD,Tarjeta Azul
+item,BLUECUP,Taza Azul
+item,BLUEDISH,Plato Azul
+item,BLUEFLAGPICK,Palillo Bandera Azul
+item,BLUEFLUTE,Flauta Azul
+item,BLUEORB,Prisma Azul
+item,BLUEPETAL,Pétalo Azul
+item,BLUEPOKEBALLPICK,Palillo Ball Azul
+item,BLUESCARF,Pañuelo Azul
+item,BLUESHARD,Parte Azul
+item,BLUESKYFLOWERPICK,Palillo Flor Azul
+item,BLUETABLECLOTH,Mantel Azul
+item,BLUKBERRY,Baya Oram
+item,BLUNDERPOLICY,Seguro Fallo
+item,BOBSFOODTIN,Lata de Darren
+item,BOILEDEGG,Huevo Duro
+item,BOLDMINT,Menta Osada
+item,BOMBIRDIERFEATHER,Pluma de Bombirdier
+item,BONSLYTEARS,Lágrima de Bonsly
+item,BOOSTERENERGY,Energía Potenciadora
+item,BOOSTMULCH,Abono Fructífero
+item,BOTTLECAP,Chapa Plateada
+item,BOUNSWEETSWEAT,Sudor de Bounsweet
+item,BRAMBLINTWIG,Rama de Bramblin
+item,BRAVEMINT,Menta Audaz
+item,BREAD,Pan de Molde
+item,BRICKMAIL,Carta Pared
+item,BRIDGEMAILD,Carta Puente F
+item,BRIDGEMAILM,Carta Puente P
+item,BRIDGEMAILS,Carta Puente S
+item,BRIDGEMAILT,Carta Puente A
+item,BRIDGEMAILV,Carta Puente V
+item,BRIGHTPOWDER,Polvo Brillo
+item,BRITTLEBONES,Huesos Finos
+item,BRONZEBOTTLE,Termo Bronceado
+item,BRONZECUP,Taza Bronceada
+item,BRONZORFRAGMENT,Fragmento de Bronzor
+item,BRUXISHTOOTH,Diente de Bruxish
+item,BUBBLEMAIL,Carta Pompas
+item,BUGGEM,Gema Bicho
+item,BUGINIUMZBAG,Insectostal Z
+item,BUGINIUMZHELD,Insectostal Z
+item,BUGMEMORY,Disco Bicho
+item,BUGTERASHARD,Teralito Bicho
+item,BUIZELFUR,Pelo de Buizel
+item,BULBASAURCANDY,Caramelo Bulbasaur
+item,BURNDRIVE,PiroROM
+item,BURNHEAL,Antiquemar
+item,BUTTER,Mantequilla
+item,BWGRASSTABLECLOTH,Mantel Hierba Alta
+item,CACNEANEEDLE,Espina de Cacnea
+item,CALCIUM,Calcio
+item,CALMMINT,Menta Serena
+item,CAMERUPTITE,Cameruptita
+item,CAMPINGGEAR,Kit de Acampada
+item,CANDYJAR,Tarro de Caramelos
+item,CAPSAKIDSEED,Semilla de Capsakid
+item,CARBINKJEWEL,Gema de Carbink
+item,CARBOS,Carburante
+item,CARDKEY,Llave Magnética
+item,CARDKEYLETSGO,Llave Magnética
+item,CAREFULMINT,Menta Cauta
+item,CARROTSEEDS,Sem. Zanahoria
+item,CASTELIACONE,Porcehelado
+item,CATCHINGCHARM,Amuleto Captura
+item,CATCHINGPOCKET,Bolsillo Captura
+item,CATERPIECANDY,Caramelo Caterpie
+item,CELLBATTERY,Pila
+item,CETODDLEGREASE,Grasa de Cetoddle
+item,CHALKYSTONE,Tiza
+item,CHANDELURITE,Chandelurita
+item,CHANSEYCANDY,Caramelo Chansey
+item,CHARCADETSOOT,Hollín de Charcadet
+item,CHARCOAL,Carbón
+item,CHARIZARDITEX,Charizardita X
+item,CHARIZARDITEY,Charizardita Y
+item,CHARMANDERCANDY,Caramelo Charmander
+item,CHARTIBERRY,Baya Alcho
+item,CHEESE,Queso
+item,CHERIBERRY,Baya Zreza
+item,CHERISHBALL,Gloria Ball
+item,CHERRYTOMATOES,Tomate Cherri
+item,CHESNAUGHTITE,Chesnaughtita
+item,CHESTOBERRY,Baya Atania
+item,CHEWTLECLAW,Garra de Chewtle
+item,CHILANBERRY,Baya Chilan
+item,CHILISAUCE,Salsa Picante
+item,CHILLDRIVE,CrioROM
+item,CHIMECHITE,Chimechita
+item,CHINGLINGFRAGMENT,Fragmento de Chingling
+item,CHIPPEDPOT,Tetera Rota
+item,CHOICEBAND,Cinta Elección
+item,CHOICESCARF,Pañuelo Elección
+item,CHOICESPECS,Gafas Elección
+item,CHOPLEBERRY,Baya Pomaro
+item,CHORIZO,Chorizo
+item,CLAUNCHERCLAW,Pinza de Clauncher
+item,CLAWFOSSIL,Fósil Garra
+item,CLEANSETAG,Amuleto
+item,CLEARAMULET,Amuleto Puro
+item,CLEARBELL,Cascabel Claro
+item,CLEFABLITE,Clefablita
+item,CLEFAIRYCANDY,Caramelo Clefairy
+item,CLEFFAFUR,Pelo de Cleffa
+item,CLEVERMOCHI,Mochi Mente
+item,CLEVERWING,Pluma Mente
+item,CLOTHINGTRUNK,Maleta
+item,CLOVERSWEET,Confite Trébol
+item,COBABERRY,Baya Kouba
+item,COCONUTMILK,Leche de Coco
+item,COINCASE,Monedero
+item,COLBURBERRY,Baya Dillo
+item,COLRESSMACHINE,Acromáquina
+item,COMBEEHONEY,Miel de Combee
+item,COMETSHARD,Fragmento Cometa
+item,COMMONSTONE,Piedra Común
+item,CONTESTCOSTUMEDRESS,Vestido de Gala
+item,CONTESTCOSTUMEJACKET,Traje de Gala
+item,CONTESTPASS,Pase Concurso
+item,CORNERSTONEMASK,Máscara Cimiento
+item,CORNNBERRY,Baya Mais
+item,CORPHISHSHELL,Cáscara de Corphish
+item,COUPON1,Cupón 1
+item,COUPON2,Cupón 2
+item,COUPON3,Cupón 3
+item,COURAGECANDY,Caramelo Mente
+item,COURAGECANDYL,Caramelo Mente +
+item,COURAGECANDYXL,Caramelo Mente ++
+item,COVERFOSSIL,Fósil Tapa
+item,COVERTCLOAK,Capa Furtiva
+item,CRABOMINITE,Crabominablita
+item,CRABRAWLERSHELL,Cáscara de Crabrawler
+item,CRACKEDPOT,Tetera Agrietada
+item,CRAMORANTDOWN,Plumón de Cramorant
+item,CREAMCHEESE,Queso Crema
+item,CROAGUNKPOISON,Toxinas de Croagunk
+item,CROWNPASS,Pase Corona
+item,CRYOGONALICE,Hielo de Cryogonal
+item,CRYSTALCLUSTER,Fragmento de Cristal
+item,CUBCHOOFUR,Pelo de Cubchoo
+item,CUBONECANDY,Caramelo Cubone
+item,CUCUMBER,Pepino
+item,CUFANTTARNISH,Óxido de Cufant
+item,CURRYPOWDER,Curri en Polvo
+item,CUSTAPBERRY,Baya Chiri
+item,CUTIEFLYPOWDER,Polvo de Cutiefly
+item,CYBERBALL,Pelota Cibernética
+item,CYCLIZARSCALES,Escama de Cyclizar
+item,DAMPMULCH,Abono Lento
+item,DAMPROCK,Roca Lluvia
+item,DARKGEM,Gema Siniestra
+item,DARKINIUMZBAG,Nictostal Z
+item,DARKINIUMZHELD,Nictostal Z
+item,DARKMEMORY,Disco Siniestro
+item,DARKRANITE,Darkrainita
+item,DARKSTONE,Orbe Oscuro
+item,DARKTERASHARD,Teralito Siniestro
+item,DATACARD01,Tarjeta Datos 01
+item,DATACARD02,Tarjeta Datos 02
+item,DATACARD03,Tarjeta Datos 03
+item,DATACARD04,Tarjeta Datos 04
+item,DATACARD05,Tarjeta Datos 05
+item,DATACARD06,Tarjeta Datos 06
+item,DATACARD07,Tarjeta Datos 07
+item,DATACARD08,Tarjeta Datos 08
+item,DATACARD09,Tarjeta Datos 09
+item,DATACARD10,Tarjeta Datos 10
+item,DATACARD11,Tarjeta Datos 11
+item,DATACARD12,Tarjeta Datos 12
+item,DATACARD13,Tarjeta Datos 13
+item,DATACARD14,Tarjeta Datos 14
+item,DATACARD15,Tarjeta Datos 15
+item,DATACARD16,Tarjeta Datos 16
+item,DATACARD17,Tarjeta Datos 17
+item,DATACARD18,Tarjeta Datos 18
+item,DATACARD19,Tarjeta Datos 19
+item,DATACARD20,Tarjeta Datos 20
+item,DATACARD21,Tarjeta Datos 21
+item,DATACARD22,Tarjeta Datos 22
+item,DATACARD23,Tarjeta Datos 23
+item,DATACARD24,Tarjeta Datos 24
+item,DATACARD25,Tarjeta Datos 25
+item,DATACARD26,Tarjeta Datos 26
+item,DATACARD27,Tarjeta Datos 27
+item,DAWNSTONE,Piedra Alba
+item,DECIDIUMZBAG,Dueyestal Z
+item,DECIDIUMZHELD,Dueyestal Z
+item,DEDENNEFUR,Pelo de Dedenne
+item,DEEPSEASCALE,Escama Marina
+item,DEEPSEATOOTH,Diente Marino
+item,DEERLINGHAIR,Pelo de Deerling
+item,DEINOSCALES,Escama de Deino
+item,DELIBIRDPARCEL,Paquete de Delibird
+item,DELPHOXITE,Delphoxita
+item,DESTINYKNOT,Lazo Destino
+item,DEVONGOODS,Piezas Devon
+item,DEVONPARTS,Piezas Devon
+item,DEVONSCOPE,Detector Devon
+item,DEVONSCUBAGEAR,Bombona Devon
+item,DIAMONDBOTTLE,Termo Rombos
+item,DIAMONDPATTERNCUP,Taza Rombos
+item,DIAMONDTABLECLOTH,Mantel Rombos
+item,DIANCITE,Diancita
+item,DIGLETTCANDY,Caramelo Diglett
+item,DIGLETTDIRT,Tierra de Diglett
+item,DIREHIT,Crítico X
+item,DIREHIT2,Crítico X 2
+item,DIREHIT3,Crítico X 3
+item,DISCOUNTCOUPON,Vale Descuento
+item,DITTOCANDY,Caramelo Ditto
+item,DITTOGOO,Pegote de Ditto
+item,DIVEBALL,Buceo Ball
+item,DNASPLICERS,Punta ADN
+item,DNASPLICERSMERGE,Punta ADN
+item,DNASPLICERSSPLIT,Punta ADN
+item,DODUOCANDY,Caramelo Doduo
+item,DOMEFOSSIL,Fósil Domo
+item,DONDOZOWHISKER,Bigote de Dondozo
+item,DOUSEDRIVE,HidroROM
+item,DOWSINGMACHINE,Zahorí
+item,DRACOPLATE,Tabla Draco
+item,DRAGALGITE,Dragalgita
+item,DRAGONFANG,Colmillo de Dragón
+item,DRAGONGEM,Gema Dragón
+item,DRAGONINITE,Dragonitita
+item,DRAGONIUMZBAG,Dracostal Z
+item,DRAGONIUMZHELD,Dracostal Z
+item,DRAGONMEMORY,Disco Dragón
+item,DRAGONSCALE,Escama Dragón
+item,DRAGONSKULL,Cráneo Dragón
+item,DRAGONTERASHARD,Teralito Dragón
+item,DRAMPANITE,Drampanita
+item,DRATINICANDY,Caramelo Dratini
+item,DRATINISCALES,Escama de Dratini
+item,DREADPLATE,Tabla Oscura
+item,DREAMBALL,Ensueño Ball
+item,DREAMMAIL,Carta Sueño
+item,DREEPYPOWDER,Polvo de Dreepy
+item,DRIFLOONGAS,Gas de Drifloon
+item,DROPPEDITEM,Objeto Perdido
+item,DROPPEDITEMRED,Objeto Perdido
+item,DROPPEDITEMYELLOW,Objeto Perdido
+item,DROWZEECANDY,Caramelo Drowzee
+item,DROWZEEFUR,Pelo de Drowzee
+item,DUBIOUSDISC,Disco Extraño
+item,DUCKLETTFEATHER,Pluma de Ducklett
+item,DUNSPARCESCALES,Escama de Dunsparce
+item,DURINBERRY,Baya Rudion
+item,DUSKBALL,Ocaso Ball
+item,DUSKSTONE,Piedra Noche
+item,DUSKULLFRAGMENT,Fragmento de Duskull
+item,DYNAMAXBAND,Maximuñequera
+item,DYNAMAXCANDY,Caramelo Dinamax
+item,DYNAMAXCRYSTALAND15,★And15
+item,DYNAMAXCRYSTALAND337,★And337
+item,DYNAMAXCRYSTALAND390,★And390
+item,DYNAMAXCRYSTALAND458,★And458
+item,DYNAMAXCRYSTALAND603,★And603
+item,DYNAMAXCRYSTALAQL7235,★Aql7235
+item,DYNAMAXCRYSTALAQL7525,★Aql7525
+item,DYNAMAXCRYSTALAQL7557,★Aql7557
+item,DYNAMAXCRYSTALAQL7595,★Aql7595
+item,DYNAMAXCRYSTALAQL7602,★Aql7602
+item,DYNAMAXCRYSTALAQR7950,★Aqr7950
+item,DYNAMAXCRYSTALAQR8232,★Aqr8232
+item,DYNAMAXCRYSTALAQR8264,★Aqr8264
+item,DYNAMAXCRYSTALAQR8414,★Aqr8414
+item,DYNAMAXCRYSTALAQR8499,★Aqr8499
+item,DYNAMAXCRYSTALAQR8518,★Aqr8518
+item,DYNAMAXCRYSTALAQR8610,★Aqr8610
+item,DYNAMAXCRYSTALAQR8709,★Aqr8709
+item,DYNAMAXCRYSTALARA6585,★Ara6585
+item,DYNAMAXCRYSTALARI546,★Ari546
+item,DYNAMAXCRYSTALARI553,★Ari553
+item,DYNAMAXCRYSTALARI617,★Ari617
+item,DYNAMAXCRYSTALARI951,★Ari951
+item,DYNAMAXCRYSTALAUR1577,★Aur1577
+item,DYNAMAXCRYSTALAUR1605,★Aur1605
+item,DYNAMAXCRYSTALAUR1612,★Aur1612
+item,DYNAMAXCRYSTALAUR1641,★Aur1641
+item,DYNAMAXCRYSTALAUR1708,★Aur1708
+item,DYNAMAXCRYSTALAUR2088,★Aur2088
+item,DYNAMAXCRYSTALAUR2095,★Aur2095
+item,DYNAMAXCRYSTALBOO5235,★Boo5235
+item,DYNAMAXCRYSTALBOO5340,★Boo5340
+item,DYNAMAXCRYSTALBOO5351,★Boo5351
+item,DYNAMAXCRYSTALBOO5435,★Boo5435
+item,DYNAMAXCRYSTALBOO5506,★Boo5506
+item,DYNAMAXCRYSTALBOO5602,★Boo5602
+item,DYNAMAXCRYSTALBOO5733,★Boo5733
+item,DYNAMAXCRYSTALCAP7754,★Cap7754
+item,DYNAMAXCRYSTALCAP7773,★Cap7773
+item,DYNAMAXCRYSTALCAP7776,★Cap7776
+item,DYNAMAXCRYSTALCAP8278,★Cap8278
+item,DYNAMAXCRYSTALCAP8322,★Cap8322
+item,DYNAMAXCRYSTALCAR2326,★Car2326
+item,DYNAMAXCRYSTALCAR3307,★Car3307
+item,DYNAMAXCRYSTALCAR3685,★Car3685
+item,DYNAMAXCRYSTALCAR3699,★Car3699
+item,DYNAMAXCRYSTALCAS153,★Cas153
+item,DYNAMAXCRYSTALCAS168,★Cas168
+item,DYNAMAXCRYSTALCAS21,★Cas21
+item,DYNAMAXCRYSTALCAS219,★Cas219
+item,DYNAMAXCRYSTALCAS265,★Cas265
+item,DYNAMAXCRYSTALCAS403,★Cas403
+item,DYNAMAXCRYSTALCAS542,★Cas542
+item,DYNAMAXCRYSTALCEN5267,★Cen5267
+item,DYNAMAXCRYSTALCEN5288,★Cen5288
+item,DYNAMAXCRYSTALCEN5459,★Cen5459
+item,DYNAMAXCRYSTALCEN5460,★Cen5460
+item,DYNAMAXCRYSTALCEN551,★Cen551
+item,DYNAMAXCRYSTALCEP8162,★Cep8162
+item,DYNAMAXCRYSTALCEP8238,★Cep8238
+item,DYNAMAXCRYSTALCEP8417,★Cep8417
+item,DYNAMAXCRYSTALCEP8974,★Cep8974
+item,DYNAMAXCRYSTALCET188,★Cet188
+item,DYNAMAXCRYSTALCET539,★Cet539
+item,DYNAMAXCRYSTALCET681,★Cet681
+item,DYNAMAXCRYSTALCET804,★Cet804
+item,DYNAMAXCRYSTALCET911,★Cet911
+item,DYNAMAXCRYSTALCMA2282,★CMa2282
+item,DYNAMAXCRYSTALCMA2294,★CMa2294
+item,DYNAMAXCRYSTALCMA2491,★CMa2491
+item,DYNAMAXCRYSTALCMA2618,★CMa2618
+item,DYNAMAXCRYSTALCMA2646,★CMa2646
+item,DYNAMAXCRYSTALCMA2657,★CMa2657
+item,DYNAMAXCRYSTALCMA2693,★CMa2693
+item,DYNAMAXCRYSTALCMA2827,★CMa2827
+item,DYNAMAXCRYSTALCMI2845,★CMi2845
+item,DYNAMAXCRYSTALCMI2943,★CMi2943
+item,DYNAMAXCRYSTALCNC3208,★Cnc3208
+item,DYNAMAXCRYSTALCNC3249,★Cnc3249
+item,DYNAMAXCRYSTALCNC3268,★Cnc3268
+item,DYNAMAXCRYSTALCNC3429,★Cnc3429
+item,DYNAMAXCRYSTALCNC3449,★Cnc3449
+item,DYNAMAXCRYSTALCNC3461,★Cnc3461
+item,DYNAMAXCRYSTALCNC3572,★Cnc3572
+item,DYNAMAXCRYSTALCNC3627,★Cnc3627
+item,DYNAMAXCRYSTALCOL1956,★Col1956
+item,DYNAMAXCRYSTALCOL2040,★Col2040
+item,DYNAMAXCRYSTALCOL2177,★Col2177
+item,DYNAMAXCRYSTALCOM4968,★Com4968
+item,DYNAMAXCRYSTALCRT4287,★Crt4287
+item,DYNAMAXCRYSTALCRU4656,★Cru4656
+item,DYNAMAXCRYSTALCRU4700,★Cru4700
+item,DYNAMAXCRYSTALCRU4730,★Cru4730
+item,DYNAMAXCRYSTALCRU4763,★Cru4763
+item,DYNAMAXCRYSTALCRU4853,★Cru4853
+item,DYNAMAXCRYSTALCRV4623,★Crv4623
+item,DYNAMAXCRYSTALCRV4662,★Crv4662
+item,DYNAMAXCRYSTALCRV4757,★Crv4757
+item,DYNAMAXCRYSTALCRV4786,★Crv4786
+item,DYNAMAXCRYSTALCVN4785,★CVn4785
+item,DYNAMAXCRYSTALCVN4846,★CVn4846
+item,DYNAMAXCRYSTALCVN4915,★CVn4915
+item,DYNAMAXCRYSTALCYG7417,★Cyg7417
+item,DYNAMAXCRYSTALCYG7528,★Cyg7528
+item,DYNAMAXCRYSTALCYG7796,★Cyg7796
+item,DYNAMAXCRYSTALCYG7924,★Cyg7924
+item,DYNAMAXCRYSTALCYG7949,★Cyg7949
+item,DYNAMAXCRYSTALCYG8301,★Cyg8301
+item,DYNAMAXCRYSTALDEL7852,★Del7852
+item,DYNAMAXCRYSTALDEL7882,★Del7882
+item,DYNAMAXCRYSTALDEL7906,★Del7906
+item,DYNAMAXCRYSTALDRA4434,★Dra4434
+item,DYNAMAXCRYSTALDRA5291,★Dra5291
+item,DYNAMAXCRYSTALDRA5744,★Dra5744
+item,DYNAMAXCRYSTALDRA6132,★Dra6132
+item,DYNAMAXCRYSTALDRA6370,★Dra6370
+item,DYNAMAXCRYSTALDRA6396,★Dra6396
+item,DYNAMAXCRYSTALDRA6536,★Dra6536
+item,DYNAMAXCRYSTALDRA6636,★Dra6636
+item,DYNAMAXCRYSTALDRA6688,★Dra6688
+item,DYNAMAXCRYSTALDRA6705,★Dra6705
+item,DYNAMAXCRYSTALDRA7310,★Dra7310
+item,DYNAMAXCRYSTALDRA7462,★Dra7462
+item,DYNAMAXCRYSTALEQU8131,★Equ8131
+item,DYNAMAXCRYSTALERI1084,★Eri1084
+item,DYNAMAXCRYSTALERI1231,★Eri1231
+item,DYNAMAXCRYSTALERI1298,★Eri1298
+item,DYNAMAXCRYSTALERI1325,★Eri1325
+item,DYNAMAXCRYSTALERI1393,★Eri1393
+item,DYNAMAXCRYSTALERI1464,★Eri1464
+item,DYNAMAXCRYSTALERI1666,★Eri1666
+item,DYNAMAXCRYSTALERI472,★Eri472
+item,DYNAMAXCRYSTALERI850,★Eri850
+item,DYNAMAXCRYSTALERI874,★Eri874
+item,DYNAMAXCRYSTALERI897,★Eri897
+item,DYNAMAXCRYSTALERI984,★Eri984
+item,DYNAMAXCRYSTALGEM2216,★Gem2216
+item,DYNAMAXCRYSTALGEM2286,★Gem2286
+item,DYNAMAXCRYSTALGEM2421,★Gem2421
+item,DYNAMAXCRYSTALGEM2473,★Gem2473
+item,DYNAMAXCRYSTALGEM2484,★Gem2484
+item,DYNAMAXCRYSTALGEM2650,★Gem2650
+item,DYNAMAXCRYSTALGEM2777,★Gem2777
+item,DYNAMAXCRYSTALGEM2891,★Gem2891
+item,DYNAMAXCRYSTALGEM2930,★Gem2930
+item,DYNAMAXCRYSTALGEM2990,★Gem2990
+item,DYNAMAXCRYSTALGRU8353,★Gru8353
+item,DYNAMAXCRYSTALGRU8425,★Gru8425
+item,DYNAMAXCRYSTALGRU8636,★Gru8636
+item,DYNAMAXCRYSTALHER6008,★Her6008
+item,DYNAMAXCRYSTALHER6117,★Her6117
+item,DYNAMAXCRYSTALHER6148,★Her6148
+item,DYNAMAXCRYSTALHER6406,★Her6406
+item,DYNAMAXCRYSTALHER6410,★Her6410
+item,DYNAMAXCRYSTALHER6526,★Her6526
+item,DYNAMAXCRYSTALHYA3418,★Hya3418
+item,DYNAMAXCRYSTALHYA3482,★Hya3482
+item,DYNAMAXCRYSTALHYA3748,★Hya3748
+item,DYNAMAXCRYSTALHYA3845,★Hya3845
+item,DYNAMAXCRYSTALHYA3903,★Hya3903
+item,DYNAMAXCRYSTALLEO3773,★Leo3773
+item,DYNAMAXCRYSTALLEO3852,★Leo3852
+item,DYNAMAXCRYSTALLEO3905,★Leo3905
+item,DYNAMAXCRYSTALLEO3982,★Leo3982
+item,DYNAMAXCRYSTALLEO4031,★Leo4031
+item,DYNAMAXCRYSTALLEO4057,★Leo4057
+item,DYNAMAXCRYSTALLEO4357,★Leo4357
+item,DYNAMAXCRYSTALLEO4359,★Leo4359
+item,DYNAMAXCRYSTALLEO4534,★Leo4534
+item,DYNAMAXCRYSTALLEP1829,★Lep1829
+item,DYNAMAXCRYSTALLEP1865,★Lep1865
+item,DYNAMAXCRYSTALLIB5531,★Lib5531
+item,DYNAMAXCRYSTALLIB5603,★Lib5603
+item,DYNAMAXCRYSTALLIB5685,★Lib5685
+item,DYNAMAXCRYSTALLIB5787,★Lib5787
+item,DYNAMAXCRYSTALLYR7001,★Lyr7001
+item,DYNAMAXCRYSTALLYR7106,★Lyr7106
+item,DYNAMAXCRYSTALLYR7178,★Lyr7178
+item,DYNAMAXCRYSTALLYR7298,★Lyr7298
+item,DYNAMAXCRYSTALOCT7228,★Oct7228
+item,DYNAMAXCRYSTALOPH6056,★Oph6056
+item,DYNAMAXCRYSTALOPH6075,★Oph6075
+item,DYNAMAXCRYSTALOPH6149,★Oph6149
+item,DYNAMAXCRYSTALOPH6378,★Oph6378
+item,DYNAMAXCRYSTALOPH6556,★Oph6556
+item,DYNAMAXCRYSTALOPH6603,★Oph6603
+item,DYNAMAXCRYSTALORI1543,★Ori1543
+item,DYNAMAXCRYSTALORI1713,★Ori1713
+item,DYNAMAXCRYSTALORI1790,★Ori1790
+item,DYNAMAXCRYSTALORI1852,★Ori1852
+item,DYNAMAXCRYSTALORI1879,★Ori1879
+item,DYNAMAXCRYSTALORI1899,★Ori1899
+item,DYNAMAXCRYSTALORI1903,★Ori1903
+item,DYNAMAXCRYSTALORI1948,★Ori1948
+item,DYNAMAXCRYSTALORI2004,★Ori2004
+item,DYNAMAXCRYSTALORI2061,★Ori2061
+item,DYNAMAXCRYSTALPAV7790,★Pav7790
+item,DYNAMAXCRYSTALPEG39,★Peg39
+item,DYNAMAXCRYSTALPEG8308,★Peg8308
+item,DYNAMAXCRYSTALPEG8450,★Peg8450
+item,DYNAMAXCRYSTALPEG8634,★Peg8634
+item,DYNAMAXCRYSTALPEG8650,★Peg8650
+item,DYNAMAXCRYSTALPEG8684,★Peg8684
+item,DYNAMAXCRYSTALPEG8775,★Peg8775
+item,DYNAMAXCRYSTALPEG8781,★Peg8781
+item,DYNAMAXCRYSTALPEG8880,★Peg8880
+item,DYNAMAXCRYSTALPEG8905,★Peg8905
+item,DYNAMAXCRYSTALPER1017,★Per1017
+item,DYNAMAXCRYSTALPER1131,★Per1131
+item,DYNAMAXCRYSTALPER1228,★Per1228
+item,DYNAMAXCRYSTALPER834,★Per834
+item,DYNAMAXCRYSTALPER936,★Per936
+item,DYNAMAXCRYSTALPER941,★Per941
+item,DYNAMAXCRYSTALPHE338,★Phe338
+item,DYNAMAXCRYSTALPHE99,★Phe99
+item,DYNAMAXCRYSTALPSA8728,★PsA8728
+item,DYNAMAXCRYSTALPSC361,★Psc361
+item,DYNAMAXCRYSTALPSC437,★Psc437
+item,DYNAMAXCRYSTALPSC510,★Psc510
+item,DYNAMAXCRYSTALPSC596,★Psc596
+item,DYNAMAXCRYSTALPSC8773,★Psc8773
+item,DYNAMAXCRYSTALPUP3045,★Pup3045
+item,DYNAMAXCRYSTALPUP3165,★Pup3165
+item,DYNAMAXCRYSTALPUP3185,★Pup3185
+item,DYNAMAXCRYSTALSCO5928,★Sco5928
+item,DYNAMAXCRYSTALSCO5944,★Sco5944
+item,DYNAMAXCRYSTALSCO5953,★Sco5953
+item,DYNAMAXCRYSTALSCO5984,★Sco5984
+item,DYNAMAXCRYSTALSCO6027,★Sco6027
+item,DYNAMAXCRYSTALSCO6084,★Sco6084
+item,DYNAMAXCRYSTALSCO6134,★Sco6134
+item,DYNAMAXCRYSTALSCO6165,★Sco6165
+item,DYNAMAXCRYSTALSCO6241,★Sco6241
+item,DYNAMAXCRYSTALSCO6247,★Sco6247
+item,DYNAMAXCRYSTALSCO6252,★Sco6252
+item,DYNAMAXCRYSTALSCO6508,★Sco6508
+item,DYNAMAXCRYSTALSCO6527,★Sco6527
+item,DYNAMAXCRYSTALSCO6553,★Sco6553
+item,DYNAMAXCRYSTALSCO6630,★Sco6630
+item,DYNAMAXCRYSTALSER5854,★Ser5854
+item,DYNAMAXCRYSTALSER5879,★Ser5879
+item,DYNAMAXCRYSTALSER7141,★Ser7141
+item,DYNAMAXCRYSTALSGE7479,★Sge7479
+item,DYNAMAXCRYSTALSGR6746,★Sgr6746
+item,DYNAMAXCRYSTALSGR6812,★Sgr6812
+item,DYNAMAXCRYSTALSGR6859,★Sgr6859
+item,DYNAMAXCRYSTALSGR6879,★Sgr6879
+item,DYNAMAXCRYSTALSGR6913,★Sgr6913
+item,DYNAMAXCRYSTALSGR7116,★Sgr7116
+item,DYNAMAXCRYSTALSGR7121,★Sgr7121
+item,DYNAMAXCRYSTALSGR7194,★Sgr7194
+item,DYNAMAXCRYSTALSGR7264,★Sgr7264
+item,DYNAMAXCRYSTALSGR7337,★Sgr7337
+item,DYNAMAXCRYSTALSGR7343,★Sgr7343
+item,DYNAMAXCRYSTALSGR7348,★Sgr7348
+item,DYNAMAXCRYSTALSGR7597,★Sgr7597
+item,DYNAMAXCRYSTALTAU1165,★Tau1165
+item,DYNAMAXCRYSTALTAU1346,★Tau1346
+item,DYNAMAXCRYSTALTAU1373,★Tau1373
+item,DYNAMAXCRYSTALTAU1409,★Tau1409
+item,DYNAMAXCRYSTALTAU1412,★Tau1412
+item,DYNAMAXCRYSTALTAU1457,★Tau1457
+item,DYNAMAXCRYSTALTAU1791,★Tau1791
+item,DYNAMAXCRYSTALTAU1910,★Tau1910
+item,DYNAMAXCRYSTALTRA6217,★TrA6217
+item,DYNAMAXCRYSTALTRI544,★Tri544
+item,DYNAMAXCRYSTALUMA3323,★UMa3323
+item,DYNAMAXCRYSTALUMA3569,★UMa3569
+item,DYNAMAXCRYSTALUMA3594,★UMa3594
+item,DYNAMAXCRYSTALUMA4033,★UMa4033
+item,DYNAMAXCRYSTALUMA4069,★UMa4069
+item,DYNAMAXCRYSTALUMA4295,★UMa4295
+item,DYNAMAXCRYSTALUMA4301,★UMa4301
+item,DYNAMAXCRYSTALUMA4375,★UMa4375
+item,DYNAMAXCRYSTALUMA4377,★UMa4377
+item,DYNAMAXCRYSTALUMA4518,★UMa4518
+item,DYNAMAXCRYSTALUMA4554,★UMa4554
+item,DYNAMAXCRYSTALUMA4660,★UMa4660
+item,DYNAMAXCRYSTALUMA4905,★UMa4905
+item,DYNAMAXCRYSTALUMA5054,★UMa5054
+item,DYNAMAXCRYSTALUMA5191,★UMa5191
+item,DYNAMAXCRYSTALUMI424,★UMi424
+item,DYNAMAXCRYSTALUMI5563,★UMi5563
+item,DYNAMAXCRYSTALUMI5735,★UMi5735
+item,DYNAMAXCRYSTALUMI6789,★UMi6789
+item,DYNAMAXCRYSTALVEL3485,★Vel3485
+item,DYNAMAXCRYSTALVEL3634,★Vel3634
+item,DYNAMAXCRYSTALVEL3734,★Vel3734
+item,DYNAMAXCRYSTALVIR4540,★Vir4540
+item,DYNAMAXCRYSTALVIR4689,★Vir4689
+item,DYNAMAXCRYSTALVIR4825,★Vir4825
+item,DYNAMAXCRYSTALVIR4910,★Vir4910
+item,DYNAMAXCRYSTALVIR4932,★Vir4932
+item,DYNAMAXCRYSTALVIR5056,★Vir5056
+item,DYNAMAXCRYSTALVIR5107,★Vir5107
+item,DYNAMAXCRYSTALVIR5315,★Vir5315
+item,DYNAMAXCRYSTALVIR5338,★Vir5338
+item,DYNAMAXCRYSTALVIR5359,★Vir5359
+item,DYNAMAXCRYSTALVIR5409,★Vir5409
+item,DYNAMAXCRYSTALVUL7405,★Vul7405
+item,DYNITEORE,Maxinium
+item,EARTHPLATE,Tabla Terrax
+item,EELEKTROSSITE,Eelektrossita
+item,EEVEECANDY,Caramelo Eevee
+item,EEVEECUP,Taza Eevee
+item,EEVEEFUR,Pelo de Eevee
+item,EEVIUMZBAG,Eeveestal Z
+item,EEVIUMZHELD,Eeveestal Z
+item,EGG,Huevo Cocido
+item,EISCUEDOWN,Plumón de Eiscue
+item,EJECTBUTTON,Botón Escape
+item,EJECTPACK,Mochila Escape
+item,EKANSCANDY,Caramelo Ekans
+item,EKANSFANG,Colmillo de Ekans
+item,ELECTABUZZCANDY,Caramelo Electabuzz
+item,ELECTIRIZER,Electrizador
+item,ELECTRICGEM,Gema Eléctrica
+item,ELECTRICMEMORY,Disco Eléctrico
+item,ELECTRICSEED,Semilla Electro
+item,ELECTRICTERASHARD,Teralito Eléctrico
+item,ELECTRIUMZBAG,Electrostal Z
+item,ELECTRIUMZHELD,Electrostal Z
+item,ELEVATORKEY,Llave Ascensor
+item,ELIXIR,Elixir
+item,EMBOARITE,Emboarita
+item,ENDORSEMENT,Recomendación
+item,ENERGYPOWDER,Polvo Energía
+item,ENERGYROOT,Raíz Energía
+item,ENIGMABERRY,Baya Enigma
+item,ENIGMASTONE,Misticristal
+item,ENIGMATICCARD,Nota Intrigante
+item,EONFLUTE,Flauta Eón
+item,EONTICKET,Ticket Eón
+item,ESCAPEROPE,Cuerda Huida
+item,ETHER,Éter
+item,EVERSTONE,Piedra Eterna
+item,EVIOLITE,Mineral Evol
+item,EXCADRITE,Excadrillita
+item,EXEGGCUTECANDY,Caramelo Exeggcute
+item,EXERCISEBALL,Pelota Pilates
+item,EXPCANDYL,Caramelo Exp. L
+item,EXPCANDYM,Caramelo Exp. M
+item,EXPCANDYS,Caramelo Exp. S
+item,EXPCANDYXL,Caramelo Exp. XL
+item,EXPCANDYXS,Caramelo Exp. XS
+item,EXPCHARM,Amuleto Exp
+item,EXPERTBELT,Cinta Experto
+item,EXPLORERKIT,Kit Explorador
+item,EXPSHARE,Repartir Exp
+item,FABMAIL,Carta Fab.
+item,FAIRIUMZBAG,Feeristal Z
+item,FAIRIUMZHELD,Feeristal Z
+item,FAIRYFEATHER,Pluma Feérica
+item,FAIRYGEM,Gema Hada
+item,FAIRYMEMORY,Disco Hada
+item,FAIRYTERASHARD,Teralito Hada
+item,FALINKSITE,Falinksita
+item,FALINKSSWEAT,Sudor de Falinks
+item,FAMECHECKER,Memorín
+item,FANCYAPPLE,Manzana Selecta
+item,FARFETCHDCANDY,Caramelo Farfetch’d
+item,FASHIONCASE,Caja Corazón
+item,FASTBALL,Rapid Ball
+item,FAVOREDMAIL,Carta Favoritos
+item,FEEBASSCALES,Escama de Feebas
+item,FERALIGITE,Feraligatrita
+item,FESTIVALTICKET,Festicupón
+item,FIDOUGHFUR,Pelo de Fidough
+item,FIGHTINGGEM,Gema Lucha
+item,FIGHTINGMEMORY,Disco Lucha
+item,FIGHTINGTERASHARD,Teralito Lucha
+item,FIGHTINIUMZBAG,Lizastal Z
+item,FIGHTINIUMZHELD,Lizastal Z
+item,FIGYBERRY,Baya Higog
+item,FINIZENMUCUS,Secreción de Finizen
+item,FINNEONSCALES,Escama de Finneon
+item,FIREGEM,Gema Fuego
+item,FIREMEMORY,Disco Fuego
+item,FIREPATTERNCUP,Taza Llamas
+item,FIRESTONE,Piedra Fuego
+item,FIRETERASHARD,Teralito Fuego
+item,FIRIUMZBAG,Pirostal Z
+item,FIRIUMZHELD,Pirostal Z
+item,FISHINGROD,Caña
+item,FISHINGRODGALAR,Caña
+item,FISTPLATE,Tabla Fuerte
+item,FLABEBEPOLLEN,Polen de Flabébé
+item,FLAMEMAIL,Carta Fuego
+item,FLAMEORB,Llamasfera
+item,FLAMEPLATE,Tabla Llama
+item,FLAMIGODOWN,Plumón de Flamigo
+item,FLETCHLINGFEATHER,Pluma de Fletchling
+item,FLITTLEDOWN,Plumón de Flittle
+item,FLOATSTONE,Piedra Pómez
+item,FLOETTITE,Floettita
+item,FLOWERPATTERNCUP,Taza Flores
+item,FLOWERSWEET,Confite Flor
+item,FLUFFYTAIL,Cola Skitty
+item,FLYINGGEM,Gema Voladora
+item,FLYINGMEMORY,Disco Volador
+item,FLYINGTERASHARD,Teralito Volador
+item,FLYINIUMZBAG,Aerostal Z
+item,FLYINIUMZHELD,Aerostal Z
+item,FOCUSBAND,Cinta Aguante
+item,FOCUSSASH,Banda Aguante
+item,FOMANTISLEAF,Hoja de Fomantis
+item,FOONGUSSPORES,Esporas de Foongus
+item,FORAGEBAG,Zurrón
+item,FOSSILIZEDBIRD,Ornitofósil
+item,FOSSILIZEDDINO,Plesiofósil
+item,FOSSILIZEDDRAKE,Dracofósil
+item,FOSSILIZEDFISH,Ictiofósil
+item,FRESHCREAM,Nata Fresca
+item,FRESHWATER,Agua Fresca
+item,FRIEDFILLET,Filete Frito
+item,FRIEDFOOD,Frituras
+item,FRIENDBALL,Amigo Ball
+item,FRIGIBAXSCALES,Escama de Frigibax
+item,FROSLASSITE,Froslassita
+item,FRUITBUNCH,Fruta Tropical
+item,FULLHEAL,Cura Total
+item,FULLINCENSE,Incienso Lento
+item,FULLRESTORE,Restaurar Todo
+item,GALACTICKEY,Llave Galaxia
+item,GALARICACUFF,Brazal Galanuez
+item,GALARICATWIG,Rama de Galanuez
+item,GALARICAWREATH,Corona Galanuez
+item,GALLADITE,Galladita
+item,GANLONBERRY,Baya Gonlan
+item,GARCHOMPITE,Garchompita
+item,GARCHOMPITEZ,Garchompita Z
+item,GARDEVOIRITE,Gardevoirita
+item,GASTLYCANDY,Caramelo Gastly
+item,GASTLYGAS,Gas de Gastly
+item,GBSOUNDS,Lector GB
+item,GENGARITE,Gengarita
+item,GENIUSMOCHI,Mochi Intelecto
+item,GENIUSWING,Pluma Intelecto
+item,GENTLEMINT,Menta Amable
+item,GEODUDECANDY,Caramelo Geodude
+item,GEODUDEFRAGMENT,Fragmento de Geodude
+item,GHOSTGEM,Gema Fantasma
+item,GHOSTIUMZBAG,Espectrostal Z
+item,GHOSTIUMZHELD,Espectrostal Z
+item,GHOSTMEMORY,Disco Fantasma
+item,GHOSTTERASHARD,Teralito Fantasma
+item,GIBLESCALES,Escama de Gible
+item,GIGANTAMIX,Especias Gigamax
+item,GIMMIGHOULCOIN,Moneda de Gimmighoul
+item,GIRAFARIGFUR,Pelo de Girafarig
+item,GLALITITE,Glalita
+item,GLIGARFANG,Colmillo de Gligar
+item,GLIMMERINGCHARM,Amuleto Cristalino
+item,GLIMMETCRYSTAL,Cristal de Glimmet
+item,GLIMMORANITE,Glimmoranita
+item,GLITTERMAIL,Carta Brillo
+item,GOGOGGLES,Gafas Aislantes
+item,GOLDBOTTLE,Termo Dorado
+item,GOLDBOTTLECAP,Chapa Dorada
+item,GOLDCUP,Taza Dorada
+item,GOLDEENCANDY,Caramelo Goldeen
+item,GOLDENNANABBERRY,Baya Latano Dorada
+item,GOLDENPINAPBERRY,Baya Pinia Dorada
+item,GOLDENRAZZBERRY,Baya Frambu Dorada
+item,GOLDLEAF,Hoja de Oro
+item,GOLDPICK,Palillo Dorado
+item,GOLDTEETH,Dentadura de Oro
+item,GOLISOPITE,Golisopodita
+item,GOLURKITE,Golurkita
+item,GOODROD,Caña Buena
+item,GOOEYMULCH,Abono Brote
+item,GOOMYGOO,Secreción de Goomy
+item,GOTHITAEYELASH,Pestaña de Gothita
+item,GRACIDEA,Gracídea
+item,GRAM1,Envío 1
+item,GRAM2,Envío 2
+item,GRAM3,Envío 3
+item,GRASSGEM,Gema Planta
+item,GRASSIUMZBAG,Fitostal Z
+item,GRASSIUMZHELD,Fitostal Z
+item,GRASSMAIL,Carta Hierba
+item,GRASSMEMORY,Disco Planta
+item,GRASSTERASHARD,Teralito Planta
+item,GRASSYSEED,Semilla Hierba
+item,GREATBALL,Super Ball
+item,GREAVARDWAX,Cera de Greavard
+item,GREENAPRICORN,Bonguri Verde
+item,GREENBELLPEPPER,Pimiento Verde
+item,GREENDISH,Plato Verde
+item,GREENPETAL,Pétalo Verde
+item,GREENPOKEBALLPICK,Palillo Ball Verde
+item,GREENSCARF,Pañuelo Verde
+item,GREENSHARD,Parte Verde
+item,GREETMAIL,Carta Inicial
+item,GRENINJITE,Greninjanita
+item,GREPABERRY,Baya Uvav
+item,GRIMERCANDY,Caramelo Grimer
+item,GRIMERTOXIN,Toxinas de Grimer
+item,GRIPCLAW,Garra Garfio
+item,GRISEOUSCORE,Gran Griseosfera
+item,GRISEOUSORB,Griseosfera
+item,GROUNDGEM,Gema Tierra
+item,GROUNDIUMZBAG,Geostal Z
+item,GROUNDIUMZHELD,Geostal Z
+item,GROUNDMEMORY,Disco Tierra
+item,GROUNDTERASHARD,Teralito Tierra
+item,GROWLITHECANDY,Caramelo Growlithe
+item,GROWLITHEFUR,Pelo de Growlithe
+item,GROWTHMULCH,Abono Rápido
+item,GRUBBINTHREAD,Hilo de Grubbin
+item,GRUBBYHANKY,Pañuelo Sucio
+item,GUARDSPEC,Protección X
+item,GULPINMUCUS,Secreción de Gulpin
+item,GYARADOSITE,Gyaradosita
+item,HABANBERRY,Baya Anjiro
+item,HAM,Jamón Cocido
+item,HAMBURGER,Hamburguesa
+item,HAPPINYDUST,Pertenencia de Happiny
+item,HARBORMAIL,Carta Puerto
+item,HARDSTONE,Piedra Dura
+item,HASTYMINT,Menta Activa
+item,HATENNADUST,Pertenencia de Hatenna
+item,HAWLUCHADOWN,Plumón de Hawlucha
+item,HAWLUCHANITE,Hawluchanita
+item,HEALBALL,Sana Ball
+item,HEALPOWDER,Polvo Curación
+item,HEALTHCANDY,Caramelo Vigor
+item,HEALTHCANDYL,Caramelo Vigor +
+item,HEALTHCANDYXL,Caramelo Vigor ++
+item,HEALTHMOCHI,Mochi Vigor
+item,HEALTHWING,Pluma Vigor
+item,HEARTHFLAMEMASK,Máscara Horno
+item,HEARTMAIL,Car. Corazón
+item,HEARTSCALE,Escama Corazón
+item,HEATRANITE,Heatranita
+item,HEATROCK,Roca Calor
+item,HEAVYBALL,Peso Ball
+item,HEAVYDUTYBOOTS,Botas Gruesas
+item,HELIXFOSSIL,Fósil Hélix
+item,HERACRONITE,Heracrossita
+item,HERACROSSCLAW,Garra de Heracross
+item,HERBEDSAUSAGE,Butifarra
+item,HEROICSWORDPICK,Palillo Heroico
+item,HIPPOPOTASSAND,Arena de Hippopotas
+item,HITECHEARBUDS,Supertapones
+item,HITMONCHANCANDY,Caramelo Hitmonchan
+item,HITMONLEECANDY,Caramelo Hitmonlee
+item,HM01,MO01
+item,HM02,MO02
+item,HM03,MO03
+item,HM04,MO04
+item,HM05,MO05
+item,HM06,MO06
+item,HM07,MO07
+item,HM08,MO08
+item,HOLOCASTER,Holomisor
+item,HOLOCASTERGREEN,Holomisor
+item,HOLOCASTERRED,Holomisor
+item,HONDEWBERRY,Baya Meluce
+item,HONEY,Miel
+item,HONOROFKALOS,Emblema Kalos
+item,HOOTHOOTFEATHER,Pluma de Hoothoot
+item,HOPPIPLEAF,Hoja de Hoppip
+item,HORSEACANDY,Caramelo Horsea
+item,HORSERADISH,Rábano Picante
+item,HOUNDOOMINITE,Houndoomita
+item,HOUNDOURFANG,Colmillo de Houndour
+item,HPUP,Más PS
+item,HYPERPOTION,Hiperpoción
+item,IAPAPABERRY,Baya Pabaya
+item,ICEGEM,Gema Hielo
+item,ICEHEAL,Antihielo
+item,ICEMEMORY,Disco Hielo
+item,ICEROOTCARROT,Zanahoria Nívea
+item,ICESTONE,Piedra Hielo
+item,ICETERASHARD,Teralito Hielo
+item,ICICLEPLATE,Tabla Helada
+item,ICIUMZBAG,Criostal Z
+item,ICIUMZHELD,Criostal Z
+item,ICYROCK,Roca Helada
+item,IGGLYBUFFFLUFF,Pelo de Igglybuff
+item,ILIMASNORMALIUMZ,Cristal Z (Liam)
+item,ILLUMISEFLUID,Fluido de Illumise
+item,IMPIDIMPHAIR,Pelo de Impidimp
+item,IMPISHMINT,Menta Agitada
+item,INCINIUMZBAG,Incinostal Z
+item,INCINIUMZHELD,Incinostal Z
+item,INDEEDEEFUR,Pelo de Indeedee
+item,INQUIRYMAIL,Carta Pregunta
+item,INSECTPLATE,Tabla Bicho
+item,INSTANTNOODLES,Fideos de Bote
+item,INTRIGUINGSTONE,Piedra Insólita
+item,IRON,Hierro
+item,IRONBALL,Bola Férrea
+item,IRONPLATE,Tabla Acero
+item,ITEMDROP,Tiraobjeto
+item,ITEMURGE,Activaobjeto
+item,JABOCABERRY,Baya Jaboca
+item,JADEORB,Esfera Verde
+item,JALAPENO,Jalapeño
+item,JAM,Confitura de Bayas
+item,JANGMOOSCALES,Escama de Jangmo-o
+item,JAWFOSSIL,Fósil Mandíbula
+item,JIGGLYPUFFCANDY,Caramelo Jigglypuff
+item,JOLLYMINT,Menta Alegre
+item,JOURNAL,Diario
+item,JYNXCANDY,Caramelo Jynx
+item,KABUTOCANDY,Caramelo Kabuto
+item,KANGASKHANCANDY,Caramelo Kangaskhan
+item,KANGASKHANITE,Kangaskhanita
+item,KASIBBERRY,Baya Drasi
+item,KEBIABERRY,Baya Kebia
+item,KEEBERRY,Baya Biglia
+item,KELPSYBERRY,Baya Algama
+item,KETCHUP,Kétchup
+item,KEYSTONE,Piedra Activadora
+item,KEYTOROOM1,Ll. Habitación 1
+item,KEYTOROOM2,Ll. Habitación 2
+item,KEYTOROOM4,Ll. Habitación 4
+item,KEYTOROOM6,Ll. Habitación 6
+item,KINGSROCK,Roca del Rey
+item,KIWI,Kiwi
+item,KLAWFCLAW,Pinza de Klawf
+item,KLAWFSTICK,Surimi de Klawf
+item,KLEFKIKEY,Llave de Klefki
+item,KOFFINGCANDY,Caramelo Koffing
+item,KOFFINGGAS,Gas de Koffing
+item,KOFUSWALLET,Cartera de Fuco
+item,KOMALACLAW,Garra de Komala
+item,KOMMONIUMZBAG,Kommostal Z
+item,KOMMONIUMZHELD,Kommostal Z
+item,KORAIDONSPOKEBALL,Poké Ball de Koraidon
+item,KRABBYCANDY,Caramelo Krabby
+item,KRICKETOTSHELL,Muda de Kricketot
+item,LAFEATHERBALL,Pluma Ball
+item,LAGGINGTAIL,Cola Plúmbea
+item,LAGIGATONBALL,Quintal Ball
+item,LAGREATBALL,Super Ball
+item,LAHEAVYBALL,Peso Ball
+item,LAJETBALL,Aero Ball
+item,LALEADENBALL,Kilo Ball
+item,LANSATBERRY,Baya Zonlan
+item,LAORIGINBALL,Origen Ball
+item,LAPOKEBALL,Poké Ball
+item,LAPRASCANDY,Caramelo Lapras
+item,LARGELEEK,Puerro Grueso
+item,LARVESTAFUZZ,Pelo de Larvesta
+item,LARVITARCLAW,Garra de Larvitar
+item,LASTRANGEBALL,Extraña Ball
+item,LATIASITE,Latiasita
+item,LATIOSITE,Latiosita
+item,LAULTRABALL,Ultra Ball
+item,LAVACOOKIE,Galleta Lava
+item,LAWINGBALL,Ala Ball
+item,LAXINCENSE,Incienso Suave
+item,LAXMINT,Menta Floja
+item,LEADERSCREST,Distintivo de Líder
+item,LEAFLETTEREEVEE,Hoja Escrita
+item,LEAFLETTERPIKACHU,Hoja Escrita
+item,LEAFSTONE,Piedra Hoja
+item,LEAFYTABLECLOTH,Mantel Naturaleza
+item,LECHONKHAIR,Pelo de Lechonk
+item,LEFTOVERS,Restos
+item,LEFTPOKEBALL,Poké Ball Ajena
+item,LEGENDARYCLUE1,Leyenda 1
+item,LEGENDARYCLUE2,Leyenda 2
+item,LEGENDARYCLUE3,Leyenda 3
+item,LEGENDARYCLUEQUESTION,Leyenda (?)
+item,LEGENDPLATE,Tabla Legendaria
+item,LEMONADE,Limonada
+item,LENSCASE,Portalentillas
+item,LEPPABERRY,Baya Zanama
+item,LETTER,Carta a Máximo
+item,LETTUCE,Lechuga
+item,LEVELBALL,Nivel Ball
+item,LIBERTYPASS,Tarjeta Libertad
+item,LICKITUNGCANDY,Caramelo Lickitung
+item,LIECHIBERRY,Baya Lichi
+item,LIFEORB,Vidasfera
+item,LIFTKEY,Llave Ascensor
+item,LIGHTBALL,Bola Luminosa
+item,LIGHTCLAY,Refleluz
+item,LIGHTSTONE,Orbe Claro
+item,LIKEMAIL,Carta Gustos
+item,LILACTABLECLOTH,Mantel Malva
+item,LINKINGCORD,Cordón Unión
+item,LITLEOTUFT,Mechón de Litleo
+item,LITWICKSOOT,Hollín de Litwick
+item,LOADEDDICE,Dado Trucado
+item,LOCKCAPSULE,Cápsula Candado
+item,LONEEARRING,Pendiente
+item,LONELYMINT,Menta Huraña
+item,LOOKERTICKET,Boleto Handsome
+item,LOOTSACK,Saca Botín
+item,LOPUNNITE,Lopunnita
+item,LOSTITEM,Objeto Perdido
+item,LOTADLEAF,Hoja de Lotad
+item,LOVEBALL,Amor Ball
+item,LOVESWEET,Confite Corazón
+item,LUCARIONITE,Lucarita
+item,LUCARIONITEZ,Lucarita Z
+item,LUCKINCENSE,Incienso Duplo
+item,LUCKYEGG,Huevo Suerte
+item,LUCKYPUNCH,Puño Suerte
+item,LUMBERRY,Baya Ziuela
+item,LUMINOUSMOSS,Musgo Brillante
+item,LUMIOSEGALETTE,Crêpe Luminalia
+item,LUNALIUMZBAG,Lunalastal Z
+item,LUNALIUMZHELD,Lunalastal Z
+item,LUNARWING,Pluma Lunar
+item,LURE,Colonia
+item,LUREBALL,Cebo Ball
+item,LUSTROUSGLOBE,Gran Lustresfera
+item,LUSTROUSORB,Lustresfera
+item,LUVDISCSCALES,Escama de Luvdisc
+item,LUXURYBALL,Lujo Ball
+item,LYCANIUMZBAG,Lycanrostal Z
+item,LYCANIUMZHELD,Lycanrostal Z
+item,MACHBIKE,Bici de Carreras
+item,MACHINEPART,Maquinaria
+item,MACHOBRACE,Brazal Firme
+item,MACHOPCANDY,Caramelo Machop
+item,MAGEARNITE,Magearnita
+item,MAGICALHEARTPICK,Palillo Corazón
+item,MAGICALSTARPICK,Palillo Estrella
+item,MAGIKARPCANDY,Caramelo Magikarp
+item,MAGIKARPSCALES,Escama de Magikarp
+item,MAGMAEMBLEM,Signo Magma
+item,MAGMARCANDY,Caramelo Magmar
+item,MAGMARIZER,Magmatizador
+item,MAGMASTONE,Piedra Magma
+item,MAGMASUIT,Traje Magma
+item,MAGNEMITECANDY,Caramelo Magnemite
+item,MAGNEMITESCREW,Tornillo de Magnemite
+item,MAGNET,Imán
+item,MAGOBERRY,Baya Ango
+item,MAGOSTBERRY,Baya Aostan
+item,MAKEUPBAG,Kit Maquillaje
+item,MAKUHITASWEAT,Sudor de Makuhita
+item,MALAMARITE,Malamarita
+item,MALICIOUSARMOR,Armadura Maldita
+item,MANECTITE,Manectricita
+item,MANKEYCANDY,Caramelo Mankey
+item,MANKEYFUR,Pelo de Mankey
+item,MARANGABERRY,Baya Maranga
+item,MARBLE,Canica
+item,MAREANIESPIKE,Aguijón de Mareanie
+item,MAREEPWOOL,Lana de Mareep
+item,MARILLBALL,Pelota Marill
+item,MARKCHARM,Amuleto Emblema
+item,MARMALADE,Mermelada
+item,MARSHADIUMZBAG,Marshastal Z
+item,MARSHADIUMZHELD,Marshastal Z
+item,MASCHIFFFANG,Colmillo de Maschiff
+item,MASTERBALL,Master Ball
+item,MASTERPIECETEACUP,Cuenco Exquisito
+item,MAWILITE,Mawilita
+item,MAXELIXIR,Elixir Máximo
+item,MAXETHER,Éter Máximo
+item,MAXHONEY,Maxipanal
+item,MAXLURE,Colonia Máxima
+item,MAXMUSHROOMS,Maxiseta
+item,MAXPOTION,Poción Máxima
+item,MAXREPEL,Repelente Máximo
+item,MAXREVIVE,Revivir Máximo
+item,MAYONNAISE,Mayonesa
+item,MEADOWPLATE,Tabla Pradal
+item,MECHMAIL,Carta Imán
+item,MEDALBOX,Caja Insignias
+item,MEDICHAMITE,Medichamita
+item,MEDICINEPOCKET,Botiquín
+item,MEDITITESWEAT,Sudor de Meditite
+item,MEGAANCHOR,Megaancla
+item,MEGAANKLET,Megatobillera
+item,MEGABRACELET,Megapulsera
+item,MEGACHARM,Megacolgante
+item,MEGACUFF,Megabrazalete
+item,MEGAGLASSES,Megagafas
+item,MEGAGLOVE,Megaguante
+item,MEGANIUMITE,Meganiumita
+item,MEGAPENDANT,Megacollar
+item,MEGARING,Mega-Aro
+item,MEGASTICKPIN,Megabroche
+item,MEGATIARA,Megatiara
+item,MELTANCANDY,Caramelo Meltan
+item,MEMBERCARD,Carné Socio
+item,MENTALHERB,Hierba Mental
+item,MEOWSTICITE,Meowsticita
+item,MEOWTHCANDY,Caramelo Meowth
+item,MEOWTHFUR,Pelo de Meowth
+item,METAGROSSITE,Metagrossita
+item,METALALLOY,Metal Compuesto
+item,METALCOAT,Revest. Metálico
+item,METALPOWDER,Polvo Metálico
+item,METEORITE,Meteorito
+item,METEORITE2,Meteorito
+item,METEORITE3,Meteorito
+item,METEORITE4,Meteorito
+item,METEORITESHARD,Frag. Meteorito
+item,METRONOME,Metrónomo
+item,MEWCANDY,Caramelo Mew
+item,MEWNIUMZBAG,Mewstal Z
+item,MEWNIUMZHELD,Mewstal Z
+item,MEWTWOCANDY,Caramelo Mewtwo
+item,MEWTWONITEX,Mewtwoita X
+item,MEWTWONITEY,Mewtwoita Y
+item,MICLEBERRY,Baya Lagro
+item,MIENFOOCLAW,Garra de Mienfoo
+item,MIGHTYCANDY,Caramelo Músculo
+item,MIGHTYCANDYL,Caramelo Músculo +
+item,MIGHTYCANDYXL,Caramelo Músculo ++
+item,MILDMINT,Menta Afable
+item,MIMIKIUMZBAG,Mimikyustal Z
+item,MIMIKIUMZHELD,Mimikyustal Z
+item,MIMIKYUSCRAP,Retal de Mimikyu
+item,MINDPLATE,Tabla Mental
+item,MINTTABLECLOTH,Mantel Menta
+item,MIRACLESEED,Semilla Milagro
+item,MIRAIDONSPOKEBALL,Poké Ball de Miraidon
+item,MIRRORHERB,Hierba Copia
+item,MISDREAVUSTEARS,Lágrima de Misdreavus
+item,MISTYSEED,Semilla Bruma
+item,MIXEDMUSHROOMS,Setas
+item,MODESTMINT,Menta Modesta
+item,MOLTRESCANDY,Caramelo Moltres
+item,MONSTROUSTABLECLOTH,Mantel Monstruoso
+item,MOOMOOCHEESE,Queso Mu-mu
+item,MOOMOOMILK,Leche Mu-mu
+item,MOONBALL,Luna Ball
+item,MOONFLUTE,Flauta Lunar
+item,MOONSTONE,Piedra Lunar
+item,MORPEKOSNACK,Semilla de Morpeko
+item,MOSAICMAIL,Car. Mosaico
+item,MRMIMECANDY,Caramelo Mr. Mime
+item,MUDBRAYMUD,Lodo de Mudbray
+item,MUNCHLAXFANG,Colmillo de Munchlax
+item,MURKROWBAUBLE,Tesoro de Murkrow
+item,MUSCLEBAND,Cinta Fuerte
+item,MUSCLEMOCHI,Mochi Músculo
+item,MUSCLEWING,Pluma Músculo
+item,MUSTARD,Mostaza
+item,MYSTERYEGG,Huevo Misterioso
+item,MYSTICTICKET,Misti-Ticket
+item,MYSTICWATER,Agua Mística
+item,NACLISALT,Sal de Nacli
+item,NAIVEMINT,Menta Ingenua
+item,NANABBERRY,Baya Latano
+item,NAUGHTYMINT,Menta Pícara
+item,NESTBALL,Nido Ball
+item,NETBALL,Malla Ball
+item,NEVERMELTICE,Hielo Perpetuo
+item,NIDORANFCANDY,Caramelo Nidoran♀
+item,NIDORANMCANDY,Caramelo Nidoran♂
+item,NLUNARIZERMERGE,Necroluna
+item,NLUNARIZERSPLIT,Necroluna
+item,NOIBATFUR,Pelo de Noibat
+item,NOMELBERRY,Baya Monli
+item,NOODLES,Fideos
+item,NORMALGEM,Gema Normal
+item,NORMALIUMZBAG,Normastal Z
+item,NORMALIUMZHELD,Normastal Z
+item,NORMALTERASHARD,Teralito Normal
+item,NOSEPASSFRAGMENT,Fragmento de Nosepass
+item,NSOLARIZERMERGE,Necrosol
+item,NSOLARIZERSPLIT,Necrosol
+item,NUGGET,Pepita
+item,NUMELLAVA,Lava de Numel
+item,NYMBLECLAW,Garra de Nymble
+item,OAKSLETTER,Carta Prof. Oak
+item,OAKSPARCEL,Correo-Oak
+item,OCCABERRY,Baya Caoca
+item,ODDINCENSE,Incienso Raro
+item,ODDISHCANDY,Caramelo Oddish
+item,ODDKEYSTONE,Piedra Espíritu
+item,OLDAMBER,Ámbar Viejo
+item,OLDCHARM,Talismán
+item,OLDGATEAU,Barrita Plus
+item,OLDLETTER,Carta Ajada
+item,OLDROD,Caña Vieja
+item,OLDSEAMAP,Mapa Viejo
+item,OLIVEOIL,Aceite de Oliva
+item,OMANYTECANDY,Caramelo Omanyte
+item,ONION,Cebolla
+item,ONIXCANDY,Caramelo Onix
+item,ORANBERRY,Baya Aranja
+item,ORANGEDISH,Plato Naranja
+item,ORANGEMAIL,Car. Naranja
+item,ORANGEPETAL,Pétalo Naranja
+item,ORANGURUFUR,Pelo de Oranguru
+item,ORICORIOFEATHER,Pluma de Oricorio
+item,ORTHWORMTARNISH,Óxido de Orthworm
+item,OVALCHARM,Amuleto Oval
+item,OVALSTONE,Piedra Oval
+item,PACHIRISUFUR,Pelo de Pachirisu
+item,PACKAGEDCURRY,Curri de Bote
+item,PACKOFPOTATOES,Patatas
+item,PAIROFTICKETS,Entrada para dos
+item,PALPAD,Bloc amigos
+item,PAMTREBERRY,Baya Plama
+item,PARALYZEHEAL,Antiparalizador
+item,PARASCANDY,Caramelo Paras
+item,PARASOLPICK,Palillo Sombrilla
+item,PARCEL,Paquete
+item,PARCELLETSGO,Paquete
+item,PARKBALL,Parque Ball
+item,PARTYSPARKLERPICK,Palillo Bengala
+item,PASS,Magnetopase
+item,PASSHOBERRY,Baya Pasio
+item,PASSIMIANFUR,Pelo de Passimian
+item,PASSORB,Regalosfera
+item,PASTA,Pasta
+item,PAWMIFUR,Pelo de Pawmi
+item,PAWNIARDBLADE,Cuchilla de Pawniard
+item,PAYAPABERRY,Baya Payapa
+item,PEACHTABLECLOTH,Mantel Beis
+item,PEANUTBUTTER,Crema de Cacahuete
+item,PEARL,Perla
+item,PEARLSTRING,Sarta Perlas
+item,PEATBLOCK,Bloque de Turba
+item,PECHABERRY,Baya Meloc
+item,PEPPER,Pimienta
+item,PERMIT,Pase
+item,PERSIMBERRY,Baya Caquic
+item,PETAYABERRY,Baya Yapati
+item,PETILILLEAF,Hoja de Petilil
+item,PEWTERCRUNCHIES,Rokikos
+item,PHANPYNAIL,Uña de Phanpy
+item,PHANTUMPTWIG,Rama de Phantump
+item,PHOTOALBUM,Álbum
+item,PICHUFUR,Pelo de Pichu
+item,PICKLE,Pepinillo
+item,PICNICSET,Kit de Pícnic
+item,PIDGEOTITE,Pidgeotita
+item,PIDGEYCANDY,Caramelo Pidgey
+item,PIKACHUCANDY,Caramelo Pikachu
+item,PIKACHUCUP,Taza Pikachu
+item,PIKANIUMZBAG,Pikastal Z
+item,PIKANIUMZHELD,Pikastal Z
+item,PIKAPIKAPICK,Palillo Pikachu
+item,PIKASHUNIUMZBAG,Ash-Pikastal Z
+item,PIKASHUNIUMZHELD,Ash-Pikastal Z
+item,PINAPBERRY,Baya Pinia
+item,PINCURCHINSPINES,Púa de Pincurchin
+item,PINEAPPLE,Piña
+item,PINECOHUSK,Corteza de Pineco
+item,PINKAPRICORN,Bonguri Rosa
+item,PINKBOTTLE,Termo Rosa
+item,PINKCUP,Taza Rosa
+item,PINKNECTAR,Néctar Rosa
+item,PINKPETAL,Pétalo Rosa
+item,PINKSCARF,Pañuelo Rosa
+item,PINKTABLECLOTH,Mantel Rosa
+item,PINSIRCANDY,Caramelo Pinsir
+item,PINSIRITE,Pinsirita
+item,PIXIEPLATE,Tabla Duende
+item,PLAIDTABLECLOTHB,Mantel Cuadros Azul
+item,PLAIDTABLECLOTHR,Mantel Cuadros Rojo
+item,PLAIDTABLECLOTHY,Mantel Cuadros Ámbar
+item,PLASMACARD,Tarjeta Plasma
+item,PLUMEFOSSIL,Fósil Pluma
+item,POFFINCASE,Pokochera
+item,POINTCARD,Tarjeta Puntos
+item,POISONBARB,Flecha Venenosa
+item,POISONGEM,Gema Veneno
+item,POISONIUMZBAG,Toxistal Z
+item,POISONIUMZHELD,Toxistal Z
+item,POISONMEMORY,Disco Veneno
+item,POISONTERASHARD,Teralito Veneno
+item,POKEBALL,Poké Ball
+item,POKEBLOCKCASE,Tubo Pokécubos
+item,POKEBLOCKKIT,Kit de Pokécubos
+item,POKEDOLL,Poké Muñeco
+item,POKEFLUTE,Poké Flauta
+item,POKEMONBOX,Caja de Pokémon
+item,POKEMONBOXLINK,Caja de Pokémon
+item,POKERADAR,Pokéradar
+item,POKETOY,Pokéseñuelo
+item,POLISHEDMUDBALL,Bola de Arcilla
+item,POLIWAGCANDY,Caramelo Poliwag
+item,POLIWAGSLIME,Secreción de Poliwag
+item,POLKADOTBOTTLE,Termo Lunares
+item,POLKADOTCUP,Taza Lunares
+item,POLKADOTTABLECLOTH,Mantel Lunares
+item,POLTCHAGEISTPOWDER,Polvo de Poltchageist
+item,POMEGBERRY,Baya Grana
+item,PONYTACANDY,Caramelo Ponyta
+item,POOCHYENAFANG,Colmillo de Poochyena
+item,PORYGONCANDY,Caramelo Porygon
+item,POTATOSALAD,Ensaladilla
+item,POTATOTORTILLA,Tortilla
+item,POTION,Poción
+item,POWDERJAR,Bote Polvos
+item,POWERANKLET,Franja Recia
+item,POWERBAND,Banda Recia
+item,POWERBELT,Cinto Recio
+item,POWERBRACER,Brazal Recio
+item,POWERHERB,Hierba Única
+item,POWERLENS,Lente Recia
+item,POWERPLANTPASS,Pase Central
+item,POWERUPPOCKET,Bolsillo Mejoras
+item,POWERWEIGHT,Pesa Recia
+item,PPMAX,PP Máximos
+item,PPUP,Más PP
+item,PRECOOKEDBURGER,Hamburguesas
+item,PREMIERBALL,Honor Ball
+item,PRETTYWING,Pluma Bella
+item,PRIMARIUMZBAG,Primastal Z
+item,PRIMARIUMZHELD,Primastal Z
+item,PRISMSCALE,Escama Bella
+item,PRISONBOTTLE,Vasija Castigo
+item,PROFESSORSMASK,Máscara Profesor
+item,PROFSLETTER,Carta Profesor
+item,PROPCASE,Neceser
+item,PROSCIUTTO,Jamón Serrano
+item,PROTECTIVEPADS,Paracontacto
+item,PROTECTOR,Protector
+item,PROTEIN,Proteína
+item,PSYCHICGEM,Gema Psíquica
+item,PSYCHICMEMORY,Disco Psíquico
+item,PSYCHICSEED,Semilla Psique
+item,PSYCHICTERASHARD,Teralito Psíquico
+item,PSYCHIUMZBAG,Psicostal Z
+item,PSYCHIUMZHELD,Psicostal Z
+item,PSYDUCKCANDY,Caramelo Psyduck
+item,PSYDUCKDOWN,Plumón de Psyduck
+item,PUNCHINGGLOVE,Guante de Boxeo
+item,PUNGENTROOT,Hierba Intensa
+item,PUREINCENSE,Incienso Puro
+item,PURPLENECTAR,Néctar Violeta
+item,PURPLEPETAL,Pétalo Violeta
+item,PYROARITE,Pyroarita
+item,QUALOTBERRY,Baya Ispero
+item,QUICKBALL,Veloz Ball
+item,QUICKCANDY,Caramelo Ímpetu
+item,QUICKCANDYL,Caramelo Ímpetu +
+item,QUICKCANDYXL,Caramelo Ímpetu ++
+item,QUICKCLAW,Garra Rápida
+item,QUICKPOWDER,Polvo Veloz
+item,QUIETMINT,Menta Mansa
+item,QWILFISHSPINES,Púa de Qwilfish
+item,RABUTABERRY,Baya Rautan
+item,RADIANTPETAL,Pétalo Fulgor
+item,RAGECANDYBAR,Caramelo Furia
+item,RAICHUNITEX,Raichunita X
+item,RAICHUNITEY,Raichunita Y
+item,RAINBOWFLOWER,Flor Irisada
+item,RAINBOWPASS,Iris-Ticket
+item,RAINBOWWING,Ala Arcoíris
+item,RALTSDUST,Pertenencia de Ralts
+item,RAREBONE,Hueso Raro
+item,RARECANDY,Caramelo Raro
+item,RASHMINT,Menta Alocada
+item,RATTATACANDY,Caramelo Rattata
+item,RAWSTBERRY,Baya Safre
+item,RAZORCLAW,Garra Afilada
+item,RAZORFANG,Colmillo Agudo
+item,RAZZBERRY,Baya Frambu
+item,REAPERCLOTH,Tela Terrible
+item,REDAPRICORN,Bonguri Rojo
+item,REDBELLPEPPER,Pimiento Rojo
+item,REDCARD,Tarjeta Roja
+item,REDCHAIN,Cadena Roja
+item,REDDISH,Plato Rojo
+item,REDFLAGPICK,Palillo Bandera Roja
+item,REDFLUTE,Flauta Roja
+item,REDNECTAR,Néctar Rojo
+item,REDONION,Cebolla Roja
+item,REDORB,Prisma Rojo
+item,REDPETAL,Pétalo Rojo
+item,REDPOKEBALLPICK,Palillo Ball Roja
+item,REDSCALE,Escama Roja
+item,REDSCARF,Pañuelo Rojo
+item,REDSHARD,Parte Roja
+item,REINSOFUNITY,Riendas Unión
+item,REINSOFUNITYMERGE,Riendas Unión
+item,REINSOFUNITYSPLIT,Riendas Unión
+item,RELAXEDMINT,Menta Plácida
+item,RELICBAND,Brazal
+item,RELICCOPPER,Real Cobre
+item,RELICCROWN,Corona Antigua
+item,RELICGOLD,Real Oro
+item,RELICSILVER,Real Plata
+item,RELICSTATUE,Efigie Antigua
+item,RELICVASE,Ánfora
+item,RELLORMUD,Barro de Rellor
+item,REPEATBALL,Acopio Ball
+item,REPEL,Repelente
+item,REPLYMAIL,Carta Respuesta
+item,RESETURGE,Quitaestado
+item,RESISTMOCHI,Mochi Aguante
+item,RESISTWING,Pluma Aguante
+item,RETROMAIL,Carta Retro.
+item,REVEALGLASS,Espejo Veraz
+item,REVIVALHERB,Hierba Revivir
+item,REVIVE,Revivir
+item,RHYHORNCANDY,Caramelo Rhyhorn
+item,RIBBONSWEET,Confite Lazo
+item,RICE,Arroz
+item,RICHMULCH,Abono Fértil
+item,RIDEPAGER,Buscamontura
+item,RINDOBERRY,Baya Tamar
+item,RINGTARGET,Blanco
+item,RIOLUFUR,Pelo de Riolu
+item,RM1KEY,Ll. Cabina 1
+item,RM2KEY,Ll. Cabina 2
+item,RM4KEY,Ll. Cabina 4
+item,RM6KEY,Ll. Cabina 6
+item,ROCKGEM,Gema Roca
+item,ROCKINCENSE,Incienso Roca
+item,ROCKIUMZBAG,Litostal Z
+item,ROCKIUMZHELD,Litostal Z
+item,ROCKMEMORY,Disco Roca
+item,ROCKRUFFROCK,Roca de Rockruff
+item,ROCKTERASHARD,Teralito Roca
+item,ROCKYHELMET,Casco Dentado
+item,ROLLERSKATES,Patines
+item,ROLYCOLYCOAL,Carbón de Rolycoly
+item,ROOKIDEEFEATHER,Pluma de Rookidee
+item,ROOMSERVICE,Servicio Raro
+item,ROOTFOSSIL,Fósil Raíz
+item,ROSEINCENSE,Incienso Floral
+item,ROSELIBERRY,Baya Hibis
+item,ROTOBARGAIN,Cupón Rebaja
+item,ROTOBOOST,Cupón Refuerzo
+item,ROTOCATCH,Cupón Captura
+item,ROTOENCOUNTER,Cupón Reclamo
+item,ROTOEXPPOINTS,Cupón Exp
+item,ROTOFRIENDSHIP,Cupón Amistad
+item,ROTOHATCH,Cupón Eclosión
+item,ROTOHPRESTORE,Cupón PS
+item,ROTOMBIKE,Bici Rotom
+item,ROTOMBIKEGLISTENINGBLACK,Bici Rotom
+item,ROTOMBIKESPARKLINGWHITE,Bici Rotom
+item,ROTOMBIKEWATERMODE,Bici Rotom
+item,ROTOMCATALOG,Catálogo Rotom
+item,ROTOMPHONE,SmartRotom
+item,ROTOMSPARKS,Electricidad de Rotom
+item,ROTOPPRESTORE,Cupón PP
+item,ROTOPRIZEMONEY,Cupón Botín
+item,ROTOSTEALTH,Cupón Sigilo
+item,ROWAPBERRY,Baya Magua
+item,RSVPMAIL,Carta Invitar
+item,RUBY,Rubí
+item,RUFFLETFEATHER,Pluma de Rufflet
+item,RULEBOOK,Reglamento
+item,RUSTEDSHIELD,Escudo Oxidado
+item,RUSTEDSWORD,Espada Oxidada
+item,SABLENITE,Sableynita
+item,SABLEYEGEM,Gema de Sableye
+item,SACHET,Saquito Fragante
+item,SACREDASH,Ceniza Sagrada
+item,SAFARIBALL,Safari Ball
+item,SAFETYGOGGLES,Gafa Protectora
+item,SAILFOSSIL,Fósil Aleta
+item,SALACBERRY,Baya Aslac
+item,SALADMIX,Verduras
+item,SALAMENCITE,Salamencita
+item,SALANDITGAS,Gas de Salandit
+item,SALT,Sal
+item,SALTYHERBAMYSTICA,Especia Oculta Salada
+item,SANDILECLAW,Garra de Sandile
+item,SANDSHREWCANDY,Caramelo Sandshrew
+item,SANDSHREWCLAW,Garra de Sandshrew
+item,SANDWICH,Bocadillo
+item,SANDYGASTSAND,Arena de Sandygast
+item,SAPPHIRE,Zafiro
+item,SASSYMINT,Menta Grosera
+item,SAUSAGES,Salchichas
+item,SCANNER,Escáner
+item,SCARLETBOOK,Libro Escarlata
+item,SCATTERBUGPOWDER,Polvo de Scatterbug
+item,SCEPTILITE,Sceptilita
+item,SCIZORITE,Scizorita
+item,SCOLIPITE,Scolipedita
+item,SCOPELENS,Periscopio
+item,SCOVILLAINITE,Scovillainita
+item,SCRAFTINITE,Scraftita
+item,SCROLLOFDARKNESS,Manuscrito Sombras
+item,SCROLLOFWATERS,Manuscrito Aguas
+item,SCYTHERCANDY,Caramelo Scyther
+item,SCYTHERCLAW,Garra de Scyther
+item,SEAINCENSE,Incienso Marino
+item,SEALBAG,Bolsa Sellos
+item,SEALCASE,Caja Sellos
+item,SECRETKEY,Llave Secreta
+item,SECRETKEYLETSGO,Llave Secreta
+item,SECRETPOTION,Poción Secreta
+item,SEEDOTSTEM,Tallo de Seedot
+item,SEELCANDY,Caramelo Seel
+item,SENTRETFUR,Pelo de Sentret
+item,SERIOUSMINT,Menta Seria
+item,SEVIPERFANG,Colmillo de Seviper
+item,SEWADDLELEAF,Hoja de Sewaddle
+item,SHADEROOTCARROT,Zanahoria Oscura
+item,SHADOWMAIL,Carta Sombra
+item,SHALOURSABLE,Galleta Yantra
+item,SHARPBEAK,Pico Afilado
+item,SHARPEDONITE,Sharpedonita
+item,SHEDSHELL,Muda Concha
+item,SHELLBELL,Cascabel Concha
+item,SHELLDERCANDY,Caramelo Shellder
+item,SHELLDERPEARL,Perla de Shellder
+item,SHELLOSMUCUS,Secreción de Shellos
+item,SHINXFANG,Colmillo de Shinx
+item,SHINYCHARM,Amuleto Iris
+item,SHINYSTONE,Piedra Día
+item,SHOALSALT,Sal Cardumen
+item,SHOALSHELL,Concha Cardumen
+item,SHOCKDRIVE,FulgoROM
+item,SHROODLEINK,Tinta de Shroodle
+item,SHROOMISHSPORES,Esporas de Shroomish
+item,SHUCABERRY,Baya Acardo
+item,SHUPPETSCRAP,Retal de Shuppet
+item,SILICOBRASAND,Arena de Silicobra
+item,SILKSCARF,Pañuelo de Seda
+item,SILPHSCOPE,Visor Silph
+item,SILVERBOTTLE,Termo Plateado
+item,SILVERCUP,Taza Plateada
+item,SILVERLEAF,Hoja de Plata
+item,SILVERNANABBERRY,Baya Latano Plateada
+item,SILVERPICK,Palillo Plateado
+item,SILVERPINAPBERRY,Baya Pinia Plateada
+item,SILVERPOWDER,Polvo Plata
+item,SILVERRAZZBERRY,Baya Frambu Plateada
+item,SILVERWING,Ala Plateada
+item,SINISTEACHIP,Fragmento de Sinistea
+item,SITRUSBERRY,Baya Zidra
+item,SKARMORITE,Skarmorita
+item,SKIDDOLEAF,Hoja de Skiddo
+item,SKRELPKELP,Alga de Skrelp
+item,SKULLFOSSIL,Fósil Cráneo
+item,SKWOVETFUR,Pelo de Skwovet
+item,SKYPLATE,Tabla Cielo
+item,SLAKOTHFUR,Pelo de Slakoth
+item,SLOWBRONITE,Slowbronita
+item,SLOWPOKECANDY,Caramelo Slowpoke
+item,SLOWPOKECLAW,Garra de Slowpoke
+item,SLOWPOKECUP,Taza Slowpoke
+item,SLOWPOKETAIL,Cola Slowpoke
+item,SLUGMALAVA,Lava de Slugma
+item,SMALLBOUQUET,Ramo Pequeño
+item,SMARTCANDY,Caramelo Intelecto
+item,SMARTCANDYL,Caramelo Intelecto +
+item,SMARTCANDYXL,Caramelo Intelecto ++
+item,SMILINGVEEPICK,Palillo Eevee Feliz
+item,SMOKEBALL,Bola de Humo
+item,SMOKEDFILLET,Filete Ahumado
+item,SMOKEPOKETAIL,Cola Ahumada
+item,SMOLIVOIL,Aceite de Smoliv
+item,SMOOTHROCK,Roca Suave
+item,SNEASELCLAW,Garra de Sneasel
+item,SNOMTHREAD,Hilo de Snom
+item,SNORLAXCANDY,Caramelo Snorlax
+item,SNORLIUMZBAG,Snorlastal Z
+item,SNORLIUMZHELD,Snorlastal Z
+item,SNORUNTFUR,Pelo de Snorunt
+item,SNOVERBERRIES,Baya de Snover
+item,SNOWBALL,Bola de Nieve
+item,SNOWMAIL,Carta Nieve
+item,SODAPOP,Refresco
+item,SOFTSAND,Arena Fina
+item,SOLGANIUMZBAG,Solgaleostal Z
+item,SOLGANIUMZHELD,Solgaleostal Z
+item,SONIASBOOK,Libro de Sonia
+item,SOOTHEBELL,Cascabel Alivio
+item,SOOTSACK,Saco Hollín
+item,SOULDEW,Rocío Bondad
+item,SOURHERBAMYSTICA,Especia Oculta Ácida
+item,SPACEMAIL,Car. Sideral
+item,SPARKLINGSTONE,Piedra Brillante
+item,SPEAROWCANDY,Caramelo Spearow
+item,SPELLTAG,Hechizo
+item,SPELONBERRY,Baya Wikano
+item,SPICEMIX,Especias
+item,SPICYHERBAMYSTICA,Especia Oculta Picante
+item,SPINARAKTHREAD,Hilo de Spinarak
+item,SPIRITOMBFRAGMENT,Fragmento de Spiritomb
+item,SPLASHPLATE,Tabla Linfa
+item,SPOINKPEARL,Perla de Spoink
+item,SPOOKYPLATE,Tabla Terror
+item,SPOOKYTABLECLOTH,Mantel Espectral
+item,SPORTBALL,Competi Ball
+item,SPRAYDUCK,Psydugadera
+item,SPRINKLOTAD,Lotadgadera
+item,SQUAWKABILLYFEATHER,Pluma de Squawkabilly
+item,SQUIRTBOTTLE,Regadera
+item,SQUIRTLECANDY,Caramelo Squirtle
+item,SSTICKET,Ticket Barco
+item,SSTICKETHOENN,Ticket Barco
+item,SSTICKETLETSGO,Ticket del Barco
+item,STABLEMULCH,Abono Fijador
+item,STANTLERHAIR,Pelo de Stantler
+item,STARAPTITE,Staraptorita
+item,STARDUST,Polvo Estelar
+item,STARFBERRY,Baya Arabol
+item,STARLYFEATHER,Pluma de Starly
+item,STARMINITE,Starmita
+item,STARPIECE,Trozo Estrella
+item,STARSWEET,Confite Estrella
+item,STARYUCANDY,Caramelo Staryu
+item,STEELBOTTLEB,Termo Metal Azul
+item,STEELBOTTLER,Termo Metal Rojo
+item,STEELBOTTLEY,Termo Metal Amarillo
+item,STEELGEM,Gema Acero
+item,STEELIUMZBAG,Metalostal Z
+item,STEELIUMZHELD,Metalostal Z
+item,STEELIXITE,Steelixita
+item,STEELMAIL,Carta Acero
+item,STEELMEMORY,Disco Acero
+item,STEELTERASHARD,Teralito Acero
+item,STICK,Puerro
+item,STICKYBARB,Toxiestrella
+item,STONEPLATE,Tabla Pétrea
+item,STONJOURNERSTONE,Roca de Stonjourner
+item,STORAGEKEY,Llave Almacén
+item,STORAGEKEYGALACTICWAREHOUSE,Llave Almacén
+item,STORAGEKEYSEAMAUVILLE,Llave Almacén
+item,STRANGEBALL,Extraña Ball
+item,STRANGESOUVENIR,Estatuilla Rara
+item,STRAWBERRY,Fresa
+item,STRAWBERRYSWEET,Confite Fresa
+item,STRETCHYSPRING,Muelle Estirado
+item,STRIPEDBOTTLE,Termo Rayas
+item,STRIPEDCUP,Taza Raya Vertical
+item,STRIPEDTABLECLOTH,Mantel Rayas
+item,STUNKYFUR,Pelo de Stunky
+item,STYLECARD,Tarjeta Chic
+item,SUITEKEY,Llave Suite
+item,SUNFLUTE,Flauta Solar
+item,SUNKERNLEAF,Hoja de Sunkern
+item,SUNRISEFLOWERPICK,Palillo Flor Rosa
+item,SUNSETFLOWERPICK,Palillo Flor Naranja
+item,SUNSTONE,Piedra Solar
+item,SUPERLURE,Supercolonia
+item,SUPERPOTION,Superpoción
+item,SUPERREPEL,Superrepelente
+item,SUPERROD,Supercaña
+item,SURGEBADGE,Medalla Fulgor
+item,SURPRISEMULCH,Abono Sorpresa
+item,SURSKITSYRUP,Néctar de Surskit
+item,SWABLUFLUFF,Pluma de Swablu
+item,SWAMPERTITE,Swampertita
+item,SWEETAPPLE,Manzana Dulce
+item,SWEETHEART,Corazón Dulce
+item,SWEETHERBAMYSTICA,Especia Oculta Dulce
+item,SWIFTMOCHI,Mochi Ímpetu
+item,SWIFTWING,Pluma Ímpetu
+item,SWINUBHAIR,Pelo de Swinub
+item,SYRUPYAPPLE,Manzana Melosa
+item,TADBULBMUCUS,Secreción de Tadbulb
+item,TAMATOBERRY,Baya Tamate
+item,TANDEMAUSFUR,Pelo de Tandemaus
+item,TANGABERRY,Baya Yecana
+item,TANGELACANDY,Caramelo Tangela
+item,TAPUNIUMZBAG,Tapistal Z
+item,TAPUNIUMZHELD,Tapistal Z
+item,TAROUNTULATHREAD,Hilo de Tarountula
+item,TARTAPPLE,Manzana Ácida
+item,TATSUGIRINITE,Tatsugirita
+item,TATSUGIRISCALES,Escama de Tatsugiri
+item,TAUROSCANDY,Caramelo Tauros
+item,TAUROSHAIR,Pelo de Tauros
+item,TEA,Té
+item,TEACHYTV,Poké Tele
+item,TEALMASK,Máscara Turquesa
+item,TEALSTYLECARD,Tarjeta Chic Verde
+item,TEDDIURSACLAW,Garra de Teddiursa
+item,TENTACOOLCANDY,Caramelo Tentacool
+item,TERAORB,Orbe Teracristal
+item,TERRAINEXTENDER,Cubresuelos
+item,THANKSMAIL,Carta Gracias
+item,THICKCLUB,Hueso Grueso
+item,THROATSPRAY,Espray Bucal
+item,THUNDERSTONE,Piedra Trueno
+item,TIDALBELL,Cascabel Oleaje
+item,TIMBURRSWEAT,Sudor de Timburr
+item,TIMERBALL,Turno Ball
+item,TIMIDMINT,Menta Miedosa
+item,TINKATINKHAIR,Pelo de Tinkatink
+item,TINOFBEANS,Lata de Habas
+item,TINYBAMBOOSHOOT,Bambú Pequeño
+item,TINYMUSHROOM,Miniseta
+item,TM00,MT00
+item,TM01,MT01
+item,TM02,MT02
+item,TM03,MT03
+item,TM04,MT04
+item,TM05,MT05
+item,TM06,MT06
+item,TM07,MT07
+item,TM08,MT08
+item,TM09,MT09
+item,TM10,MT10
+item,TM100,MT100
+item,TM101,MT101
+item,TM102,MT102
+item,TM103,MT103
+item,TM104,MT104
+item,TM105,MT105
+item,TM106,MT106
+item,TM107,MT107
+item,TM108,MT108
+item,TM109,MT109
+item,TM11,MT11
+item,TM110,MT110
+item,TM111,MT111
+item,TM112,MT112
+item,TM113,MT113
+item,TM114,MT114
+item,TM115,MT115
+item,TM116,MT116
+item,TM117,MT117
+item,TM118,MT118
+item,TM119,MT119
+item,TM12,MT12
+item,TM120,MT120
+item,TM121,MT121
+item,TM122,MT122
+item,TM123,MT123
+item,TM124,MT124
+item,TM125,MT125
+item,TM126,MT126
+item,TM127,MT127
+item,TM128,MT128
+item,TM129,MT129
+item,TM13,MT13
+item,TM130,MT130
+item,TM131,MT131
+item,TM132,MT132
+item,TM133,MT133
+item,TM134,MT134
+item,TM135,MT135
+item,TM136,MT136
+item,TM137,MT137
+item,TM138,MT138
+item,TM139,MT139
+item,TM14,MT14
+item,TM140,MT140
+item,TM141,MT141
+item,TM142,MT142
+item,TM143,MT143
+item,TM144,MT144
+item,TM145,MT145
+item,TM146,MT146
+item,TM147,MT147
+item,TM148,MT148
+item,TM149,MT149
+item,TM15,MT15
+item,TM150,MT150
+item,TM151,MT151
+item,TM152,MT152
+item,TM153,MT153
+item,TM154,MT154
+item,TM155,MT155
+item,TM156,MT156
+item,TM157,MT157
+item,TM158,MT158
+item,TM159,MT159
+item,TM16,MT16
+item,TM160,MT160
+item,TM161,MT161
+item,TM162,MT162
+item,TM163,MT163
+item,TM164,MT164
+item,TM165,MT165
+item,TM166,MT166
+item,TM167,MT167
+item,TM168,MT168
+item,TM169,MT169
+item,TM17,MT17
+item,TM170,MT170
+item,TM171,MT171
+item,TM172,MT172
+item,TM173,MT173
+item,TM174,MT174
+item,TM175,MT175
+item,TM176,MT176
+item,TM177,MT177
+item,TM178,MT178
+item,TM179,MT179
+item,TM18,MT18
+item,TM180,MT180
+item,TM181,MT181
+item,TM182,MT182
+item,TM183,MT183
+item,TM184,MT184
+item,TM185,MT185
+item,TM186,MT186
+item,TM187,MT187
+item,TM188,MT188
+item,TM189,MT189
+item,TM19,MT19
+item,TM190,MT190
+item,TM191,MT191
+item,TM192,MT192
+item,TM193,MT193
+item,TM194,MT194
+item,TM195,MT195
+item,TM196,MT196
+item,TM197,MT197
+item,TM198,MT198
+item,TM199,MT199
+item,TM20,MT20
+item,TM200,MT200
+item,TM201,MT201
+item,TM202,MT202
+item,TM203,MT203
+item,TM204,MT204
+item,TM205,MT205
+item,TM206,MT206
+item,TM207,MT207
+item,TM208,MT208
+item,TM209,MT209
+item,TM21,MT21
+item,TM210,MT210
+item,TM211,MT211
+item,TM212,MT212
+item,TM213,MT213
+item,TM214,MT214
+item,TM215,MT215
+item,TM216,MT216
+item,TM217,MT217
+item,TM218,MT218
+item,TM219,MT219
+item,TM22,MT22
+item,TM220,MT220
+item,TM221,MT221
+item,TM222,MT222
+item,TM223,MT223
+item,TM224,MT224
+item,TM225,MT225
+item,TM226,MT226
+item,TM227,MT227
+item,TM228,MT228
+item,TM229,MT229
+item,TM23,MT23
+item,TM24,MT24
+item,TM25,MT25
+item,TM26,MT26
+item,TM27,MT27
+item,TM28,MT28
+item,TM29,MT29
+item,TM30,MT30
+item,TM31,MT31
+item,TM32,MT32
+item,TM33,MT33
+item,TM34,MT34
+item,TM35,MT35
+item,TM36,MT36
+item,TM37,MT37
+item,TM38,MT38
+item,TM39,MT39
+item,TM40,MT40
+item,TM41,MT41
+item,TM42,MT42
+item,TM43,MT43
+item,TM44,MT44
+item,TM45,MT45
+item,TM46,MT46
+item,TM47,MT47
+item,TM48,MT48
+item,TM49,MT49
+item,TM50,MT50
+item,TM51,MT51
+item,TM52,MT52
+item,TM53,MT53
+item,TM54,MT54
+item,TM55,MT55
+item,TM56,MT56
+item,TM57,MT57
+item,TM58,MT58
+item,TM59,MT59
+item,TM60,MT60
+item,TM61,MT61
+item,TM62,MT62
+item,TM63,MT63
+item,TM64,MT64
+item,TM65,MT65
+item,TM66,MT66
+item,TM67,MT67
+item,TM68,MT68
+item,TM69,MT69
+item,TM70,MT70
+item,TM71,MT71
+item,TM72,MT72
+item,TM73,MT73
+item,TM74,MT74
+item,TM75,MT75
+item,TM76,MT76
+item,TM77,MT77
+item,TM78,MT78
+item,TM79,MT79
+item,TM80,MT80
+item,TM81,MT81
+item,TM82,MT82
+item,TM83,MT83
+item,TM84,MT84
+item,TM85,MT85
+item,TM86,MT86
+item,TM87,MT87
+item,TM88,MT88
+item,TM89,MT89
+item,TM90,MT90
+item,TM91,MT91
+item,TM92,MT92
+item,TM93,MT93
+item,TM94,MT94
+item,TM95,MT95
+item,TM96,MT96
+item,TM97,MT97
+item,TM98,MT98
+item,TM99,MT99
+item,TMCASE,Estuche de MT
+item,TMVPASS,Abono del TMV
+item,TOEDSCOOLFLAPS,Pliegue de Toedscool
+item,TOFU,Tofu
+item,TOMATO,Tomate
+item,TORKOALCOAL,Carbón de Torkoal
+item,TOUGHCANDY,Caramelo Aguante
+item,TOUGHCANDYL,Caramelo Aguante +
+item,TOUGHCANDYXL,Caramelo Aguante ++
+item,TOWNMAP,Mapa
+item,TOXELSPARKS,Electricidad de Toxel
+item,TOXICORB,Toxisfera
+item,TOXICPLATE,Tabla Tóxica
+item,TR00,DT00
+item,TR01,DT01
+item,TR02,DT02
+item,TR03,DT03
+item,TR04,DT04
+item,TR05,DT05
+item,TR06,DT06
+item,TR07,DT07
+item,TR08,DT08
+item,TR09,DT09
+item,TR10,DT10
+item,TR11,DT11
+item,TR12,DT12
+item,TR13,DT13
+item,TR14,DT14
+item,TR15,DT15
+item,TR16,DT16
+item,TR17,DT17
+item,TR18,DT18
+item,TR19,DT19
+item,TR20,DT20
+item,TR21,DT21
+item,TR22,DT22
+item,TR23,DT23
+item,TR24,DT24
+item,TR25,DT25
+item,TR26,DT26
+item,TR27,DT27
+item,TR28,DT28
+item,TR29,DT29
+item,TR30,DT30
+item,TR31,DT31
+item,TR32,DT32
+item,TR33,DT33
+item,TR34,DT34
+item,TR35,DT35
+item,TR36,DT36
+item,TR37,DT37
+item,TR38,DT38
+item,TR39,DT39
+item,TR40,DT40
+item,TR41,DT41
+item,TR42,DT42
+item,TR43,DT43
+item,TR44,DT44
+item,TR45,DT45
+item,TR46,DT46
+item,TR47,DT47
+item,TR48,DT48
+item,TR49,DT49
+item,TR50,DT50
+item,TR51,DT51
+item,TR52,DT52
+item,TR53,DT53
+item,TR54,DT54
+item,TR55,DT55
+item,TR56,DT56
+item,TR57,DT57
+item,TR58,DT58
+item,TR59,DT59
+item,TR60,DT60
+item,TR61,DT61
+item,TR62,DT62
+item,TR63,DT63
+item,TR64,DT64
+item,TR65,DT65
+item,TR66,DT66
+item,TR67,DT67
+item,TR68,DT68
+item,TR69,DT69
+item,TR70,DT70
+item,TR71,DT71
+item,TR72,DT72
+item,TR73,DT73
+item,TR74,DT74
+item,TR75,DT75
+item,TR76,DT76
+item,TR77,DT77
+item,TR78,DT78
+item,TR79,DT79
+item,TR80,DT80
+item,TR81,DT81
+item,TR82,DT82
+item,TR83,DT83
+item,TR84,DT84
+item,TR85,DT85
+item,TR86,DT86
+item,TR87,DT87
+item,TR88,DT88
+item,TR89,DT89
+item,TR90,DT90
+item,TR91,DT91
+item,TR92,DT92
+item,TR93,DT93
+item,TR94,DT94
+item,TR95,DT95
+item,TR96,DT96
+item,TR97,DT97
+item,TR98,DT98
+item,TR99,DT99
+item,TRAVELTRUNK,Maleta
+item,TRIPASS,Tri-Ticket
+item,TROPICALSHELL,Concha Tropical
+item,TROPICMAIL,Car. Tropic.
+item,TROPIUSLEAF,Hoja de Tropius
+item,TUNNELMAIL,Carta Mina
+item,TWISTEDSPOON,Cuchara Torcida
+item,TYNAMOSLIME,Secreción de Tynamo
+item,TYRANITARITE,Tyranitarita
+item,ULTRABALL,Ultra Ball
+item,ULTRANECROZIUMZBAG,Ultranecrostal Z
+item,ULTRANECROZIUMZHELD,Ultranecrostal Z
+item,UNOWNREPORT,Bloc Unown
+item,UNREMARKABLETEACUP,Cuenco Mediocre
+item,UPGRADE,Mejora
+item,UTILITYUMBRELLA,Parasol Multiuso
+item,VAROOMFUME,Gas de Varoom
+item,VEEVEEPICK,Palillo Eevee
+item,VELUZAFILLET,Carne de Veluza
+item,VENONATCANDY,Caramelo Venonat
+item,VENONATFANG,Colmillo de Venonat
+item,VENUSAURITE,Venusaurita
+item,VICTREEBELITE,Victreebelita
+item,VINEGAR,Vinagre
+item,VIOLETBOOK,Libro Púrpura
+item,VOLBEATFLUID,Fluido de Volbeat
+item,VOLTORBCANDY,Caramelo Voltorb
+item,VOLTORBSPARKS,Electricidad de Voltorb
+item,VSRECORDER,Cámara Lucha
+item,VSSEEKER,Buscapelea
+item,VULLABYFEATHER,Pluma de Vullaby
+item,VULPIXCANDY,Caramelo Vulpix
+item,VULPIXFUR,Pelo de Vulpix
+item,WACANBERRY,Baya Gualot
+item,WAILMERPAIL,Wailmegadera
+item,WASABI,Wasabi
+item,WATERCRESS,Berros
+item,WATERGEM,Gema Agua
+item,WATERIUMZBAG,Hidrostal Z
+item,WATERIUMZHELD,Hidrostal Z
+item,WATERMEMORY,Disco Agua
+item,WATERSTONE,Piedra Agua
+item,WATERTERASHARD,Teralito Agua
+item,WATMELBERRY,Baya Sambia
+item,WATTRELFEATHER,Pluma de Wattrel
+item,WAVEINCENSE,Incienso Acua
+item,WAVEMAIL,Carta Ola
+item,WEAKNESSPOLICY,Seguro Debilidad
+item,WEEDLECANDY,Caramelo Weedle
+item,WELLSPRINGMASK,Máscara Fuente
+item,WEPEARBERRY,Baya Peragu
+item,WHIMSICALTABLECLOTH,Mantel Cuco
+item,WHIPPEDCREAM,Nata Montada
+item,WHIPPEDDREAM,Dulce de Nata
+item,WHITEAPRICORN,Bonguri Blanco
+item,WHITEDISH,Plato Blanco
+item,WHITEFLUTE,Flauta Blanca
+item,WHITEHERB,Hierba Blanca
+item,WHITEMANEHAIR,Crin Blanca
+item,WIDELENS,Lupa
+item,WIGLETTSAND,Arena de Wiglett
+item,WIKIBERRY,Baya Wiki
+item,WINGULLFEATHER,Pluma de Wingull
+item,WINKINGPIKAPICK,Palillo Pikaguiño
+item,WISEGLASSES,Gafas Especiales
+item,WISHINGCHIP,Trocito Deseo
+item,WISHINGPIECE,Trozo Deseo
+item,WISHINGSTAR,Estrella Deseo
+item,WOODENCROWN,Corona Tallada
+item,WOODMAIL,Carta Madera
+item,WOOPERSLIME,Secreción de Wooper
+item,WORKSKEY,Llave Central
+item,XACCURACY,Precisión X
+item,XACCURACY2,Precisión X 2
+item,XACCURACY3,Precisión X 3
+item,XACCURACY6,Precisión X 6
+item,XATTACK,Ataque X
+item,XATTACK2,Ataque X 2
+item,XATTACK3,Ataque X 3
+item,XATTACK6,Ataque X 6
+item,XDEFENSE,Defensa X
+item,XDEFENSE2,Defensa X 2
+item,XDEFENSE3,Defensa X 3
+item,XDEFENSE6,Defensa X 6
+item,XSPATK,At. Especial X
+item,XSPATK2,At. Esp. X 2
+item,XSPATK3,At. Esp. X 3
+item,XSPATK6,At. Esp. X 6
+item,XSPDEF,Def. Especial X
+item,XSPDEF2,Def. Esp. X 2
+item,XSPDEF3,Def. Esp. X 3
+item,XSPDEF6,Def. Esp. X 6
+item,XSPEED,Velocidad X
+item,XSPEED2,Velocidad X 2
+item,XSPEED3,Velocidad X 3
+item,XSPEED6,Velocidad X 6
+item,XTRANSCEIVER,Videomisor
+item,XTRANSCEIVERRED,Videomisor
+item,XTRANSCEIVERYELLOW,Videomisor
+item,YACHEBERRY,Baya Rimoya
+item,YANMASPIKE,Aguijón de Yanma
+item,YARNBALL,Pelota Ovillo
+item,YELLOWAPRICORN,Bonguri Amarillo
+item,YELLOWBELLPEPPER,Pimiento Amarillo
+item,YELLOWBOTTLE,Termo Amarillo
+item,YELLOWCUP,Taza Amarilla
+item,YELLOWDISH,Plato Amarillo
+item,YELLOWFLUTE,Flauta Amarilla
+item,YELLOWNECTAR,Néctar Amarillo
+item,YELLOWPETAL,Pétalo Amarillo
+item,YELLOWSCARF,Pañuelo Amarillo
+item,YELLOWSHARD,Parte Amarilla
+item,YELLOWTABLECLOTH,Mantel Amarillo
+item,YOGURT,Yogur
+item,YUNGOOSFUR,Pelo de Yungoos
+item,ZANGOOSECLAW,Garra de Zangoose
+item,ZAPDOSCANDY,Caramelo Zapdos
+item,ZAPPLATE,Tabla Trueno
+item,ZERAORITE,Zeraoranita
+item,ZINC,Zinc
+item,ZOOMLENS,Telescopio
+item,ZORUAFUR,Pelo de Zorua
+item,ZPOWERRING,Superpulsera Z
+item,ZRING,Pulsera Z
+item,ZUBATCANDY,Caramelo Zubat
+item,ZYGARDECUBE,Arca de Zygarde
+item,ZYGARDITE,Zygardita
+move,10000000VOLTTHUNDERBOLT,Gigarrayo Fulminante
+move,ABSORB,Absorber
+move,ACCELEROCK,Roca Veloz
+move,ACID,Ácido
+move,ACIDARMOR,Armadura Ácida
+move,ACIDDOWNPOURPHYSICAL,Diluvio Corrosivo
+move,ACIDDOWNPOURSPECIAL,Diluvio Corrosivo
+move,ACIDSPRAY,Bomba Ácida
+move,ACROBATICS,Acróbata
+move,ACUPRESSURE,Acupresión
+move,AERIALACE,Golpe Aéreo
+move,AEROBLAST,Aerochorro
+move,AFTERYOU,Cede Paso
+move,AGILITY,Agilidad
+move,AIRCUTTER,Aire Afilado
+move,AIRSLASH,Tajo Aéreo
+move,ALLOUTPUMMELINGPHYSICAL,Ráfaga Demoledora
+move,ALLOUTPUMMELINGSPECIAL,Ráfaga Demoledora
+move,ALLURINGVOICE,Canto Encantador
+move,ALLYSWITCH,Cambio de Banda
+move,AMNESIA,Amnesia
+move,ANCHORSHOT,Anclaje
+move,ANCIENTPOWER,Poder Pasado
+move,APPLEACID,Ácido Málico
+move,AQUACUTTER,Tajo Acuático
+move,AQUAJET,Acua Jet
+move,AQUARING,Acua Aro
+move,AQUASTEP,Danza Acuática
+move,AQUATAIL,Acua Cola
+move,ARMORCANNON,Cañón Armadura
+move,ARMTHRUST,Empujón
+move,AROMATHERAPY,Aromaterapia
+move,AROMATICMIST,Niebla Aromática
+move,ASSIST,Ayuda
+move,ASSURANCE,Buena Baza
+move,ASTONISH,Impresionar
+move,ASTRALBARRAGE,Orbes Espectro
+move,ATTACKORDER,Al Ataque
+move,ATTRACT,Atracción
+move,AURASPHERE,Esfera Aural
+move,AURAWHEEL,Rueda Aural
+move,AURORABEAM,Rayo Aurora
+move,AURORAVEIL,Velo Aurora
+move,AUTOTOMIZE,Aligerar
+move,AVALANCHE,Alud
+move,AXEKICK,Patada Hacha
+move,BABYDOLLEYES,Ojitos Tiernos
+move,BADDYBAD,Umbreozona
+move,BANEFULBUNKER,Búnker
+move,BARBBARRAGE,Mil Púas Tóxicas
+move,BARRAGE,Bombardeo
+move,BARRIER,Barrera
+move,BATONPASS,Relevo
+move,BEAKBLAST,Pico Cañón
+move,BEATUP,Paliza
+move,BEHEMOTHBASH,Embate Supremo
+move,BEHEMOTHBLADE,Tajo Supremo
+move,BELCH,Eructo
+move,BELLYDRUM,Tambor
+move,BESTOW,Ofrenda
+move,BIDE,Venganza
+move,BIND,Atadura
+move,BITE,Mordisco
+move,BITTERBLADE,Espada Lamento
+move,BITTERMALICE,Rencor Reprimido
+move,BLACKHOLEECLIPSEPHYSICAL,Agujero Negro Aniquilador
+move,BLACKHOLEECLIPSESPECIAL,Agujero Negro Aniquilador
+move,BLASTBURN,Anillo Ígneo
+move,BLAZEKICK,Patada Ígnea
+move,BLAZINGTORQUE,Pirochoque
+move,BLEAKWINDSTORM,Vendaval Gélido
+move,BLIZZARD,Ventisca
+move,BLOCK,Bloqueo
+move,BLOODMOON,Luna Roja
+move,BLOOMDOOMPHYSICAL,Megatón Floral
+move,BLOOMDOOMSPECIAL,Megatón Floral
+move,BLUEFLARE,Llama Azul
+move,BODYPRESS,Plancha Corporal
+move,BODYSLAM,Golpe Cuerpo
+move,BOLTBEAK,Electropico
+move,BOLTSTRIKE,Ataque Fulgor
+move,BONECLUB,Hueso Palo
+move,BONEMERANG,Huesomerang
+move,BONERUSH,Ataque Óseo
+move,BOOMBURST,Estruendo
+move,BOUNCE,Bote
+move,BOUNCYBUBBLE,Vapodrenaje
+move,BRANCHPOKE,Punzada Rama
+move,BRAVEBIRD,Pájaro Osado
+move,BREAKINGSWIPE,Vasto Impacto
+move,BREAKNECKBLITZPHYSICAL,Carrera Arrolladora
+move,BREAKNECKBLITZSPECIAL,Carrera Arrolladora
+move,BRICKBREAK,Demolición
+move,BRINE,Salmuera
+move,BRUTALSWING,Giro Vil
+move,BUBBLE,Burbuja
+move,BUBBLEBEAM,Rayo Burbuja
+move,BUGBITE,Picadura
+move,BUGBUZZ,Zumbido
+move,BULKUP,Corpulencia
+move,BULLDOZE,Terratemblor
+move,BULLETPUNCH,Puño Bala
+move,BULLETSEED,Semilladora
+move,BURNINGBULWARK,Llama Protectora
+move,BURNINGJEALOUSY,Envidia Ardiente
+move,BURNUP,Llama Final
+move,BUZZYBUZZ,Joltioparálisis
+move,CALMMIND,Paz Mental
+move,CAMOUFLAGE,Camuflaje
+move,CAPTIVATE,Seducción
+move,CATASTROPIKA,Pikavoltio Letal
+move,CEASELESSEDGE,Tajo Metralla
+move,CELEBRATE,Celebración
+move,CHARGE,Carga
+move,CHARGEBEAM,Rayo Carga
+move,CHARM,Encanto
+move,CHATTER,Cháchara
+move,CHILLINGWATER,Agua Fría
+move,CHILLYRECEPTION,Fría Acogida
+move,CHIPAWAY,Guardia Baja
+move,CHLOROBLAST,Clorofiláser
+move,CIRCLETHROW,Llave Giro
+move,CLAMP,Tenaza
+move,CLANGINGSCALES,Fragor Escamas
+move,CLANGOROUSSOUL,Estruendo Escama
+move,CLANGOROUSSOULBLAZE,Estruendo Implacable
+move,CLEARSMOG,Niebla Clara
+move,CLOSECOMBAT,A Bocajarro
+move,COACHING,Motivación
+move,COIL,Enrosque
+move,COLLISIONCOURSE,Nitrochoque
+move,COMBATTORQUE,Pugnachoque
+move,COMETPUNCH,Puño Cometa
+move,COMEUPPANCE,Resarcimiento
+move,CONFIDE,Confidencia
+move,CONFUSERAY,Rayo Confuso
+move,CONFUSION,Confusión
+move,CONSTRICT,Restricción
+move,CONTINENTALCRUSHPHYSICAL,Aplastamiento Gigalítico
+move,CONTINENTALCRUSHSPECIAL,Aplastamiento Gigalítico
+move,CONVERSION,Conversión
+move,CONVERSION2,Conversión 2
+move,COPYCAT,Copión
+move,COREENFORCER,Núcleo Castigo
+move,CORKSCREWCRASHPHYSICAL,Hélice Trepanadora
+move,CORKSCREWCRASHSPECIAL,Hélice Trepanadora
+move,CORROSIVEGAS,Gas Corrosivo
+move,COSMICPOWER,Masa Cósmica
+move,COTTONGUARD,Rizo Algodón
+move,COTTONSPORE,Esporagodón
+move,COUNTER,Contraataque
+move,COURTCHANGE,Cambio de Cancha
+move,COVET,Antojo
+move,CRABHAMMER,Martillazo
+move,CRAFTYSHIELD,Truco Defensa
+move,CROSSCHOP,Tajo Cruzado
+move,CROSSPOISON,Veneno X
+move,CRUNCH,Triturar
+move,CRUSHCLAW,Garra Brutal
+move,CRUSHGRIP,Agarrón
+move,CURSE,Maldición
+move,CUT,Corte
+move,DARKESTLARIAT,Lariat Oscuro
+move,DARKPULSE,Pulso Umbrío
+move,DARKVOID,Brecha Negra
+move,DAZZLINGGLEAM,Brillo Mágico
+move,DECORATE,Decoración
+move,DEFENDORDER,A Defender
+move,DEFENSECURL,Rizo Defensa
+move,DEFOG,Despejar
+move,DESTINYBOND,Mismo Destino
+move,DETECT,Detección
+move,DEVASTATINGDRAKEPHYSICAL,Dracoaliento Devastador
+move,DEVASTATINGDRAKESPECIAL,Dracoaliento Devastador
+move,DIAMONDSTORM,Tormenta de Diamantes
+move,DIG,Excavar
+move,DIRECLAW,Garra Nociva
+move,DISABLE,Anulación
+move,DISARMINGVOICE,Voz Cautivadora
+move,DISCHARGE,Chispazo
+move,DIVE,Buceo
+move,DIZZYPUNCH,Puño Mareo
+move,DOODLE,Decalcomanía
+move,DOOMDESIRE,Deseo Oculto
+move,DOUBLEEDGE,Doble Filo
+move,DOUBLEHIT,Doble Golpe
+move,DOUBLEIRONBASH,Ferropuño Doble
+move,DOUBLEKICK,Doble Patada
+move,DOUBLESHOCK,Electropalmas
+move,DOUBLESLAP,Doble Bofetón
+move,DOUBLETEAM,Doble Equipo
+move,DRACOMETEOR,Cometa Draco
+move,DRAGONASCENT,Ascenso Draco
+move,DRAGONBREATH,Dragoaliento
+move,DRAGONCHEER,Bramido Dragón
+move,DRAGONCLAW,Garra Dragón
+move,DRAGONDANCE,Danza Dragón
+move,DRAGONDARTS,Dracoflechas
+move,DRAGONENERGY,Dracoenergía
+move,DRAGONHAMMER,Martillo Dragón
+move,DRAGONPULSE,Pulso Dragón
+move,DRAGONRAGE,Furia Dragón
+move,DRAGONRUSH,Carga Dragón
+move,DRAGONTAIL,Cola Dragón
+move,DRAININGKISS,Beso Drenaje
+move,DRAINPUNCH,Puño Drenaje
+move,DREAMEATER,Comesueños
+move,DRILLPECK,Pico Taladro
+move,DRILLRUN,Taladradora
+move,DRUMBEATING,Batería Asalto
+move,DUALCHOP,Golpe Bis
+move,DUALWINGBEAT,Ala Bis
+move,DYNAMAXCANNON,Cañón Dinamax
+move,DYNAMICPUNCH,Puño Dinámico
+move,EARTHPOWER,Tierra Viva
+move,EARTHQUAKE,Terremoto
+move,ECHOEDVOICE,Eco Voz
+move,EERIEIMPULSE,Onda Anómala
+move,EERIESPELL,Conjuro Funesto
+move,EGGBOMB,Bomba Huevo
+move,ELECTRICTERRAIN,Campo Eléctrico
+move,ELECTRIFY,Electrificación
+move,ELECTROBALL,Bola Voltio
+move,ELECTRODRIFT,Electroderrape
+move,ELECTROSHOT,Electrorrayo
+move,ELECTROWEB,Electrotela
+move,EMBARGO,Embargo
+move,EMBER,Ascuas
+move,ENCORE,Otra Vez
+move,ENDEAVOR,Esfuerzo
+move,ENDURE,Aguante
+move,ENERGYBALL,Energibola
+move,ENTRAINMENT,Danza Amiga
+move,ERUPTION,Estallido
+move,ESPERWING,Ala Aural
+move,ETERNABEAM,Rayo Infinito
+move,EXPANDINGFORCE,Vasta Fuerza
+move,EXPLOSION,Explosión
+move,EXTRASENSORY,Paranormal
+move,EXTREMEEVOBOOST,Novena Potencia
+move,EXTREMESPEED,Velocidad Extrema
+move,FACADE,Fachada
+move,FAIRYLOCK,Cerrojo Feérico
+move,FAIRYWIND,Viento Feérico
+move,FAKEOUT,Sorpresa
+move,FAKETEARS,Llanto Falso
+move,FALSESURRENDER,Irreverencia
+move,FALSESWIPE,Falso Tortazo
+move,FEATHERDANCE,Danza Pluma
+move,FEINT,Amago
+move,FEINTATTACK,Finta
+move,FELLSTINGER,Aguijón Letal
+move,FICKLEBEAM,Láser Veleidoso
+move,FIERYDANCE,Danza Llama
+move,FIERYWRATH,Furia Candente
+move,FILLETAWAY,Deslome
+move,FINALGAMBIT,Sacrificio
+move,FIREBLAST,Llamarada
+move,FIREFANG,Colmillo Ígneo
+move,FIRELASH,Látigo Ígneo
+move,FIREPLEDGE,Voto Fuego
+move,FIREPUNCH,Puño Fuego
+move,FIRESPIN,Giro Fuego
+move,FIRSTIMPRESSION,Escaramuza
+move,FISHIOUSREND,Branquibocado
+move,FISSURE,Fisura
+move,FLAIL,Azote
+move,FLAMEBURST,Pirotecnia
+move,FLAMECHARGE,Nitrocarga
+move,FLAMETHROWER,Lanzallamas
+move,FLAMEWHEEL,Rueda Fuego
+move,FLAREBLITZ,Envite Ígneo
+move,FLASH,Destello
+move,FLASHCANNON,Cañón Resplandor
+move,FLATTER,Camelo
+move,FLEURCANNON,Cañón Floral
+move,FLING,Lanzamiento
+move,FLIPTURN,Viraje
+move,FLOATYFALL,Pikapicado
+move,FLORALHEALING,Cura Floral
+move,FLOWERSHIELD,Defensa Floral
+move,FLOWERTRICK,Truco Floral
+move,FLY,Vuelo
+move,FLYINGPRESS,Plancha Voladora
+move,FOCUSBLAST,Onda Certera
+move,FOCUSENERGY,Foco Energía
+move,FOCUSPUNCH,Puño Certero
+move,FOLLOWME,Señuelo
+move,FORCEPALM,Palmeo
+move,FORESIGHT,Profecía
+move,FORESTSCURSE,Condena Silvana
+move,FOULPLAY,Juego Sucio
+move,FREEZEDRY,Liofilización
+move,FREEZESHOCK,Rayo Gélido
+move,FREEZINGGLARE,Mirada Heladora
+move,FREEZYFROST,Glaceoprisma
+move,FRENZYPLANT,Planta Feroz
+move,FROSTBREATH,Vaho Gélido
+move,FRUSTRATION,Frustración
+move,FURYATTACK,Ataque Furia
+move,FURYCUTTER,Corte Furia
+move,FURYSWIPES,Golpes Furia
+move,FUSIONBOLT,Rayo Fusión
+move,FUSIONFLARE,Llama Fusión
+move,FUTURESIGHT,Premonición
+move,GASTROACID,Bilis
+move,GEARGRIND,Rueda Doble
+move,GEARUP,Piñón Auxiliar
+move,GENESISSUPERNOVA,Supernova Original
+move,GEOMANCY,Geocontrol
+move,GIGADRAIN,Gigadrenado
+move,GIGAIMPACT,Gigaimpacto
+move,GIGATONHAMMER,Martillo Colosal
+move,GIGAVOLTHAVOCPHYSICAL,Gigavoltio Destructor
+move,GIGAVOLTHAVOCSPECIAL,Gigavoltio Destructor
+move,GLACIALLANCE,Lanza Glacial
+move,GLACIATE,Mundo Gélido
+move,GLAIVERUSH,Asalto Espadón
+move,GLARE,Deslumbrar
+move,GLITZYGLOW,Espeaura
+move,GRASSKNOT,Hierba Lazo
+move,GRASSPLEDGE,Voto Planta
+move,GRASSWHISTLE,Silbato
+move,GRASSYGLIDE,Fitoimpulso
+move,GRASSYTERRAIN,Campo de Hierba
+move,GRAVAPPLE,Fuerza G
+move,GRAVITY,Gravedad
+move,GROWL,Gruñido
+move,GROWTH,Desarrollo
+move,GRUDGE,Rabia
+move,GUARDIANOFALOLA,Cólera del Guardián
+move,GUARDSPLIT,Isoguardia
+move,GUARDSWAP,Cambiadefensa
+move,GUILLOTINE,Guillotina
+move,GUNKSHOT,Lanzamugre
+move,GUST,Tornado
+move,GYROBALL,Giro Bola
+move,HAIL,Granizo
+move,HAMMERARM,Machada
+move,HAPPYHOUR,Paga Extra
+move,HARDEN,Fortaleza
+move,HARDPRESS,Prensa Metálica
+move,HAZE,Niebla
+move,HEADBUTT,Golpe Cabeza
+move,HEADCHARGE,Ariete
+move,HEADLONGRUSH,Arremetida
+move,HEADSMASH,Testarazo
+move,HEALBELL,Cascabel Cura
+move,HEALBLOCK,Anticura
+move,HEALINGWISH,Deseo Cura
+move,HEALORDER,Auxilio
+move,HEALPULSE,Pulso Cura
+move,HEARTSTAMP,Arrumaco
+move,HEARTSWAP,Cambiaalmas
+move,HEATCRASH,Golpe Calor
+move,HEATWAVE,Onda Ígnea
+move,HEAVYSLAM,Cuerpo Pesado
+move,HELPINGHAND,Refuerzo
+move,HEX,Infortunio
+move,HIDDENPOWER,Poder Oculto
+move,HIGHHORSEPOWER,Fuerza Equina
+move,HIGHJUMPKICK,Patada Salto Alta
+move,HOLDBACK,Clemencia
+move,HOLDHANDS,Manos Juntas
+move,HONECLAWS,Afilagarras
+move,HORNATTACK,Cornada
+move,HORNDRILL,Perforador
+move,HORNLEECH,Asta Drenaje
+move,HOWL,Aullido
+move,HURRICANE,Vendaval
+move,HYDROCANNON,Hidrocañón
+move,HYDROPUMP,Hidrobomba
+move,HYDROSTEAM,Hidrovapor
+move,HYDROVORTEXPHYSICAL,Hidrovórtice Abisal
+move,HYDROVORTEXSPECIAL,Hidrovórtice Abisal
+move,HYPERBEAM,Hiperrayo
+move,HYPERDRILL,Hipertaladro
+move,HYPERFANG,Hipercolmillo
+move,HYPERSPACEFURY,Cerco Dimensión
+move,HYPERSPACEHOLE,Paso Dimensional
+move,HYPERVOICE,Vozarrón
+move,HYPNOSIS,Hipnosis
+move,ICEBALL,Bola Hielo
+move,ICEBEAM,Rayo Hielo
+move,ICEBURN,Llama Gélida
+move,ICEFANG,Colmillo Hielo
+move,ICEHAMMER,Martillo Hielo
+move,ICEPUNCH,Puño Hielo
+move,ICESHARD,Esquirla Helada
+move,ICESPINNER,Pirueta Helada
+move,ICICLECRASH,Chuzos
+move,ICICLESPEAR,Carámbano
+move,ICYWIND,Viento Hielo
+move,IMPRISON,Sellar
+move,INCINERATE,Calcinación
+move,INFERNALPARADE,Marcha Espectral
+move,INFERNO,Infierno
+move,INFERNOOVERDRIVEPHYSICAL,Hecatombe Pírica
+move,INFERNOOVERDRIVESPECIAL,Hecatombe Pírica
+move,INFESTATION,Acoso
+move,INGRAIN,Arraigo
+move,INSTRUCT,Mandato
+move,IONDELUGE,Cortina Plasma
+move,IRONDEFENSE,Defensa Férrea
+move,IRONHEAD,Cabeza de Hierro
+move,IRONTAIL,Cola Férrea
+move,IVYCUDGEL,Garrote Liana
+move,JAWLOCK,Presa Maxilar
+move,JETPUNCH,Puño Jet
+move,JUDGMENT,Sentencia
+move,JUMPKICK,Patada Salto
+move,JUNGLEHEALING,Cura Selvática
+move,KARATECHOP,Golpe Kárate
+move,KINESIS,Kinético
+move,KINGSSHIELD,Escudo Real
+move,KNOCKOFF,Desarme
+move,KOWTOWCLEAVE,Genufendiente
+move,LANDSWRATH,Fuerza Telúrica
+move,LASERFOCUS,Aguzar
+move,LASHOUT,Desahogo
+move,LASTRESORT,Última Baza
+move,LASTRESPECTS,Homenaje Póstumo
+move,LAVAPLUME,Humareda
+move,LEAFAGE,Follaje
+move,LEAFBLADE,Hoja Aguda
+move,LEAFSTORM,Lluevehojas
+move,LEAFTORNADO,Ciclón de Hojas
+move,LEECHLIFE,Chupavidas
+move,LEECHSEED,Drenadoras
+move,LEER,Malicioso
+move,LETSSNUGGLEFOREVER,Somanta Amistosa
+move,LICK,Lengüetazo
+move,LIFEDEW,Gota Vital
+move,LIGHTOFRUIN,Luz Aniquiladora
+move,LIGHTSCREEN,Pantalla de Luz
+move,LIGHTTHATBURNSTHESKY,Fotodestrucción Apocalíptica
+move,LIQUIDATION,Hidroariete
+move,LOCKON,Fijar Blanco
+move,LOVELYKISS,Beso Amoroso
+move,LOWKICK,Patada Baja
+move,LOWSWEEP,Puntapié
+move,LUCKYCHANT,Conjuro
+move,LUMINACRASH,Fotocolisión
+move,LUNARBLESSING,Plegaria Lunar
+move,LUNARDANCE,Danza Lunar
+move,LUNGE,Plancha
+move,LUSTERPURGE,Resplandor
+move,MACHPUNCH,Ultrapuño
+move,MAGICALLEAF,Hoja Mágica
+move,MAGICALTORQUE,Feerichoque
+move,MAGICCOAT,Capa Mágica
+move,MAGICPOWDER,Polvo Mágico
+move,MAGICROOM,Zona Mágica
+move,MAGMASTORM,Lluvia Ígnea
+move,MAGNETBOMB,Bomba Imán
+move,MAGNETICFLUX,Aura Magnética
+move,MAGNETRISE,Levitón
+move,MAGNITUDE,Magnitud
+move,MAKEITRAIN,Fiebre Dorada
+move,MALICIOUSMOONSAULT,Hiperplancha Oscura
+move,MALIGNANTCHAIN,Cadena Virulenta
+move,MATBLOCK,Escudo Tatami
+move,MATCHAGOTCHA,Cañón Batidor
+move,MAXAIRSTREAM,Maxiciclón
+move,MAXDARKNESS,Maxisombra
+move,MAXFLARE,Maxignición
+move,MAXFLUTTERBY,Maxinsecto
+move,MAXGEYSER,Maxichorro
+move,MAXGUARD,Maxibarrera
+move,MAXHAILSTORM,Maxihelada
+move,MAXKNUCKLE,Maxipuño
+move,MAXLIGHTNING,Maxitormenta
+move,MAXMINDSTORM,Maxionda
+move,MAXOOZE,Maxiácido
+move,MAXOVERGROWTH,Maxiflora
+move,MAXPHANTASM,Maxiespectro
+move,MAXQUAKE,Maxitemblor
+move,MAXROCKFALL,Maxilito
+move,MAXSTARFALL,Maxiestela
+move,MAXSTEELSPIKE,Maximetal
+move,MAXSTRIKE,Maxiataque
+move,MAXWYRMWIND,Maxidraco
+move,MEANLOOK,Mal de Ojo
+move,MEDITATE,Meditación
+move,MEFIRST,Yo Primero
+move,MEGADRAIN,Megaagotar
+move,MEGAHORN,Megacuerno
+move,MEGAKICK,Megapatada
+move,MEGAPUNCH,Megapuño
+move,MEMENTO,Legado
+move,MENACINGMOONRAZEMAELSTROM,Deflagración Lunar
+move,METALBURST,Represión Metal
+move,METALCLAW,Garra Metal
+move,METALSOUND,Eco Metálico
+move,METEORASSAULT,Asalto Estelar
+move,METEORBEAM,Rayo Meteórico
+move,METEORMASH,Puño Meteoro
+move,METRONOME,Metrónomo
+move,MIGHTYCLEAVE,Filo Potente
+move,MILKDRINK,Batido
+move,MIMIC,Mimético
+move,MINDBLOWN,Cabeza Sorpresa
+move,MINDREADER,Telépata
+move,MINIMIZE,Reducción
+move,MIRACLEEYE,Gran Ojo
+move,MIRRORCOAT,Manto Espejo
+move,MIRRORMOVE,Espejo
+move,MIRRORSHOT,Disparo Espejo
+move,MIST,Neblina
+move,MISTBALL,Bola Neblina
+move,MISTYEXPLOSION,Bruma Explosiva
+move,MISTYTERRAIN,Campo de Niebla
+move,MOONBLAST,Fuerza Lunar
+move,MOONGEISTBEAM,Rayo Umbrío
+move,MOONLIGHT,Luz Lunar
+move,MORNINGSUN,Sol Matinal
+move,MORTALSPIN,Giro Mortífero
+move,MOUNTAINGALE,Viento Carámbano
+move,MUDBOMB,Bomba Fango
+move,MUDDYWATER,Agua Lodosa
+move,MUDSHOT,Disparo Lodo
+move,MUDSLAP,Bofetón Lodo
+move,MUDSPORT,Chapoteo Lodo
+move,MULTIATTACK,Multiataque
+move,MYSTICALFIRE,Llama Embrujada
+move,MYSTICALPOWER,Poder Místico
+move,NASTYPLOT,Maquinación
+move,NATURALGIFT,Don Natural
+move,NATUREPOWER,Adaptación
+move,NATURESMADNESS,Furia Natural
+move,NEEDLEARM,Brazo Pincho
+move,NEVERENDINGNIGHTMAREPHYSICAL,Presa Espectral
+move,NEVERENDINGNIGHTMARESPECIAL,Presa Espectral
+move,NIGHTDAZE,Pulso Noche
+move,NIGHTMARE,Pesadilla
+move,NIGHTSHADE,Tinieblas
+move,NIGHTSLASH,Tajo Umbrío
+move,NOBLEROAR,Rugido de Guerra
+move,NORETREAT,Bastión Final
+move,NOXIOUSTORQUE,Ponzochoque
+move,NUZZLE,Moflete Estático
+move,OBLIVIONWING,Ala Mortífera
+move,OBSTRUCT,Obstrucción
+move,OCEANICOPERETTA,Sinfonía de la Diva Marina
+move,OCTAZOOKA,Pulpocañón
+move,OCTOLOCK,Octopresa
+move,ODORSLEUTH,Rastreo
+move,OMINOUSWIND,Viento Aciago
+move,ORDERUP,Oído Cocina
+move,ORIGINPULSE,Pulso Primigenio
+move,OUTRAGE,Enfado
+move,OVERDRIVE,Amplificador
+move,OVERHEAT,Sofoco
+move,PAINSPLIT,Divide Dolor
+move,PARABOLICCHARGE,Carga Parábola
+move,PARTINGSHOT,Última Palabra
+move,PAYBACK,Vendetta
+move,PAYDAY,Día de Pago
+move,PECK,Picotazo
+move,PERISHSONG,Canto Mortal
+move,PETALBLIZZARD,Tormenta Floral
+move,PETALDANCE,Danza Pétalo
+move,PHANTOMFORCE,Golpe Fantasma
+move,PHOTONGEYSER,Géiser Fotónico
+move,PIKAPAPOW,Pikatormenta
+move,PINMISSILE,Pin Misil
+move,PLASMAFISTS,Puños Plasma
+move,PLAYNICE,Camaradería
+move,PLAYROUGH,Carantoña
+move,PLUCK,Picoteo
+move,POISONFANG,Colmillo Veneno
+move,POISONGAS,Gas Venenoso
+move,POISONJAB,Puya Nociva
+move,POISONPOWDER,Polvo Veneno
+move,POISONSTING,Picotazo Veneno
+move,POISONTAIL,Cola Veneno
+move,POLLENPUFF,Bola de Polen
+move,POLTERGEIST,Poltergeist
+move,POPULATIONBOMB,Proliferación
+move,POUNCE,Brinco
+move,POUND,Destructor
+move,POWDER,Polvo Explosivo
+move,POWDERSNOW,Nieve Polvo
+move,POWERGEM,Joya de Luz
+move,POWERSHIFT,Cambiapoder
+move,POWERSPLIT,Isofuerza
+move,POWERSWAP,Cambiafuerza
+move,POWERTRICK,Truco Fuerza
+move,POWERTRIP,Chulería
+move,POWERUPPUNCH,Puño Incremento
+move,POWERWHIP,Latigazo
+move,PRECIPICEBLADES,Filo del Abismo
+move,PRESENT,Presente
+move,PRISMATICLASER,Láser Prisma
+move,PROTECT,Protección
+move,PSYBEAM,Psicorrayo
+move,PSYBLADE,Psicohojas
+move,PSYCHIC,Psíquico
+move,PSYCHICFANGS,Psicocolmillo
+move,PSYCHICNOISE,Psicorruido
+move,PSYCHICTERRAIN,Campo Psíquico
+move,PSYCHOBOOST,Psicoataque
+move,PSYCHOCUT,Psicocorte
+move,PSYCHOSHIFT,Psicocambio
+move,PSYCHUP,Autosugestión
+move,PSYSHIELDBASH,Asalto Barrera
+move,PSYSHOCK,Psicocarga
+move,PSYSTRIKE,Onda Mental
+move,PSYWAVE,Psicoonda
+move,PULVERIZINGPANCAKE,Arrojo Intempestivo
+move,PUNISHMENT,Castigo
+move,PURIFY,Purificación
+move,PURSUIT,Persecución
+move,PYROBALL,Balón Ígneo
+move,QUASH,Último Lugar
+move,QUICKATTACK,Ataque Rápido
+move,QUICKGUARD,Anticipo
+move,QUIVERDANCE,Danza Aleteo
+move,RAGE,Furia
+move,RAGEFIST,Puño Furia
+move,RAGEPOWDER,Polvo Ira
+move,RAGINGBULL,Furia Taurina
+move,RAGINGFURY,Erupción de Ira
+move,RAINDANCE,Danza Lluvia
+move,RAPIDSPIN,Giro Rápido
+move,RAZORLEAF,Hoja Afilada
+move,RAZORSHELL,Concha Filo
+move,RAZORWIND,Viento Cortante
+move,RECOVER,Recuperación
+move,RECYCLE,Reciclaje
+move,REFLECT,Reflejo
+move,REFLECTTYPE,Clonatipo
+move,REFRESH,Alivio
+move,RELICSONG,Canto Arcaico
+move,REST,Descanso
+move,RETALIATE,Represalia
+move,RETURN,Retribución
+move,REVELATIONDANCE,Danza Despertar
+move,REVENGE,Desquite
+move,REVERSAL,Inversión
+move,REVIVALBLESSING,Plegaria Vital
+move,RISINGVOLTAGE,Alto Voltaje
+move,ROAR,Rugido
+move,ROAROFTIME,Distorsión
+move,ROCKBLAST,Pedrada
+move,ROCKCLIMB,Treparrocas
+move,ROCKPOLISH,Pulimento
+move,ROCKSLIDE,Avalancha
+move,ROCKSMASH,Golpe Roca
+move,ROCKTHROW,Lanzarrocas
+move,ROCKTOMB,Tumba Rocas
+move,ROCKWRECKER,Romperrocas
+move,ROLEPLAY,Imitación
+move,ROLLINGKICK,Patada Giro
+move,ROLLOUT,Rodar
+move,ROOST,Respiro
+move,ROTOTILLER,Fertilizante
+move,ROUND,Canon
+move,RUINATION,Calamidad
+move,SACREDFIRE,Fuego Sagrado
+move,SACREDSWORD,Espada Santa
+move,SAFEGUARD,Velo Sagrado
+move,SALTCURE,Salazón
+move,SANDATTACK,Ataque Arena
+move,SANDSEARSTORM,Simún de Arena
+move,SANDSTORM,Tormenta de Arena
+move,SANDTOMB,Bucle Arena
+move,SAPPYSEED,Leafitobombas
+move,SAVAGESPINOUTPHYSICAL,Guadaña Sedosa
+move,SAVAGESPINOUTSPECIAL,Guadaña Sedosa
+move,SCALD,Escaldar
+move,SCALESHOT,Ráfaga Escamas
+move,SCARYFACE,Cara Susto
+move,SCORCHINGSANDS,Arenas Ardientes
+move,SCRATCH,Arañazo
+move,SCREECH,Chirrido
+move,SEARINGSHOT,Bomba Ígnea
+move,SEARINGSUNRAZESMASH,Embestida Solar
+move,SECRETPOWER,Daño Secreto
+move,SECRETSWORD,Sable Místico
+move,SEEDBOMB,Bomba Germen
+move,SEEDFLARE,Fulgor Semilla
+move,SEISMICTOSS,Sísmico
+move,SELFDESTRUCT,Autodestrucción
+move,SHADOWBALL,Bola Sombra
+move,SHADOWBONE,Hueso Sombrío
+move,SHADOWCLAW,Garra Umbría
+move,SHADOWFORCE,Golpe Umbrío
+move,SHADOWPUNCH,Puño Sombra
+move,SHADOWSNEAK,Sombra Vil
+move,SHARPEN,Afilar
+move,SHATTEREDPSYCHEPHYSICAL,Disruptor Psíquico
+move,SHATTEREDPSYCHESPECIAL,Disruptor Psíquico
+move,SHEDTAIL,Autotomía
+move,SHEERCOLD,Frío Polar
+move,SHELLSIDEARM,Moluscañón
+move,SHELLSMASH,Rompecoraza
+move,SHELLTRAP,Coraza Trampa
+move,SHELTER,Retracción
+move,SHIFTGEAR,Cambio de Marcha
+move,SHOCKWAVE,Onda Voltio
+move,SHOREUP,Recogearena
+move,SIGNALBEAM,Rayo Señal
+move,SILKTRAP,Telatrampa
+move,SILVERWIND,Viento Plata
+move,SIMPLEBEAM,Onda Simple
+move,SING,Canto
+move,SINISTERARROWRAID,Aluvión de Flechas Sombrías
+move,SIZZLYSLIDE,Flarembestida
+move,SKETCH,Esquema
+move,SKILLSWAP,Intercambio
+move,SKITTERSMACK,Golpe Rastrero
+move,SKULLBASH,Cabezazo
+move,SKYATTACK,Ataque Aéreo
+move,SKYDROP,Caída Libre
+move,SKYUPPERCUT,Gancho Alto
+move,SLACKOFF,Relajo
+move,SLAM,Atizar
+move,SLASH,Cuchillada
+move,SLEEPPOWDER,Somnífero
+move,SLEEPTALK,Sonámbulo
+move,SLUDGE,Residuos
+move,SLUDGEBOMB,Bomba Lodo
+move,SLUDGEWAVE,Onda Tóxica
+move,SMACKDOWN,Antiaéreo
+move,SMARTSTRIKE,Cuerno Certero
+move,SMELLINGSALTS,Estímulo
+move,SMOG,Polución
+move,SMOKESCREEN,Pantalla de Humo
+move,SNAPTRAP,Cepo
+move,SNARL,Alarido
+move,SNATCH,Robo
+move,SNIPESHOT,Disparo Certero
+move,SNORE,Ronquido
+move,SNOWSCAPE,Paisaje Nevado
+move,SOAK,Empapar
+move,SOFTBOILED,Ovocuración
+move,SOLARBEAM,Rayo Solar
+move,SOLARBLADE,Cuchilla Solar
+move,SONICBOOM,Bomba Sónica
+move,SOULSTEALING7STARSTRIKE,Constelación Robaalmas
+move,SPACIALREND,Corte Vacío
+move,SPARK,Chispa
+move,SPARKLINGARIA,Aria Burbuja
+move,SPARKLYSWIRL,Sylveotornado
+move,SPECTRALTHIEF,Robasombra
+move,SPEEDSWAP,Cambiavelocidad
+move,SPICYEXTRACT,Extracto Picante
+move,SPIDERWEB,Telaraña
+move,SPIKECANNON,Clavo Cañón
+move,SPIKES,Púas
+move,SPIKYSHIELD,Barrera Espinosa
+move,SPINOUT,Quemarrueda
+move,SPIRITBREAK,Choque Anímico
+move,SPIRITSHACKLE,Puntada Sombría
+move,SPITE,Rencor
+move,SPITUP,Escupir
+move,SPLASH,Salpicadura
+move,SPLINTEREDSTORMSHARDS,Tempestad Rocosa
+move,SPLISHYSPLASH,Salpikasurf
+move,SPORE,Espora
+move,SPOTLIGHT,Foco
+move,SPRINGTIDESTORM,Ciclón Primavera
+move,STEALTHROCK,Trampa Rocas
+move,STEAMERUPTION,Chorro de Vapor
+move,STEAMROLLER,Rodillo de Púas
+move,STEELBEAM,Metaláser
+move,STEELROLLER,Allanador Férreo
+move,STEELWING,Ala de Acero
+move,STICKYWEB,Red Viscosa
+move,STOCKPILE,Reserva
+move,STOKEDSPARKSURFER,Surfeo Galvánico
+move,STOMP,Pisotón
+move,STOMPINGTANTRUM,Pataleta
+move,STONEAXE,Hachazo Pétreo
+move,STONEEDGE,Roca Afilada
+move,STOREDPOWER,Poder Reserva
+move,STORMTHROW,Llave Corsé
+move,STRANGESTEAM,Cautivapor
+move,STRENGTH,Fuerza
+move,STRENGTHSAP,Absorbefuerza
+move,STRINGSHOT,Disparo Demora
+move,STRUGGLE,Forcejeo
+move,STRUGGLEBUG,Estoicismo
+move,STUFFCHEEKS,Atiborramiento
+move,STUNSPORE,Paralizador
+move,SUBMISSION,Sumisión
+move,SUBSTITUTE,Sustituto
+move,SUBZEROSLAMMERPHYSICAL,Crioaliento Despiadado
+move,SUBZEROSLAMMERSPECIAL,Crioaliento Despiadado
+move,SUCKERPUNCH,Golpe Bajo
+move,SUNNYDAY,Día Soleado
+move,SUNSTEELSTRIKE,Meteoimpacto
+move,SUPERCELLSLAM,Plancha Voltaica
+move,SUPERFANG,Superdiente
+move,SUPERPOWER,Fuerza Bruta
+move,SUPERSONIC,Supersónico
+move,SUPERSONICSKYSTRIKEPHYSICAL,Picado Supersónico
+move,SUPERSONICSKYSTRIKESPECIAL,Picado Supersónico
+move,SURF,Surf
+move,SURGINGSTRIKES,Azote Torrencial
+move,SWAGGER,Fanfarronear
+move,SWALLOW,Tragar
+move,SWEETKISS,Beso Dulce
+move,SWEETSCENT,Dulce Aroma
+move,SWIFT,Meteoros
+move,SWITCHEROO,Trapicheo
+move,SWORDSDANCE,Danza Espada
+move,SYNCHRONOISE,Sincrorruido
+move,SYNTHESIS,Fotosíntesis
+move,SYRUPBOMB,Bomba Caramelo
+move,TACHYONCUTTER,Tajo Taquión
+move,TACKLE,Placaje
+move,TAILGLOW,Luminicola
+move,TAILSLAP,Plumerazo
+move,TAILWHIP,Agitacola
+move,TAILWIND,Viento Afín
+move,TAKEDOWN,Derribo
+move,TAKEHEART,Bálsamo Osado
+move,TARSHOT,Alquitranazo
+move,TAUNT,Mofa
+move,TEARFULLOOK,Ojos Llorosos
+move,TEATIME,Hora del Té
+move,TECHNOBLAST,Tecno Shock
+move,TECTONICRAGEPHYSICAL,Barrena Telúrica
+move,TECTONICRAGESPECIAL,Barrena Telúrica
+move,TEETERDANCE,Danza Caos
+move,TELEKINESIS,Telequinesis
+move,TELEPORT,Teletransporte
+move,TEMPERFLARE,Cólera Ardiente
+move,TERABLAST,Teraexplosión
+move,TERASTARSTORM,Teraclúster
+move,TERRAINPULSE,Pulso de Campo
+move,THIEF,Ladrón
+move,THOUSANDARROWS,Mil Flechas
+move,THOUSANDWAVES,Mil Temblores
+move,THRASH,Saña
+move,THROATCHOP,Golpe Mordaza
+move,THUNDER,Trueno
+move,THUNDERBOLT,Rayo
+move,THUNDERCAGE,Electrojaula
+move,THUNDERCLAP,Relámpago Súbito
+move,THUNDERFANG,Colmillo Rayo
+move,THUNDEROUSKICK,Patada Relámpago
+move,THUNDERPUNCH,Puño Trueno
+move,THUNDERSHOCK,Impactrueno
+move,THUNDERWAVE,Onda Trueno
+move,TICKLE,Cosquillas
+move,TIDYUP,Limpieza General
+move,TOPSYTURVY,Reversión
+move,TORCHSONG,Canto Ardiente
+move,TORMENT,Tormento
+move,TOXIC,Tóxico
+move,TOXICSPIKES,Púas Tóxicas
+move,TOXICTHREAD,Hilo Venenoso
+move,TRAILBLAZE,Abrecaminos
+move,TRANSFORM,Transformación
+move,TRIATTACK,Triataque
+move,TRICK,Truco
+move,TRICKORTREAT,Halloween
+move,TRICKROOM,Espacio Raro
+move,TRIPLEARROWS,Triple Flecha
+move,TRIPLEAXEL,Triple Axel
+move,TRIPLEDIVE,Triple Inmersión
+move,TRIPLEKICK,Triple Patada
+move,TROPKICK,Patada Tropical
+move,TRUMPCARD,As Oculto
+move,TWINBEAM,Láser Doble
+move,TWINEEDLE,Doble Ataque
+move,TWINKLETACKLEPHYSICAL,Arrumaco Sideral
+move,TWINKLETACKLESPECIAL,Arrumaco Sideral
+move,TWISTER,Ciclón
+move,UPPERHAND,Palma Rauda
+move,UPROAR,Alboroto
+move,UTURN,Ida y Vuelta
+move,VACUUMWAVE,Onda Vacío
+move,VCREATE,V de Fuego
+move,VEEVEEVOLLEY,Eevimpacto
+move,VENOMDRENCH,Trampa Venenosa
+move,VENOSHOCK,Carga Tóxica
+move,VICEGRIP,Agarre
+move,VICTORYDANCE,Danza Triunfal
+move,VINEWHIP,Látigo Cepa
+move,VITALTHROW,Llave Vital
+move,VOLTSWITCH,Voltiocambio
+move,VOLTTACKLE,Placaje Eléctrico
+move,WAKEUPSLAP,Espabila
+move,WATERFALL,Cascada
+move,WATERGUN,Pistola Agua
+move,WATERPLEDGE,Voto Agua
+move,WATERPULSE,Hidropulso
+move,WATERSHURIKEN,Shuriken de Agua
+move,WATERSPORT,Hidrochorro
+move,WATERSPOUT,Salpicar
+move,WAVECRASH,Envite Acuático
+move,WEATHERBALL,Meteorobola
+move,WHIRLPOOL,Torbellino
+move,WHIRLWIND,Remolino
+move,WICKEDBLOW,Golpe Oscuro
+move,WICKEDTORQUE,Ominochoque
+move,WIDEGUARD,Vasta Guardia
+move,WILDBOLTSTORM,Electormenta
+move,WILDCHARGE,Voltio Cruel
+move,WILLOWISP,Fuego Fatuo
+move,WINGATTACK,Ataque Ala
+move,WISH,Deseo
+move,WITHDRAW,Refugio
+move,WONDERROOM,Zona Extraña
+move,WOODHAMMER,Mazazo
+move,WORKUP,Avivar
+move,WORRYSEED,Abatidoras
+move,WRAP,Constricción
+move,WRINGOUT,Estrujón
+move,XSCISSOR,Tijera X
+move,YAWN,Bostezo
+move,ZAPCANNON,Electrocañón
+move,ZENHEADBUTT,Cabezazo Zen
+move,ZINGZAP,Electropunzada
+move,ZIPPYZAP,Pikaturbo
+nature,ADAMANT,Firme
+nature,BASHFUL,Tímida
+nature,BOLD,Osada
+nature,BRAVE,Audaz
+nature,CALM,Serena
+nature,CAREFUL,Cauta
+nature,DOCILE,Dócil
+nature,GENTLE,Amable
+nature,HARDY,Fuerte
+nature,HASTY,Activa
+nature,IMPISH,Agitada
+nature,JOLLY,Alegre
+nature,LAX,Floja
+nature,LONELY,Huraña
+nature,MILD,Afable
+nature,MODEST,Modesta
+nature,NAIVE,Ingenua
+nature,NAUGHTY,Pícara
+nature,QUIET,Mansa
+nature,QUIRKY,Rara
+nature,RASH,Alocada
+nature,RELAXED,Plácida
+nature,SASSY,Grosera
+nature,SERIOUS,Seria
+nature,TIMID,Miedosa
+species,ABOMASNOW,460
+species,ABRA,63
+species,ABSOL,359
+species,ACCELGOR,617
+species,AEGISLASH,681
+species,AERODACTYL,142
+species,AGGRON,306
+species,AIPOM,190
+species,ALAKAZAM,65
+species,ALCREMIE,869
+species,ALOMOMOLA,594
+species,ALTARIA,334
+species,AMAURA,698
+species,AMBIPOM,424
+species,AMOONGUSS,591
+species,AMPHAROS,181
+species,ANNIHILAPE,979
+species,ANORITH,347
+species,APPLETUN,842
+species,APPLIN,840
+species,ARAQUANID,752
+species,ARBOK,24
+species,ARBOLIVA,930
+species,ARCANINE,59
+species,ARCEUS,493
+species,ARCHALUDON,1018
+species,ARCHEN,566
+species,ARCHEOPS,567
+species,ARCTIBAX,997
+species,ARCTOVISH,883
+species,ARCTOZOLT,881
+species,ARIADOS,168
+species,ARMALDO,348
+species,ARMAROUGE,936
+species,AROMATISSE,683
+species,ARON,304
+species,ARROKUDA,846
+species,ARTICUNO,144
+species,AUDINO,531
+species,AURORUS,699
+species,AVALUGG,713
+species,AXEW,610
+species,AZELF,482
+species,AZUMARILL,184
+species,AZURILL,298
+species,BAGON,371
+species,BALTOY,343
+species,BANETTE,354
+species,BARBARACLE,689
+species,BARBOACH,339
+species,BARRASKEWDA,847
+species,BASCULEGION,902
+species,BASCULIN,550
+species,BASTIODON,411
+species,BAXCALIBUR,998
+species,BAYLEEF,153
+species,BEARTIC,614
+species,BEAUTIFLY,267
+species,BEEDRILL,15
+species,BEHEEYEM,606
+species,BELDUM,374
+species,BELLIBOLT,939
+species,BELLOSSOM,182
+species,BELLSPROUT,69
+species,BERGMITE,712
+species,BEWEAR,760
+species,BIBAREL,400
+species,BIDOOF,399
+species,BINACLE,688
+species,BISHARP,625
+species,BLACEPHALON,806
+species,BLASTOISE,9
+species,BLAZIKEN,257
+species,BLIPBUG,824
+species,BLISSEY,242
+species,BLITZLE,522
+species,BOLDORE,525
+species,BOLTUND,836
+species,BOMBIRDIER,962
+species,BONSLY,438
+species,BOUFFALANT,626
+species,BOUNSWEET,761
+species,BRAIXEN,654
+species,BRAMBLEGHAST,947
+species,BRAMBLIN,946
+species,BRAVIARY,628
+species,BRELOOM,286
+species,BRIONNE,729
+species,BRONZONG,437
+species,BRONZOR,436
+species,BRUTEBONNET,986
+species,BRUXISH,779
+species,BUDEW,406
+species,BUIZEL,418
+species,BULBASAUR,1
+species,BUNEARY,427
+species,BUNNELBY,659
+species,BURMY,412
+species,BUTTERFREE,12
+species,BUZZWOLE,794
+species,CACNEA,331
+species,CACTURNE,332
+species,CALYREX,898
+species,CAMERUPT,323
+species,CAPSAKID,951
+species,CARBINK,703
+species,CARKOL,838
+species,CARNIVINE,455
+species,CARRACOSTA,565
+species,CARVANHA,318
+species,CASCOON,268
+species,CASTFORM,351
+species,CATERPIE,10
+species,CELEBI,251
+species,CELESTEELA,797
+species,CENTISKORCH,851
+species,CERULEDGE,937
+species,CETITAN,975
+species,CETODDLE,974
+species,CHANDELURE,609
+species,CHANSEY,113
+species,CHARCADET,935
+species,CHARIZARD,6
+species,CHARJABUG,737
+species,CHARMANDER,4
+species,CHARMELEON,5
+species,CHATOT,441
+species,CHERRIM,421
+species,CHERUBI,420
+species,CHESNAUGHT,652
+species,CHESPIN,650
+species,CHEWTLE,833
+species,CHIENPAO,1002
+species,CHIKORITA,152
+species,CHIMCHAR,390
+species,CHIMECHO,358
+species,CHINCHOU,170
+species,CHINGLING,433
+species,CHIYU,1004
+species,CINCCINO,573
+species,CINDERACE,815
+species,CLAMPERL,366
+species,CLAUNCHER,692
+species,CLAWITZER,693
+species,CLAYDOL,344
+species,CLEFABLE,36
+species,CLEFAIRY,35
+species,CLEFFA,173
+species,CLOBBOPUS,852
+species,CLODSIRE,980
+species,CLOYSTER,91
+species,COALOSSAL,839
+species,COBALION,638
+species,COFAGRIGUS,563
+species,COMBEE,415
+species,COMBUSKEN,256
+species,COMFEY,764
+species,CONKELDURR,534
+species,COPPERAJAH,879
+species,CORPHISH,341
+species,CORSOLA,222
+species,CORVIKNIGHT,823
+species,CORVISQUIRE,822
+species,COSMOEM,790
+species,COSMOG,789
+species,COTTONEE,546
+species,CRABOMINABLE,740
+species,CRABRAWLER,739
+species,CRADILY,346
+species,CRAMORANT,845
+species,CRANIDOS,408
+species,CRAWDAUNT,342
+species,CRESSELIA,488
+species,CROAGUNK,453
+species,CROBAT,169
+species,CROCALOR,910
+species,CROCONAW,159
+species,CRUSTLE,558
+species,CRYOGONAL,615
+species,CUBCHOO,613
+species,CUBONE,104
+species,CUFANT,878
+species,CURSOLA,864
+species,CUTIEFLY,742
+species,CYCLIZAR,967
+species,CYNDAQUIL,155
+species,DACHSBUN,927
+species,DARKRAI,491
+species,DARMANITAN,555
+species,DARTRIX,723
+species,DARUMAKA,554
+species,DECIDUEYE,724
+species,DEDENNE,702
+species,DEERLING,585
+species,DEINO,633
+species,DELCATTY,301
+species,DELIBIRD,225
+species,DELPHOX,655
+species,DEOXYS,386
+species,DEWGONG,87
+species,DEWOTT,502
+species,DEWPIDER,751
+species,DHELMISE,781
+species,DIALGA,483
+species,DIANCIE,719
+species,DIGGERSBY,660
+species,DIGLETT,50
+species,DIPPLIN,1011
+species,DITTO,132
+species,DODRIO,85
+species,DODUO,84
+species,DOLLIV,929
+species,DONDOZO,977
+species,DONPHAN,232
+species,DOTTLER,825
+species,DOUBLADE,680
+species,DRACOVISH,882
+species,DRACOZOLT,880
+species,DRAGALGE,691
+species,DRAGAPULT,887
+species,DRAGONAIR,148
+species,DRAGONITE,149
+species,DRAKLOAK,886
+species,DRAMPA,780
+species,DRAPION,452
+species,DRATINI,147
+species,DREDNAW,834
+species,DREEPY,885
+species,DRIFBLIM,426
+species,DRIFLOON,425
+species,DRILBUR,529
+species,DRIZZILE,817
+species,DROWZEE,96
+species,DRUDDIGON,621
+species,DUBWOOL,832
+species,DUCKLETT,580
+species,DUDUNSPARCE,982
+species,DUGTRIO,51
+species,DUNSPARCE,206
+species,DUOSION,578
+species,DURALUDON,884
+species,DURANT,632
+species,DUSCLOPS,356
+species,DUSKNOIR,477
+species,DUSKULL,355
+species,DUSTOX,269
+species,DWEBBLE,557
+species,EELEKTRIK,603
+species,EELEKTROSS,604
+species,EEVEE,133
+species,EISCUE,875
+species,EKANS,23
+species,ELDEGOSS,830
+species,ELECTABUZZ,125
+species,ELECTIVIRE,466
+species,ELECTRIKE,309
+species,ELECTRODE,101
+species,ELEKID,239
+species,ELGYEM,605
+species,EMBOAR,500
+species,EMOLGA,587
+species,EMPOLEON,395
+species,ENAMORUS,905
+species,ENTEI,244
+species,ESCAVALIER,589
+species,ESPATHRA,956
+species,ESPEON,196
+species,ESPURR,677
+species,ETERNATUS,890
+species,EXCADRILL,530
+species,EXEGGCUTE,102
+species,EXEGGUTOR,103
+species,EXPLOUD,295
+species,FALINKS,870
+species,FARFETCHD,83
+species,FARIGIRAF,981
+species,FEAROW,22
+species,FEEBAS,349
+species,FENNEKIN,653
+species,FERALIGATR,160
+species,FERROSEED,597
+species,FERROTHORN,598
+species,FEZANDIPITI,1016
+species,FIDOUGH,926
+species,FINIZEN,963
+species,FINNEON,456
+species,FLAAFFY,180
+species,FLABEBE,669
+species,FLAMIGO,973
+species,FLAPPLE,841
+species,FLAREON,136
+species,FLETCHINDER,662
+species,FLETCHLING,661
+species,FLITTLE,955
+species,FLOATZEL,419
+species,FLOETTE,670
+species,FLORAGATO,907
+species,FLORGES,671
+species,FLUTTERMANE,987
+species,FLYGON,330
+species,FOMANTIS,753
+species,FOONGUS,590
+species,FORRETRESS,205
+species,FRAXURE,611
+species,FRIGIBAX,996
+species,FRILLISH,592
+species,FROAKIE,656
+species,FROGADIER,657
+species,FROSLASS,478
+species,FROSMOTH,873
+species,FUECOCO,909
+species,FURFROU,676
+species,FURRET,162
+species,GABITE,444
+species,GALLADE,475
+species,GALVANTULA,596
+species,GARBODOR,569
+species,GARCHOMP,445
+species,GARDEVOIR,282
+species,GARGANACL,934
+species,GASTLY,92
+species,GASTRODON,423
+species,GENESECT,649
+species,GENGAR,94
+species,GEODUDE,74
+species,GHOLDENGO,1000
+species,GIBLE,443
+species,GIGALITH,526
+species,GIMMIGHOUL,999
+species,GIRAFARIG,203
+species,GIRATINA,487
+species,GLACEON,471
+species,GLALIE,362
+species,GLAMEOW,431
+species,GLASTRIER,896
+species,GLIGAR,207
+species,GLIMMET,969
+species,GLIMMORA,970
+species,GLISCOR,472
+species,GLOOM,44
+species,GOGOAT,673
+species,GOLBAT,42
+species,GOLDEEN,118
+species,GOLDUCK,55
+species,GOLEM,76
+species,GOLETT,622
+species,GOLISOPOD,768
+species,GOLURK,623
+species,GOODRA,706
+species,GOOMY,704
+species,GOREBYSS,368
+species,GOSSIFLEUR,829
+species,GOTHITA,574
+species,GOTHITELLE,576
+species,GOTHORITA,575
+species,GOUGINGFIRE,1020
+species,GOURGEIST,711
+species,GRAFAIAI,945
+species,GRANBULL,210
+species,GRAPPLOCT,853
+species,GRAVELER,75
+species,GREATTUSK,984
+species,GREAVARD,971
+species,GREEDENT,820
+species,GRENINJA,658
+species,GRIMER,88
+species,GRIMMSNARL,861
+species,GROOKEY,810
+species,GROTLE,388
+species,GROUDON,383
+species,GROVYLE,253
+species,GROWLITHE,58
+species,GRUBBIN,736
+species,GRUMPIG,326
+species,GULPIN,316
+species,GUMSHOOS,735
+species,GURDURR,533
+species,GUZZLORD,799
+species,GYARADOS,130
+species,HAKAMOO,783
+species,HAPPINY,440
+species,HARIYAMA,297
+species,HATENNA,856
+species,HATTERENE,858
+species,HATTREM,857
+species,HAUNTER,93
+species,HAWLUCHA,701
+species,HAXORUS,612
+species,HEATMOR,631
+species,HEATRAN,485
+species,HELIOLISK,695
+species,HELIOPTILE,694
+species,HERACROSS,214
+species,HERDIER,507
+species,HIPPOPOTAS,449
+species,HIPPOWDON,450
+species,HITMONCHAN,107
+species,HITMONLEE,106
+species,HITMONTOP,237
+species,HONCHKROW,430
+species,HONEDGE,679
+species,HOOH,250
+species,HOOPA,720
+species,HOOTHOOT,163
+species,HOPPIP,187
+species,HORSEA,116
+species,HOUNDOOM,229
+species,HOUNDOUR,228
+species,HOUNDSTONE,972
+species,HUNTAIL,367
+species,HYDRAPPLE,1019
+species,HYDREIGON,635
+species,HYPNO,97
+species,IGGLYBUFF,174
+species,ILLUMISE,314
+species,IMPIDIMP,859
+species,INCINEROAR,727
+species,INDEEDEE,876
+species,INFERNAPE,392
+species,INKAY,686
+species,INTELEON,818
+species,IRONBOULDER,1022
+species,IRONBUNDLE,991
+species,IRONCROWN,1023
+species,IRONHANDS,992
+species,IRONJUGULIS,993
+species,IRONLEAVES,1010
+species,IRONMOTH,994
+species,IRONTHORNS,995
+species,IRONTREADS,990
+species,IRONVALIANT,1006
+species,IVYSAUR,2
+species,JANGMOO,782
+species,JELLICENT,593
+species,JIGGLYPUFF,39
+species,JIRACHI,385
+species,JOLTEON,135
+species,JOLTIK,595
+species,JUMPLUFF,189
+species,JYNX,124
+species,KABUTO,140
+species,KABUTOPS,141
+species,KADABRA,64
+species,KAKUNA,14
+species,KANGASKHAN,115
+species,KARRABLAST,588
+species,KARTANA,798
+species,KECLEON,352
+species,KELDEO,647
+species,KILOWATTREL,941
+species,KINGAMBIT,983
+species,KINGDRA,230
+species,KINGLER,99
+species,KIRLIA,281
+species,KLANG,600
+species,KLAWF,950
+species,KLEAVOR,900
+species,KLEFKI,707
+species,KLINK,599
+species,KLINKLANG,601
+species,KOFFING,109
+species,KOMALA,775
+species,KOMMOO,784
+species,KORAIDON,1007
+species,KRABBY,98
+species,KRICKETOT,401
+species,KRICKETUNE,402
+species,KROKOROK,552
+species,KROOKODILE,553
+species,KUBFU,891
+species,KYOGRE,382
+species,KYUREM,646
+species,LAIRON,305
+species,LAMPENT,608
+species,LANDORUS,645
+species,LANTURN,171
+species,LAPRAS,131
+species,LARVESTA,636
+species,LARVITAR,246
+species,LATIAS,380
+species,LATIOS,381
+species,LEAFEON,470
+species,LEAVANNY,542
+species,LECHONK,915
+species,LEDIAN,166
+species,LEDYBA,165
+species,LICKILICKY,463
+species,LICKITUNG,108
+species,LIEPARD,510
+species,LILEEP,345
+species,LILLIGANT,549
+species,LILLIPUP,506
+species,LINOONE,264
+species,LITLEO,667
+species,LITTEN,725
+species,LITWICK,607
+species,LOKIX,920
+species,LOMBRE,271
+species,LOPUNNY,428
+species,LOTAD,270
+species,LOUDRED,294
+species,LUCARIO,448
+species,LUDICOLO,272
+species,LUGIA,249
+species,LUMINEON,457
+species,LUNALA,792
+species,LUNATONE,337
+species,LURANTIS,754
+species,LUVDISC,370
+species,LUXIO,404
+species,LUXRAY,405
+species,LYCANROC,745
+species,MABOSSTIFF,943
+species,MACHAMP,68
+species,MACHOKE,67
+species,MACHOP,66
+species,MAGBY,240
+species,MAGCARGO,219
+species,MAGEARNA,801
+species,MAGIKARP,129
+species,MAGMAR,126
+species,MAGMORTAR,467
+species,MAGNEMITE,81
+species,MAGNETON,82
+species,MAGNEZONE,462
+species,MAKUHITA,296
+species,MALAMAR,687
+species,MAMOSWINE,473
+species,MANAPHY,490
+species,MANDIBUZZ,630
+species,MANECTRIC,310
+species,MANKEY,56
+species,MANTINE,226
+species,MANTYKE,458
+species,MARACTUS,556
+species,MAREANIE,747
+species,MAREEP,179
+species,MARILL,183
+species,MAROWAK,105
+species,MARSHADOW,802
+species,MARSHTOMP,259
+species,MASCHIFF,942
+species,MASQUERAIN,284
+species,MAUSHOLD,925
+species,MAWILE,303
+species,MEDICHAM,308
+species,MEDITITE,307
+species,MEGANIUM,154
+species,MELMETAL,809
+species,MELOETTA,648
+species,MELTAN,808
+species,MEOWSCARADA,908
+species,MEOWSTIC,678
+species,MEOWTH,52
+species,MESPRIT,481
+species,METAGROSS,376
+species,METANG,375
+species,METAPOD,11
+species,MEW,151
+species,MEWTWO,150
+species,MIENFOO,619
+species,MIENSHAO,620
+species,MIGHTYENA,262
+species,MILCERY,868
+species,MILOTIC,350
+species,MILTANK,241
+species,MIMEJR,439
+species,MIMIKYU,778
+species,MINCCINO,572
+species,MINIOR,774
+species,MINUN,312
+species,MIRAIDON,1008
+species,MISDREAVUS,200
+species,MISMAGIUS,429
+species,MOLTRES,146
+species,MONFERNO,391
+species,MORELULL,755
+species,MORGREM,860
+species,MORPEKO,877
+species,MOTHIM,414
+species,MRMIME,122
+species,MRRIME,866
+species,MUDBRAY,749
+species,MUDKIP,258
+species,MUDSDALE,750
+species,MUK,89
+species,MUNCHLAX,446
+species,MUNKIDORI,1015
+species,MUNNA,517
+species,MURKROW,198
+species,MUSHARNA,518
+species,NACLI,932
+species,NACLSTACK,933
+species,NAGANADEL,804
+species,NATU,177
+species,NECROZMA,800
+species,NICKIT,827
+species,NIDOKING,34
+species,NIDOQUEEN,31
+species,NIDORANF,29
+species,NIDORANM,32
+species,NIDORINA,30
+species,NIDORINO,33
+species,NIHILEGO,793
+species,NINCADA,290
+species,NINETALES,38
+species,NINJASK,291
+species,NOCTOWL,164
+species,NOIBAT,714
+species,NOIVERN,715
+species,NOSEPASS,299
+species,NUMEL,322
+species,NUZLEAF,274
+species,NYMBLE,919
+species,OBSTAGOON,862
+species,OCTILLERY,224
+species,ODDISH,43
+species,OGERPON,1017
+species,OINKOLOGNE,916
+species,OKIDOGI,1014
+species,OMANYTE,138
+species,OMASTAR,139
+species,ONIX,95
+species,ORANGURU,765
+species,ORBEETLE,826
+species,ORICORIO,741
+species,ORTHWORM,968
+species,OSHAWOTT,501
+species,OVERQWIL,904
+species,PACHIRISU,417
+species,PALAFIN,964
+species,PALKIA,484
+species,PALOSSAND,770
+species,PALPITOAD,536
+species,PANCHAM,674
+species,PANGORO,675
+species,PANPOUR,515
+species,PANSAGE,511
+species,PANSEAR,513
+species,PARAS,46
+species,PARASECT,47
+species,PASSIMIAN,766
+species,PATRAT,504
+species,PAWMI,921
+species,PAWMO,922
+species,PAWMOT,923
+species,PAWNIARD,624
+species,PECHARUNT,1025
+species,PELIPPER,279
+species,PERRSERKER,863
+species,PERSIAN,53
+species,PETILIL,548
+species,PHANPY,231
+species,PHANTUMP,708
+species,PHEROMOSA,795
+species,PHIONE,489
+species,PICHU,172
+species,PIDGEOT,18
+species,PIDGEOTTO,17
+species,PIDGEY,16
+species,PIDOVE,519
+species,PIGNITE,499
+species,PIKACHU,25
+species,PIKIPEK,731
+species,PILOSWINE,221
+species,PINCURCHIN,871
+species,PINECO,204
+species,PINSIR,127
+species,PIPLUP,393
+species,PLUSLE,311
+species,POIPOLE,803
+species,POLITOED,186
+species,POLIWAG,60
+species,POLIWHIRL,61
+species,POLIWRATH,62
+species,POLTCHAGEIST,1012
+species,POLTEAGEIST,855
+species,PONYTA,77
+species,POOCHYENA,261
+species,POPPLIO,728
+species,PORYGON,137
+species,PORYGON2,233
+species,PORYGONZ,474
+species,PRIMARINA,730
+species,PRIMEAPE,57
+species,PRINPLUP,394
+species,PROBOPASS,476
+species,PSYDUCK,54
+species,PUMPKABOO,710
+species,PUPITAR,247
+species,PURRLOIN,509
+species,PURUGLY,432
+species,PYROAR,668
+species,PYUKUMUKU,771
+species,QUAGSIRE,195
+species,QUAQUAVAL,914
+species,QUAXLY,912
+species,QUAXWELL,913
+species,QUILAVA,156
+species,QUILLADIN,651
+species,QWILFISH,211
+species,RABOOT,814
+species,RABSCA,954
+species,RAGINGBOLT,1021
+species,RAICHU,26
+species,RAIKOU,243
+species,RALTS,280
+species,RAMPARDOS,409
+species,RAPIDASH,78
+species,RATICATE,20
+species,RATTATA,19
+species,RAYQUAZA,384
+species,REGICE,378
+species,REGIDRAGO,895
+species,REGIELEKI,894
+species,REGIGIGAS,486
+species,REGIROCK,377
+species,REGISTEEL,379
+species,RELICANTH,369
+species,RELLOR,953
+species,REMORAID,223
+species,RESHIRAM,643
+species,REUNICLUS,579
+species,REVAVROOM,966
+species,RHYDON,112
+species,RHYHORN,111
+species,RHYPERIOR,464
+species,RIBOMBEE,743
+species,RILLABOOM,812
+species,RIOLU,447
+species,ROARINGMOON,1005
+species,ROCKRUFF,744
+species,ROGGENROLA,524
+species,ROLYCOLY,837
+species,ROOKIDEE,821
+species,ROSELIA,315
+species,ROSERADE,407
+species,ROTOM,479
+species,ROWLET,722
+species,RUFFLET,627
+species,RUNERIGUS,867
+species,SABLEYE,302
+species,SALAMENCE,373
+species,SALANDIT,757
+species,SALAZZLE,758
+species,SAMUROTT,503
+species,SANDACONDA,844
+species,SANDILE,551
+species,SANDSHREW,27
+species,SANDSLASH,28
+species,SANDYGAST,769
+species,SANDYSHOCKS,989
+species,SAWK,539
+species,SAWSBUCK,586
+species,SCATTERBUG,664
+species,SCEPTILE,254
+species,SCIZOR,212
+species,SCOLIPEDE,545
+species,SCORBUNNY,813
+species,SCOVILLAIN,952
+species,SCRAFTY,560
+species,SCRAGGY,559
+species,SCREAMTAIL,985
+species,SCYTHER,123
+species,SEADRA,117
+species,SEAKING,119
+species,SEALEO,364
+species,SEEDOT,273
+species,SEEL,86
+species,SEISMITOAD,537
+species,SENTRET,161
+species,SERPERIOR,497
+species,SERVINE,496
+species,SEVIPER,336
+species,SEWADDLE,540
+species,SHARPEDO,319
+species,SHAYMIN,492
+species,SHEDINJA,292
+species,SHELGON,372
+species,SHELLDER,90
+species,SHELLOS,422
+species,SHELMET,616
+species,SHIELDON,410
+species,SHIFTRY,275
+species,SHIINOTIC,756
+species,SHINX,403
+species,SHROODLE,944
+species,SHROOMISH,285
+species,SHUCKLE,213
+species,SHUPPET,353
+species,SIGILYPH,561
+species,SILCOON,266
+species,SILICOBRA,843
+species,SILVALLY,773
+species,SIMIPOUR,516
+species,SIMISAGE,512
+species,SIMISEAR,514
+species,SINISTCHA,1013
+species,SINISTEA,854
+species,SIRFETCHD,865
+species,SIZZLIPEDE,850
+species,SKARMORY,227
+species,SKELEDIRGE,911
+species,SKIDDO,672
+species,SKIPLOOM,188
+species,SKITTY,300
+species,SKORUPI,451
+species,SKRELP,690
+species,SKUNTANK,435
+species,SKWOVET,819
+species,SLAKING,289
+species,SLAKOTH,287
+species,SLIGGOO,705
+species,SLITHERWING,988
+species,SLOWBRO,80
+species,SLOWKING,199
+species,SLOWPOKE,79
+species,SLUGMA,218
+species,SLURPUFF,685
+species,SMEARGLE,235
+species,SMOLIV,928
+species,SMOOCHUM,238
+species,SNEASEL,215
+species,SNEASLER,903
+species,SNIVY,495
+species,SNOM,872
+species,SNORLAX,143
+species,SNORUNT,361
+species,SNOVER,459
+species,SNUBBULL,209
+species,SOBBLE,816
+species,SOLGALEO,791
+species,SOLOSIS,577
+species,SOLROCK,338
+species,SPEAROW,21
+species,SPECTRIER,897
+species,SPEWPA,665
+species,SPHEAL,363
+species,SPIDOPS,918
+species,SPINARAK,167
+species,SPINDA,327
+species,SPIRITOMB,442
+species,SPOINK,325
+species,SPRIGATITO,906
+species,SPRITZEE,682
+species,SQUAWKABILLY,931
+species,SQUIRTLE,7
+species,STAKATAKA,805
+species,STANTLER,234
+species,STARAPTOR,398
+species,STARAVIA,397
+species,STARLY,396
+species,STARMIE,121
+species,STARYU,120
+species,STEELIX,208
+species,STEENEE,762
+species,STONJOURNER,874
+species,STOUTLAND,508
+species,STUFFUL,759
+species,STUNFISK,618
+species,STUNKY,434
+species,SUDOWOODO,185
+species,SUICUNE,245
+species,SUNFLORA,192
+species,SUNKERN,191
+species,SURSKIT,283
+species,SWABLU,333
+species,SWADLOON,541
+species,SWALOT,317
+species,SWAMPERT,260
+species,SWANNA,581
+species,SWELLOW,277
+species,SWINUB,220
+species,SWIRLIX,684
+species,SWOOBAT,528
+species,SYLVEON,700
+species,TADBULB,938
+species,TAILLOW,276
+species,TALONFLAME,663
+species,TANDEMAUS,924
+species,TANGELA,114
+species,TANGROWTH,465
+species,TAPUBULU,787
+species,TAPUFINI,788
+species,TAPUKOKO,785
+species,TAPULELE,786
+species,TAROUNTULA,917
+species,TATSUGIRI,978
+species,TAUROS,128
+species,TEDDIURSA,216
+species,TENTACOOL,72
+species,TENTACRUEL,73
+species,TEPIG,498
+species,TERAPAGOS,1024
+species,TERRAKION,639
+species,THIEVUL,828
+species,THROH,538
+species,THUNDURUS,642
+species,THWACKEY,811
+species,TIMBURR,532
+species,TINGLU,1003
+species,TINKATINK,957
+species,TINKATON,959
+species,TINKATUFF,958
+species,TIRTOUGA,564
+species,TOEDSCOOL,948
+species,TOEDSCRUEL,949
+species,TOGEDEMARU,777
+species,TOGEKISS,468
+species,TOGEPI,175
+species,TOGETIC,176
+species,TORCHIC,255
+species,TORKOAL,324
+species,TORNADUS,641
+species,TORRACAT,726
+species,TORTERRA,389
+species,TOTODILE,158
+species,TOUCANNON,733
+species,TOXAPEX,748
+species,TOXEL,848
+species,TOXICROAK,454
+species,TOXTRICITY,849
+species,TRANQUILL,520
+species,TRAPINCH,328
+species,TREECKO,252
+species,TREVENANT,709
+species,TROPIUS,357
+species,TRUBBISH,568
+species,TRUMBEAK,732
+species,TSAREENA,763
+species,TURTONATOR,776
+species,TURTWIG,387
+species,TYMPOLE,535
+species,TYNAMO,602
+species,TYPENULL,772
+species,TYPHLOSION,157
+species,TYRANITAR,248
+species,TYRANTRUM,697
+species,TYROGUE,236
+species,TYRUNT,696
+species,UMBREON,197
+species,UNFEZANT,521
+species,UNOWN,201
+species,URSALUNA,901
+species,URSARING,217
+species,URSHIFU,892
+species,UXIE,480
+species,VANILLISH,583
+species,VANILLITE,582
+species,VANILLUXE,584
+species,VAPOREON,134
+species,VAROOM,965
+species,VELUZA,976
+species,VENIPEDE,543
+species,VENOMOTH,49
+species,VENONAT,48
+species,VENUSAUR,3
+species,VESPIQUEN,416
+species,VIBRAVA,329
+species,VICTINI,494
+species,VICTREEBEL,71
+species,VIGOROTH,288
+species,VIKAVOLT,738
+species,VILEPLUME,45
+species,VIRIZION,640
+species,VIVILLON,666
+species,VOLBEAT,313
+species,VOLCANION,721
+species,VOLCARONA,637
+species,VOLTORB,100
+species,VULLABY,629
+species,VULPIX,37
+species,WAILMER,320
+species,WAILORD,321
+species,WALKINGWAKE,1009
+species,WALREIN,365
+species,WARTORTLE,8
+species,WATCHOG,505
+species,WATTREL,940
+species,WEAVILE,461
+species,WEEDLE,13
+species,WEEPINBELL,70
+species,WEEZING,110
+species,WHIMSICOTT,547
+species,WHIRLIPEDE,544
+species,WHISCASH,340
+species,WHISMUR,293
+species,WIGGLYTUFF,40
+species,WIGLETT,960
+species,WIMPOD,767
+species,WINGULL,278
+species,WISHIWASHI,746
+species,WOBBUFFET,202
+species,WOCHIEN,1001
+species,WOOBAT,527
+species,WOOLOO,831
+species,WOOPER,194
+species,WORMADAM,413
+species,WUGTRIO,961
+species,WURMPLE,265
+species,WYNAUT,360
+species,WYRDEER,899
+species,XATU,178
+species,XERNEAS,716
+species,XURKITREE,796
+species,YAMASK,562
+species,YAMPER,835
+species,YANMA,193
+species,YANMEGA,469
+species,YUNGOOS,734
+species,YVELTAL,717
+species,ZACIAN,888
+species,ZAMAZENTA,889
+species,ZANGOOSE,335
+species,ZAPDOS,145
+species,ZARUDE,893
+species,ZEBSTRIKA,523
+species,ZEKROM,644
+species,ZERAORA,807
+species,ZIGZAGOON,263
+species,ZOROARK,571
+species,ZORUA,570
+species,ZUBAT,41
+species,ZWEILOUS,634
+species,ZYGARDE,718

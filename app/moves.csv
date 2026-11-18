@@ -1,0 +1,847 @@
+id,name,type_id,category,power,accuracy,pp,description
+1,Destructor,1,physical,40,100,35,"Daño normal, sin efecto adicional."
+2,Golpe Kárate,2,physical,50,100,25,Tiene mayor probabilidad de golpe crítico.
+3,Doble Bofetón,1,physical,15,85,10,Golpea de 2 a 5 veces en un turno.
+4,Puño Cometa,1,physical,18,85,15,Golpea de 2 a 5 veces en un turno.
+5,Megapuño,1,physical,80,85,20,"Daño normal, sin efecto adicional."
+6,Día de Pago,1,physical,40,100,20,Esparce dinero: cinco veces el nivel del usuario.
+7,Puño Fuego,10,physical,75,100,15,Puede quemar al objetivo. Probabilidad: 10 %.
+8,Puño Hielo,15,physical,75,100,15,Puede congelar al objetivo. Probabilidad: 10 %.
+9,Puño Trueno,13,physical,75,100,15,Puede paralizar al objetivo. Probabilidad: 10 %.
+10,Arañazo,1,physical,40,100,35,"Daño normal, sin efecto adicional."
+11,Agarre,1,physical,55,100,30,"Daño normal, sin efecto adicional."
+12,Guillotina,1,physical,,30,5,Debilita de un golpe.
+13,Viento Cortante,1,special,80,100,10,Carga el primer turno y ataca el segundo a los rivales. Índice de golpe crítico alto.
+14,Danza Espada,1,status,,,20,Sube dos niveles el Ataque del usuario.
+15,Corte,1,physical,50,95,30,"Daño normal, sin efecto adicional."
+16,Tornado,3,special,40,100,35,"Daño normal, y alcanza a los Pokémon en el aire."
+17,Ataque Ala,3,physical,60,100,35,"Daño normal, sin efecto adicional."
+18,Remolino,1,status,,,20,Termina los combates contra Pokémon salvajes. Obliga a los entrenadores a cambiar de Pokémon. Prioridad -6.
+19,Vuelo,3,physical,90,95,15,"El usuario se eleva, esquiva todos los ataques y golpea el turno siguiente."
+20,Atadura,1,physical,15,85,20,Impide huir al objetivo y le causa daño durante 2 a 5 turnos. Probabilidad: 100 %.
+21,Atizar,1,physical,80,75,20,"Daño normal, sin efecto adicional."
+22,Látigo Cepa,12,physical,45,100,25,"Daño normal, sin efecto adicional."
+23,Pisotón,1,physical,65,100,20,Puede hacer retroceder al objetivo. Probabilidad: 30 %.
+24,Doble Patada,2,physical,30,100,30,Golpea dos veces en un turno.
+25,Megapatada,1,physical,120,75,5,"Daño normal, sin efecto adicional."
+26,Patada Salto,2,physical,100,95,10,"Si falla, el usuario recibe la mitad del daño que habría causado."
+27,Patada Giro,2,physical,60,85,15,Puede hacer retroceder al objetivo. Probabilidad: 30 %.
+28,Ataque Arena,5,status,,100,15,Baja un nivel la precisión del objetivo.
+29,Golpe Cabeza,1,physical,70,100,15,Puede hacer retroceder al objetivo. Probabilidad: 30 %.
+30,Cornada,1,physical,65,100,25,"Daño normal, sin efecto adicional."
+31,Ataque Furia,1,physical,15,85,20,Golpea de 2 a 5 veces en un turno.
+32,Perforador,1,physical,,30,5,Debilita de un golpe.
+33,Placaje,1,physical,40,100,35,"Daño normal, sin efecto adicional."
+34,Golpe Cuerpo,1,physical,85,100,15,Puede paralizar al objetivo. Probabilidad: 30 %.
+35,Constricción,1,physical,15,90,20,Impide huir al objetivo y le causa daño durante 2 a 5 turnos. Probabilidad: 100 %.
+36,Derribo,1,physical,90,85,20,El usuario recibe 1/4 del daño causado.
+37,Saña,1,physical,120,100,10,Ataca durante 2 o 3 turnos seguidos y después el usuario queda confuso.
+38,Doble Filo,1,physical,120,100,15,El usuario recibe 1/3 del daño causado.
+39,Agitacola,1,status,,100,30,Baja un nivel la Defensa del objetivo.
+40,Picotazo Veneno,4,physical,15,100,35,Puede envenenar al objetivo. Probabilidad: 30 %.
+41,Doble Ataque,7,physical,25,100,20,Golpea dos veces. Cada golpe tiene un 20 % de probabilidad de envenenar al objetivo.
+42,Pin Misil,7,physical,25,95,20,Golpea de 2 a 5 veces en un turno.
+43,Malicioso,1,status,,100,30,Baja un nivel la Defensa del objetivo. Probabilidad: 100 %.
+44,Mordisco,17,physical,60,100,25,Puede hacer retroceder al objetivo. Probabilidad: 30 %.
+45,Gruñido,1,status,,100,40,Baja un nivel el Ataque del objetivo.
+46,Rugido,1,status,,,20,Termina los combates contra Pokémon salvajes. Obliga a los entrenadores a cambiar de Pokémon. Prioridad -6.
+47,Canto,1,status,,55,15,Duerme al objetivo.
+48,Supersónico,1,status,,55,20,Confunde al objetivo.
+49,Bomba Sónica,1,special,,90,20,Siempre causa 20 PS de daño.
+50,Anulación,1,status,,100,20,Anula el último ataque usado por el objetivo durante 1 a 8 turnos.
+51,Ácido,4,special,40,100,30,Puede bajar un nivel la Defensa Especial del objetivo. Probabilidad: 10 %.
+52,Ascuas,10,special,40,100,25,Puede quemar al objetivo. Probabilidad: 10 %.
+53,Lanzallamas,10,special,90,100,15,Puede quemar al objetivo. Probabilidad: 10 %.
+54,Neblina,15,status,,,30,Evita que los ataques rivales cambien las estadísticas del usuario.
+55,Pistola Agua,11,special,40,100,25,"Daño normal, sin efecto adicional."
+56,Hidrobomba,11,special,110,80,5,"Daño normal, sin efecto adicional."
+57,Surf,11,special,90,100,15,"Daño normal, y alcanza a quien esté usando Buceo."
+58,Rayo Hielo,15,special,90,100,10,Puede congelar al objetivo. Probabilidad: 10 %.
+59,Ventisca,15,special,110,70,5,Puede congelar al objetivo. Probabilidad: 10 %.
+60,Psicorrayo,14,special,65,100,20,Puede confundir al objetivo. Probabilidad: 10 %.
+61,Rayo Burbuja,11,special,65,100,20,Puede bajar un nivel la Velocidad del objetivo. Probabilidad: 10 %.
+62,Rayo Aurora,15,special,65,100,20,Puede bajar un nivel el Ataque del objetivo. Probabilidad: 10 %.
+63,Hiperrayo,1,special,150,90,5,El usuario pierde el turno siguiente para recargar.
+64,Picotazo,3,physical,35,100,35,"Daño normal, sin efecto adicional."
+65,Pico Taladro,3,physical,80,100,20,"Daño normal, sin efecto adicional."
+66,Sumisión,2,physical,80,80,20,El usuario recibe 1/4 del daño causado.
+67,Patada Baja,2,physical,,100,20,"Hace más daño cuanto más pesa el objetivo, hasta 120 de potencia."
+68,Contraataque,2,physical,,100,20,Devuelve el doble del daño del último golpe físico recibido. Prioridad -5.
+69,Sísmico,2,physical,,100,20,Causa un daño igual al nivel del usuario.
+70,Fuerza,1,physical,80,100,15,"Daño normal, sin efecto adicional."
+71,Absorber,12,special,20,100,25,Recupera la mitad del daño causado.
+72,Megaagotar,12,special,40,100,15,Recupera la mitad del daño causado.
+73,Drenadoras,12,status,,90,10,Siembra al objetivo y le roba PS cada turno.
+74,Desarrollo,1,status,,,20,Sube un nivel el Ataque y el Ataque Especial del usuario.
+75,Hoja Afilada,12,physical,55,95,25,Tiene mayor probabilidad de golpe crítico.
+76,Rayo Solar,12,special,120,100,10,Necesita un turno de carga antes de atacar.
+77,Polvo Veneno,4,status,,75,35,Envenena al objetivo.
+78,Paralizador,12,status,,75,30,Paraliza al objetivo.
+79,Somnífero,12,status,,75,15,Duerme al objetivo.
+80,Danza Pétalo,12,special,120,100,10,Ataca durante 2 o 3 turnos seguidos y después el usuario queda confuso.
+81,Disparo Demora,7,status,,95,40,Baja dos niveles la Velocidad del objetivo.
+82,Furia Dragón,16,special,,100,10,Siempre causa 40 PS de daño.
+83,Giro Fuego,10,special,35,85,15,Impide huir al objetivo y le causa daño durante 2 a 5 turnos. Probabilidad: 100 %.
+84,Impactrueno,13,special,40,100,30,Puede paralizar al objetivo. Probabilidad: 10 %.
+85,Rayo,13,special,90,100,15,Puede paralizar al objetivo. Probabilidad: 10 %.
+86,Onda Trueno,13,status,,90,20,Paraliza al objetivo.
+87,Trueno,13,special,110,70,10,Puede paralizar al objetivo. Probabilidad: 30 %.
+88,Lanzarrocas,6,physical,50,90,15,"Daño normal, sin efecto adicional."
+89,Terremoto,5,physical,100,100,10,"Daño normal, y alcanza a quien esté usando Excavar."
+90,Fisura,5,physical,,30,5,Debilita de un golpe.
+91,Excavar,5,physical,80,100,10,"El usuario se entierra, esquiva todos los ataques y golpea el turno siguiente."
+92,Tóxico,4,status,,90,10,"Envenena gravemente al objetivo, con más daño cada turno."
+93,Confusión,14,special,50,100,25,Puede confundir al objetivo. Probabilidad: 10 %.
+94,Psíquico,14,special,90,100,10,Puede bajar un nivel la Defensa Especial del objetivo. Probabilidad: 10 %.
+95,Hipnosis,14,status,,60,20,Duerme al objetivo.
+96,Meditación,14,status,,,40,Sube un nivel el Ataque del usuario.
+97,Agilidad,14,status,,,30,Sube dos niveles la Velocidad del usuario.
+98,Ataque Rápido,1,physical,40,100,30,"Daño normal, sin efecto adicional. Prioridad +1."
+99,Furia,1,physical,20,100,20,"Si el usuario recibe un golpe mientras usa este ataque, sube su Ataque un nivel."
+100,Teletransporte,14,status,,,20,Termina los combates contra Pokémon salvajes. No tiene otro efecto. Prioridad -6.
+101,Tinieblas,8,special,,100,15,Causa un daño igual al nivel del usuario.
+102,Mimético,1,status,,,10,Copia el último ataque que ha usado el objetivo.
+103,Chirrido,1,status,,85,40,Baja dos niveles la Defensa del objetivo.
+104,Doble Equipo,1,status,,,15,Sube un nivel la evasión del usuario.
+105,Recuperación,1,status,,,5,Recupera la mitad de los PS máximos del usuario.
+106,Fortaleza,1,status,,,30,Sube un nivel la Defensa del usuario.
+107,Reducción,1,status,,,10,Sube dos niveles la evasión del usuario.
+108,Pantalla de Humo,1,status,,100,20,Baja un nivel la precisión del objetivo.
+109,Rayo Confuso,8,status,,100,10,Confunde al objetivo.
+110,Refugio,11,status,,,40,Sube un nivel la Defensa del usuario.
+111,Rizo Defensa,1,status,,,40,Sube un nivel la Defensa del usuario.
+112,Barrera,14,status,,,20,Sube dos niveles la Defensa del usuario.
+113,Pantalla de Luz,14,status,,,30,Reduce un 50 % el daño de los ataques especiales durante cinco turnos.
+114,Niebla,15,status,,,30,"Anula los cambios de estadísticas, precisión y evasión de todos los Pokémon."
+115,Reflejo,14,status,,,20,Reduce a la mitad el daño de los ataques físicos.
+116,Foco Energía,1,status,,,30,Aumenta la probabilidad de golpe crítico del usuario.
+117,Venganza,1,physical,,,10,Espera dos turnos y devuelve el doble del daño recibido. Prioridad +1.
+118,Metrónomo,1,status,,,10,Usa al azar cualquier ataque del juego.
+119,Espejo,3,status,,,20,Usa contra el objetivo el último ataque que este haya utilizado.
+120,Autodestrucción,1,physical,200,100,5,El usuario se debilita.
+121,Bomba Huevo,1,physical,100,75,10,"Daño normal, sin efecto adicional."
+122,Lengüetazo,8,physical,30,100,30,Puede paralizar al objetivo. Probabilidad: 30 %.
+123,Polución,4,special,30,70,20,Puede envenenar al objetivo. Probabilidad: 40 %.
+124,Residuos,4,special,65,100,20,Puede envenenar al objetivo. Probabilidad: 30 %.
+125,Hueso Palo,5,physical,65,85,20,Puede hacer retroceder al objetivo. Probabilidad: 10 %.
+126,Llamarada,10,special,110,85,5,Puede quemar al objetivo. Probabilidad: 10 %.
+127,Cascada,11,physical,80,100,15,Puede hacer retroceder al objetivo. Probabilidad: 20 %.
+128,Tenaza,11,physical,35,85,15,Impide huir al objetivo y le causa daño durante 2 a 5 turnos. Probabilidad: 100 %.
+129,Meteoros,1,special,60,,20,Nunca falla.
+130,Cabezazo,1,physical,130,100,10,Sube un nivel la Defensa del usuario. Carga un turno antes de atacar. Probabilidad: 100 %.
+131,Clavo Cañón,1,physical,20,100,15,Golpea de 2 a 5 veces en un turno.
+132,Restricción,1,physical,10,100,35,Puede bajar un nivel la Velocidad del objetivo. Probabilidad: 10 %.
+133,Amnesia,14,status,,,20,Sube dos niveles la Defensa Especial del usuario.
+134,Kinético,14,status,,80,15,Baja un nivel la precisión del objetivo.
+135,Ovocuración,1,status,,,5,Recupera la mitad de los PS máximos del usuario.
+136,Patada Salto Alta,2,physical,130,90,10,"Si falla, el usuario recibe la mitad del daño que habría causado."
+137,Deslumbrar,1,status,,100,30,Paraliza al objetivo.
+138,Comesueños,14,special,100,100,15,Solo funciona con Pokémon dormidos. Recupera la mitad del daño causado.
+139,Gas Venenoso,4,status,,90,40,Envenena al objetivo.
+140,Bombardeo,1,physical,15,85,20,Golpea de 2 a 5 veces en un turno.
+141,Chupavidas,7,physical,80,100,10,Recupera la mitad del daño causado.
+142,Beso Amoroso,1,status,,75,10,Duerme al objetivo.
+143,Ataque Aéreo,3,physical,140,90,5,Carga un turno antes de atacar. Puede hacer retroceder al objetivo. Probabilidad: 30 %.
+144,Transformación,1,status,,,10,El usuario se convierte en una copia del objetivo hasta salir del combate.
+145,Burbuja,11,special,40,100,30,Puede bajar un nivel la Velocidad del objetivo. Probabilidad: 10 %.
+146,Puño Mareo,1,physical,70,100,10,Puede confundir al objetivo. Probabilidad: 20 %.
+147,Espora,12,status,,100,15,Duerme al objetivo.
+148,Destello,1,status,,100,20,Baja un nivel la precisión del objetivo.
+149,Psicoonda,14,special,,100,15,"Causa un daño aleatorio de entre 0,5 y 1,5 veces el nivel del usuario."
+150,Salpicadura,1,status,,,40,No hace nada.
+151,Armadura Ácida,4,status,,,20,Sube dos niveles la Defensa del usuario.
+152,Martillazo,11,physical,100,90,10,Tiene mayor probabilidad de golpe crítico.
+153,Explosión,1,physical,250,100,5,El usuario se debilita.
+154,Golpes Furia,1,physical,18,80,15,Golpea de 2 a 5 veces en un turno.
+155,Huesomerang,5,physical,50,90,10,Golpea dos veces en un turno.
+156,Descanso,14,status,,,5,El usuario duerme dos turnos y recupera todos sus PS.
+157,Avalancha,6,physical,75,90,10,Puede hacer retroceder al objetivo. Probabilidad: 30 %.
+158,Hipercolmillo,1,physical,80,90,15,Puede hacer retroceder al objetivo. Probabilidad: 10 %.
+159,Afilar,1,status,,,30,Sube un nivel el Ataque del usuario.
+160,Conversión,1,status,,,30,"El usuario cambia al tipo de uno de sus ataques, al azar."
+161,Triataque,1,special,80,100,10,"Puede quemar, congelar o paralizar al objetivo. Probabilidad: 20 %."
+162,Superdiente,1,physical,,90,10,Causa un daño igual a la mitad de los PS actuales del objetivo.
+163,Cuchillada,1,physical,70,100,20,Tiene mayor probabilidad de golpe crítico.
+164,Sustituto,1,status,,,10,Convierte 1/4 de los PS máximos del usuario en un muñeco que lo protege del daño y de los cambios de estado hasta romperse.
+166,Esquema,1,status,,,1,Se convierte de forma permanente en el último ataque usado por el objetivo.
+167,Triple Patada,2,physical,10,90,10,"Golpea tres veces, y cada acierto aumenta la potencia."
+168,Ladrón,17,physical,60,100,25,Roba el objeto del objetivo.
+169,Telaraña,7,status,,,10,Impide al objetivo salir del combate.
+170,Telépata,1,status,,,5,Garantiza que el siguiente ataque del usuario acierte al objetivo.
+171,Pesadilla,8,status,,100,15,Un objetivo dormido pierde 1/4 de sus PS máximos cada turno.
+172,Rueda Fuego,10,physical,60,100,25,Puede quemar al objetivo. Descongela al usuario. Probabilidad: 10 %.
+173,Ronquido,1,special,50,100,15,Puede hacer retroceder al objetivo. Solo funciona si el usuario está dormido. Probabilidad: 30 %.
+174,Maldición,8,status,,,10,Los de tipo Fantasma gastan la mitad de sus PS máximos para dañar al objetivo cada turno. Los demás bajan su Velocidad y suben su Ataque y su Defensa.
+175,Azote,1,physical,,100,15,"Hace más daño cuantos menos PS le quedan al usuario, hasta 200 de potencia."
+176,Conversión 2,1,status,,,30,Cambia el tipo del usuario a uno al azar que resista o sea inmune al último ataque recibido.
+177,Aerochorro,3,special,100,95,5,Tiene mayor probabilidad de golpe crítico.
+178,Esporagodón,12,status,,100,40,Baja dos niveles la Velocidad del objetivo.
+179,Inversión,2,physical,,100,15,"Hace más daño cuantos menos PS le quedan al usuario, hasta 200 de potencia."
+180,Rencor,8,status,,100,10,Quita 4 PP al último ataque usado por el objetivo.
+181,Nieve Polvo,15,special,40,100,25,Puede congelar al objetivo. Probabilidad: 10 %.
+182,Protección,1,status,,,10,Impide que ningún ataque alcance al usuario este turno. Prioridad +4.
+183,Ultrapuño,2,physical,40,100,30,"Daño normal, sin efecto adicional. Prioridad +1."
+184,Cara Susto,1,status,,100,10,Baja dos niveles la Velocidad del objetivo.
+185,Finta,17,physical,60,,20,Nunca falla.
+186,Beso Dulce,18,status,,75,10,Confunde al objetivo.
+187,Tambor,1,status,,,10,Gasta la mitad de los PS máximos para subir el Ataque al máximo.
+188,Bomba Lodo,4,special,90,100,10,Puede envenenar al objetivo. Probabilidad: 30 %.
+189,Bofetón Lodo,5,special,20,100,10,Puede bajar un nivel la precisión del objetivo. Probabilidad: 100 %.
+190,Pulpocañón,11,special,65,85,10,Puede bajar un nivel la precisión del objetivo. Probabilidad: 50 %.
+191,Púas,5,status,,,20,Esparce púas que dañan a los rivales que entran en combate.
+192,Electrocañón,13,special,120,50,5,Puede paralizar al objetivo. Probabilidad: 100 %.
+193,Profecía,1,status,,,40,Anula la evasión del objetivo y permite alcanzarlo con ataques Normal y Lucha aunque sea de tipo Fantasma.
+194,Mismo Destino,8,status,,,5,"Si el usuario se debilita este turno, el objetivo también."
+195,Canto Mortal,1,status,,,5,El usuario y el objetivo se debilitan a los tres turnos.
+196,Viento Hielo,15,special,55,95,15,Puede bajar un nivel la Velocidad del objetivo. Probabilidad: 100 %.
+197,Detección,2,status,,,5,Impide que ningún ataque alcance al usuario este turno. Prioridad +4.
+198,Ataque Óseo,5,physical,25,90,10,Golpea de 2 a 5 veces en un turno.
+199,Fijar Blanco,1,status,,,5,Garantiza que el siguiente ataque del usuario acierte al objetivo.
+200,Enfado,16,physical,120,100,10,Ataca durante 2 o 3 turnos seguidos y después el usuario queda confuso.
+201,Tormenta de Arena,6,status,,,10,Provoca una tormenta de arena durante cinco turnos.
+202,Gigadrenado,12,special,75,100,10,Recupera la mitad del daño causado.
+203,Aguante,1,status,,,10,Evita que los PS del usuario bajen de 1 este turno. Prioridad +4.
+204,Encanto,18,status,,100,20,Baja dos niveles el Ataque del objetivo.
+205,Rodar,6,physical,30,90,20,"La potencia se duplica cada turno que se usa seguido, y se reinicia a los cinco turnos."
+206,Falso Tortazo,1,physical,40,100,40,No puede bajar los PS del objetivo de 1.
+207,Fanfarronear,1,status,,85,15,Sube dos niveles el Ataque del objetivo y lo confunde.
+208,Batido,1,status,,,5,Recupera la mitad de los PS máximos del usuario.
+209,Chispa,13,physical,65,100,20,Puede paralizar al objetivo. Probabilidad: 30 %.
+210,Corte Furia,7,physical,40,95,20,"La potencia se duplica cada turno que se usa seguido, hasta cinco turnos."
+211,Ala de Acero,9,physical,70,90,25,Puede subir un nivel la Defensa del usuario. Probabilidad: 10 %.
+212,Mal de Ojo,1,status,,,5,Impide al objetivo salir del combate.
+213,Atracción,1,status,,100,15,Enamora al objetivo si es del género contrario: tiene un 50 % de probabilidad de no atacar al usuario.
+214,Sonámbulo,1,status,,,10,Usa al azar otro de los tres ataques del usuario. Solo funciona si está dormido.
+215,Cascabel Cura,1,status,,,5,Cura los problemas de estado graves de todo el equipo.
+216,Retribución,1,physical,,100,20,"La potencia aumenta con la felicidad, hasta 102."
+217,Presente,1,physical,,90,15,"Al azar: causa daño con potencia de 40 a 120, o cura al objetivo 1/4 de sus PS máximos."
+218,Frustración,1,physical,,100,20,"La potencia aumenta cuanta menos felicidad, hasta 102."
+219,Velo Sagrado,1,status,,,25,Protege al equipo de los problemas de estado graves y de la confusión durante cinco turnos.
+220,Divide Dolor,1,status,,,20,Iguala los PS del usuario y del objetivo a la media de los actuales.
+221,Fuego Sagrado,10,physical,100,95,5,Puede quemar al objetivo. Descongela al usuario. Probabilidad: 50 %.
+222,Magnitud,5,physical,,100,30,Golpea a todos los Pokémon adyacentes con una potencia aleatoria. Hace el doble de daño a quien está usando Excavar.
+223,Puño Dinámico,2,physical,100,50,5,Puede confundir al objetivo. Probabilidad: 100 %.
+224,Megacuerno,7,physical,120,85,10,"Daño normal, sin efecto adicional."
+225,Dragoaliento,16,special,60,100,20,Puede paralizar al objetivo. Probabilidad: 30 %.
+226,Relevo,1,status,,,40,Cambia al usuario y pasa sus efectos al sustituto.
+227,Otra Vez,1,status,,100,5,Obliga al objetivo a repetir su último ataque durante 2 a 6 turnos.
+228,Persecución,17,physical,40,100,20,Duplica la potencia y alcanza a los Pokémon que intentan cambiarse.
+229,Giro Rápido,1,physical,50,100,40,"Libera al usuario de ataques que atrapan, y quita Drenadoras y Púas. Probabilidad: 100 %."
+230,Dulce Aroma,1,status,,100,20,Baja un nivel la evasión del objetivo.
+231,Cola Férrea,9,physical,100,75,15,Puede bajar un nivel la Defensa del objetivo. Probabilidad: 30 %.
+232,Garra Metal,9,physical,50,95,35,Puede subir un nivel el Ataque del usuario. Probabilidad: 10 %.
+233,Llave Vital,2,physical,70,,10,Nunca falla. Prioridad -1.
+234,Sol Matinal,1,status,,,5,Recupera la mitad de los PS máximos del usuario. Depende del clima.
+235,Fotosíntesis,12,status,,,5,Recupera la mitad de los PS máximos del usuario. Depende del clima.
+236,Luz Lunar,18,status,,,5,Recupera la mitad de los PS máximos del usuario. Depende del clima.
+237,Poder Oculto,1,special,60,100,15,La potencia y el tipo dependen de los IV del usuario. La potencia va de 30 a 70.
+238,Tajo Cruzado,2,physical,100,80,5,Tiene mayor probabilidad de golpe crítico.
+239,Ciclón,16,special,40,100,20,Puede hacer retroceder al objetivo. Probabilidad: 20 %.
+240,Danza Lluvia,11,status,,,5,Provoca lluvia durante cinco turnos.
+241,Día Soleado,10,status,,,5,Provoca sol intenso durante cinco turnos.
+242,Triturar,17,physical,80,100,15,Puede bajar un nivel la Defensa del objetivo. Probabilidad: 20 %.
+243,Manto Espejo,14,special,,100,20,Devuelve el doble del daño del último golpe especial recibido. Prioridad -5.
+244,Autosugestión,1,status,,,10,Descarta los cambios de estadísticas del usuario y copia los del objetivo.
+245,Velocidad Extrema,1,physical,80,100,5,"Daño normal, sin efecto adicional. Prioridad +2."
+246,Poder Pasado,6,special,60,100,5,Puede subir un nivel todas las estadísticas del usuario. Probabilidad: 10 %.
+247,Bola Sombra,8,special,80,100,15,Puede bajar un nivel la Defensa Especial del objetivo. Probabilidad: 20 %.
+248,Premonición,14,special,120,100,10,Golpea al objetivo dos turnos después.
+249,Golpe Roca,2,physical,40,100,15,Puede bajar un nivel la Defensa del objetivo. Probabilidad: 50 %.
+250,Torbellino,11,special,35,85,15,Impide al objetivo salir del combate y le quita 1/16 de sus PS máximos durante 2 a 5 turnos. Probabilidad: 100 %.
+251,Paliza,17,physical,,100,10,Golpea una vez por cada Pokémon consciente del entrenador.
+252,Sorpresa,1,physical,40,100,10,Solo se puede usar en el primer turno tras entrar en combate. Hace retroceder al objetivo. Probabilidad: 100 %. Prioridad +3.
+253,Alboroto,1,special,90,100,10,Obliga a usarlo varios turnos. Durante ese tiempo ningún Pokémon puede dormirse.
+254,Reserva,1,status,,,20,Acumula energía hasta tres veces para Escupir y Tragar.
+255,Escupir,1,special,,100,10,La potencia es 100 por cada Reserva acumulada.
+256,Tragar,1,status,,,10,"Recupera 1/4 de los PS con una Reserva, 1/2 con dos y todos con tres."
+257,Onda Ígnea,10,special,95,90,10,Puede quemar al objetivo. Probabilidad: 10 %.
+258,Granizo,15,status,,,10,Provoca granizo durante cinco turnos.
+259,Tormento,17,status,,100,15,Impide al objetivo usar el mismo ataque dos veces seguidas.
+260,Camelo,17,status,,100,15,Sube un nivel el Ataque Especial del objetivo y lo confunde.
+261,Fuego Fatuo,10,status,,85,15,Quema al objetivo.
+262,Legado,17,status,,100,10,Baja dos niveles el Ataque y el Ataque Especial del objetivo. El usuario se debilita.
+263,Fachada,1,physical,70,100,20,"Duplica la potencia si el usuario está quemado, paralizado o envenenado."
+264,Puño Certero,2,physical,150,100,20,"Si el usuario recibe daño antes de atacar, el ataque se cancela. Prioridad -3."
+265,Estímulo,1,physical,70,100,10,"Su potencia se duplica si el objetivo está paralizado, y le cura la parálisis."
+266,Señuelo,1,status,,,20,Atrae hacia el usuario los ataques de un solo objetivo este turno. Prioridad +2.
+267,Adaptación,1,status,,,20,Usa un ataque que depende del terreno.
+268,Carga,13,status,,,20,Sube un nivel la Defensa Especial del usuario. Sus ataques eléctricos duplican su potencia el turno siguiente.
+269,Mofa,17,status,,100,20,"Durante unos turnos, el objetivo solo puede usar ataques con daño."
+270,Refuerzo,1,status,,,20,El siguiente ataque del aliado hace un 50 % más de daño. Prioridad +5.
+271,Truco,14,status,,100,10,El usuario y el objetivo intercambian sus objetos.
+272,Imitación,14,status,,,10,Copia la habilidad del objetivo.
+273,Deseo,1,status,,,10,El usuario recupera la mitad de sus PS máximos al final del turno siguiente.
+274,Ayuda,1,status,,,20,Usa al azar un ataque de otro Pokémon del equipo.
+275,Arraigo,12,status,,,20,Impide al usuario salir del combate. Recupera 1/16 de sus PS máximos cada turno.
+276,Fuerza Bruta,2,physical,120,100,5,Baja un nivel el Ataque y la Defensa del usuario tras causar daño. Probabilidad: 100 %.
+277,Capa Mágica,14,status,,,15,Devuelve el primer ataque de efecto que reciba este turno. Prioridad +4.
+278,Reciclaje,1,status,,,10,El usuario recupera el último objeto que gastó.
+279,Desquite,2,physical,60,100,10,Duplica el daño si el usuario recibe daño antes de atacar este turno. Prioridad -4.
+280,Demolición,2,physical,75,100,15,Destruye Reflejo y Pantalla de Luz.
+281,Bostezo,1,status,,,10,El objetivo se duerme al final del turno siguiente.
+282,Desarme,17,physical,65,100,20,El objetivo suelta el objeto que lleva.
+283,Esfuerzo,1,physical,,100,5,Baja los PS del objetivo hasta igualarlos a los del usuario.
+284,Estallido,10,special,150,100,5,"Hace más daño cuantos más PS le quedan al usuario, hasta 150 de potencia."
+285,Intercambio,14,status,,,10,El usuario y el objetivo intercambian sus habilidades.
+286,Sellar,14,status,,,10,Impide al objetivo usar los ataques que el usuario también conoce.
+287,Alivio,1,status,,,20,"Cura al usuario de quemaduras, parálisis o envenenamiento."
+288,Rabia,8,status,,,5,"Si el usuario se debilita este turno, el ataque que lo debilitó se queda sin PP."
+289,Robo,17,status,,,10,Roba ciertos ataques de apoyo que use el rival este turno y los usa el propio usuario. Prioridad +4.
+290,Daño Secreto,1,physical,70,100,20,"Su efecto varía según el terreno. Por defecto, 30 % de probabilidad de paralizar."
+291,Buceo,11,physical,80,100,10,"El usuario se sumerge, esquiva todos los ataques y golpea el turno siguiente."
+292,Empujón,2,physical,15,100,20,Golpea de 2 a 5 veces en un turno.
+293,Camuflaje,1,status,,,20,"Cambia el tipo del usuario según el terreno. Por defecto, Normal."
+294,Luminicola,7,status,,,20,Sube tres niveles el Ataque Especial del usuario.
+295,Resplandor,14,special,95,100,5,Puede bajar un nivel la Defensa Especial del objetivo. Probabilidad: 50 %.
+296,Bola Neblina,14,special,95,100,5,Puede bajar un nivel el Ataque Especial del objetivo. Probabilidad: 50 %.
+297,Danza Pluma,3,status,,100,15,Baja dos niveles el Ataque del objetivo.
+298,Danza Caos,1,status,,100,20,Confunde al objetivo.
+299,Patada Ígnea,10,physical,85,90,10,Tiene mayor probabilidad de golpe crítico y puede quemar al objetivo. Probabilidad: 10 %.
+300,Chapoteo Lodo,5,status,,,15,Reduce a la mitad todo el daño de tipo Eléctrico.
+301,Bola Hielo,15,physical,30,90,20,"La potencia se duplica cada turno que se usa seguido, y se reinicia a los cinco turnos."
+302,Brazo Pincho,12,physical,60,100,15,Puede hacer retroceder al objetivo. Probabilidad: 30 %.
+303,Relajo,1,status,,,5,Recupera la mitad de los PS máximos del usuario.
+304,Vozarrón,1,special,90,100,10,"Daño normal, sin efecto adicional."
+305,Colmillo Veneno,4,physical,50,100,15,Puede envenenar gravemente al objetivo. Probabilidad: 50 %.
+306,Garra Brutal,1,physical,75,95,10,Puede bajar un nivel la Defensa del objetivo. Probabilidad: 50 %.
+307,Anillo Ígneo,10,special,150,90,5,El usuario pierde el turno siguiente para recargar.
+308,Hidrocañón,11,special,150,90,5,El usuario pierde el turno siguiente para recargar.
+309,Puño Meteoro,9,physical,90,90,10,Puede subir un nivel el Ataque del usuario. Probabilidad: 20 %.
+310,Impresionar,8,physical,30,100,15,Puede hacer retroceder al objetivo. Probabilidad: 30 %.
+311,Meteorobola,1,special,50,100,10,"Con clima activo, duplica la potencia y adopta el tipo del clima."
+312,Aromaterapia,12,status,,,5,Cura los problemas de estado graves de todo el equipo.
+313,Llanto Falso,17,status,,100,20,Baja dos niveles la Defensa Especial del objetivo.
+314,Aire Afilado,3,special,60,95,25,Tiene mayor probabilidad de golpe crítico.
+315,Sofoco,10,special,130,90,5,Baja dos niveles el Ataque Especial del usuario tras causar daño. Probabilidad: 100 %.
+316,Rastreo,1,status,,,40,Anula la evasión del objetivo y permite alcanzarlo con ataques Normal y Lucha aunque sea de tipo Fantasma.
+317,Tumba Rocas,6,physical,60,95,15,Puede bajar un nivel la Velocidad del objetivo. Probabilidad: 100 %.
+318,Viento Plata,7,special,60,100,5,Puede subir un nivel todas las estadísticas del usuario. Probabilidad: 10 %.
+319,Eco Metálico,9,status,,85,40,Baja dos niveles la Defensa Especial del objetivo.
+320,Silbato,12,status,,55,15,Duerme al objetivo.
+321,Cosquillas,1,status,,100,20,Baja un nivel el Ataque y la Defensa del objetivo.
+322,Masa Cósmica,14,status,,,20,Sube un nivel la Defensa y la Defensa Especial del usuario.
+323,Salpicar,11,special,150,100,5,"Hace más daño cuantos más PS le quedan al usuario, hasta 150 de potencia."
+324,Rayo Señal,7,special,75,100,15,Puede confundir al objetivo. Probabilidad: 10 %.
+325,Puño Sombra,8,physical,60,,20,Nunca falla.
+326,Paranormal,14,special,80,100,20,Puede hacer retroceder al objetivo. Probabilidad: 10 %.
+327,Gancho Alto,2,physical,85,90,15,"Puede alcanzar a los Pokémon que estén usando Vuelo, Bote o Caída Libre."
+328,Bucle Arena,5,physical,35,85,15,Impide huir al objetivo y le causa daño durante 2 a 5 turnos. Probabilidad: 100 %.
+329,Frío Polar,15,special,,30,5,Debilita de un golpe.
+330,Agua Lodosa,11,special,90,85,10,Puede bajar un nivel la precisión del objetivo. Probabilidad: 30 %.
+331,Semilladora,12,physical,25,100,30,Golpea de 2 a 5 veces en un turno.
+332,Golpe Aéreo,3,physical,60,,20,Nunca falla.
+333,Carámbano,15,physical,25,100,30,Golpea de 2 a 5 veces en un turno.
+334,Defensa Férrea,9,status,,,15,Sube dos niveles la Defensa del usuario.
+335,Bloqueo,1,status,,,5,Impide al objetivo salir del combate.
+336,Aullido,1,status,,,40,Sube un nivel el Ataque del usuario.
+337,Garra Dragón,16,physical,80,100,15,"Daño normal, sin efecto adicional."
+338,Planta Feroz,12,special,150,90,5,El usuario pierde el turno siguiente para recargar.
+339,Corpulencia,2,status,,,20,Sube un nivel el Ataque y la Defensa del usuario.
+340,Bote,3,physical,85,85,5,"El usuario salta, esquiva todos los ataques y golpea el turno siguiente. Probabilidad: 30 %."
+341,Disparo Lodo,5,special,55,95,15,Puede bajar un nivel la Velocidad del objetivo. Probabilidad: 100 %.
+342,Cola Veneno,4,physical,50,100,25,Tiene mayor probabilidad de golpe crítico y puede envenenar al objetivo. Probabilidad: 10 %.
+343,Antojo,1,physical,60,100,25,Roba el objeto del objetivo.
+344,Placaje Eléctrico,13,physical,120,100,15,El usuario recibe 1/3 del daño causado. 10 % de probabilidad de paralizar al objetivo.
+345,Hoja Mágica,12,special,60,,20,Nunca falla.
+346,Hidrochorro,11,status,,,15,Reduce a la mitad todo el daño de tipo Fuego.
+347,Paz Mental,14,status,,,20,Sube un nivel el Ataque Especial y la Defensa Especial del usuario.
+348,Hoja Aguda,12,physical,90,100,15,Tiene mayor probabilidad de golpe crítico.
+349,Danza Dragón,16,status,,,20,Sube un nivel el Ataque y la Velocidad del usuario.
+350,Pedrada,6,physical,25,90,10,Golpea de 2 a 5 veces en un turno.
+351,Onda Voltio,13,special,60,,20,Nunca falla.
+352,Hidropulso,11,special,60,100,20,Puede confundir al objetivo. Probabilidad: 20 %.
+353,Deseo Oculto,9,special,140,100,5,Golpea al objetivo dos turnos después.
+354,Psicoataque,14,special,140,90,5,Baja dos niveles el Ataque Especial del usuario tras causar daño. Probabilidad: 100 %.
+355,Respiro,3,status,,,5,Recupera la mitad de los PS máximos del usuario.
+356,Gravedad,14,status,,,5,Anula durante cinco turnos los ataques e inmunidades relacionados con volar o levitar.
+357,Gran Ojo,14,status,,,40,Ignora la evasión del objetivo y permite que los ataques Psíquicos alcancen a los de tipo Siniestro.
+358,Espabila,2,physical,70,100,10,"Su potencia se duplica si el objetivo está dormido, y lo despierta."
+359,Machada,2,physical,100,90,10,Baja un nivel la Velocidad del usuario. Probabilidad: 100 %.
+360,Giro Bola,9,physical,,100,5,"La potencia aumenta cuanto menor es la Velocidad del usuario, hasta 150."
+361,Deseo Cura,14,status,,,10,El usuario se debilita. Su sustituto recupera todos los PS y se cura de problemas de estado graves.
+362,Salmuera,11,special,65,100,10,Duplica la potencia si al objetivo le queda menos de la mitad de sus PS máximos.
+363,Don Natural,1,physical,,100,15,La potencia y el tipo dependen de la baya que lleva.
+364,Amago,1,physical,30,100,10,Atraviesa Protección y Detección. Prioridad +2.
+365,Picoteo,3,physical,60,100,20,"Si el objetivo lleva una baya, duplica el daño y usa la baya."
+366,Viento Afín,3,status,,,15,"Durante tres turnos, duplica la Velocidad de los aliados."
+367,Acupresión,1,status,,,30,Sube dos niveles una estadística al azar de un aliado.
+368,Represión Metal,9,physical,,100,10,"Devuelve con ×1,5 el daño al último Pokémon que golpeó al usuario este turno."
+369,Ida y Vuelta,7,physical,70,100,20,El usuario se cambia después de atacar.
+370,A Bocajarro,2,physical,120,100,5,Baja un nivel la Defensa y la Defensa Especial del usuario tras causar daño. Probabilidad: 100 %.
+371,Vendetta,17,physical,50,100,10,Duplica la potencia si el objetivo ya ha actuado este turno.
+372,Buena Baza,17,physical,60,100,10,Duplica la potencia si el objetivo ya ha recibido daño este turno.
+373,Embargo,17,status,,100,15,"Durante 5 turnos, el objeto del objetivo no tiene efecto."
+374,Lanzamiento,17,physical,,100,10,Lanza el objeto que lleva; la potencia depende del objeto.
+375,Psicocambio,14,status,,100,10,Pasa el problema de estado grave del usuario al objetivo.
+376,As Oculto,1,special,,,5,"Cuantos menos PP le quedan a este ataque, más potencia tiene."
+377,Anticura,14,status,,100,15,"Durante 5 turnos, los rivales no pueden curarse."
+378,Estrujón,1,special,,100,5,"La potencia aumenta cuantos más PS le quedan al objetivo, hasta 121."
+379,Truco Fuerza,14,status,,,10,Intercambia el Ataque y la Defensa del usuario.
+380,Bilis,4,status,,100,10,Anula la habilidad del objetivo hasta que salga del combate.
+381,Conjuro,1,status,,,30,"Durante 5 turnos, protege al equipo del usuario de los golpes críticos."
+382,Yo Primero,1,status,,,20,"Copia el ataque que va a usar el rival con 1,5 veces su potencia. El usuario debe ser más rápido."
+383,Copión,1,status,,,20,Usa el último ataque usado por el objetivo.
+384,Cambiafuerza,14,status,,,10,Intercambia con el objetivo los cambios de Ataque y Ataque Especial.
+385,Cambiadefensa,14,status,,,10,Intercambia con el objetivo los cambios de Defensa y Defensa Especial.
+386,Castigo,17,physical,,100,5,"Potencia base 60, más 20 por cada nivel de estadística que el objetivo tenga aumentado."
+387,Última Baza,1,physical,140,100,5,Solo se puede usar tras haber usado todos los demás ataques del usuario.
+388,Abatidoras,12,status,,100,10,Cambia la habilidad del objetivo a Insomnio.
+389,Golpe Bajo,17,physical,70,100,5,Solo funciona si el objetivo va a usar un ataque con daño. Prioridad +1.
+390,Púas Tóxicas,4,status,,,20,Esparce púas venenosas que envenenan a los rivales que entran en combate.
+391,Cambiaalmas,14,status,,,10,El usuario y el objetivo intercambian sus cambios de estadísticas.
+392,Acua Aro,11,status,,,20,Recupera 1/16 de los PS máximos del usuario cada turno.
+393,Levitón,13,status,,,10,El usuario es inmune a los ataques y efectos de tipo Tierra durante cinco turnos.
+394,Envite Ígneo,10,physical,120,100,15,El usuario recibe 1/3 del daño causado. Puede quemar al objetivo. Probabilidad: 10 %.
+395,Palmeo,2,physical,60,100,10,Puede paralizar al objetivo. Probabilidad: 30 %.
+396,Esfera Aural,2,special,80,,20,Nunca falla.
+397,Pulimento,6,status,,,20,Sube dos niveles la Velocidad del usuario.
+398,Puya Nociva,4,physical,80,100,20,Puede envenenar al objetivo. Probabilidad: 30 %.
+399,Pulso Umbrío,17,special,80,100,15,Puede hacer retroceder al objetivo. Probabilidad: 20 %.
+400,Tajo Umbrío,17,physical,70,100,15,Tiene mayor probabilidad de golpe crítico.
+401,Acua Cola,11,physical,90,90,10,"Daño normal, sin efecto adicional."
+402,Bomba Germen,12,physical,80,100,15,"Daño normal, sin efecto adicional."
+403,Tajo Aéreo,3,special,75,95,15,Puede hacer retroceder al objetivo. Probabilidad: 30 %.
+404,Tijera X,7,physical,80,100,15,"Daño normal, sin efecto adicional."
+405,Zumbido,7,special,90,100,10,Puede bajar un nivel la Defensa Especial del objetivo. Probabilidad: 10 %.
+406,Pulso Dragón,16,special,85,100,10,"Daño normal, sin efecto adicional."
+407,Carga Dragón,16,physical,100,75,10,Puede hacer retroceder al objetivo. Probabilidad: 20 %.
+408,Joya de Luz,6,special,80,100,20,"Daño normal, sin efecto adicional."
+409,Puño Drenaje,2,physical,75,100,10,Recupera la mitad del daño causado.
+410,Onda Vacío,2,special,40,100,30,"Daño normal, sin efecto adicional. Prioridad +1."
+411,Onda Certera,2,special,120,70,5,Puede bajar un nivel la Defensa Especial del objetivo. Probabilidad: 10 %.
+412,Energibola,12,special,90,100,10,Puede bajar un nivel la Defensa Especial del objetivo. Probabilidad: 10 %.
+413,Pájaro Osado,3,physical,120,100,15,El usuario recibe 1/3 del daño causado.
+414,Tierra Viva,5,special,90,100,10,Puede bajar un nivel la Defensa Especial del objetivo. Probabilidad: 10 %.
+415,Trapicheo,17,status,,100,10,El usuario y el objetivo intercambian sus objetos.
+416,Gigaimpacto,1,physical,150,90,5,El usuario pierde el turno siguiente para recargar.
+417,Maquinación,17,status,,,20,Sube dos niveles el Ataque Especial del usuario.
+418,Puño Bala,9,physical,40,100,30,"Daño normal, sin efecto adicional. Prioridad +1."
+419,Alud,15,physical,60,100,10,Duplica el daño si el usuario recibe daño antes de atacar este turno. Prioridad -4.
+420,Esquirla Helada,15,physical,40,100,30,"Daño normal, sin efecto adicional. Prioridad +1."
+421,Garra Umbría,8,physical,70,100,15,Tiene mayor probabilidad de golpe crítico.
+422,Colmillo Rayo,13,physical,65,95,15,Puede paralizar y puede hacer retroceder al objetivo. Probabilidad: 10 %.
+423,Colmillo Hielo,15,physical,65,95,15,Puede congelar y puede hacer retroceder al objetivo. Probabilidad: 10 %.
+424,Colmillo Ígneo,10,physical,65,95,15,Puede quemar y puede hacer retroceder al objetivo. Probabilidad: 10 %.
+425,Sombra Vil,8,physical,40,100,30,"Daño normal, sin efecto adicional. Prioridad +1."
+426,Bomba Fango,5,special,65,85,10,Puede bajar un nivel la precisión del objetivo. Probabilidad: 30 %.
+427,Psicocorte,14,physical,70,100,20,Tiene mayor probabilidad de golpe crítico.
+428,Cabezazo Zen,14,physical,80,90,15,Puede hacer retroceder al objetivo. Probabilidad: 20 %.
+429,Disparo Espejo,9,special,65,85,10,Puede bajar un nivel la precisión del objetivo. Probabilidad: 30 %.
+430,Cañón Resplandor,9,special,80,100,10,Puede bajar un nivel la Defensa Especial del objetivo. Probabilidad: 10 %.
+431,Treparrocas,1,physical,90,85,20,Puede confundir al objetivo. Probabilidad: 20 %.
+432,Despejar,3,status,,,15,Baja un nivel la evasión del objetivo. Elimina los efectos de campo del lado rival.
+433,Espacio Raro,14,status,,,5,"Durante cinco turnos, los Pokémon más lentos actúan antes que los más rápidos. Prioridad -7."
+434,Cometa Draco,16,special,130,90,5,Baja dos niveles el Ataque Especial del usuario tras causar daño. Probabilidad: 100 %.
+435,Chispazo,13,special,80,100,15,Puede paralizar al objetivo. Probabilidad: 30 %.
+436,Humareda,10,special,80,100,15,Puede quemar al objetivo. Probabilidad: 30 %.
+437,Lluevehojas,12,special,130,90,5,Baja dos niveles el Ataque Especial del usuario tras causar daño. Probabilidad: 100 %.
+438,Latigazo,12,physical,120,85,10,"Daño normal, sin efecto adicional."
+439,Romperrocas,6,physical,150,90,5,El usuario pierde el turno siguiente para recargar.
+440,Veneno X,4,physical,70,100,20,Tiene mayor probabilidad de golpe crítico y puede envenenar al objetivo. Probabilidad: 10 %.
+441,Lanzamugre,4,physical,120,80,5,Puede envenenar al objetivo. Probabilidad: 30 %.
+442,Cabeza de Hierro,9,physical,80,100,15,Puede hacer retroceder al objetivo. Probabilidad: 30 %.
+443,Bomba Imán,9,physical,60,,20,Nunca falla.
+444,Roca Afilada,6,physical,100,80,5,Tiene mayor probabilidad de golpe crítico.
+445,Seducción,1,status,,100,20,Baja dos niveles el Ataque Especial del objetivo si es del género contrario.
+446,Trampa Rocas,6,status,,,20,Causa daño a los rivales que entran en combate.
+447,Hierba Lazo,12,special,,100,20,"Hace más daño cuanto más pesa el objetivo, hasta 120 de potencia."
+448,Cháchara,3,special,65,100,20,Tiene más probabilidad de confundir cuanto más alto sea el sonido grabado. Probabilidad: 100 %.
+449,Sentencia,1,special,100,100,10,"Si el usuario lleva la tabla o el módulo adecuados, el tipo del daño coincide con ellos."
+450,Picadura,7,physical,60,100,20,"Si el objetivo lleva una baya, duplica el daño y usa la baya."
+451,Rayo Carga,13,special,50,90,10,Puede subir un nivel el Ataque Especial del usuario. Probabilidad: 70 %.
+452,Mazazo,12,physical,120,100,15,El usuario recibe 1/3 del daño causado.
+453,Acua Jet,11,physical,40,100,20,"Daño normal, sin efecto adicional. Prioridad +1."
+454,Al Ataque,7,physical,90,100,15,Tiene mayor probabilidad de golpe crítico.
+455,A Defender,7,status,,,10,Sube un nivel la Defensa y la Defensa Especial del usuario.
+456,Auxilio,7,status,,,10,Recupera la mitad de los PS máximos del usuario.
+457,Testarazo,6,physical,150,80,5,El usuario recibe la mitad del daño causado.
+458,Doble Golpe,1,physical,35,90,10,Golpea dos veces en un turno.
+459,Distorsión,16,special,150,90,5,El usuario pierde el turno siguiente para recargar.
+460,Corte Vacío,16,special,100,95,5,Tiene mayor probabilidad de golpe crítico.
+461,Danza Lunar,14,status,,,10,"El usuario se debilita, y su sustituto se cura por completo."
+462,Agarrón,1,physical,,100,5,"La potencia aumenta cuantos más PS le quedan al objetivo, hasta 121."
+463,Lluvia Ígnea,10,special,100,75,5,Impide huir al objetivo y le causa daño durante 2 a 5 turnos. Probabilidad: 100 %.
+464,Brecha Negra,17,status,,50,10,Duerme al objetivo.
+465,Fulgor Semilla,12,special,120,85,5,Puede bajar dos niveles la Defensa Especial del objetivo. Probabilidad: 40 %.
+466,Viento Aciago,8,special,60,100,5,Puede subir un nivel todas las estadísticas del usuario. Probabilidad: 10 %.
+467,Golpe Umbrío,8,physical,120,100,5,"El usuario desaparece, esquiva todos los ataques y golpea el turno siguiente. Atraviesa Protección y Detección."
+468,Afilagarras,17,status,,,15,Sube un nivel el Ataque y la precisión del usuario.
+469,Vasta Guardia,6,status,,,10,Evita que los ataques a varios objetivos alcancen a los aliados este turno. Prioridad +3.
+470,Isoguardia,14,status,,,10,Promedia la Defensa y la Defensa Especial con las del objetivo.
+471,Isofuerza,14,status,,,10,Promedia el Ataque y el Ataque Especial con los del objetivo.
+472,Zona Extraña,14,status,,,10,Intercambia la Defensa y la Defensa Especial de todos los Pokémon durante 5 turnos.
+473,Psicocarga,14,special,80,100,10,"Calcula el daño con la Defensa del objetivo, no con su Defensa Especial."
+474,Carga Tóxica,4,special,65,100,10,Duplica el daño si el objetivo está envenenado.
+475,Aligerar,9,status,,,15,Sube dos niveles la Velocidad del usuario y reduce su peso a la mitad.
+476,Polvo Ira,7,status,,,20,Atrae hacia el usuario los ataques de un solo objetivo este turno. Prioridad +2.
+477,Telequinesis,14,status,,,15,"Durante 3 turnos, el objetivo flota y ningún ataque puede fallar contra él."
+478,Zona Mágica,14,status,,,10,Anula los objetos que llevan los Pokémon durante cinco turnos.
+479,Antiaéreo,6,physical,50,100,15,Elimina cualquier inmunidad al daño de tipo Tierra. Probabilidad: 100 %.
+480,Llave Corsé,2,physical,60,100,10,Siempre es golpe crítico.
+481,Pirotecnia,10,special,70,100,15,Causa daño también a los Pokémon junto al objetivo.
+482,Onda Tóxica,4,special,95,100,10,Puede envenenar al objetivo. Probabilidad: 10 %.
+483,Danza Aleteo,7,status,,,20,"Sube un nivel el Ataque Especial, la Defensa Especial y la Velocidad del usuario."
+484,Cuerpo Pesado,9,physical,,100,10,"La potencia aumenta cuanto más pesa el usuario que el objetivo, hasta 120."
+485,Sincrorruido,14,special,120,100,10,Golpea a los Pokémon adyacentes que comparten algún tipo con el usuario.
+486,Bola Voltio,13,special,,100,10,"La potencia aumenta cuanto más rápido es el usuario que el objetivo, hasta 150."
+487,Empapar,11,status,,100,20,Cambia el tipo del objetivo a Agua.
+488,Nitrocarga,10,physical,50,100,20,Daño normal. Sube un nivel la Velocidad del usuario. Probabilidad: 100 %.
+489,Enrosque,4,status,,,20,"Sube un nivel el Ataque, la Defensa y la precisión del usuario."
+490,Puntapié,2,physical,65,100,20,Baja un nivel la Velocidad del objetivo. Probabilidad: 100 %.
+491,Bomba Ácida,4,special,40,100,20,Baja dos niveles la Defensa Especial del objetivo. Probabilidad: 100 %.
+492,Juego Sucio,17,physical,95,100,15,Calcula el daño con la estadística de ataque del objetivo.
+493,Onda Simple,1,status,,100,15,Cambia la habilidad del objetivo a Simple.
+494,Danza Amiga,1,status,,100,15,Copia la habilidad del usuario en el objetivo.
+495,Cede Paso,1,status,,,15,Hace que el objetivo actúe justo después este turno.
+496,Canon,1,special,60,100,15,Duplica la potencia si se usa más de una vez por turno.
+497,Eco Voz,1,special,40,100,15,"La potencia aumenta con cada uso seguido de cualquier aliado, hasta 200."
+498,Guardia Baja,1,physical,70,100,20,Ignora los cambios de estadísticas del objetivo.
+499,Niebla Clara,4,special,50,,15,Elimina todos los cambios de estadísticas del objetivo.
+500,Poder Reserva,14,special,20,100,10,"La potencia aumenta cuanto más hayan subido las estadísticas del usuario, hasta ×31."
+501,Anticipo,2,status,,,15,Evita que los ataques con prioridad alcancen a los aliados este turno. Prioridad +3.
+502,Cambio de Banda,14,status,,,15,El usuario intercambia su posición con el aliado de enfrente. Prioridad +2.
+503,Escaldar,11,special,80,100,15,Puede quemar al objetivo. Probabilidad: 30 %.
+504,Rompecoraza,1,status,,,15,"Sube dos niveles el Ataque, el Ataque Especial y la Velocidad. Baja un nivel la Defensa y la Defensa Especial."
+505,Pulso Cura,14,status,,,10,Cura al objetivo la mitad de sus PS máximos.
+506,Infortunio,8,special,65,100,10,Duplica la potencia si el objetivo tiene un problema de estado grave.
+507,Caída Libre,3,physical,60,100,10,"El primer turno, el usuario y el objetivo se elevan. El segundo, causa daño."
+508,Cambio de Marcha,9,status,,,10,Sube un nivel el Ataque y dos la Velocidad del usuario.
+509,Llave Giro,2,physical,60,90,10,Termina los combates contra Pokémon salvajes. Obliga a los entrenadores a cambiar de Pokémon. Prioridad -6.
+510,Calcinación,10,special,60,100,15,Destruye la baya que lleva el objetivo.
+511,Último Lugar,17,status,,100,15,Hace que el objetivo actúe el último este turno.
+512,Acróbata,3,physical,55,100,15,Duplica la potencia si el usuario no lleva objeto.
+513,Clonatipo,1,status,,,15,El usuario adopta el tipo del objetivo.
+514,Represalia,1,physical,70,100,5,Duplica la potencia si un aliado se debilitó el turno anterior.
+515,Sacrificio,2,special,,100,5,"Causa un daño igual a los PS restantes del usuario, que se debilita."
+516,Ofrenda,1,status,,,15,El usuario le da al objetivo el objeto que lleva.
+517,Infierno,10,special,100,50,5,Puede quemar al objetivo. Probabilidad: 100 %.
+518,Voto Agua,11,special,80,100,10,"Con Voto Planta, reduce a la mitad la Velocidad de los rivales durante cuatro turnos."
+519,Voto Fuego,10,special,80,100,10,"Con Voto Agua, duplica la probabilidad de los efectos de los ataques aliados durante cuatro turnos."
+520,Voto Planta,12,special,80,100,10,"Con Voto Fuego, quita a los rivales 1/8 de sus PS máximos cada turno durante cuatro turnos."
+521,Voltiocambio,13,special,70,100,20,El usuario se cambia después de atacar.
+522,Estoicismo,7,special,50,100,20,Puede bajar un nivel el Ataque Especial del objetivo. Probabilidad: 100 %.
+523,Terratemblor,5,physical,60,100,20,Puede bajar un nivel la Velocidad del objetivo. Probabilidad: 100 %.
+524,Vaho Gélido,15,special,60,90,10,Siempre es golpe crítico. Probabilidad: 100 %.
+525,Cola Dragón,16,physical,60,90,10,Termina los combates contra Pokémon salvajes. Obliga a los entrenadores a cambiar de Pokémon. Prioridad -6.
+526,Avivar,1,status,,,30,Sube un nivel el Ataque y el Ataque Especial del usuario.
+527,Electrotela,13,special,55,95,15,Baja un nivel la Velocidad del objetivo. Probabilidad: 100 %.
+528,Voltio Cruel,13,physical,90,100,15,El usuario recibe 1/4 del daño causado.
+529,Taladradora,5,physical,80,95,10,Tiene mayor probabilidad de golpe crítico.
+530,Golpe Bis,16,physical,40,90,15,Golpea dos veces en un turno.
+531,Arrumaco,14,physical,60,100,25,Puede hacer retroceder al objetivo. Probabilidad: 30 %.
+532,Asta Drenaje,12,physical,75,100,10,Recupera la mitad del daño causado.
+533,Espada Santa,2,physical,90,100,15,Ignora los cambios de estadísticas del objetivo.
+534,Concha Filo,11,physical,75,95,10,Puede bajar un nivel la Defensa del objetivo. Probabilidad: 50 %.
+535,Golpe Calor,10,physical,,100,10,"La potencia aumenta cuanto más pesa el usuario que el objetivo, hasta 120."
+536,Ciclón de Hojas,12,special,65,90,10,Puede bajar un nivel la precisión del objetivo. Probabilidad: 50 %.
+537,Rodillo de Púas,7,physical,65,100,20,Puede hacer retroceder al objetivo. Probabilidad: 30 %.
+538,Rizo Algodón,12,status,,,10,Sube tres niveles la Defensa del usuario.
+539,Pulso Noche,17,special,85,95,10,Puede bajar un nivel la precisión del objetivo. Probabilidad: 40 %.
+540,Onda Mental,14,special,100,100,10,"Calcula el daño con la Defensa del objetivo, no con su Defensa Especial."
+541,Plumerazo,1,physical,25,85,10,Golpea de 2 a 5 veces en un turno.
+542,Vendaval,3,special,110,70,10,Puede confundir al objetivo. Probabilidad: 30 %.
+543,Ariete,1,physical,120,100,15,El usuario recibe 1/4 del daño causado.
+544,Rueda Doble,9,physical,50,85,15,Golpea dos veces en un turno.
+545,Bomba Ígnea,10,special,100,100,5,Puede quemar al objetivo. Probabilidad: 30 %.
+546,Tecno Shock,1,special,120,100,5,"Si el usuario lleva la tabla o el módulo adecuados, el tipo del daño coincide con ellos."
+547,Canto Arcaico,1,special,75,100,10,Puede dormir al objetivo. Probabilidad: 10 %.
+548,Sable Místico,2,special,85,100,10,"Calcula el daño con la Defensa del objetivo, no con su Defensa Especial."
+549,Mundo Gélido,15,special,65,95,10,Baja un nivel la Velocidad del objetivo. Probabilidad: 100 %.
+550,Ataque Fulgor,13,physical,130,85,5,Puede paralizar al objetivo. Probabilidad: 20 %.
+551,Llama Azul,10,special,130,85,5,Puede quemar al objetivo. Probabilidad: 20 %.
+552,Danza Llama,10,special,80,100,10,Puede subir un nivel el Ataque Especial del usuario. Probabilidad: 50 %.
+553,Rayo Gélido,15,physical,140,90,5,Carga el primer turno y ataca el segundo. 30 % de probabilidad de paralizar.
+554,Llama Gélida,15,special,140,90,5,Carga el primer turno y ataca el segundo. 30 % de probabilidad de quemar.
+555,Alarido,17,special,55,95,15,Puede bajar un nivel el Ataque Especial del objetivo. Probabilidad: 100 %.
+556,Chuzos,15,physical,85,90,10,Puede hacer retroceder al objetivo. Probabilidad: 30 %.
+557,V de Fuego,10,physical,180,95,5,"Baja un nivel la Defensa, la Defensa Especial y la Velocidad del usuario. Probabilidad: 100 %."
+558,Llama Fusión,10,special,100,100,5,"Con Rayo Fusión, duplica el daño."
+559,Rayo Fusión,13,physical,100,100,5,"Con Llama Fusión, duplica el daño."
+560,Plancha Voladora,2,physical,100,95,10,Causa daño de tipo Lucha y Volador a la vez.
+561,Escudo Tatami,2,status,,,10,Protege a los aliados de los ataques que causan daño. Solo funciona el primer turno en combate.
+562,Eructo,4,special,120,90,10,Solo se puede usar después de que el usuario se haya comido una baya.
+563,Fertilizante,5,status,,,10,Sube el Ataque y el Ataque Especial de todos los Pokémon de tipo Planta en combate. Probabilidad: 100 %.
+564,Red Viscosa,7,status,,,20,Cubre el lado rival: baja un nivel la Velocidad de los rivales al entrar.
+565,Aguijón Letal,7,physical,50,100,25,Sube dos niveles el Ataque del usuario si debilita al objetivo.
+566,Golpe Fantasma,8,physical,90,100,10,"El usuario desaparece, esquiva todos los ataques y golpea el turno siguiente. Atraviesa Protección y Detección."
+567,Halloween,8,status,,100,20,Añade el tipo Fantasma al objetivo.
+568,Rugido de Guerra,1,status,,100,30,Baja un nivel el Ataque y el Ataque Especial del objetivo. Probabilidad: 100 %.
+569,Cortina Plasma,13,status,,,25,"Este turno, los ataques de tipo Normal pasan a ser de tipo Eléctrico. Prioridad +1."
+570,Carga Parábola,13,special,65,100,20,Recupera la mitad del daño total causado a todos los objetivos.
+571,Condena Silvana,12,status,,100,20,Añade el tipo Planta al objetivo.
+572,Tormenta Floral,12,physical,90,100,15,Daño normal.
+573,Liofilización,15,special,70,100,20,Supereficaz contra el tipo Agua. Probabilidad: 10 %.
+574,Voz Cautivadora,18,special,40,,15,Nunca falla.
+575,Última Palabra,17,status,,100,20,Baja un nivel el Ataque y el Ataque Especial de los objetivos. El usuario se cambia. Probabilidad: 100 %.
+576,Reversión,17,status,,,20,Invierte los cambios de estadísticas del objetivo.
+577,Beso Drenaje,18,special,50,100,10,Recupera el 75 % del daño causado.
+578,Truco Defensa,18,status,,,10,Protege a todos los aliados de los ataques sin daño. Prioridad +3.
+579,Defensa Floral,18,status,,,10,Sube la Defensa de todos los Pokémon de tipo Planta en combate. Probabilidad: 100 %.
+580,Campo de Hierba,12,status,,,10,"Durante cinco turnos, los Pokémon en el suelo recuperan 1/16 de sus PS máximos cada turno y sus ataques de Planta multiplican su potencia por 1,5."
+581,Campo de Niebla,18,status,,,10,"Durante cinco turnos, protege a los Pokémon en el suelo de los problemas de estado graves y de la confusión, y reduce a la mitad la potencia de los ataques de Dragón que reciben."
+582,Electrificación,13,status,,,20,Cambia a Eléctrico el tipo del ataque del objetivo si aún no ha actuado este turno.
+583,Carantoña,18,physical,90,90,10,Puede bajar un nivel el Ataque del objetivo. Probabilidad: 10 %.
+584,Viento Feérico,18,special,40,100,30,"Daño normal, sin efecto adicional."
+585,Fuerza Lunar,18,special,95,100,15,Puede bajar un nivel el Ataque Especial del objetivo. Probabilidad: 30 %.
+586,Estruendo,1,special,140,100,10,Daño normal.
+587,Cerrojo Feérico,18,status,,,10,Impide a todos los Pokémon huir o cambiarse durante el turno siguiente.
+588,Escudo Real,9,status,,,10,Bloquea los ataques con daño y baja dos niveles el Ataque de quien ataca por contacto. Cambia a Aegislash a su Forma Escudo. Prioridad +4.
+589,Camaradería,1,status,,,20,Baja un nivel el Ataque del objetivo. Probabilidad: 100 %.
+590,Confidencia,1,status,,,20,Baja un nivel el Ataque Especial del objetivo. Probabilidad: 100 %.
+591,Tormenta de Diamantes,6,physical,100,95,5,Puede subir dos niveles la Defensa del usuario por cada objetivo alcanzado. Probabilidad: 50 %.
+592,Chorro de Vapor,11,special,110,95,5,Puede quemar al objetivo. Probabilidad: 30 %.
+593,Paso Dimensional,14,special,80,,5,Ignora y destruye los efectos de protección.
+594,Shuriken de Agua,11,special,15,100,20,Golpea de 2 a 5 veces. Prioridad +1.
+595,Llama Embrujada,10,special,75,100,10,Puede bajar un nivel el Ataque Especial del objetivo. Probabilidad: 100 %.
+596,Barrera Espinosa,12,status,,,10,Bloquea los ataques con daño y quita a quien ataca 1/8 de sus PS máximos. Prioridad +4.
+597,Niebla Aromática,18,status,,,20,Sube un nivel la Defensa Especial de un aliado.
+598,Onda Anómala,13,status,,100,15,Baja dos niveles el Ataque Especial del objetivo.
+599,Trampa Venenosa,4,status,,100,20,"Baja un nivel el Ataque, el Ataque Especial y la Velocidad del objetivo si está envenenado. Probabilidad: 100 %."
+600,Polvo Explosivo,7,status,,100,20,"Si el objetivo usa un ataque de tipo Fuego este turno, pierde 1/4 de sus PS máximos y el ataque no se realiza. Prioridad +1."
+601,Geocontrol,18,status,,,10,"Carga un turno y después sube dos niveles el Ataque Especial, la Defensa Especial y la Velocidad del usuario."
+602,Aura Magnética,13,status,,,20,Sube un nivel la Defensa y la Defensa Especial de los aliados con Más o Menos.
+603,Paga Extra,1,status,,,30,Duplica el dinero que se recibe al terminar el combate. No tiene más efecto.
+604,Campo Eléctrico,13,status,,,10,"Durante cinco turnos, impide dormirse a los Pokémon en el suelo y sus ataques eléctricos multiplican su potencia por 1,5."
+605,Brillo Mágico,18,special,80,100,10,"Daño normal, sin efecto adicional."
+606,Celebración,1,status,,,40,No tiene efecto en combate.
+607,Manos Juntas,1,status,,,40,No tiene efecto en combate.
+608,Ojitos Tiernos,18,status,,100,30,Baja un nivel el Ataque del objetivo. Prioridad +1.
+609,Moflete Estático,13,physical,20,100,20,Puede paralizar al objetivo. Probabilidad: 100 %.
+610,Clemencia,1,physical,40,100,40,No puede bajar los PS del objetivo de 1.
+611,Acoso,7,special,20,100,20,Impide huir al objetivo y le causa daño durante 2 a 5 turnos. Probabilidad: 100 %.
+612,Puño Incremento,2,physical,40,100,20,Sube un nivel el Ataque del usuario tras causar daño. Probabilidad: 100 %.
+613,Ala Mortífera,3,special,80,100,10,Recupera el 75 % del daño causado.
+614,Mil Flechas,5,physical,90,100,10,Derriba al objetivo y alcanza incluso a los de tipo Volador o que levitan. Probabilidad: 100 %.
+615,Mil Temblores,5,physical,90,100,10,Impide al objetivo salir del combate.
+616,Fuerza Telúrica,5,physical,90,100,10,"Daño normal, sin efecto adicional."
+617,Luz Aniquiladora,18,special,140,90,5,El usuario recibe la mitad del daño causado.
+618,Pulso Primigenio,11,special,110,85,10,"Daño normal, sin efecto adicional."
+619,Filo del Abismo,5,physical,120,85,10,"Daño normal, sin efecto adicional."
+620,Ascenso Draco,3,physical,120,100,5,Baja un nivel la Defensa y la Defensa Especial del usuario tras causar daño. Probabilidad: 100 %.
+621,Cerco Dimensión,17,physical,100,,5,Ignora y destruye los efectos de protección. Probabilidad: 100 %.
+659,Recogearena,5,status,,,5,"Recupera 1/2 de los PS máximos del usuario, o 2/3 durante una tormenta de arena."
+660,Escaramuza,7,physical,90,100,10,Solo se puede usar en el primer turno tras entrar en combate. Prioridad +2.
+661,Búnker,4,status,,,10,Protege al usuario este turno y envenena a quien intente un ataque de contacto. Prioridad +4.
+662,Puntada Sombría,8,physical,80,100,10,Atrapa al objetivo.
+663,Lariat Oscuro,17,physical,85,100,10,Ignora los cambios de estadísticas del objetivo.
+664,Aria Burbuja,11,special,90,100,10,Cura las quemaduras del objetivo.
+665,Martillo Hielo,15,physical,100,90,10,Baja un nivel la Velocidad del usuario. Probabilidad: 100 %.
+666,Cura Floral,18,status,,,10,"Cura al objetivo 1/2 de sus PS máximos, o 2/3 en Campo de Hierba."
+667,Fuerza Equina,5,physical,95,95,10,"Daño normal, sin efecto adicional."
+668,Absorbefuerza,12,status,,100,10,"Recupera tantos PS como el Ataque actual del objetivo, y le baja un nivel el Ataque. Probabilidad: 100 %."
+669,Cuchilla Solar,12,physical,125,100,10,Necesita un turno de carga antes de atacar.
+670,Follaje,12,physical,40,100,40,"Daño normal, sin efecto adicional."
+671,Foco,1,status,,,15,"Este turno, los ataques de los rivales del objetivo se dirigen hacia él. Prioridad +3."
+672,Hilo Venenoso,4,status,,100,20,Envenena al objetivo y le baja un nivel la Velocidad. Probabilidad: 100 %.
+673,Aguzar,1,status,,,30,El siguiente ataque del usuario es golpe crítico seguro.
+674,Piñón Auxiliar,9,status,,,20,Sube un nivel el Ataque y el Ataque Especial de los aliados con Más o Menos.
+675,Golpe Mordaza,17,physical,80,100,15,Impide al objetivo usar ataques de sonido durante dos turnos. Probabilidad: 100 %.
+676,Bola de Polen,7,special,90,100,15,"Daña a los rivales, pero cura a los aliados el 50 % de sus PS máximos."
+677,Anclaje,9,physical,80,100,20,Atrapa al objetivo.
+678,Campo Psíquico,14,status,,,10,Protege a los Pokémon en el suelo de los ataques con prioridad y aumenta un 50 % la potencia de sus ataques Psíquicos.
+679,Plancha,7,physical,80,100,15,Baja un nivel el Ataque del objetivo tras causar daño. Probabilidad: 100 %.
+680,Látigo Ígneo,10,physical,80,100,15,Baja un nivel la Defensa del objetivo tras causar daño. Probabilidad: 100 %.
+681,Chulería,17,physical,20,100,10,"La potencia aumenta cuanto más hayan subido las estadísticas del usuario, hasta ×31."
+682,Llama Final,10,special,130,100,5,Quita el tipo Fuego al usuario tras causar daño.
+683,Cambiavelocidad,14,status,,,10,Intercambia la Velocidad del usuario con la del objetivo.
+684,Cuerno Certero,9,physical,70,,10,Nunca falla.
+685,Purificación,4,status,,,20,Cura el problema de estado grave del objetivo y recupera el 50 % de los PS máximos del usuario.
+686,Danza Despertar,1,special,90,100,15,Es del mismo tipo que el usuario.
+687,Núcleo Castigo,16,special,100,100,10,Anula la habilidad del objetivo si este ya ha actuado.
+688,Patada Tropical,12,physical,70,100,15,Baja un nivel el Ataque del objetivo tras causar daño. Probabilidad: 100 %.
+689,Mandato,14,status,,,15,Obliga al objetivo a repetir su último ataque.
+690,Pico Cañón,3,physical,100,100,15,Quema a cualquier Pokémon que haga contacto antes del ataque. Prioridad -3.
+691,Fragor Escamas,16,special,110,100,5,Baja un nivel la Defensa del usuario tras causar daño. Probabilidad: 100 %.
+692,Martillo Dragón,16,physical,90,100,15,"Daño normal, sin efecto adicional."
+693,Giro Vil,17,physical,60,100,20,"Daño normal, sin efecto adicional."
+694,Velo Aurora,15,status,,,20,"Reduce el daño durante cinco turnos, pero solo se puede usar durante el granizo."
+704,Coraza Trampa,10,special,150,100,5,Solo causa daño si el usuario ha recibido un ataque físico este turno. Prioridad -3.
+705,Cañón Floral,18,special,130,90,5,Baja dos niveles el Ataque Especial del usuario tras causar daño. Probabilidad: 100 %.
+706,Psicocolmillo,14,physical,85,100,10,Destruye Reflejo y Pantalla de Luz.
+707,Pataleta,5,physical,75,100,10,Duplica la potencia si falló el último ataque del usuario.
+708,Hueso Sombrío,8,physical,85,100,10,Puede bajar un nivel la Defensa del objetivo. Probabilidad: 20 %.
+709,Roca Veloz,6,physical,40,100,20,"Daño normal, sin efecto adicional. Prioridad +1."
+710,Hidroariete,11,physical,85,100,10,Puede bajar un nivel la Defensa del objetivo. Probabilidad: 20 %.
+711,Láser Prisma,14,special,160,100,10,El usuario pierde el turno siguiente para recargar.
+712,Robasombra,8,physical,90,100,10,Roba las subidas de estadísticas del objetivo y después causa daño.
+713,Meteoimpacto,9,physical,100,100,5,Las habilidades no pueden impedirlo.
+714,Rayo Umbrío,8,special,100,100,5,Las habilidades no pueden impedirlo.
+715,Ojos Llorosos,1,status,,,20,Baja un nivel el Ataque y el Ataque Especial del objetivo. Probabilidad: 100 %.
+716,Electropunzada,13,physical,80,100,10,Puede hacer retroceder al objetivo. Probabilidad: 30 %.
+717,Furia Natural,18,special,,90,10,Causa un daño igual a la mitad de los PS actuales del objetivo.
+718,Multiataque,1,physical,120,100,10,"Si el usuario lleva la tabla o el módulo adecuados, el tipo del daño coincide con ellos."
+720,Cabeza Sorpresa,10,special,150,100,5,"Causa daño, y el usuario pierde la mitad de sus PS máximos, redondeado hacia arriba."
+721,Puños Plasma,13,physical,100,100,15,"Tras causar daño, los ataques de tipo Normal pasan a ser Eléctricos el resto del turno."
+722,Géiser Fotónico,14,special,100,100,5,"Daño normal, sin efecto adicional."
+729,Pikaturbo,13,physical,80,100,10,"Daño normal, sin efecto adicional. Probabilidad: 100 %. Prioridad +2."
+730,Salpikasurf,11,special,90,100,15,"Daño normal, sin efecto adicional. Probabilidad: 30 %."
+731,Pikapicado,3,physical,90,95,15,"Daño normal, sin efecto adicional. Probabilidad: 30 %."
+732,Pikatormenta,13,special,,,20,"Daño normal, sin efecto adicional."
+733,Vapodrenaje,11,special,60,100,20,"Daño normal, sin efecto adicional."
+734,Joltioparálisis,13,special,60,100,20,"Daño normal, sin efecto adicional. Probabilidad: 100 %."
+735,Flarembestida,10,physical,60,100,20,"Daño normal, sin efecto adicional. Probabilidad: 100 %."
+736,Espeaura,14,special,80,95,15,"Daño normal, sin efecto adicional."
+737,Umbreozona,17,special,80,95,15,"Daño normal, sin efecto adicional."
+738,Leafitobombas,12,physical,100,90,10,"Daño normal, sin efecto adicional. Probabilidad: 100 %."
+739,Glaceoprisma,15,special,100,90,10,"Daño normal, sin efecto adicional."
+740,Sylveotornado,18,special,120,85,5,"Daño normal, sin efecto adicional."
+741,Eevimpacto,1,physical,,,20,"Daño normal, sin efecto adicional."
+742,Ferropuño Doble,9,physical,60,100,5,Golpea dos veces en un turno. Probabilidad: 30 %.
+744,Cañón Dinamax,16,special,100,100,5,Duplica el daño si el objetivo está en Dinamax. Probabilidad: 100 %.
+745,Disparo Certero,11,special,80,100,15,"Ignora los ataques y habilidades que atraen ataques, y alcanza al objetivo elegido. Probabilidad: 100 %."
+746,Presa Maxilar,17,physical,80,100,10,Impide al usuario y al objetivo cambiarse. Probabilidad: 100 %.
+747,Atiborramiento,1,status,,,10,El usuario consume una baya y sube dos niveles la Defensa. Probabilidad: 100 %.
+748,Bastión Final,2,status,,,5,Impide al usuario cambiarse. Sube un nivel todas sus estadísticas. Probabilidad: 100 %.
+749,Alquitranazo,6,status,,100,15,"Baja un nivel la Velocidad del objetivo. Hasta que se cambie, los ataques de Fuego duplican su efectividad contra él. Probabilidad: 100 %."
+750,Polvo Mágico,14,status,,100,20,Cambia el tipo del objetivo a Psíquico. Probabilidad: 100 %.
+751,Dracoflechas,16,physical,50,100,10,"Golpea dos veces en un turno. En dobles alcanza a los dos rivales; si no puede con uno, golpea dos veces al otro. Probabilidad: 100 %."
+752,Hora del Té,1,status,,,10,Todos los Pokémon en el campo consumen la baya que llevan. Probabilidad: 100 %.
+753,Octopresa,2,status,,100,15,"Impide al objetivo cambiarse. Al final de cada turno, le baja un nivel la Defensa y la Defensa Especial. Probabilidad: 100 %."
+754,Electropico,13,physical,85,100,10,Duplica la potencia si el usuario actúa antes que el objetivo. Probabilidad: 100 %.
+755,Branquibocado,11,physical,85,100,10,Duplica la potencia si el usuario actúa antes que el objetivo. Probabilidad: 100 %.
+756,Cambio de Cancha,1,status,,100,10,Intercambia los efectos de campo entre el lado del usuario y el del objetivo. Probabilidad: 100 %.
+775,Estruendo Escama,16,status,,100,5,El usuario pierde el 33 % de sus PS máximos. Sube un nivel todas sus estadísticas. Probabilidad: 100 %.
+776,Plancha Corporal,2,physical,80,100,10,"Calcula el daño con la Defensa del usuario en lugar de su Ataque, incluidos los cambios de nivel."
+777,Decoración,18,status,,,15,Sube dos niveles el Ataque y el Ataque Especial del objetivo. Probabilidad: 100 %.
+778,Batería Asalto,12,physical,80,100,10,Puede bajar un nivel la Velocidad del objetivo. Probabilidad: 100 %.
+779,Cepo,12,physical,35,100,15,Impide huir al objetivo y le causa daño durante 2 a 5 turnos. Probabilidad: 100 %.
+780,Balón Ígneo,10,physical,120,90,5,Puede quemar al objetivo. Probabilidad: 10 %.
+781,Tajo Supremo,9,physical,100,100,5,Duplica el daño si el objetivo está en Dinamax. Probabilidad: 100 %.
+782,Embate Supremo,9,physical,100,100,5,Duplica el daño si el objetivo está en Dinamax. Probabilidad: 100 %.
+783,Rueda Aural,13,physical,110,100,10,Sube un nivel la Velocidad del usuario. Es de tipo Eléctrico en Modo Saciado y de tipo Siniestro en Modo Voraz. Probabilidad: 100 %.
+784,Vasto Impacto,16,physical,60,100,15,Baja un nivel el Ataque del objetivo tras causar daño. Probabilidad: 100 %.
+785,Punzada Rama,12,physical,40,100,40,"Daño normal, sin efecto adicional."
+786,Amplificador,13,special,80,100,10,"Daño normal, sin efecto adicional."
+787,Ácido Málico,12,special,80,100,10,Baja un nivel la Defensa Especial del objetivo. Probabilidad: 100 %.
+788,Fuerza G,12,physical,80,100,10,Baja un nivel la Defensa del objetivo. Aumenta un 50 % el daño durante Gravedad. Probabilidad: 100 %.
+789,Choque Anímico,18,physical,75,100,15,Puede bajar un nivel el Ataque Especial del objetivo. Probabilidad: 100 %.
+790,Cautivapor,18,special,90,95,10,Puede confundir al objetivo. Probabilidad: 20 %.
+791,Gota Vital,11,status,,,10,Cada Pokémon del lado del usuario recupera 1/4 de sus PS máximos. Probabilidad: 100 %.
+792,Obstrucción,17,status,,100,10,"Impide que ningún ataque alcance al usuario este turno. Si bloquea un ataque de contacto, baja dos niveles la Defensa de quien lo usó. Probabilidad: 100 %. Prioridad +4."
+793,Irreverencia,17,physical,80,,10,Nunca falla. Probabilidad: 100 %.
+794,Asalto Estelar,2,physical,150,100,5,El usuario pierde el turno siguiente para recargar. Probabilidad: 100 %.
+795,Rayo Infinito,16,special,160,90,5,El usuario pierde el turno siguiente para recargar. Probabilidad: 100 %.
+796,Metaláser,9,special,140,95,5,"Causa daño, y el usuario pierde la mitad de sus PS máximos, redondeado hacia arriba. Probabilidad: 100 %."
+797,Vasta Fuerza,14,special,80,100,10,"En Campo Psíquico, con el usuario en el suelo, alcanza a todos los rivales y aumenta su potencia un 50 %. Probabilidad: 100 %."
+798,Allanador Férreo,9,physical,130,100,5,"Termina los Campos Eléctrico, de Hierba, de Niebla o Psíquico. Falla si no hay ninguno. Probabilidad: 100 %."
+799,Ráfaga Escamas,16,physical,25,90,20,Golpea de 2 a 5 veces seguidas. Después sube un nivel la Velocidad y baja un nivel la Defensa del usuario. Probabilidad: 100 %.
+800,Rayo Meteórico,6,special,120,90,10,Necesita un turno de carga. Sube un nivel el Ataque Especial tras el primer turno. Probabilidad: 100 %.
+801,Moluscañón,4,special,90,100,10,20 % de probabilidad de envenenar. Pasa a ser físico y de contacto si así hace más daño.
+802,Bruma Explosiva,18,special,100,100,5,"En Campo de Niebla, con el usuario en el suelo, aumenta su potencia un 50 %. Probabilidad: 100 %."
+803,Fitoimpulso,12,physical,55,100,20,"En Campo de Hierba, con el usuario en el suelo, sube un nivel su prioridad. Probabilidad: 100 %."
+804,Alto Voltaje,13,special,70,100,20,"En Campo Eléctrico, con el usuario en el suelo, duplica su potencia. Probabilidad: 100 %."
+805,Pulso de Campo,1,special,50,100,10,"Con un campo activo y el usuario en el suelo, duplica la potencia y adopta el tipo de ese campo."
+806,Golpe Rastrero,7,physical,70,90,10,Baja un nivel el Ataque Especial del objetivo. Probabilidad: 100 %.
+807,Envidia Ardiente,10,special,70,100,5,Quema al objetivo si le han subido alguna estadística este turno. Probabilidad: 100 %.
+808,Desahogo,17,physical,75,100,5,Duplica la potencia si al usuario le han bajado alguna estadística este turno. Probabilidad: 100 %.
+809,Poltergeist,8,physical,110,90,5,Falla si el objetivo no lleva objeto.
+810,Gas Corrosivo,4,status,,100,40,El objetivo suelta el objeto que lleva. Probabilidad: 100 %.
+811,Motivación,2,status,,,10,Sube un nivel el Ataque y la Defensa del objetivo. Falla si no hay un aliado adyacente. Probabilidad: 100 %.
+812,Viraje,11,physical,60,100,20,El usuario se cambia después de atacar. Probabilidad: 100 %.
+813,Triple Axel,15,physical,20,90,10,"Golpea tres veces, y cada acierto aumenta la potencia. Probabilidad: 100 %."
+814,Ala Bis,3,physical,40,90,10,Golpea dos veces en un turno. Probabilidad: 100 %.
+815,Arenas Ardientes,5,special,70,100,10,Puede quemar al objetivo. Probabilidad: 30 %.
+816,Cura Selvática,12,status,,,10,Cada Pokémon del lado del usuario se cura de su problema de estado y recupera 1/4 de sus PS máximos. Probabilidad: 100 %.
+817,Golpe Oscuro,17,physical,75,100,5,Siempre es golpe crítico. Probabilidad: 100 %.
+818,Azote Torrencial,11,physical,25,100,5,Golpea tres veces y siempre es golpe crítico.
+819,Electrojaula,13,special,80,90,15,Impide huir al objetivo y le causa daño durante 2 a 5 turnos. Probabilidad: 100 %.
+820,Dracoenergía,16,special,150,100,5,"Hace más daño cuantos más PS le quedan al usuario, hasta 150 de potencia."
+821,Mirada Heladora,14,special,90,100,10,Puede congelar al objetivo. Probabilidad: 10 %.
+822,Furia Candente,17,special,90,100,10,Puede hacer retroceder al objetivo. Probabilidad: 20 %.
+823,Patada Relámpago,2,physical,90,100,10,Baja un nivel la Defensa del objetivo tras causar daño. Probabilidad: 100 %.
+824,Lanza Glacial,15,physical,120,100,5,"Daño normal, sin efecto adicional."
+825,Orbes Espectro,8,special,120,100,5,"Daño normal, sin efecto adicional."
+826,Conjuro Funesto,14,special,80,100,5,Quita 3 PP al último ataque que haya usado el objetivo.
+827,Garra Nociva,4,physical,80,100,15,"Tiene un 50 % de probabilidad de dormir, envenenar o paralizar al objetivo."
+828,Asalto Barrera,14,physical,70,90,10,Sube un nivel la Defensa del usuario. Probabilidad: 100 %.
+829,Cambiapoder,1,status,0,,10,Intercambia el Ataque y la Defensa del usuario.
+830,Hachazo Pétreo,6,physical,65,90,15,Coloca Trampa Rocas en el lado del objetivo: daña a los rivales que entran en combate.
+831,Ciclón Primavera,18,special,100,80,5,Tiene un 30 % de probabilidad de bajar un nivel el Ataque de los rivales.
+832,Poder Místico,14,special,70,90,10,Sube un nivel el Ataque Especial del usuario. Probabilidad: 100 %.
+833,Erupción de Ira,10,physical,120,100,10,Ataca durante 2 o 3 turnos seguidos y después el usuario queda confuso.
+834,Envite Acuático,11,physical,120,100,10,El usuario recibe el 33 % del daño causado.
+835,Clorofiláser,12,special,150,95,5,El usuario pierde la mitad de sus PS máximos.
+836,Viento Carámbano,15,physical,100,85,10,30 % de probabilidad de hacer retroceder al objetivo.
+837,Danza Triunfal,2,status,0,,10,"Sube un nivel el Ataque, la Defensa y la Velocidad del usuario."
+838,Arremetida,5,physical,120,100,5,Baja un nivel la Defensa y la Defensa Especial del usuario.
+839,Mil Púas Tóxicas,4,physical,60,100,10,Tiene un 50 % de probabilidad de envenenar. Duplica la potencia si el objetivo ya está envenenado.
+840,Ala Aural,14,special,80,100,10,Sube un nivel la Velocidad del usuario. Índice de golpe crítico alto.
+841,Rencor Reprimido,8,special,75,100,10,Baja un nivel el Ataque del objetivo.
+842,Retracción,9,status,0,,10,Sube dos niveles la Defensa del usuario.
+843,Triple Flecha,2,physical,90,100,10,Índice de golpe crítico alto. 50 % de probabilidad de bajar la Defensa del objetivo y 30 % de hacerlo retroceder.
+844,Marcha Espectral,8,special,60,100,15,30 % de probabilidad de quemar. Su potencia se duplica si el objetivo tiene un problema de estado.
+845,Tajo Metralla,17,physical,65,90,15,Coloca una capa de Púas en el lado de los rivales.
+846,Vendaval Gélido,3,special,100,80,10,"Tiene un 30 % de probabilidad de bajar un nivel la Velocidad de los rivales. Con lluvia, nunca falla."
+847,Electormenta,13,special,100,80,10,"Tiene un 20 % de probabilidad de paralizar a los rivales. Con lluvia, nunca falla."
+848,Simún de Arena,5,special,100,80,10,"Tiene un 20 % de probabilidad de quemar a los rivales. Con lluvia, nunca falla."
+849,Plegaria Lunar,14,status,0,,5,El usuario y sus aliados recuperan 1/4 de sus PS máximos y se curan de sus problemas de estado.
+850,Bálsamo Osado,14,status,0,,10,Cura el problema de estado del usuario y sube un nivel su Ataque Especial y su Defensa Especial.
+851,Teraexplosión,1,special,80,100,10,"Si el usuario ha teracristalizado, adopta su teratipo y es físico cuando su Ataque supera a su Ataque Especial."
+852,Telatrampa,7,status,0,,10,Protege de los ataques con daño. Quien lo ataque por contacto baja un nivel su Velocidad. Prioridad +4.
+853,Patada Hacha,2,physical,120,90,10,"Tiene un 30 % de probabilidad de confundir. Si falla, el usuario pierde la mitad de sus PS máximos."
+854,Homenaje Póstumo,8,physical,50,100,10,Suma 50 de potencia por cada vez que se ha debilitado un Pokémon del equipo.
+855,Fotocolisión,14,special,80,100,10,Baja dos niveles la Defensa Especial del objetivo. Probabilidad: 100 %.
+856,Oído Cocina,16,physical,80,100,10,"Si lleva a un Tatsugiri en la boca, sube un nivel el Ataque (forma Curvada), la Defensa (Lánguida) o la Velocidad (Recta)."
+857,Puño Jet,11,physical,60,100,15,"Daño normal, sin efecto adicional. Suele atacar primero. Prioridad +1."
+858,Extracto Picante,12,status,0,,15,Sube dos niveles el Ataque del objetivo y le baja dos niveles la Defensa.
+859,Quemarrueda,9,physical,100,100,5,Baja dos niveles la Velocidad del usuario.
+860,Proliferación,1,physical,20,90,10,"Golpea hasta 10 veces. Cada golpe puede fallar, y el ataque termina si falla uno."
+861,Pirueta Helada,15,physical,80,100,15,Termina los efectos del campo activo.
+862,Asalto Espadón,16,physical,120,100,5,"Hasta el siguiente turno del usuario, los ataques contra él nunca fallan y hacen el doble de daño."
+863,Plegaria Vital,1,status,0,,1,Revive a un Pokémon debilitado del equipo con la mitad de sus PS máximos.
+864,Salazón,6,physical,40,100,15,"El objetivo pierde 1/8 de sus PS máximos cada turno, o 1/4 si es de tipo Acero o Agua."
+865,Triple Inmersión,11,physical,30,95,10,Golpea 3 veces.
+866,Giro Mortífero,4,physical,30,100,15,"Envenena a los rivales y libera al usuario de trampas, ataques que atrapan y Drenadoras."
+867,Decalcomanía,1,status,0,100,10,La habilidad del usuario y la de su aliado pasan a ser la del objetivo.
+868,Deslome,1,status,0,,10,"Gasta la mitad de los PS máximos para subir dos niveles el Ataque, el Ataque Especial y la Velocidad."
+869,Genufendiente,17,physical,85,,10,Nunca falla.
+870,Truco Floral,12,physical,70,,10,Siempre es golpe crítico y nunca falla.
+871,Canto Ardiente,10,special,80,100,10,Sube un nivel el Ataque Especial del usuario. Probabilidad: 100 %.
+872,Danza Acuática,11,physical,80,100,10,Sube un nivel la Velocidad del usuario. Probabilidad: 100 %.
+873,Furia Taurina,1,physical,90,100,10,"Destruye Reflejo, Pantalla de Luz y Velo Aurora. Su tipo depende de la forma del usuario."
+874,Fiebre Dorada,9,special,120,100,5,Baja un nivel el Ataque Especial del usuario. Alcanza a todos los rivales.
+875,Psicohojas,14,physical,80,100,15,"En Campo Eléctrico, multiplica la potencia por 1,5."
+876,Hidrovapor,11,special,80,100,15,"Con sol intenso, hace ×1,5 de daño en lugar de la mitad."
+877,Calamidad,17,special,1,90,10,Causa un daño igual a la mitad de los PS actuales del objetivo.
+878,Nitrochoque,2,physical,100,100,5,"Multiplica el daño por 1,33 si es supereficaz."
+879,Electroderrape,13,special,100,100,5,"Multiplica el daño por 1,33 si es supereficaz."
+880,Autotomía,1,status,0,,10,Gasta la mitad de los PS máximos para pasar un sustituto al Pokémon que entra en su lugar.
+881,Fría Acogida,15,status,0,,10,Provoca nieve durante 5 turnos. El usuario se cambia.
+882,Limpieza General,1,status,0,,10,Sube un nivel el Ataque y la Velocidad del usuario. Elimina sustitutos y trampas de ambos lados.
+883,Paisaje Nevado,15,status,0,,10,"Provoca nieve durante 5 turnos. Los Pokémon de tipo Hielo multiplican su Defensa por 1,5."
+884,Brinco,7,physical,50,100,20,Baja un nivel la Velocidad del objetivo. Probabilidad: 100 %.
+885,Abrecaminos,12,physical,50,100,20,Sube un nivel la Velocidad del usuario. Probabilidad: 100 %.
+886,Agua Fría,11,special,50,100,20,Baja un nivel el Ataque del objetivo. Probabilidad: 100 %.
+887,Hipertaladro,1,physical,100,100,5,Atraviesa las protecciones sin romperlas.
+888,Láser Doble,14,special,40,100,10,Golpea 2 veces en un turno.
+889,Puño Furia,8,physical,50,100,10,"Suma 50 de potencia por cada vez que han golpeado al usuario, hasta 6 golpes."
+890,Cañón Armadura,10,special,120,100,5,Baja un nivel la Defensa y la Defensa Especial del usuario.
+891,Espada Lamento,10,physical,90,100,10,Recupera el 50 % del daño causado.
+892,Electropalmas,13,physical,120,100,5,"El usuario debe ser de tipo Eléctrico, y lo deja de ser después de usarlo."
+893,Martillo Colosal,9,physical,160,100,5,No se puede usar en el turno siguiente a usarlo.
+894,Resarcimiento,17,physical,1,100,10,"Si recibe un ataque este turno, devuelve ×1,5 del daño recibido."
+895,Tajo Acuático,11,physical,70,100,20,Tiene mayor probabilidad de golpe crítico.
+896,Pirochoque,10,physical,80,100,10,30 % de probabilidad de quemar al objetivo.
+897,Ominochoque,17,physical,80,100,10,10 % de probabilidad de dormir al objetivo.
+898,Ponzochoque,4,physical,100,100,10,30 % de probabilidad de envenenar al objetivo.
+899,Pugnachoque,2,physical,100,100,10,30 % de probabilidad de paralizar al objetivo.
+900,Feerichoque,18,physical,100,100,10,30 % de probabilidad de confundir al objetivo.
+901,Luna Roja,1,special,140,100,5,No se puede usar dos turnos seguidos.
+902,Cañón Batidor,12,special,80,90,15,Tiene un 20 % de probabilidad de quemar. Recupera el 50 % del daño causado y descongela a los rivales.
+903,Bomba Caramelo,12,special,60,85,10,Baja un nivel la Velocidad del objetivo al final de cada turno durante 3 turnos.
+904,Garrote Liana,12,physical,100,100,10,Tiene mayor probabilidad de golpe crítico. Su tipo depende de la máscara de Ogerpon.
+905,Electrorrayo,13,special,130,100,10,"Sube un nivel el Ataque Especial y golpea el turno siguiente. Con lluvia, no necesita cargar."
+906,Teraclúster,1,special,120,100,5,"Si lo usa Terapagos en Forma Astral, es de tipo Astral y alcanza a todos los rivales."
+907,Láser Veleidoso,16,special,80,100,5,Tiene un 30 % de probabilidad de duplicar su potencia.
+908,Llama Protectora,10,status,0,0,10,Protege de los ataques con daño. Quien lo ataque por contacto queda quemado. Prioridad +4.
+909,Relámpago Súbito,13,special,70,100,5,Suele atacar primero. Falla si el objetivo no está preparando un ataque. Prioridad +1.
+910,Filo Potente,6,physical,95,100,5,Atraviesa las protecciones sin romperlas.
+911,Tajo Taquión,9,special,50,0,10,Golpea 2 veces y nunca falla.
+912,Prensa Metálica,9,physical,0,100,10,"Hace más daño cuantos más PS le quedan al objetivo, hasta 100 de potencia."
+913,Bramido Dragón,16,status,0,0,15,"Sube un nivel la probabilidad de golpe crítico de un aliado, o dos si es de tipo Dragón."
+914,Canto Encantador,18,special,80,100,10,Confunde al objetivo si le ha subido alguna estadística este turno.
+915,Cólera Ardiente,10,physical,75,100,10,Duplica la potencia si falló el último ataque del usuario.
+916,Plancha Voltaica,13,physical,100,95,15,"Si falla, el usuario pierde la mitad de sus PS máximos."
+917,Psicorruido,14,special,75,100,10,Impide al objetivo curarse durante 2 turnos.
+918,Palma Rauda,2,physical,65,100,15,Hace retroceder al objetivo. Falla si el objetivo no está usando un ataque con prioridad. Prioridad +3.
+919,Cadena Virulenta,4,special,100,100,5,Tiene un 50 % de probabilidad de envenenar gravemente al objetivo.

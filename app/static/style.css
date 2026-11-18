@@ -1,0 +1,678 @@
+/* Tipografías servidas desde la propia web (ver fonts/LEEME.txt) */
+@font-face {
+  font-family: "Luckiest Guy";
+  src: url("fonts/LuckiestGuy-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("fonts/Nunito-Variable.woff2") format("woff2");
+  font-weight: 200 1000;
+  font-display: swap;
+}
+
+:root {
+  --rojo: #ee1515;
+  --rojo-osc: #b30f0f;
+  --amarillo: #ffcb05;
+  --azul: #3b4cca;
+  --azul-osc: #2a3590;
+  --tinta: #22232a;
+  --suave: #6b6f7c;
+  --fondo: #f1f3f8;
+  --tarjeta: #ffffff;
+  --linea: #dfe3ee;
+  --ok: #3ddc84;
+  --caido: #ff5a5a;
+  --desconocido: #b9bbc4;
+  --radio: 16px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Nunito", system-ui, sans-serif;
+  background: var(--fondo);
+  color: var(--tinta);
+}
+
+button, input, select { font: inherit; }
+
+/* ---------- Cabecera ---------- */
+.cabecera { position: relative; background: var(--rojo); border-bottom: 6px solid var(--tinta); overflow: hidden; }
+.cabecera::before {
+  content: ""; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(circle at center, #fff 0 22%, var(--tinta) 22% 28%, #fff 28% 100%); opacity: .18;
+}
+.cabecera-dentro {
+  position: relative; max-width: 1180px; margin: 0 auto; padding: 16px;
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+}
+.marca { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.logo {
+  margin: 0; font-family: "Luckiest Guy", Impact, sans-serif; font-weight: 400;
+  font-size: clamp(28px, 6vw, 52px); line-height: 1; letter-spacing: 2px;
+  color: var(--amarillo); -webkit-text-stroke: 7px var(--azul); paint-order: stroke fill;
+  text-shadow: 0 5px 0 var(--azul-osc);
+}
+.bola {
+  width: 44px; height: 44px; flex: none; position: relative; border-radius: 50%; border: 4px solid var(--tinta);
+  background: linear-gradient(var(--rojo-osc) 0 46%, var(--tinta) 46% 54%, #fff 54% 100%);
+}
+.bola::after {
+  content: ""; position: absolute; inset: 50% auto auto 50%; width: 14px; height: 14px; margin: -7px 0 0 -7px;
+  background: #fff; border: 3px solid var(--tinta); border-radius: 50%;
+}
+
+.estado { margin-left: auto; display: flex; align-items: center; gap: 6px; color: #fff; font-weight: 800; font-size: 13px; }
+.punto { width: 12px; height: 12px; border-radius: 50%; display: inline-block; border: 2px solid #fff; }
+.punto.ok { background: var(--ok); }
+.punto.caido { background: var(--caido); }
+.punto.desconocido { background: var(--desconocido); }
+#estado-cache { margin-left: 10px; }
+
+/* ---------- Estructura ---------- */
+main { max-width: 1180px; margin: 0 auto; padding: 18px 16px 60px; }
+#mensaje { min-height: 1.2em; margin: 0 0 8px; color: var(--rojo-osc); font-weight: 700; }
+.vista[hidden] { display: none; }
+.titulo-seccion {
+  margin: 0 0 12px; font-family: "Luckiest Guy", sans-serif; font-weight: 400; letter-spacing: 1px;
+  font-size: 24px; color: var(--azul-osc);
+}
+
+.btn {
+  display: inline-block; border: 2px solid var(--tinta); background: #fff; color: var(--tinta); border-radius: 999px;
+  padding: 8px 16px; font-weight: 800; box-shadow: 0 3px 0 var(--tinta); cursor: pointer; text-decoration: none;
+}
+.btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--tinta); }
+.btn.primario { background: var(--amarillo); }
+
+/* ---------- Portada: tarjetas de partidas ---------- */
+.rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+.partida {
+  text-align: left; background: var(--tarjeta); border: 2px solid var(--linea); border-top: 8px solid var(--azul);
+  border-radius: var(--radio); padding: 16px 16px 14px; color: var(--tinta); cursor: pointer;
+  transition: transform .12s, box-shadow .12s, border-color .12s;
+}
+.partida:hover, .partida:focus-visible {
+  transform: translateY(-4px); box-shadow: 0 10px 22px rgba(34, 35, 42, .14); border-color: var(--azul); outline: none;
+}
+.partida h3 { margin: 0 0 4px; font-size: 20px; font-weight: 800; overflow-wrap: anywhere; }
+.partida .meta { color: var(--suave); font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+/* 6 miniaturas de 44 px + 5 huecos de 8 px = 304 px: caben incluso en una tarjeta de anchura mínima (340 px) */
+.minis { display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 2px; }
+.tarjeta-partida { position: relative; display: grid; }
+.editar-tarjeta {
+  position: absolute; top: 14px; right: 10px; z-index: 1; width: 30px; height: 30px; padding: 0; border-radius: 50%;
+  background: var(--tinta); color: #fff; border: 2px solid #fff; font-size: 15px; line-height: 1; cursor: pointer;
+  opacity: 0; transform: scale(.8); transition: opacity .15s, transform .15s;
+}
+.tarjeta-partida:hover .editar-tarjeta, .tarjeta-partida:focus-within .editar-tarjeta { opacity: 1; transform: scale(1); }
+.editar-tarjeta:hover { background: var(--azul); }
+@media (hover: none) { .editar-tarjeta { opacity: 1; transform: scale(1); } }
+.partida.nueva {
+  border: 3px dashed var(--azul); background: transparent; min-height: 148px;
+  display: grid; place-items: center; color: var(--azul); font-weight: 800; font-size: 18px; text-align: center;
+}
+.partida.nueva .mas { display: block; font-size: 38px; line-height: 1; }
+.vacio { color: var(--suave); font-size: 13px; }
+
+/* Figuras de Pokémon (pixel art): el canvas ya trae la escala entera, sin suavizado */
+.figura { display: grid; place-items: center; flex: none; }
+.figura canvas { display: block; }
+.figura.gris canvas, .figura.gris img { filter: grayscale(1) brightness(.85); opacity: .7; }
+.figura .falta { font-weight: 800; color: var(--suave); }
+
+/* ---------- Vista de partida ---------- */
+.barra { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+.barra h2 { margin: 0; font-size: 28px; font-weight: 800; overflow-wrap: anywhere; }
+.contadores { display: flex; gap: 10px; margin-left: auto; flex-wrap: wrap; }
+.chip { background: #fff; border: 2px solid var(--linea); border-radius: 999px; padding: 4px 12px; font-weight: 800; font-size: 13px; }
+.chip b { color: var(--azul); }
+.chip.rojo b { color: var(--rojo-osc); }
+.chip.derrota { background: var(--rojo-osc); border-color: var(--rojo-osc); color: #fff; }
+
+/* Siempre tres columnas en horizontal; en pantallas estrechas, desplazamiento lateral en vez de apilarse */
+.scroll-h { overflow-x: auto; padding-bottom: 6px; }
+.tres { display: grid; grid-template-columns: 0.9fr 1fr 1fr; gap: 18px; align-items: start; min-width: 900px; }
+.col-izq, .col-der { display: grid; gap: 14px; }
+
+.titulo-panel {
+  margin: 0 0 12px; font-family: "Luckiest Guy", sans-serif; font-weight: 400; letter-spacing: 1px;
+  font-size: 20px; color: var(--azul-osc);
+}
+.panel-col { background: var(--tarjeta); border: 2px solid var(--linea); border-radius: var(--radio); padding: 14px; }
+.panel-col.cementerio .titulo-panel { color: var(--rojo-osc); }
+.panel-col.fallos .titulo-panel { color: var(--suave); font-size: 16px; }
+
+/* Pokédex (equipo actual): panel rojo con borde negro, lente azul y tres luces verdes */
+.panel-pokedex {
+  position: relative; background: var(--rojo); border: 5px solid var(--tinta); border-radius: 22px;
+  padding: 12px 10px; box-shadow: inset 0 -8px 0 rgba(0, 0, 0, .18); color: #fff;
+}
+.panel-pokedex .titulo-panel { color: #fff; text-shadow: 0 2px 0 var(--tinta); padding-left: 34px; }
+.panel-pokedex::before {
+  content: ""; position: absolute; top: 12px; left: 14px; width: 22px; height: 22px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #d6f3ff 0 25%, #3fb5ff 26% 100%);
+  border: 3px solid #fff; box-shadow: 0 0 0 2px var(--tinta);
+}
+.panel-pokedex::after {
+  content: ""; position: absolute; top: 14px; right: 16px; width: 44px; height: 10px;
+  background: radial-gradient(circle, var(--ok) 0 4px, transparent 5px) 0 0 / 15px 10px repeat-x;
+}
+
+/* Equipo dentro de la Pokédex: 2 columnas x 3 filas; cada Pokémon va suelto, sin caja */
+.equipo { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px 6px; }
+.botones-equipo { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.botones-equipo .btn { padding: 8px 10px; }
+.slot {
+  position: relative; border-radius: 14px; padding: 4px 4px 6px; text-align: center; color: #fff;
+  cursor: pointer; transition: background .15s;
+}
+/* El recuadro solo aparece al pasar el ratón (o con el teclado) y únicamente oscurece el rojo */
+.slot:hover, .slot:focus-visible { background: rgba(0, 0, 0, .16); outline: none; }
+.slot .figura { margin: 0 auto; }
+.slot .mote { font-weight: 800; font-size: 12px; text-shadow: 0 2px 0 rgba(0, 0, 0, .4); overflow-wrap: anywhere; }
+.slot .ruta { color: #ffd9d9; font-size: 10px; font-weight: 700; }
+.slot.muerto .mote, .slot.muerto .ruta { opacity: .6; }
+/* Sobre fondo rojo, la transparencia teñiría de rojo al muerto: gris opaco */
+.slot .figura.gris canvas { opacity: 1; filter: grayscale(1) brightness(1.05) contrast(.9); }
+
+/* «−» para sacar del equipo: oculto; aparece arriba a la derecha al pasar el ratón (siempre visible en pantallas táctiles) */
+.quitar {
+  position: absolute; top: 4px; right: 4px; z-index: 2; width: 24px; height: 24px; padding: 0; border-radius: 50%;
+  background: var(--tinta); color: #fff; border: 2px solid #fff; font-size: 16px; font-weight: 800; line-height: 1;
+  cursor: pointer; opacity: 0; transform: scale(.8); transition: opacity .15s, transform .15s;
+}
+.slot:hover .quitar, .slot:focus-within .quitar { opacity: 1; transform: scale(1); }
+.quitar:hover { background: var(--rojo-osc); }
+@media (hover: none) { .quitar { opacity: 1; transform: scale(1); } }
+
+/* Hueco libre: rojo más oscuro y hundido; al pulsarlo se elige un Pokémon vivo */
+.hueco {
+  min-height: 112px; border: 0; border-radius: 14px; background: rgba(0, 0, 0, .22);
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, .35); color: rgba(255, 255, 255, .45);
+  font-size: 30px; font-weight: 800; cursor: pointer; transition: background .15s, color .15s;
+}
+.hueco:hover, .hueco:focus-visible { background: rgba(0, 0, 0, .32); color: rgba(255, 255, 255, .8); outline: none; }
+.hueco small { display: block; font-size: 11px; font-weight: 700; }
+.hueco.vacio, .hueco.vacio:hover { background: rgba(0, 0, 0, .22); cursor: default; }
+
+/* Ventana «Elige un Pokémon» */
+dialog.selector { width: min(460px, 94vw); }
+.selector-cabecera {
+  display: flex; align-items: center; gap: 10px; padding: 14px 18px;
+  background: var(--rojo); color: #fff; border-bottom: 4px solid var(--tinta);
+}
+.selector-cabecera h3 { margin: 0; color: #fff; }
+.cerrar {
+  margin-left: auto; width: 34px; height: 34px; border: 0; border-radius: 50%; background: #fff;
+  font-size: 16px; font-weight: 800; cursor: pointer;
+}
+.selector-lista { padding: 14px; max-height: 60vh; overflow-y: auto; }
+.fila.opcion { width: 100%; border: 2px solid transparent; cursor: pointer; text-align: left; }
+.fila.opcion:hover, .fila.opcion:focus-visible { border-color: var(--azul); background: #eef0ff; outline: none; }
+
+/* Filas pequeñas de vivos y cementerio: mote, especie y ruta, y el dibujo en un cuadro blanco redondeado */
+.lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.fila {
+  display: flex; align-items: center; gap: 10px; background: var(--fondo);
+  border-radius: 12px; padding: 4px 6px 4px 12px;
+}
+.fila .texto { flex: 1; min-width: 0; line-height: 1.2; }
+.fila .mote { font-weight: 800; font-size: 14px; overflow-wrap: anywhere; }
+.fila .esp { font-size: 13px; }
+.fila .ruta { font-size: 11px; color: var(--suave); font-weight: 600; }
+.cuadro { background: #fff; border: 2px solid var(--linea); border-radius: 14px; overflow: hidden; }
+.lista .vacio { padding: 6px 4px; }
+/* Las filas de vivos y cementerio se pueden pulsar para abrir la ficha */
+button.fila { width: 100%; border: 2px solid transparent; text-align: left; color: var(--tinta); cursor: pointer; }
+button.fila:hover, button.fila:focus-visible { border-color: var(--azul); background: #eef0ff; outline: none; }
+.cementerio button.fila:hover, .cementerio button.fila:focus-visible { border-color: var(--rojo-osc); background: #fff0f0; }
+
+/* Fallos: texto y botón de eliminar */
+.fila.fallo { padding: 6px 6px 6px 12px; }
+.borrar {
+  width: 30px; height: 30px; flex: none; border: 2px solid var(--linea); border-radius: 50%; background: #fff;
+  color: var(--rojo-osc); font-weight: 800; cursor: pointer;
+}
+.borrar:hover { border-color: var(--rojo-osc); background: #fff0f0; }
+
+.info { font-size: .8rem; color: var(--suave); margin: -6px 0 10px; }
+
+/* ---------- Ventana «Nueva partida» ---------- */
+dialog {
+  border: 0; border-radius: 20px; padding: 0; width: min(420px, 92vw);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .4); color: var(--tinta);
+}
+dialog::backdrop { background: rgba(20, 22, 40, .6); }
+dialog form { padding: 18px; }
+dialog h3 { margin: 0 0 12px; font-family: "Luckiest Guy", sans-serif; font-weight: 400; font-size: 24px; color: var(--azul-osc); }
+dialog input { width: 100%; padding: 10px 12px; border: 2px solid var(--linea); border-radius: 10px; }
+dialog input:focus { outline: none; border-color: var(--azul); }
+.botones { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; margin-top: 14px; }
+.botones .btn.peligro { margin-left: 0; }
+#dialogo-partida .botones .btn.peligro { margin-right: auto; }
+.texto-confirmar { margin: 0; font-size: 15px; line-height: 1.4; overflow-wrap: anywhere; }
+.btn.mini { padding: 4px 10px; font-size: 13px; box-shadow: none; }
+
+/* Modo de la partida (ideas 2 + 6): etiqueta en la tarjeta y en la barra, y elección en «Nueva partida» */
+.modo {
+  display: inline-block; padding: 2px 10px; border-radius: 999px; background: var(--amarillo); color: var(--tinta);
+  font-size: 11px; font-weight: 800; letter-spacing: .4px; text-transform: uppercase;
+}
+.modo:empty { display: none; }
+.partida .modo { margin-bottom: 6px; }
+.boton-modo { border: 0; cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 5px; }
+.boton-modo:hover, .boton-modo:focus-visible { background: #ffd83d; outline: 2px solid var(--tinta); outline-offset: 1px; }
+.info-modo { font-size: 13px; line-height: 1; }
+/* Recuadro flotante con las reglas de la partida (popover): se coloca con top/left desde app.js */
+.reglas-partida {
+  position: fixed; inset: auto; margin: 0; width: min(320px, calc(100vw - 32px)); max-height: 70vh; overflow-y: auto;
+  padding: 12px 16px 14px; border: 2px solid var(--tinta); border-radius: 14px; background: #fff; color: var(--tinta);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
+}
+.reglas-partida h3 { margin: 0; font-family: "Luckiest Guy", sans-serif; font-weight: 400; font-size: 20px; color: var(--azul-osc); }
+.reglas-partida h4 { margin: 10px 0 4px; font-size: 13px; color: var(--azul-osc); }
+.descripcion-modo { margin: 2px 0 0; font-size: 13px; color: var(--suave); }
+.reglas-partida .pista { margin-top: 10px; }
+dialog.nueva-partida { width: min(560px, 94vw); max-height: 92vh; }
+.modos { border: 0; padding: 0; margin: 0 0 10px; min-width: 0; }
+.modos legend { padding: 0; }
+.modos-opciones { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+.modo-opcion {
+  position: relative; display: grid; gap: 2px; padding: 10px 12px; border: 2px solid var(--linea); border-radius: 12px; cursor: pointer;
+}
+.modo-opcion input { position: absolute; opacity: 0; width: 1px; height: 1px; } /* oculto pero accesible */
+.modo-opcion strong { font-size: 15px; }
+.modo-opcion small { color: var(--suave); font-size: 12px; line-height: 1.3; }
+.modo-opcion:hover { border-color: var(--azul); }
+.modo-opcion:has(input:checked) { border-color: var(--azul); background: #eef0ff; box-shadow: inset 0 0 0 1px var(--azul); }
+.modo-opcion:has(input:focus-visible) { outline: 3px solid var(--amarillo); outline-offset: 2px; }
+.reglas-modo { background: var(--fondo); border-radius: 12px; padding: 4px 14px 10px; }
+.reglas-modo h4 { margin: 8px 0 4px; font-size: 13px; color: var(--azul-osc); }
+.lista-reglas { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.5; }
+
+
+/* ---------- Ficha del Pokémon ---------- */
+dialog.ficha { width: min(760px, 94vw); max-height: 92vh; }
+.ficha-cabecera {
+  display: flex; gap: 16px; align-items: center; padding: 18px;
+  background: linear-gradient(120deg, var(--azul) 0 60%, var(--azul-osc)); color: #fff;
+}
+.ficha-dibujo .cuadro { border: 3px solid #fff; }
+.ficha-datos { min-width: 0; }
+.ficha-datos h3 { margin: 0; color: #fff; font-size: 30px; overflow-wrap: anywhere; }
+.nombre-ficha { display: flex; align-items: center; gap: 8px; }
+.lapiz-ficha {
+  flex: none; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%;
+  background: rgba(255, 255, 255, .2); color: #fff; font-size: 14px; line-height: 1; cursor: pointer;
+}
+.lapiz-ficha:hover, .lapiz-ficha:focus-visible { background: var(--amarillo); color: var(--tinta); outline: none; }
+.ficha-sub { margin: 2px 0 0; font-weight: 700; opacity: .9; }
+.tipos { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.tipo { color: #fff; font-weight: 800; font-size: 12px; padding: 3px 12px; border-radius: 999px; text-transform: uppercase; letter-spacing: .5px; }
+.ficha-estado { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.marca-estado { background: rgba(255, 255, 255, .2); padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; }
+.marca-estado.muerto { background: var(--rojo); }
+.ficha .cerrar { align-self: flex-start; }
+.ficha-error { padding: 0 18px; }
+
+/* Cuerpo editable de la ficha (C1): datos y ataques a la izquierda, estadísticas a la derecha */
+.ficha-cuerpo { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 22px; padding: 16px 18px 6px; }
+@media (max-width: 640px) { .ficha-cuerpo { grid-template-columns: 1fr; } }
+.ficha-cuerpo h4 {
+  margin: 4px 0 8px; font-family: "Luckiest Guy", sans-serif; font-weight: 400; font-size: 17px;
+  letter-spacing: .5px; color: var(--azul-osc);
+}
+.doble { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.hueco-ataque input, .stat input {
+  width: 100%; padding: 8px 10px; border: 2px solid var(--linea); border-radius: 10px;
+  font-weight: 700; color: var(--tinta); background: #fff;
+}
+.hueco-ataque input:focus, .stat input:focus { outline: none; border-color: var(--azul); }
+.hexa-escala { display: flex; justify-content: center; gap: 6px; margin-bottom: 4px; }
+.boton-escala { padding: 2px 10px; border: 2px solid var(--linea); border-radius: 999px; background: #fff; font: inherit; font-size: 12px; font-weight: 800; color: var(--suave); cursor: pointer; }
+.boton-escala.activa { background: var(--azul); border-color: var(--azul); color: #fff; }
+.hexa { position: relative; width: 100%; max-width: 400px; aspect-ratio: 400 / 380; margin: 0 auto; }
+.hexa svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hexa-borde { fill: #f4f6fb; stroke: var(--linea); stroke-width: 1.5; }
+.hexa-linea { fill: none; stroke: var(--linea); stroke-width: 1; }
+.hexa-forma { fill: var(--amarillo); fill-opacity: .55; stroke: var(--amarillo); stroke-width: 3; stroke-linejoin: round; }
+.stat { position: absolute; display: grid; justify-items: center; gap: 2px; width: 92px; transform: translate(-50%, -50%); }
+.stat[data-stat="hp"] { left: 50%; top: 12.1%; }
+.stat[data-stat="sp_attack"] { left: 84.2%; top: 29.2%; }
+.stat[data-stat="sp_defense"] { left: 84.2%; top: 70.8%; }
+.stat[data-stat="speed"] { left: 50%; top: 87.9%; }
+.stat[data-stat="defense"] { left: 15.8%; top: 70.8%; }
+.stat[data-stat="attack"] { left: 15.8%; top: 29.2%; }
+.stat-nombre { font-weight: 800; font-size: 13px; white-space: nowrap; }
+.stat-genes { font-size: 10px; font-weight: 700; color: var(--suave); white-space: nowrap; }
+.stat-genes[hidden] { display: none; }
+.stat.sube .stat-nombre { color: #d33; }
+.stat.baja .stat-nombre { color: #36c; }
+.stat.sube .stat-nombre::after { content: " ▲"; }
+.stat.baja .stat-nombre::after { content: " ▼"; }
+.stat input { width: 56px; text-align: center; padding: 3px 4px; }
+.stat.estimada input { background: #fff8d6; border-style: dashed; }
+.stat.estimada .stat-nombre::before { content: "≈ "; }
+.stat.no-cuadra input { border-color: var(--rojo-osc); }
+.confirmar-estimadas { margin: 4px 0 2px; padding: 2px 10px; border: 2px solid var(--linea); border-radius: 999px; background: #fff; font: inherit; font-size: 12px; font-weight: 800; color: var(--azul-osc); cursor: pointer; }
+.confirmar-estimadas:hover, .confirmar-estimadas:focus-visible { border-color: var(--azul); outline: none; }
+/* El icono de evolucionar va dentro del campo de nivel: se ven como un solo control */
+.campo .campo-nivel { display: flex; align-items: center; border: 2px solid var(--linea); border-radius: 12px; background: #fff; }
+.campo .campo-nivel:focus-within { border-color: var(--azul); }
+.campo .campo-nivel input { flex: 1 1 auto; min-width: 0; border: 0; background: none; }
+.evo-nivel { flex: none; display: grid; place-items: center; width: 28px; height: 28px; margin-right: 5px; padding: 0; border: 0; border-radius: 8px; background: none; color: var(--suave); cursor: pointer; }
+.evo-nivel:hover, .evo-nivel:focus-visible { background: var(--fondo); color: var(--azul-osc); outline: none; }
+.evo-nivel[hidden] { display: none; }
+.evolucion-nivel { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: -4px 0 8px; font-size: 13px; font-weight: 700; }
+.evolucion-nivel[hidden] { display: none; }
+.casilla-evolucion { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; cursor: pointer; }
+.casilla-evolucion input { flex: none; width: auto; margin: 0; }
+.pista { margin: 2px 0 0; font-size: 12px; color: var(--suave); }
+/* «Puede aprender» (C2): tabla en la que se pulsa un ataque para ponerlo en un hueco */
+.aprender { grid-column: 1 / -1; min-width: 0; background: var(--fondo); border-radius: 14px; padding: 6px 14px 12px; margin: 8px 0 4px; }
+.aprender h4 .opcional { font-family: "Nunito", sans-serif; font-size: 12px; color: var(--suave); letter-spacing: 0; }
+.filtro {
+  width: 100%; margin-bottom: 8px; padding: 6px 10px; border: 2px solid var(--linea); border-radius: 10px;
+  font-weight: 700; color: var(--tinta); background: #fff;
+}
+.filtro:focus { outline: none; border-color: var(--azul); }
+.filtro[hidden] { display: none; }
+.zona-ataques { grid-column: 1 / -1; min-width: 0; margin-top: 4px; }
+.huecos-ataque { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+@media (max-width: 640px) { .huecos-ataque { grid-template-columns: 1fr; } }
+.hueco-ataque { min-width: 0; padding: 8px; border: 2px solid var(--linea); border-radius: 12px; background: #fff; }
+.hueco-ataque.lleno { border-left-width: 6px; }
+.fila-hueco { display: flex; gap: 6px; }
+.fila-hueco input { flex: 1; min-width: 0; }
+.fila-hueco input[hidden], .nombre-hueco[hidden] { display: none; }
+.nombre-hueco { flex: 1; min-width: 0; padding: 4px 2px; font-weight: 800; overflow-wrap: anywhere; }
+.vaciar-ataque { flex: none; width: 28px; padding: 0; border: 0; border-radius: 8px; background: var(--fondo); color: var(--suave); font-weight: 800; cursor: pointer; }
+.vaciar-ataque:hover { background: #ffb3b3; color: #7a0a0a; }
+.vaciar-ataque[hidden] { display: none; }
+input.no-valido { border-color: var(--rojo) !important; }
+.datos-ataque { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin-top: 6px; font-size: 12px; color: var(--suave); }
+.datos-ataque b { color: var(--tinta); }
+.datos-ataque .tipo, .tabla-ataques .tipo { font-size: 10px; padding: 2px 8px; letter-spacing: 0; }
+.texto-ataque { margin: 5px 0 0; font-size: 12px; font-weight: 600; line-height: 1.35; color: var(--tinta); text-transform: none; letter-spacing: 0; }
+.texto-ataque.suave { color: var(--suave); }
+.fuera-de-lista { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 5px; font-size: 12px; font-weight: 700; color: var(--rojo-osc); }
+.chips-habilidad { display: flex; flex-wrap: wrap; gap: 5px; margin: -4px 0 6px; }
+.chips-habilidad:empty { display: none; }
+.chip-habilidad { padding: 2px 9px; border: 2px solid var(--linea); border-radius: 999px; background: #fff; font: inherit; font-size: 12px; font-weight: 700; color: var(--tinta); cursor: pointer; }
+.chip-habilidad:hover, .chip-habilidad.activa { border-color: var(--azul); color: var(--azul-osc); }
+.chip-habilidad small { color: var(--suave); }
+.info-habilidad { margin: -2px 0 10px; }
+.info-habilidad:empty { display: none; }
+.caja-aprender { max-height: 260px; overflow: auto; border: 2px solid var(--linea); border-radius: 12px; background: #fff; }
+.tabla-ataques { width: 100%; border-collapse: collapse; font-size: 13px; }
+.tabla-ataques th { position: sticky; top: 0; z-index: 1; padding: 5px 6px; background: var(--fondo); font-size: 11px; color: var(--suave); text-align: left; }
+.tabla-ataques td { padding: 4px 6px; border-top: 1px solid var(--linea); white-space: nowrap; }
+.tabla-ataques .num { text-align: right; }
+.tabla-ataques .nombre-ataque { font-weight: 800; white-space: normal; }
+.fila-ataque { cursor: pointer; }
+.asignar-ataque { padding: 0; border: 0; background: none; font: inherit; font-weight: 800; color: inherit; text-align: left; cursor: pointer; }
+.info-fila { width: 24px; height: 24px; padding: 0; border: 0; border-radius: 50%; background: none; font-size: 15px; color: var(--azul); cursor: pointer; }
+.info-fila:hover { background: var(--linea); }
+.fila-ataque:hover { background: var(--fondo); }
+.detalle-ataque td { background: #fff6d6; font-size: 12px; line-height: 1.35; white-space: normal; }
+.vacio { font-size: 13px; color: var(--suave); }
+.guardar-ficha { grid-column: 1 / -1; display: flex; justify-content: flex-end; align-items: center; gap: 12px; }
+.estado-guardado { color: #1a9e4b; font-weight: 800; font-size: 14px; }
+.ficha-acciones { display: flex; gap: 10px; flex-wrap: wrap; padding: 10px 18px 18px; }
+.ficha-navegar { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 0 18px 14px; font-size: 13px; font-weight: 800; color: var(--suave); }
+.ficha-navegar[hidden] { display: none; }
+.flecha-ficha {
+  width: 30px; height: 30px; padding: 0; border: 2px solid var(--linea); border-radius: 50%;
+  background: #fff; color: var(--tinta); font-size: 18px; font-weight: 800; line-height: 1; cursor: pointer;
+}
+.flecha-ficha:hover, .flecha-ficha:focus-visible { border-color: var(--azul); color: var(--azul); outline: none; }
+.btn.peligro { margin-left: auto; color: var(--rojo-osc); border-color: var(--rojo-osc); box-shadow: 0 3px 0 var(--rojo-osc); }
+
+/* Ventana «Nuevo encuentro» */
+.campo {
+  display: grid; gap: 4px; margin-bottom: 10px; font-weight: 800; font-size: 12px;
+  color: var(--suave); text-transform: uppercase; letter-spacing: .4px;
+}
+.campo input, .campo select {
+  width: 100%; padding: 9px 11px; border: 2px solid var(--linea); border-radius: 10px; background: #fff;
+  color: var(--tinta); font-size: 15px; font-weight: 700; text-transform: none; letter-spacing: 0;
+}
+.campo input:focus, .campo select:focus { outline: none; border-color: var(--azul); }
+.campo[hidden] { display: none; }
+.casilla { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 14px; font-weight: 700; cursor: pointer; }
+.casilla[hidden] { display: none; }
+/* Variocolor: dorado y unos destellos que aparecen y desaparecen, como la animación de los juegos */
+.texto-variocolor { color: #a87400; }
+dialog .casilla input#variocolor { accent-color: #e0a100; }
+.marca-estado.variocolor { background: var(--amarillo); color: var(--tinta); }
+.figura.brillo { position: relative; }
+.figura.brillo::before, .figura.brillo::after {
+  content: "✦"; position: absolute; z-index: 1; color: var(--amarillo); line-height: 1; pointer-events: none;
+  text-shadow: 0 0 2px #fff, 0 0 3px #a87400; animation: destello 1.8s ease-in-out infinite;
+}
+.figura.brillo::before { top: 0; left: 4%; font-size: 15px; } /* a la derecha está el «−» del equipo */
+.figura.brillo::after { bottom: 8%; right: 4%; font-size: 10px; animation-delay: .9s; }
+@keyframes destello {
+  0%, 100% { opacity: 0; transform: scale(.4) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(45deg); }
+}
+/* Quien pide menos movimiento ve los destellos quietos */
+@media (prefers-reduced-motion: reduce) {
+  .figura.brillo::before, .figura.brillo::after { animation: none; opacity: 1; }
+}
+dialog .casilla input { width: 18px; height: 18px; flex: none; accent-color: var(--azul); }
+.aviso { margin: 0 0 10px; color: #8a5a00; font-size: 13px; font-weight: 700; }
+.aviso:empty { display: none; }
+.opcional { text-transform: none; font-weight: 600; }
+.error { min-height: 1.2em; margin: 0; color: var(--rojo-osc); font-weight: 700; font-size: 14px; }
+
+/* ---------- Análisis: daño de cada tipo ---------- */
+dialog.analisis { width: min(780px, 94vw); }
+.analisis .ficha-cabecera { padding: 14px 18px; justify-content: space-between; }
+.analisis .ficha-cabecera h3 { margin: 0; color: #fff; font-size: 26px; }
+.pestanas { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 18px 0; }
+.pestana {
+  border: 2px solid var(--linea); background: #fff; border-radius: 999px; padding: 5px 14px;
+  font: inherit; font-weight: 800; font-size: 13px; color: var(--suave); cursor: pointer;
+}
+.pestana.activa { background: var(--azul); border-color: var(--azul); color: #fff; }
+.cuerpo-analisis { padding: 14px 18px 18px; }
+.cuerpo-analisis[hidden], .cuerpo-analisis [hidden] { display: none; }
+.cuerpo-analisis h4 {
+  margin: 0 0 8px; font-family: "Luckiest Guy", sans-serif; font-weight: 400; font-size: 17px;
+  letter-spacing: .5px; color: var(--azul-osc);
+}
+.cuerpo-analisis h4.peligro { color: var(--rojo-osc); }
+.elegido-linea { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-height: 34px; margin-bottom: 10px; font-size: 16px; font-weight: 800; }
+.elegido-linea .tipo { font-size: 10px; padding: 2px 8px; letter-spacing: 0; }
+.elegido-linea .btn { margin-left: auto; }
+.dos-analisis { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+@media (max-width: 640px) { .dos-analisis { grid-template-columns: 1fr; } }
+.barra-tipo {
+  display: grid; grid-template-columns: 92px 1fr 46px; gap: 8px; align-items: center; width: 100%; margin-bottom: 2px;
+  padding: 3px 4px; background: none; border: 0; border-radius: 10px; font: inherit; color: inherit; text-align: left; cursor: pointer;
+}
+.barra-tipo:hover, .barra-tipo.activa { background: var(--fondo); }
+.barra-tipo .tipo { font-size: 10px; padding: 2px 6px; text-align: center; letter-spacing: 0; }
+.pista-dano { position: relative; height: 12px; background: var(--fondo); border: 1px solid var(--linea); border-radius: 999px; }
+.pista-dano i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; }
+.pista-dano b { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--tinta); }
+.valor-dano { text-align: right; font-weight: 800; font-size: 13px; }
+.barra-tipo.barra-recuento { grid-template-columns: 84px auto 1fr; }
+.puntos-equipo { display: flex; gap: 3px; }
+.puntos-equipo i { width: 13px; height: 13px; border-radius: 50%; }
+.puntos-equipo i:not([class]) { background: #fff; border: 1px solid var(--desconocido); }
+.recuento { font-size: 12px; font-weight: 800; text-align: right; white-space: nowrap; }
+.aviso-analisis { margin: 12px 0 14px; padding: 8px 12px; background: #fff6d6; border: 2px solid var(--amarillo); border-radius: 12px; font-size: 13px; font-weight: 700; color: #6b5200; }
+.scroll-tabla { overflow-x: auto; }
+.mapa { width: 100%; border-collapse: separate; border-spacing: 2px; table-layout: fixed; font-size: 12px; }
+.mapa th { padding: 0; font-weight: 800; color: var(--suave); }
+.mapa th.nombre-tipo { width: 92px; }
+.mapa .tipo { display: block; padding: 2px 4px; font-size: 10px; letter-spacing: 0; text-align: center; }
+.mapa td.celda { height: 26px; padding: 1px; border-radius: 6px; }
+.mapa tr.fila-activa td.celda { background: #fff6d6; }
+.esquina { font-size: 13px; white-space: nowrap; }
+.cabeza { display: block; width: 100%; padding: 2px; background: none; border: 0; border-radius: 8px; font: inherit; font-size: 10px; line-height: 1.1; color: inherit; overflow-wrap: anywhere; cursor: pointer; }
+.cabeza .figura { margin: 0 auto 2px; }
+.cabeza:hover { background: var(--fondo); }
+.cabeza.activo { background: var(--amarillo); color: var(--tinta); }
+.mult { display: grid; place-items: center; width: 22px; height: 22px; margin: 0 auto; border-radius: 50%; font-size: 11px; font-weight: 800; }
+.m-x4 { background: var(--rojo-osc); color: #fff; }
+.m-x2 { background: #ffb3b3; color: #7a0a0a; }
+.m-m2 { background: #8fdca8; color: #0a4a20; }
+.m-m4 { background: #1f8f4e; color: #fff; }
+.m-0 { background: var(--tinta); color: #fff; }
+.leyenda { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.leyenda .mult { margin: 0; }
+.mapa-completo { min-width: 700px; border-spacing: 1px; }
+.mapa-completo th.nombre-tipo { width: 84px; }
+.mapa-completo th.col span { display: block; padding: 4px 0; border-radius: 6px; color: #fff; font-size: 10px; letter-spacing: 0; text-shadow: 0 1px 0 rgba(0, 0, 0, .35); }
+.mapa-completo th.mio span { outline: 3px solid var(--amarillo); outline-offset: 1px; }
+.mapa-completo td.miacol { background: #fff6d6; }
+.mapa-completo tr:hover td.celda, .mapa-completo td.cruz { background: var(--fondo); }
+.editar-datos { margin-top: 6px; }
+.datos-manuales { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 8px; margin-top: 8px; }
+.campo-manual { display: grid; gap: 2px; min-width: 0; font-size: 11px; font-weight: 800; color: var(--suave); }
+.campo-manual.ancho, .acciones-manuales { grid-column: 1 / -1; }
+.campo-manual input, .campo-manual select, .campo-manual textarea { width: 100%; min-width: 0; padding: 3px 5px; border: 2px solid var(--linea); border-radius: 8px; background: #fff; font: inherit; font-size: 13px; font-weight: 600; color: var(--tinta); }
+.campo-manual textarea { resize: vertical; }
+.acciones-manuales { display: flex; gap: 6px; }
+.lista-tipos { display: flex; flex-wrap: wrap; gap: 4px; }
+.lista-tipos .tipo { font-size: 10px; padding: 2px 8px; letter-spacing: 0; }
+.lista-tipos .vacio { margin: 0; }
+.boton-pokemon { display: inline-flex; align-items: center; gap: 4px; min-height: 34px; padding: 3px 12px; border: 2px solid var(--linea); border-radius: 999px; background: #fff; font: inherit; font-size: 13px; font-weight: 800; color: var(--tinta); cursor: pointer; }
+.boton-pokemon:hover { border-color: var(--azul); }
+.boton-pokemon.activo { background: var(--amarillo); border-color: var(--amarillo); }
+.resumen-efecto { margin: 0 0 10px; font-size: 15px; font-weight: 800; }
+.tarjetas-efecto { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 10px; }
+@media (max-width: 640px) { .tarjetas-efecto { grid-template-columns: minmax(0, 1fr); } }
+.tarjeta-efecto { min-width: 0; padding: 10px; border: 1px solid var(--linea); border-left-width: 6px; border-radius: 10px; }
+.cabecera-efecto { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 6px; font-size: 14px; }
+.cabecera-efecto .tipo { font-size: 10px; padding: 2px 8px; letter-spacing: 0; }
+.dato-efecto { margin-left: auto; font-size: 12px; font-weight: 700; color: var(--suave); }
+.grupo-efecto { display: grid; grid-template-columns: 108px minmax(0, 1fr); align-items: start; gap: 6px; margin-top: 5px; }
+.efecto { padding: 1px 7px; border-radius: 999px; font-size: 11px; font-weight: 800; text-align: center; }
+.e-x2 { background: #8fdca8; color: #0a4a20; }
+.e-m2 { background: #ffb3b3; color: #7a0a0a; }
+.e-0 { background: var(--tinta); color: #fff; }
+.resto-efecto { margin: 6px 0 0; font-size: 12px; font-weight: 600; color: var(--suave); }
+/* Combate: el rival se puede buscar por nombre; sus tipos se marcan solos y se pueden cambiar */
+.buscar-rival { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.buscar-rival input { flex: 1 1 auto; min-width: 0; padding: 7px 10px; border: 2px solid var(--linea); border-radius: 10px; font: inherit; font-size: 14px; font-weight: 700; background: #fff; color: var(--tinta); }
+.buscar-rival input:focus { outline: none; border-color: var(--azul); }
+.buscar-rival input[hidden] { display: none; }
+.rival-elegido { display: inline-flex; align-items: center; gap: 6px; padding: 2px 4px 2px 2px; border-radius: 999px; background: var(--fondo); font-size: 13px; font-weight: 800; }
+.rival-elegido[hidden] { display: none; }
+.quitar-rival { width: 22px; height: 22px; border: 0; border-radius: 50%; background: #fff; font: inherit; font-size: 12px; font-weight: 800; color: var(--suave); cursor: pointer; }
+.quitar-rival:hover, .quitar-rival:focus-visible { color: var(--rojo-osc); outline: none; }
+.nota-rival { margin: 2px 0 8px; font-size: 12px; font-weight: 700; color: var(--suave); }
+.o-tipo { margin: 10px 0 6px; font-size: 12px; font-weight: 800; color: var(--suave); }
+.selector-rival { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px; }
+.selector-rival button { padding: 3px 9px; border: 3px solid transparent; border-radius: 999px; font: inherit; font-size: 12px; font-weight: 800; color: #fff; text-shadow: 0 1px 0 rgba(0, 0, 0, .35); cursor: pointer; opacity: .45; }
+.selector-rival button:hover { opacity: .8; }
+.selector-rival button.activo { border-color: var(--tinta); opacity: 1; }
+.mejor-ataque { padding: 10px 12px; margin-bottom: 10px; background: #fff6d6; border: 2px solid var(--amarillo); border-radius: 12px; font-size: 15px; font-weight: 800; }
+.fila-dano { display: grid; grid-template-columns: 30px minmax(0, 1fr) minmax(40px, 1.5fr) 96px; align-items: center; gap: 8px; padding: 3px 2px; font-size: 13px; }
+.fila-dano + .fila-dano { border-top: 1px solid var(--linea); }
+.nombre-dano { min-width: 0; font-weight: 800; overflow-wrap: anywhere; }
+.nombre-dano small { display: block; font-size: 11px; font-weight: 600; color: var(--suave); }
+.barra-dano { height: 12px; background: var(--fondo); border-radius: 999px; overflow: hidden; }
+.barra-dano i { display: block; height: 100%; border-radius: 999px; }
+.cifra-dano { text-align: right; }
+.cifra-dano small { display: block; font-size: 11px; font-weight: 600; color: var(--suave); }
+@media (max-width: 640px) { .fila-dano { grid-template-columns: 30px minmax(0, 1fr) 90px; } .barra-dano { grid-column: 2 / -1; grid-row: 2; } }
+dialog.rutas { width: min(520px, 94vw); max-height: 92vh; }
+.cuerpo-rutas { padding: 18px; }
+.resultado-rutas { margin: 12px 0; }
+.resultado-rutas h4 { margin: 10px 0 4px; }
+.resultado-rutas .vacio { margin: 8px 0; }
+.estado-ruta { flex: none; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.e-vivo { background: #8fdca8; color: #0a4a20; }
+.e-caido { background: var(--tinta); color: #fff; }
+.e-fallo { background: var(--linea); color: var(--suave); }
+.btn.btn-lupa { display: inline-grid; place-items: center; flex: none; width: 38px; height: 38px; padding: 0; border-radius: 50%; }
+.acciones-partida { display: flex; align-items: center; gap: 8px; }
+
+/* Importar el guardado del juego */
+dialog.importar { width: min(720px, 94vw); max-height: 92vh; }
+.imp-archivo { display: grid; gap: 8px; padding: 10px 12px; border: 2px dashed var(--linea); border-radius: 12px; font-size: 13px; font-weight: 700; }
+.imp-archivo code { font-size: 12px; }
+.imp-mapas { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--suave); }
+.imp-mapas code { font-size: 12px; }
+.imp-mapas-ok { color: #14663a; }
+.imp-titulo { margin: 16px 0 8px; font-size: 14px; color: var(--azul-osc); }
+.imp-poke { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 10px; padding: 8px 10px; border-radius: 14px; background: var(--fondo); margin-bottom: 6px; }
+.imp-nombre { font-size: 14px; font-weight: 800; }
+.imp-nombre small { margin-left: 6px; font-size: 12px; color: var(--suave); font-weight: 700; }
+.imp-cambio { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; margin-top: 3px; font-size: 13px; font-weight: 700; line-height: 1.35; cursor: pointer; }
+.imp-cambio input[type="checkbox"] { flex: none; width: auto; margin: 0; position: relative; top: 2px; }
+.imp-que { flex: none; min-width: 84px; color: var(--suave); }
+.imp-flecha { color: var(--azul-osc); }
+.imp-aviso { color: #8a5a00; }
+.imp-nada { margin-top: 3px; font-size: 12px; font-weight: 700; color: var(--suave); }
+.imp-ruta { padding: 2px 6px; border: 2px solid var(--linea); border-radius: 8px; font: inherit; font-size: 13px; width: 170px; }
+
+
+/* ---------- Volver a partidas, en la cabecera ---------- */
+.volver-cabecera { padding: 6px 14px; font-size: 14px; }
+/* En móvil va encima del logo, dentro de la franja */
+@media (max-width: 640px) { .volver-cabecera { position: relative; margin: 12px 0 0 16px; } }
+/* En pantallas anchas va pegado al borde izquierdo de la franja; el logo se aparta solo si no cabe al lado */
+@media (min-width: 641px) {
+  .volver-cabecera { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); z-index: 1; }
+  .volver-cabecera:active { transform: translateY(calc(-50% + 2px)); }
+  .cabecera:has(.volver-cabecera:not([hidden])) .cabecera-dentro {
+    padding-left: max(16px, calc(150px - max(0px, (100vw - 1180px) / 2)));
+  }
+}
+.volver-cabecera[hidden] { display: none; }
+
+/* ---------- Importar guardado: botón redondo con icono ---------- */
+.btn.btn-importar {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; flex: none;
+  min-width: 38px; height: 38px; padding: 0 9px; box-shadow: 0 3px 0 var(--tinta);
+}
+
+/* ---------- Equipo recomendado ---------- */
+.rec-controles { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 6px; }
+.rec-segmento { display: inline-flex; max-width: 100%; border: 2px solid var(--linea); border-radius: 999px; overflow: hidden; }
+.rec-segmento button { flex: 1 1 auto; min-width: 0; padding: 6px 10px; border: 0; background: #fff; font-size: 13px; font-weight: 800; color: var(--suave); cursor: pointer; }
+.rec-segmento button.activa { background: var(--azul); color: #fff; }
+.rec-contra { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 800; color: var(--suave); }
+.rec-contra select { padding: 5px 8px; border: 2px solid var(--linea); border-radius: 10px; font-size: 13px; font-weight: 700; background: #fff; }
+.recomendado .pista { margin: 0; font-size: 12px; color: var(--suave); }
+.rec-rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: 10px; }
+.rec-miembro { position: relative; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 10px; align-items: center; padding: 10px; border-radius: 14px; background: var(--fondo); }
+.rec-miembro b { display: block; padding-right: 30px; font-size: 15px; overflow-wrap: anywhere; }
+.rec-especie { font-size: 12px; font-weight: 700; color: var(--suave); }
+.rec-motivo { margin: 4px 0 0; font-size: 12px; font-weight: 700; line-height: 1.35; }
+.rec-etiqueta { display: inline-block; margin-left: 4px; padding: 0 6px; border-radius: 999px; background: #fff; font-size: 10px; font-weight: 800; color: var(--suave); vertical-align: 2px; }
+.rec-fijar { position: absolute; top: 6px; right: 6px; width: 28px; height: 28px; padding: 0; border: 2px solid var(--linea); border-radius: 50%; background: #fff; cursor: pointer; font-size: 13px; line-height: 1; opacity: .55; }
+.rec-fijar:hover { opacity: 1; }
+.rec-fijar.activa { opacity: 1; border-color: var(--azul); background: #e6eeff; }
+.rec-fijar:disabled { cursor: not-allowed; opacity: .2; }
+.rec-resumen { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.rec-resumen span { padding: 2px 9px; border-radius: 999px; background: var(--fondo); font-size: 12px; font-weight: 800; }
+.rec-comparar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; }
+.rec-comparar strong { font-size: 16px; }
+.rec-mejora { color: #14663a; font-weight: 800; font-size: 13px; }
+.rec-desglose { margin-top: 10px; }
+.rec-desglose summary { cursor: pointer; font-size: 13px; font-weight: 800; color: var(--azul-osc); }
+.rec-desglose table { display: block; overflow-x: auto; width: 100%; margin: 8px 0 6px; border-collapse: collapse; font-size: 13px; }
+@media (min-width: 520px) { .rec-desglose table { display: table; } }
+.rec-desglose th, .rec-desglose td { padding: 6px 6px; text-align: right; border-bottom: 1px solid var(--linea); }
+.rec-desglose th:first-child, .rec-desglose td:first-child { text-align: left; }
+.rec-desglose th { font-size: 11px; color: var(--suave); text-transform: uppercase; letter-spacing: .4px; }
+.rec-pie { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin: 14px 0 6px; }
+.rec-fuera { display: grid; gap: 6px; }
+.rec-fuera > div { position: relative; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 8px; align-items: center; padding-right: 34px; font-size: 13px; font-weight: 700; }
+.rec-fuera p { margin: 0; }
+.rec-fuera span { color: var(--suave); }
+#rec-nota { margin-top: 12px; }
+#rec-zona-fuera[hidden], #rec-datos[hidden] { display: none; }
+#recomendado { overflow-x: hidden; }

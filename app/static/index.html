@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tracker Randomlocke</title>
+  <link rel="stylesheet" href="style.css?v=b33">
+</head>
+<body>
+  <header class="cabecera">
+    <a class="btn volver-cabecera" id="volver-partidas" href="#/" hidden>← Partidas</a>
+    <div class="cabecera-dentro">
+      <a class="marca" href="#/" aria-label="Ir a mis partidas">
+        <span class="bola" aria-hidden="true"></span>
+        <h1 class="logo">Tracker Randomlocke</h1>
+      </a>
+      <div id="estado" class="estado">
+        <span id="estado-db" class="punto desconocido"></span>
+        <span id="estado-texto">Comprobando...</span>
+        <span id="estado-cache" class="punto desconocido"></span>
+        <span id="estado-cache-texto">Caché</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p id="mensaje" role="alert"></p>
+
+    <!-- Portada: las partidas como tarjetas -->
+    <section id="vista-inicio" class="vista" hidden>
+      <h2 class="titulo-seccion">Mis partidas</h2>
+      <div id="rejilla" class="rejilla"></div>
+    </section>
+
+    <!-- Una partida: barra y tres columnas (equipo, vivos, cementerio) -->
+    <section id="vista-partida" class="vista" hidden>
+      <div class="barra">
+        <h2 id="titulo-partida"></h2>
+        <!-- El modo es un botón discreto: abre un recuadro flotante con las reglas, sin ocupar la zona de los Pokémon.
+             Con el ratón se abre al mantenerlo encima; pulsar también funciona (móvil y teclado). Sin «title»:
+             su globo se solaparía con el recuadro. -->
+        <button type="button" id="modo-partida" class="modo boton-modo" popovertarget="reglas-partida"></button>
+        <div id="reglas-partida" class="reglas-partida" popover></div>
+        <button type="button" class="btn mini" id="editar-partida">Editar</button>
+        <!-- Importar guardado: solo el icono; el texto va en el globo -->
+        <button type="button" class="btn btn-importar" id="abrir-importar" title="Importar guardado del juego (Pokémon Essentials, como Añil)" aria-label="Importar guardado del juego">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4"/><path d="M7 9l5-5 5 5"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg>
+        </button>
+        <div id="contadores" class="contadores"></div>
+        <div class="acciones-partida">
+          <button type="button" class="btn primario" id="abrir-registro">+ Nuevo encuentro</button>
+          <button type="button" class="btn primario btn-lupa" id="abrir-rutas" title="Buscar ruta" aria-label="Buscar ruta">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="21" y2="21"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Siempre tres columnas en horizontal: si no caben, la zona se desplaza hacia los lados -->
+      <div class="scroll-h">
+        <div class="tres">
+          <div class="col-izq">
+            <div class="panel-pokedex">
+              <h2 class="titulo-panel">Equipo actual</h2>
+              <div id="equipo" class="equipo"></div>
+              <div class="botones-equipo">
+                <button type="button" class="btn primario" id="abrir-analisis">Análisis</button>
+                <button type="button" class="btn" id="abrir-recomendado">Recomendar equipo</button>
+              </div>
+            </div>
+          </div>
+          <div class="panel-col">
+            <h2 class="titulo-panel">Pokémon vivos</h2>
+            <p id="info-cache" class="info"></p>
+            <ul id="vivos" class="lista"></ul>
+          </div>
+          <div class="col-der">
+            <div class="panel-col cementerio">
+              <h2 class="titulo-panel" id="titulo-cementerio">Cementerio</h2>
+              <ul id="cementerio" class="lista"></ul>
+            </div>
+            <div class="panel-col fallos">
+              <h2 class="titulo-panel">Fallos</h2>
+              <ul id="fallos" class="lista"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Ventana para crear una partida: nombre y modo, con las reglas que trae (catálogo de GET /rules) -->
+  <dialog id="dialogo-nueva" class="nueva-partida">
+    <form id="form-run" method="dialog">
+      <h3>Nueva partida</h3>
+      <label class="campo">Nombre
+        <input id="nombre-run" placeholder="Por ejemplo: Esmeralda Randomlocke" maxlength="100" required autocomplete="off">
+      </label>
+      <fieldset class="modos">
+        <legend class="campo">Modo</legend>
+        <div id="modos" class="modos-opciones"></div>
+      </fieldset>
+      <div id="reglas-modo" class="reglas-modo"></div>
+      <p id="error-run" class="error" role="alert"></p>
+      <div class="botones">
+        <button type="button" class="btn" id="cancelar-nueva">Cancelar</button>
+        <button type="submit" class="btn primario">Crear</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Ventana para renombrar o eliminar la partida abierta -->
+  <dialog id="dialogo-partida">
+    <form id="form-partida">
+      <h3>Editar partida</h3>
+      <label class="campo">Nombre
+        <input id="nuevo-nombre" maxlength="100" required autocomplete="off">
+      </label>
+      <p id="error-partida" class="error" role="alert"></p>
+      <div class="botones">
+        <button type="button" class="btn peligro" id="eliminar-partida">Eliminar partida</button>
+        <button type="button" class="btn" id="cancelar-partida">Cancelar</button>
+        <button type="submit" class="btn primario">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Ventana propia para confirmar: el botón pulsado queda en dialog.returnValue. Cancelar va primero, por seguridad -->
+  <dialog id="dialogo-confirmar">
+    <form method="dialog">
+      <h3 id="confirmar-titulo"></h3>
+      <p id="confirmar-texto" class="texto-confirmar"></p>
+      <div class="botones">
+        <button value="no" class="btn" autofocus>Cancelar</button>
+        <button value="si" class="btn peligro" id="confirmar-si"></button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Importar el guardado del juego: primero se ve qué cambiaría; solo se aplica lo marcado -->
+  <dialog id="dialogo-importar" class="importar">
+    <div class="cuerpo-rutas">
+      <h3>Importar guardado</h3>
+      <label class="imp-archivo">
+        <span>Elige el archivo del juego, por ejemplo <b>Partida 3.rxdata</b>. En Añil está en <code>%APPDATA%\Pokemon Anil</code>. Es una carpeta oculta: escribe esa ruta en la barra de dirección de la ventana y pulsa Enter.</span>
+        <input type="file" id="archivo-guardado" accept=".rxdata,application/octet-stream">
+      </label>
+      <!-- Nombres de las rutas del juego: se suben una vez por partida -->
+      <div class="imp-mapas" id="imp-mapas"></div>
+      <input type="file" id="archivo-mapas" accept=".rxdata" hidden>
+      <p class="pista" id="estado-importar" role="status"></p>
+      <p class="error" id="error-importar" role="alert"></p>
+      <div id="cambios-importar"></div>
+      <div class="botones">
+        <button type="button" class="btn" id="cancelar-importar">Cancelar</button>
+        <button type="button" class="btn primario" id="aplicar-importar" disabled>Aplicar cambios</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Evolucionar: el registro pasa a ser de la nueva especie -->
+  <dialog id="dialogo-evolucion" class="rutas">
+    <form id="form-evolucion" class="cuerpo-rutas">
+      <h3>Evolucionar</h3>
+      <div id="evolucion-opciones" class="chips-habilidad"></div>
+      <p class="pista">Si en tu juego evoluciona a otra especie, cámbiala con el lápiz de corregir.</p>
+      <p id="error-evolucion" class="error" role="alert"></p>
+      <div class="botones">
+        <button type="button" class="btn" id="cancelar-evolucion">Cancelar</button>
+        <button class="btn primario" id="confirmar-evolucion">Evolucionar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Buscar qué pasó en una ruta: lo capturado, su estado y los fallos -->
+  <dialog id="dialogo-rutas" class="rutas">
+    <div class="cuerpo-rutas">
+      <h3>Buscar ruta</h3>
+      <input id="buscar-ruta" list="lista-rutas" maxlength="100" placeholder="Ruta 1, Bosque Verde…" aria-label="Buscar ruta" autocomplete="off">
+      <datalist id="lista-rutas"></datalist>
+      <div id="resultado-rutas" class="resultado-rutas" role="status"></div>
+      <div class="botones"><button type="button" class="btn" id="cerrar-rutas">Cerrar</button></div>
+    </div>
+  </dialog>
+
+  <!-- Ventana para registrar un encuentro (captura o fallo) o corregir una captura; la muerte se marca desde la ficha -->
+  <dialog id="dialogo-evento">
+    <form id="form-evento">
+      <h3 id="titulo-evento">Nuevo encuentro</h3>
+      <label class="campo" id="campo-tipo">Resultado
+        <select id="tipo-evento">
+          <option value="captura">Captura</option>
+          <option value="fallo">Fallo</option>
+        </select>
+      </label>
+      <label class="campo">Ruta
+        <input id="ruta" list="lista-rutas" maxlength="100" required autocomplete="off">
+      </label>
+      <label class="campo">Especie
+        <input id="especie" list="lista-especies" maxlength="100" required autocomplete="off">
+        <datalist id="lista-especies"></datalist>
+      </label>
+      <label class="campo" id="campo-mote"><span>Mote <span class="opcional" id="mote-opcional">(opcional)</span></span>
+        <input id="mote" maxlength="20" autocomplete="off">
+      </label>
+      <label class="casilla" id="campo-variocolor" hidden>
+        <input id="variocolor" type="checkbox">
+        <span><span class="texto-variocolor">✨ Es variocolor</span> <span class="opcional">(no gasta el encuentro de la zona)</span></span>
+      </label>
+      <p id="aviso-evento" class="aviso" role="status"></p>
+      <p id="error-evento" class="error" role="alert"></p>
+      <div class="botones">
+        <button type="button" class="btn" id="cancelar-evento">Cancelar</button>
+        <button type="submit" class="btn primario">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Equipo recomendado: los 6 mejores con lo que hay hoy; solo cambia el equipo si se pulsa «Aplicar» -->
+  <dialog id="recomendado" class="ficha analisis recomendado">
+    <div class="ficha-cabecera">
+      <h3>Equipo recomendado</h3>
+      <button type="button" class="cerrar" id="cerrar-recomendado" aria-label="Cerrar">✕</button>
+    </div>
+    <p id="error-recomendado" class="error ficha-error" role="alert"></p>
+    <div class="cuerpo-analisis">
+      <div class="rec-controles">
+        <div class="rec-segmento" role="group" aria-label="Estilo">
+          <button type="button" data-estilo="equilibrado">Equilibrado</button>
+          <button type="button" data-estilo="ofensivo">Ofensivo</button>
+          <button type="button" data-estilo="defensivo">Defensivo</button>
+        </div>
+        <label class="rec-contra">Contra <select id="rec-contra"><option value="">cualquier tipo</option></select></label>
+      </div>
+      <p class="pista" id="rec-explica"></p>
+      <p class="vacio" id="rec-vacio" hidden>Hacen falta Pokémon vivos para recomendar un equipo.</p>
+      <div id="rec-datos">
+        <h4>Los que llevaría</h4>
+        <div class="rec-rejilla" id="rec-equipo"></div>
+        <div class="rec-resumen" id="rec-resumen"></div>
+        <div class="rec-comparar" id="rec-comparar"></div>
+        <details class="rec-desglose">
+          <summary>Ver desglose de puntos</summary>
+          <table id="rec-desglose"></table>
+          <p class="pista">Todo de 0 a 100. Fuerza: ataque, aguante y velocidad de cada uno, respecto al mejor de tus Pokémon. Cobertura: tipos a los que alguien hace ×2. Defensa: baja cuando un tipo de ataque daña a varios y nadie lo resiste. El total pesa cada parte según el estilo.</p>
+        </details>
+        <div class="rec-pie">
+          <p class="pista">📌 Fija a los que quieras llevar sí o sí: el resto se elige alrededor.</p>
+          <button type="button" class="btn primario" id="aplicar-recomendado">Aplicar este equipo</button>
+        </div>
+        <div id="rec-zona-fuera">
+          <h4>Se quedan fuera</h4>
+          <div class="rec-fuera" id="rec-fuera"></div>
+        </div>
+        <p class="pista" id="rec-nota"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Análisis: daño de cada tipo al equipo (media de los vivos) o a un Pokémon (sin media), y tabla de tipos -->
+  <dialog id="analisis" class="ficha analisis">
+    <div class="ficha-cabecera">
+      <h3>Análisis</h3>
+      <button type="button" class="cerrar" id="cerrar-analisis" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="pestanas">
+      <button type="button" class="pestana activa" data-vista="analisis-defensa">Defensa</button>
+      <button type="button" class="pestana" data-vista="analisis-ataque">Ataque</button>
+      <button type="button" class="pestana" data-vista="analisis-combate">Combate</button>
+      <button type="button" class="pestana" data-vista="analisis-tipos">Tipos</button>
+    </div>
+    <p id="error-analisis" class="error ficha-error" role="alert"></p>
+    <div class="cuerpo-analisis" id="analisis-defensa">
+      <div class="elegido-linea" id="analisis-elegido"></div>
+      <p id="analisis-vacio" class="vacio" hidden>Añade Pokémon vivos al equipo para ver su análisis.</p>
+      <div id="analisis-datos">
+        <div class="dos-analisis">
+          <div><h4 class="peligro" id="titulo-amenazas"></h4><div id="analisis-amenazas"></div></div>
+          <div><h4 id="titulo-resistencias"></h4><div id="analisis-resistencias"></div></div>
+        </div>
+        <div id="zona-inmune" hidden><h4>No le afecta</h4><div id="analisis-inmune" class="lista-tipos"></div></div>
+        <p class="aviso-analisis" id="analisis-aviso" hidden></p>
+      </div>
+      <div id="analisis-detalle">
+        <h4>Detalle</h4>
+        <div class="scroll-tabla"><table class="mapa" id="analisis-mapa"></table></div>
+        <div class="leyenda" id="analisis-leyenda"></div>
+      </div>
+    </div>
+    <div class="cuerpo-analisis" id="analisis-ataque" hidden>
+      <div class="elegido-linea" id="ataque-elegido"></div>
+      <p id="ataque-vacio" class="vacio" hidden></p>
+      <div id="ataque-datos">
+        <p class="resumen-efecto" id="ataque-resumen"></p>
+        <div class="tarjetas-efecto" id="ataque-tarjetas"></div>
+      </div>
+    </div>
+    <div class="cuerpo-analisis" id="analisis-combate" hidden>
+      <h4>Rival</h4>
+      <div class="buscar-rival">
+        <input id="rival-nombre" list="lista-rivales" maxlength="100" placeholder="Nombre del Pokémon rival" autocomplete="off" aria-label="Pokémon rival">
+        <datalist id="lista-rivales"></datalist>
+        <span class="rival-elegido" id="rival-elegido" hidden>
+          <span id="rival-dibujo"></span>
+          <span id="rival-texto"></span>
+          <button type="button" class="quitar-rival" id="quitar-rival" title="Quitar rival" aria-label="Quitar rival">✕</button>
+        </span>
+      </div>
+      <p class="nota-rival" id="nota-rival"></p>
+      <p class="o-tipo">O elige su tipo (uno o dos)</p>
+      <div class="selector-rival" id="combate-rival"></div>
+      <p id="combate-vacio" class="vacio" hidden></p>
+      <div class="mejor-ataque" id="combate-mejor" hidden></div>
+      <p class="aviso-analisis" id="combate-aviso" hidden></p>
+      <div id="combate-lista"></div>
+      <p class="pista">Daño = potencia × multiplicador de tipos × 1,5 si el ataque es del tipo del Pokémon. No tiene en cuenta estadísticas, nivel, precisión ni efectos. Los ataques sin potencia fija salen al final porque no tienen un número.</p>
+    </div>
+    <div class="cuerpo-analisis" id="analisis-tipos" hidden>
+      <div class="scroll-tabla"><table class="mapa mapa-completo" id="analisis-tabla"></table></div>
+    </div>
+  </dialog>
+
+  <!-- Ficha del Pokémon: datos y acciones (debilitado, revivir, equipo, eliminar) -->
+  <dialog id="ficha" class="ficha">
+    <div class="ficha-cabecera">
+      <div id="ficha-dibujo" class="ficha-dibujo"></div>
+      <div class="ficha-datos">
+        <div class="nombre-ficha">
+          <h3 id="ficha-nombre"></h3>
+          <button type="button" class="lapiz-ficha" id="corregir-ficha" title="Corregir datos" aria-label="Corregir datos">✎</button>
+        </div>
+        <p id="ficha-sub" class="ficha-sub"></p>
+        <div id="ficha-tipos" class="tipos"></div>
+        <div id="ficha-estado" class="ficha-estado"></div>
+      </div>
+      <button type="button" class="cerrar" id="cerrar-ficha" aria-label="Cerrar" autofocus>✕</button>
+    </div>
+    <!-- Datos editables (C1): mote, ruta y tipo NO se editan aquí -->
+    <form id="form-ficha" class="ficha-cuerpo">
+      <div>
+        <h4>Datos</h4>
+        <div class="doble">
+          <label class="campo">Nivel
+            <span class="campo-nivel">
+              <input id="f-nivel" type="number" min="1" max="100">
+              <button type="button" class="evo-nivel" id="abrir-evolucion" title="Evolucionar (piedra, intercambio, amistad…)" aria-label="Evolucionar">
+                <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 8l5-5 5 5M3 13l5-5 5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </span>
+          </label>
+          <label class="campo">Naturaleza<select id="f-naturaleza"><option value="">—</option></select></label>
+        </div>
+        <div id="evolucion-nivel" class="evolucion-nivel" hidden></div>
+        <label class="campo">Habilidad<input id="f-habilidad" list="lista-habilidades" maxlength="50" autocomplete="off"></label>
+        <datalist id="lista-habilidades"></datalist>
+        <div id="chips-habilidad" class="chips-habilidad"></div>
+        <div id="info-habilidad" class="info-habilidad"></div>
+        <label class="campo">Objeto<input id="f-objeto" maxlength="50" autocomplete="off"></label>
+      </div>
+      <div>
+        <h4>Estadísticas</h4>
+        <div class="hexa-escala" role="group" aria-label="Escala del hexágono">
+          <button type="button" class="boton-escala" data-escala="nivel">Por nivel</button>
+          <button type="button" class="boton-escala" data-escala="fija">Sobre 255</button>
+        </div>
+        <div class="hexa">
+          <svg id="hexa-svg" viewBox="0 0 400 380" aria-hidden="true"></svg>
+          <div class="stat" data-stat="hp">
+            <span class="stat-nombre">PS</span>
+            <input id="f-hp" type="number" min="1" max="999" aria-label="PS">
+            <span class="stat-genes" id="g-hp" hidden></span>
+          </div>
+          <div class="stat" data-stat="sp_attack">
+            <span class="stat-nombre">At. Esp.</span>
+            <input id="f-sp_attack" type="number" min="1" max="999" aria-label="At. Esp.">
+            <span class="stat-genes" id="g-sp_attack" hidden></span>
+          </div>
+          <div class="stat" data-stat="sp_defense">
+            <span class="stat-nombre">Def. Esp.</span>
+            <input id="f-sp_defense" type="number" min="1" max="999" aria-label="Def. Esp.">
+            <span class="stat-genes" id="g-sp_defense" hidden></span>
+          </div>
+          <div class="stat" data-stat="speed">
+            <span class="stat-nombre">Velocidad</span>
+            <input id="f-speed" type="number" min="1" max="999" aria-label="Velocidad">
+            <span class="stat-genes" id="g-speed" hidden></span>
+          </div>
+          <div class="stat" data-stat="defense">
+            <span class="stat-nombre">Defensa</span>
+            <input id="f-defense" type="number" min="1" max="999" aria-label="Defensa">
+            <span class="stat-genes" id="g-defense" hidden></span>
+          </div>
+          <div class="stat" data-stat="attack">
+            <span class="stat-nombre">Ataque</span>
+            <input id="f-attack" type="number" min="1" max="999" aria-label="Ataque">
+            <span class="stat-genes" id="g-attack" hidden></span>
+          </div>
+        </div>
+        <p class="pista" id="hexa-aviso" hidden></p>
+        <p class="pista" id="genes-aviso" hidden></p>
+        <div id="aviso-estimadas" hidden>
+          <p class="pista">≈ Estimadas. Corrige las que no coincidan con el juego.</p>
+          <button type="button" class="confirmar-estimadas" id="confirmar-estimadas">Coinciden con el juego</button>
+        </div>
+        <p class="pista" id="aviso-no-cuadra" hidden>El valor en rojo no puede salir con este nivel y naturaleza.</p>
+        <p class="pista">▲ sube y ▼ baja según la naturaleza</p>
+      </div>
+      <!-- C2: sugerencias de ataques. Se pueden seguir escribiendo a mano (en un Randomlocke pueden cambiar) -->
+      <div class="zona-ataques">
+        <h4>Ataques</h4>
+        <datalist id="lista-ataques"></datalist>
+        <div class="huecos-ataque" id="huecos-ataque"></div>
+      </div>
+      <div class="aprender">
+        <h4>Puede aprender <span class="opcional">(pulsa un ataque para asignarlo)</span></h4>
+        <input id="filtro-ataques" class="filtro" placeholder="Buscar ataque…" aria-label="Buscar ataque" autocomplete="off">
+        <div id="puede-aprender"></div>
+      </div>
+      <div class="guardar-ficha">
+        <span id="estado-ficha" class="estado-guardado" role="status"></span>
+        <button type="submit" class="btn primario">Guardar ficha</button>
+      </div>
+    </form>
+    <p id="error-ficha" class="error ficha-error" role="alert"></p>
+    <div id="ficha-acciones" class="ficha-acciones"></div>
+    <div id="ficha-navegar" class="ficha-navegar">
+      <button type="button" class="flecha-ficha" id="ficha-anterior" title="Anterior" aria-label="Pokémon anterior">‹</button>
+      <span id="ficha-posicion"></span>
+      <button type="button" class="flecha-ficha" id="ficha-siguiente" title="Siguiente" aria-label="Pokémon siguiente">›</button>
+    </div>
+  </dialog>
+
+  <!-- Ventana para elegir un Pokémon vivo para un hueco del equipo -->
+  <dialog id="selector" class="selector">
+    <div class="selector-cabecera">
+      <h3>Elige un Pokémon</h3>
+      <button type="button" class="cerrar" id="cerrar-selector" aria-label="Cerrar">✕</button>
+    </div>
+    <ul id="selector-lista" class="lista selector-lista"></ul>
+  </dialog>
+
+  <script src="app.js?v=b33"></script>
+</body>
+</html>
