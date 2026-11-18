@@ -97,7 +97,7 @@ Tracker_Randomlocke_P2/
 
 ### Fase 4 · MinIO (24 nov.)
 - **4.1** Contenedor de MinIO, bucket y script de inicialización que sube los sprites. Ojo: en la P1 el servicio de sprites también usaba `scripts/revisar_sprites.py`, que no se copió a la P2; comprobar si hace falta.
-- **4.2** La web muestra los sprites desde MinIO a través de una ruta de Nginx (por ejemplo `/static/`) que reenvía a MinIO; MinIO no publica puertos.
+- **4.2** La web muestra los sprites desde MinIO a través de una ruta de Nginx que reenvía a MinIO; MinIO no publica puertos. El navegador ya pide los dibujos en `/sprites/<id>.png` y `/sprites/shiny/<id>.png` (`app/static/app.js`): si Nginx sirve esa misma ruta desde MinIO, quizá no haga falta tocar la app. Los sprites (unos 2050 PNG: 1025 especies, normal y variocolor) se suben **una sola vez** con el script de inicialización, no al arrancar las webs.
 
 ### Fase 5 · Monitorización, logs y alertas (25 y 26 nov.)
 - **5.1** Prometheus y cAdvisor (estado, CPU y memoria de cada contenedor) y Grafana con fuentes de datos y panel creados automáticamente.
