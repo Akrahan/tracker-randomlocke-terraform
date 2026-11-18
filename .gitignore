@@ -1,0 +1,37 @@
+# Variables de entorno reales (las plantillas .env.*.example sí se versionan)
+.env
+.env.dev
+.env.prod
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Editor y sistema
+.vscode/
+.claude/
+Thumbs.db
+.DS_Store
+
+# Material local que no se publica: instrucciones de Claude, enunciado, tema y referencias de la Práctica 1
+CLAUDE.md
+docs/referencia/
+
+# Terraform: binarios de providers que descarga terraform init
+**/.terraform/*
+
+# Estado: guarda valores en claro (contraseñas incluidas)
+*.tfstate
+*.tfstate.*
+
+# Planes guardados con -out: también contienen valores en claro
+*.tfplan
+
+# Secretos de cada entorno (en Git solo va la plantilla .example)
+secrets.auto.tfvars
+
+# Registros de fallos de Terraform
+crash.log
+crash.*.log
