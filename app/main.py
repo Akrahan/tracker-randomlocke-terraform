@@ -34,6 +34,7 @@ CACHE_ENABLED = os.environ.get("CACHE_ENABLED", "false").lower() == "true"
 CACHE_HOST = os.environ.get("CACHE_HOST", "cache")
 CACHE_PASSWORD = os.environ.get("REDIS_PASSWORD")
 ENABLE_DOCS = os.environ.get("ENABLE_DOCS", "false").lower() == "true"
+INICIALIZAR_DB = os.environ.get("INICIALIZAR_DB", "true").lower() == "true"
 
 # La imagen slim no conoce .woff2: sin esto, las tipografías se servirían como application/octet-stream.
 mimetypes.add_type("font/woff2", ".woff2")
@@ -347,7 +348,8 @@ def invalidar_equipo(run_id: int) -> None:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    inicializar_db()
+    if INICIALIZAR_DB:
+        inicializar_db()
     if cache is not None:
         threading.Thread(target=vigilar_cache, daemon=True).start()
     yield
