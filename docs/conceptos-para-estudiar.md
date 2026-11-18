@@ -17,6 +17,7 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
 8. [Seguridad](#seguridad)
    - [Exposición mínima y proxy inverso](#exposición-mínima-y-proxy-inverso)
    - [.gitignore: qué no se sube y patrones de exclusión](#gitignore-qué-no-se-sube-y-patrones-de-exclusión)
+   - [Autenticación con GitHub: Git Credential Manager](#autenticación-con-github-git-credential-manager)
 
 ---
 
@@ -58,3 +59,10 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
 - **Dónde y cómo se usa en mi proyecto:** en `.gitignore` (paso 0.3), con bloques para variables de entorno, Python, editor, material local y Terraform. Se comprobó con `git check-ignore` en un repositorio de prueba: se ignoran el estado, los planes, `secrets.auto.tfvars`, `.terraform/`, `CLAUDE.md` y `docs/referencia/`, y se suben `.terraform.lock.hcl`, `terraform.tfvars` y las plantillas `.example`.
 - **Por qué así:** la estrategia es **ignorar por defecto lo sensible y hacer excepciones explícitas** para las plantillas. Buena práctica aplicable más adelante (aún no aplicada): en lugar de listar `.env`, `.env.dev` y `.env.prod` por nombre, usar `.env` + `.env.*` + `!.env.*.example`. Así, un `.env.test` futuro se ignoraría solo y las plantillas seguirían subiéndose. Se ha dejado como está porque de momento solo existen esos dos entornos.
 - **Pregunta de defensa:** si por error subiste un `terraform.tfstate` en un commit y luego lo añades al `.gitignore`, ¿está resuelto? ¿Qué harías?
+
+### Autenticación con GitHub: Git Credential Manager
+- **Qué es:** Git, por sí solo, no guarda contraseñas. Delega en un *credential helper*, un programa que le da las credenciales cuando un servidor las pide. El **Git Credential Manager (GCM)**, incluido en Git para Windows, inicia sesión en GitHub con el navegador (OAuth), recibe un **token** y lo guarda cifrado en el Administrador de credenciales de Windows.
+- **Para qué se usa:** GitHub no acepta la contraseña de la cuenta en las operaciones de Git por HTTPS; exige un token. El GCM lo obtiene y lo reutiliza, así que no hay que crear tokens a mano ni escribirlos en cada `push`.
+- **Dónde y cómo se usa en mi proyecto:** el Git de WSL usa el GCM de Windows gracias a `git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe"`. En el primer `git push`, el GCM ya tenía un token guardado de una sesión anterior en GitHub (de la P1) y lo entregó sin abrir el navegador. Se ve en Windows: Administrador de credenciales → Credenciales de Windows → `git:https://github.com`. Se revoca en GitHub: Settings → Applications → Authorized OAuth Apps.
+- **Por qué así:** alternativas descartadas: un *Personal Access Token* creado a mano (hay que copiarlo, guardarlo y renovarlo, con riesgo de pegarlo donde no toca) o claves SSH (seguras, pero requieren generar la clave y registrarla). El GCM guarda el token cifrado y fuera del proyecto. Contrapartida: cualquiera que use tu sesión de Windows puede hacer `push` en tu nombre.
+- **Pregunta de defensa:** si GitHub no acepta tu contraseña para Git, ¿con qué te autenticaste al hacer `push` y dónde está guardada esa credencial?
