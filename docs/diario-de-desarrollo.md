@@ -45,3 +45,12 @@
 - **Pruebas:** `init` instaló `kreuzwerker/docker` v3.9.0 y creó el lock; `validate`: «Success! The configuration is valid»; `plan`: «No changes» (aún no hay recursos). `.terraform/` queda ignorado por Git y el lock no.
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Explicó la estructura por entornos, la separación en ficheros, la configuración duplicada de providers y lo que hacen `fmt`, `init`, `validate` y `plan`; dio los dos bloques de código y revisó los ficheros escritos. El usuario escribió los ficheros y ejecutó los comandos.
 - **Commit:** `feat: set up Terraform dev environment with the Docker provider`
+
+### [Paso 1.2: Redes y volumen de la base de datos]
+- **Fecha:** 18 nov. 2026
+- **Archivos:** `terraform/envs/dev/variables.tf` (variable `entorno` sin `default`, con validación `dev`/`prod`), `terraform/envs/dev/terraform.tfvars` (`entorno = "dev"`) y `terraform/envs/dev/main.tf` (`local.prefijo`, redes `frontend` y `backend` con `internal = true`, volumen `db_datos`). En `docs/`: hoja de ruta (prefijo `tracker-<entorno>`, dos redes, aviso sobre `revisar_sprites.py` en el 4.1) y conceptos (variables, tfvars y locals, volúmenes y redes, con las dudas resueltas).
+- **Comandos:** `terraform fmt`, `terraform validate`, `terraform plan`, `terraform apply`, `docker network ls --filter name=tracker-dev`, `docker volume ls --filter name=tracker-dev`, `terraform plan`.
+- **Justificación:** el prefijo `tracker-<entorno>` evita choques con los recursos de la P1 (`randomlocke-*`) y entre dev y prod; el riesgo grave es un volumen con el mismo nombre, que Docker reutiliza sin avisar. Se mantiene la segmentación del prod de la P1: `frontend` para Nginx y las webs, y `backend` interna, sin internet, para las webs, PostgreSQL y Redis.
+- **Pruebas:** sin `terraform.tfvars`, el `plan` fallaba con «No value for required variable»; con él, «No changes». El `plan` previsto y obtenido fue `3 to add`. Tras el `apply` existen `tracker-dev-frontend` (`internal=false`), `tracker-dev-backend` (`internal=true`) y el volumen `tracker-dev-db-datos`; el segundo `plan` dio «No changes». `terraform.tfstate` queda ignorado por Git.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Explicó el paso fichero a fichero (variables, tfvars, locals, redes internas, volúmenes), por qué se usan nombres propios, cómo predecir el `plan` y el papel de Docker frente a Compose; revisó cada fichero y comprobó las redes y el estado. El usuario escribió los ficheros y ejecutó `plan` y `apply`.
+- **Commit:** `feat: add dev networks and database volume`

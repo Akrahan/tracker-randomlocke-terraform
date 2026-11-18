@@ -9,8 +9,11 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
    - [Provider](#provider)
    - [Estado y ciclo plan/apply (idempotencia)](#estado-y-ciclo-planapply-idempotencia)
    - [Estructura de ficheros y directorio raíz (root module)](#estructura-de-ficheros-y-directorio-raíz-root-module)
-2. Docker
-3. Red y balanceo
+   - [Variables, tfvars y locals](#variables-tfvars-y-locals)
+2. [Docker](#docker)
+   - [Volumen de Docker](#volumen-de-docker)
+3. [Red y balanceo](#red-y-balanceo)
+   - [Redes de Docker y segmentación (frontend/backend)](#redes-de-docker-y-segmentación-frontendbackend)
 4. Alta disponibilidad
 5. Monitorización y logs
 6. Almacenamiento
@@ -29,6 +32,9 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
 - **Para qué se usa:** repetir un despliegue idéntico tantas veces como haga falta (dev, prod, otra máquina), versionarlo en Git, revisarlo antes de aplicarlo (`terraform plan`) y evitar errores manuales.
 - **Dónde y cómo se usa en mi proyecto:** en `terraform/` (paso 1.1 en adelante). Ciclo básico: `terraform init` (descarga providers), `terraform plan` (muestra qué cambiaría), `terraform apply` (lo aplica) y `terraform destroy` (lo borra todo).
 - **Por qué así:** lo pide el enunciado. Frente a Docker Compose (Práctica 1), Terraform guarda un **estado** con lo que ha creado, calcula diferencias y sirve igual para Docker que para una nube real (AWS, Azure...), cambiando solo el provider. Alternativas: Pulumi (IaC con lenguajes de programación), OpenTofu (bifurcación libre de Terraform, casi idéntica), Ansible (más orientado a configurar máquinas que a crear recursos, y de estilo más imperativo).
+- **Dudas resueltas:**
+  - *¿Estamos pasando el proyecto de Docker a Terraform?* No: **Docker se queda**, porque sigue ejecutando los contenedores y hace el papel de «la nube». Lo que se sustituye es **Docker Compose**: P1 `docker-compose.yml` → Compose → Docker; P2 ficheros `.tf` → Terraform (provider de Docker) → Docker. La app y su Dockerfile son los mismos.
+  - *¿Por qué no reutilizar los contenedores de la P1?* Se podría con `terraform import` (adoptar un recurso existente en el estado), pero el proyecto debe poder crearse desde cero en otro ordenador, dos herramientas (Compose y Terraform) mandarían sobre lo mismo, el prod de la P1 tiene la imagen antigua y se perdería la demostración de que Terraform lo crea todo. `import` sirve en el mundo real para pasar a código infraestructura creada a mano. De la P1 se aprovechan el código, el Dockerfile, las imágenes públicas y, opcionalmente, los datos (copia y restauración).
 - **Pregunta de defensa:** ¿qué diferencia hay entre un enfoque declarativo como Terraform y uno imperativo como un script de `docker run`?
 
 ### Provider
@@ -43,6 +49,9 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
 - **Para qué se usa:** el estado permite a Terraform saber qué es suyo (para cambiarlo o destruirlo) y calcular solo las diferencias, en lugar de recrearlo todo. El `plan` sirve para revisar los cambios antes de hacerlos.
 - **Dónde y cómo se usa en mi proyecto:** en la prueba del paso 0.2, el primer `plan` dio `1 to add` (estado vacío), y tras el `apply` el segundo dio «No changes» porque código, estado y realidad coincidían. Habrá un estado por entorno (`envs/dev` y `envs/prod`), así que destruir uno no toca el otro. Con `terraform plan -out=plan.tfplan` y `terraform apply plan.tfplan` se aplica exactamente lo revisado.
 - **Por qué así:** el estado guarda valores en claro, contraseñas incluidas, así que **nunca va a Git** (`.gitignore`). En equipos se guarda en un *backend* remoto con bloqueo (por ejemplo S3 con bloqueo); aquí basta el estado local porque solo trabaja una persona. El `.terraform.lock.hcl` (versiones de los providers) sí va a Git; la carpeta `.terraform/` (los binarios descargados) no.
+- **Dudas resueltas:**
+  - *¿Cómo predigo lo que dirá el `plan`?* Solo los bloques `resource` crean cosas (`terraform`, `provider`, `variable`, `locals` y los `tfvars` no). Se compara cada `resource` del código con el estado: si está en el código y no en el estado, `+` add; si está en los dos con algún valor distinto, `~` change (o `-/+` si ese valor obliga a recrearlo); si está en el estado y ya no en el código, `-` destroy. En el paso 1.2 había 3 `resource` y el estado estaba vacío: `3 to add`.
+  - *¿Qué es `(known after apply)`?* Un valor que asigna Docker al crear el recurso, como el `id` o el `mountpoint` de un volumen, y que Terraform no puede saber antes. Lo que escribes tú (el `name`) sí sale en el plan. Después del `apply`, Terraform usa ese `id` para consultar cada recurso (`Refreshing state... [id=...]`).
 - **Pregunta de defensa:** si borras a mano un contenedor con `docker rm` y luego haces `terraform plan`, ¿qué mostrará y por qué?
 
 ### Estructura de ficheros y directorio raíz (root module)
@@ -50,7 +59,40 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
 - **Para qué se usa:** encontrar rápido cada cosa y separar entornos: cada carpeta raíz es un despliegue independiente con su estado.
 - **Dónde y cómo se usa en mi proyecto:** `terraform/envs/dev/` es el root module de dev (y en la fase 2 lo será `terraform/envs/prod/`). Los comandos se ejecutan dentro de esa carpeta (`cd terraform/envs/dev && terraform init`) o con `terraform -chdir=terraform/envs/dev init`, que es lo que usará el Makefile. Las piezas reutilizables irán en `terraform/modules/`.
 - **Por qué así:** una carpeta por entorno da **estados separados**: un `destroy` en dev no puede tocar prod. Alternativa descartada: *workspaces* de Terraform (un mismo directorio con varios estados), que son más fáciles de confundir («¿en qué workspace estoy?») y no permiten diferencias de estructura entre entornos. `required_version` y la versión del provider se fijan para que el despliegue sea reproducible.
+- **Dudas resueltas:**
+  - *¿Pasa algo si lo pongo todo en un solo fichero?* No: Terraform junta todos los `.tf` antes de hacer nada. Se separan por comprensión, por convención de la comunidad y porque el enunciado pide organizar `variables.tf`, `outputs.tf`, etc.
+  - *¿Y si dos ficheros tienen el mismo bloque `provider "docker"`?* Error `Duplicate provider configuration`, aunque sean idénticos: al juntarlos hay dos configuraciones por defecto del mismo provider. Para tener dos se usa `alias`.
 - **Pregunta de defensa:** si escribes un recurso en `outputs.tf` en lugar de `main.tf`, ¿funciona? ¿Por qué se separan entonces en varios ficheros?
+
+### Variables, tfvars y locals
+- **Qué es:** una **variable** (`variable "entorno" { ... }` en `variables.tf`) es una entrada del código: se declara con tipo, descripción y, opcionalmente, una `validation`, y se usa como `var.entorno`. Su valor se da en `terraform.tfvars`, que Terraform carga solo, igual que cualquier `*.auto.tfvars`. Un **local** (`locals { prefijo = "..." }`, usado como `local.prefijo`) es un valor calculado dentro del código, que no se puede cambiar desde fuera.
+- **Para qué se usa:** el mismo código sirve para dev y prod cambiando solo los valores (número de webs, puertos, caché...). Los locals evitan repetir expresiones, como el prefijo de los nombres.
+- **Dónde y cómo se usa en mi proyecto:** `terraform/envs/dev/variables.tf` declara `entorno` con una validación que solo admite `"dev"` o `"prod"`; `terraform.tfvars` le da el valor `entorno = "dev"`; `main.tf` define `local.prefijo = "tracker-${var.entorno}"` y todos los recursos se llaman `tracker-dev-...`. Los secretos irán en variables `sensitive` con el valor en `secrets.auto.tfvars` (ignorado por Git).
+- **Por qué así:** el prefijo evita choques con los recursos de la P1 (`randomlocke-*`) y entre dev y prod, que deben convivir. La `validation` falla en el `plan` con un mensaje claro si alguien escribe `entorno = "produccion"`. Variable frente a local: lo que cambia entre entornos va en una variable; lo que se deduce de otras cosas, en un local.
+- **Dudas resueltas:**
+  - *¿Qué pasa si la variable no tiene valor?* Sin `default` ni `tfvars`, Terraform lo pregunta en la terminal (mostrando la `description`); sin poder preguntar (`-input=false`, como en un Makefile) falla con `No value for required variable`. Es intencionado: nunca adivina el entorno.
+  - *¿Pasa algo si los recursos se llaman igual que los de la P1?* Los nombres son únicos por tipo en Docker. Un contenedor repetido da error; una red, según la versión, error o duplicado. El caso grave es el **volumen**: Docker devuelve el existente sin avisar, Terraform lo toma como suyo y un `destroy` de la P2 borraría los datos de la P1.
+  - *¿Y `randomlocke-dev2`?* Funcionaría, pero los filtros de Docker buscan por trozos (`--filter name=randomlocke-dev` también encontraría `randomlocke-dev2-...`) y un comando de limpieza podría tocar la P1. Seguros: `tracker-dev` o `randomlocke2-dev`. Cambiar el prefijo con recursos ya creados los recrea (`-/+`), porque en Docker el nombre no se puede cambiar.
+  - *Si prod tiene caché, ¿tendrá más recursos que dev?* Sí, pero cuando se escriba su `resource`, en el paso 2.3. Con el código del paso 1.2 los dos tendrían 3 (2 redes y el volumen). La caché será un contenedor con `count = var.cache_activada ? 1 : 0` (1 en prod, 0 en dev), y las webs con `count = var.num_webs` (2 y 3): el mismo código con otros valores en el `tfvars`. Redis no lleva volumen porque es una caché sin persistencia.
+- **Pregunta de defensa:** ¿qué diferencia hay entre `var.entorno` y `local.prefijo`, y dónde cambiarías el número de webs de prod?
+
+## Docker
+
+### Volumen de Docker
+- **Qué es:** un espacio de almacenamiento que gestiona Docker, fuera del sistema de ficheros del contenedor. Si el contenedor se borra o se recrea, los datos del volumen siguen ahí.
+- **Para qué se usa:** que los datos sobrevivan a los contenedores. Un contenedor es desechable: Terraform lo recrea cuando cambia su imagen o su configuración, y sin volumen PostgreSQL perdería todas las partidas en cada cambio.
+- **Dónde y cómo se usa en mi proyecto:** `resource "docker_volume" "db_datos"` en `terraform/envs/dev/main.tf` crea `tracker-dev-db-datos`; en el paso 1.3 se montará en `/var/lib/postgresql/data` del contenedor de PostgreSQL.
+- **Por qué así:** volumen gestionado por Docker frente a *bind mount* (una carpeta de Windows montada): en `/mnt/c` los permisos de NTFS dan problemas a PostgreSQL y es más lento. Cuidado: el volumen es un recurso de Terraform, así que `terraform destroy` **también lo borra**. En dev es aceptable; para prod se puede valorar `lifecycle { prevent_destroy = true }`, que hace fallar cualquier plan que lo destruya.
+- **Pregunta de defensa:** si cambias la versión de la imagen de PostgreSQL y Terraform recrea el contenedor, ¿se pierden los datos? ¿Y con `terraform destroy`?
+
+## Red y balanceo
+
+### Redes de Docker y segmentación (frontend/backend)
+- **Qué es:** una red de Docker (tipo *bridge* por defecto) es una red privada virtual entre contenedores. Los contenedores de una misma red se encuentran por nombre gracias al DNS interno de Docker (por ejemplo, la web conecta a `tracker-dev-db`). Una red con `internal = true` no tiene salida a internet ni deja publicar puertos.
+- **Para qué se usa:** aislar. Si un contenedor no está en una red, no puede hablar con los que están en ella. Separar en capas limita lo que puede alcanzar un atacante que comprometa una pieza.
+- **Dónde y cómo se usa en mi proyecto:** `terraform/envs/dev/main.tf` crea `tracker-dev-frontend` (Nginx y webs) y `tracker-dev-backend` (`internal = true`: webs, PostgreSQL y Redis). Las webs están en las dos redes: reciben por `frontend` y consultan por `backend`. Nginx no ve la base de datos, y la base de datos no puede salir a internet.
+- **Por qué así:** es el diseño que ya tenía el prod de la P1 (`frontend` y `backend` internal), ahora en los dos entornos para que dev se parezca a prod. Alternativa descartada: una sola red, como el dev de la P1, que es más simple pero deja todo al alcance de todo. El sitio de MinIO (Nginx necesita alcanzarlo) se decide en la fase 4.
+- **Pregunta de defensa:** si Nginx está solo en `frontend`, ¿podría conectarse a PostgreSQL? ¿Y PostgreSQL podría descargar algo de internet?
 
 ## Seguridad
 

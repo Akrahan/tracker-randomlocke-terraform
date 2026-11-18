@@ -78,7 +78,7 @@ Tracker_Randomlocke_P2/
 
 ### Fase 1 · Terraform mínimo en dev (18 y 19 nov.)
 - **1.1** Estructura de carpetas, provider de Docker y `terraform init`. Qué es el estado.
-- **1.2** Red y volumen de la base de datos.
+- **1.2** Red y volumen de la base de datos. Decidido: todos los recursos se nombran `tracker-<entorno>-...` (variable `entorno` validada a `dev`/`prod` y `local.prefijo`) para no chocar con los de la P1 (`randomlocke-*`) ni entre entornos. Dos redes, como en el prod de la P1: `frontend` y `backend` con `internal = true` (sin salida a internet; solo la base de datos, la caché y las webs). El sitio de MinIO en las redes se decide en la fase 4.
 - **1.3** Contenedor de PostgreSQL con healthcheck. Credenciales como variables sensibles, nunca en el código.
 - **1.4** Imagen y contenedor de la web, y preparar la base de datos una sola vez (primer cambio en la aplicación).
 - **Puerta:** dev funciona con una web, levantado con `terraform apply`.
@@ -96,7 +96,7 @@ Tracker_Randomlocke_P2/
 - **3.4** Caché compartida entre réplicas (prod): una petición cae en una web y da `MISS`, la siguiente cae en otra y da `HIT`, porque todas usan el mismo Redis. Al modificar el equipo, la invalidación (`cache.delete`) vale para todas las réplicas. Prueba también de Redis caído: la web sigue sirviendo desde PostgreSQL (y se vuelve a medir el retraso de ~8 s de la Práctica 1).
 
 ### Fase 4 · MinIO (24 nov.)
-- **4.1** Contenedor de MinIO, bucket y script de inicialización que sube los sprites.
+- **4.1** Contenedor de MinIO, bucket y script de inicialización que sube los sprites. Ojo: en la P1 el servicio de sprites también usaba `scripts/revisar_sprites.py`, que no se copió a la P2; comprobar si hace falta.
 - **4.2** La web muestra los sprites desde MinIO a través de una ruta de Nginx (por ejemplo `/static/`) que reenvía a MinIO; MinIO no publica puertos.
 
 ### Fase 5 · Monitorización, logs y alertas (25 y 26 nov.)
