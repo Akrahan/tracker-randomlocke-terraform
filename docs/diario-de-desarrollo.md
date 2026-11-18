@@ -36,3 +36,12 @@
 - **Pruebas:** `git status` limpio y `main` sincronizada con GitHub (0 commits por subir).
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Redactó las entradas del diario y de los conceptos, anotó las decisiones en la hoja de ruta y comprobó que todo estaba subido. El usuario hizo los commits y los push.
 - **Commit:** `docs: record steps 0.2 and 0.3 in diary and update roadmap decisions` y `docs: explain GitHub authentication with Git Credential Manager`.
+
+### [Paso 1.1: Estructura de Terraform, provider de Docker e init]
+- **Fecha:** 18 nov. 2026
+- **Archivos:** `terraform/envs/dev/versions.tf` (`required_version = ">= 1.6, < 2.0"`, provider `kreuzwerker/docker` `~> 3.9`), `terraform/envs/dev/providers.tf` (`host = "unix:///var/run/docker.sock"`) y `terraform/envs/dev/.terraform.lock.hcl` (generado por `init`). En `docs/`: concepto «Estructura de ficheros y directorio raíz».
+- **Comandos:** `mkdir -p terraform/envs/dev`, `terraform fmt`, `terraform init`, `terraform validate`, `terraform plan`.
+- **Justificación:** una carpeta raíz por entorno (`envs/dev`, después `envs/prod`) da a cada uno su propio estado, de modo que un `destroy` en dev no puede tocar prod (descartados los workspaces). Versiones fijadas para que el despliegue sea reproducible; los ficheros se separan por convención (`versions.tf`, `providers.tf`, y más adelante `main.tf`, `variables.tf` y `outputs.tf`).
+- **Pruebas:** `init` instaló `kreuzwerker/docker` v3.9.0 y creó el lock; `validate`: «Success! The configuration is valid»; `plan`: «No changes» (aún no hay recursos). `.terraform/` queda ignorado por Git y el lock no.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Explicó la estructura por entornos, la separación en ficheros, la configuración duplicada de providers y lo que hacen `fmt`, `init`, `validate` y `plan`; dio los dos bloques de código y revisó los ficheros escritos. El usuario escribió los ficheros y ejecutó los comandos.
+- **Commit:** `feat: set up Terraform dev environment with the Docker provider`
