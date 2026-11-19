@@ -205,3 +205,21 @@
   - **Tests:** `51 passed` en dev (4,55 s) y en prod (4,54 s).
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Buscó las rutas que usan la caché y ejecutó todas las comprobaciones y los tests. El usuario había hecho el `apply` de prod.
 - **Commit:** `docs: log Redis cache in prod with MISS/HIT checks`.
+
+### [Subpaso 2.4.1: Makefile]
+- **Fecha:** 20 nov. 2026
+- **Archivos:** `Makefile` (nuevo, en la raíz): `ENV ?= dev`, `TF := terraform -chdir=terraform/envs/$(ENV)`; objetivos `help` (por defecto; lee los comentarios `##`), `comprobar-env` (solo `dev` o `prod`), `init`, `fmt`, `validate`, `plan` (`-out=plan.tfplan`), `apply` (aplica el plan guardado y lo borra), `destroy`, `output`, `ps` y `test` (tests de la API en un contenedor de un solo uso en la red `frontend` del entorno). En `docs/`: concepto «Makefile».
+- **Comandos:** `nano Makefile`, `ls -l Makefile`, `grep -n '^ ' Makefile`, `make`.
+- **Justificación:** todo se lanza desde la raíz con `make <comando> ENV=dev|prod`; `-chdir` evita los errores de carpeta. `plan -out` + `apply plan.tfplan` aplica exactamente lo revisado, y el plan (con secretos en claro) está en `.gitignore` y se borra tras el `apply`. `destroy` sigue pidiendo confirmación.
+- **Pruebas:** al principio, `make` respondía «No targets» porque el fichero estaba vacío (0 bytes: el contenido no se había guardado). Una vez guardado (1932 bytes), en LF, con las 17 líneas de receta empezando por tabulador y ninguna por espacios, `make` muestra la ayuda con los 10 comandos. `plan.tfplan` queda ignorado por Git.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Dio el Makefile explicado (estilo de ayuda tomado del de la P1), el método para comprobar y corregir los tabuladores, detectó el fichero vacío y comparó los objetivos con los de la P1. El usuario creó y guardó el fichero.
+- **Commit:** `feat: add Makefile to run Terraform and tests per environment` (tras el subpaso 2.4.2).
+
+### [Subpaso 2.4.2: Probar el Makefile desde la raíz]
+- **Fecha:** 20 nov. 2026
+- **Archivos:** ninguno (el plan guardado se crea y se borra solo).
+- **Comandos:** `make validate ENV=dev`, `make plan ENV=prod`, `make apply ENV=prod`, `make output ENV=prod`, `make ps ENV=prod`, `make test ENV=dev`, `make plan ENV=produccion`.
+- **Justificación:** comprobar que todo el ciclo de trabajo (validar, planificar, aplicar, consultar y probar) se lanza desde la raíz para cualquiera de los dos entornos, que es lo que pide el enunciado con el Makefile.
+- **Pruebas:** `validate` de dev: «Success!». `plan` de prod: «No changes» (lo ejecuta como `terraform -chdir=terraform/envs/prod plan -out=plan.tfplan`). `apply` de prod: `Apply complete! Resources: 0 added, 0 changed, 0 destroyed.` y `url = "http://127.0.0.1:8200"`; el `plan.tfplan` se borró después. `output`: la URL. `ps`: web, caché y base de datos de prod `healthy` y `preparar-db` `Exited (0)`. `test` de dev: `51 passed in 4.47s`. `ENV=produccion`: «ENV debe ser dev o prod (has puesto 'produccion')» y error antes de ejecutar nada. Hubo un aviso `make: getcwd: No such file or directory`, propio de la terminal (carpeta actual no válida), no del Makefile.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Propuso las pruebas con sus predicciones, comprobó que el plan guardado se borra y explicó cada comando y cómo usarlo (documentado en conceptos). El usuario ejecutó todos los comandos.
+- **Commit:** `feat: add Makefile to run Terraform and tests per environment` (Makefile) y `docs: log Makefile and close modules and environments phase` (docs).

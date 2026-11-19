@@ -25,6 +25,7 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
 6. Almacenamiento
 7. [Automatización](#automatización)
    - [Git: repositorio propio y primeros pasos](#git-repositorio-propio-y-primeros-pasos)
+   - [Makefile](#makefile)
 8. [Seguridad](#seguridad)
    - [Exposición mínima y proxy inverso](#exposición-mínima-y-proxy-inverso)
    - [.gitignore: qué no se sube y patrones de exclusión](#gitignore-qué-no-se-sube-y-patrones-de-exclusión)
@@ -209,6 +210,18 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
   - *¿Un repositorio con las dos prácticas en carpetas no sería mejor?* Es posible (monorepo), pero la portada sería la de la P1, el historial mezclaría las dos y habría dos copias de la app. Los submódulos (repositorios dentro de otro) complican el clonado (`--recursive`) y el README a prueba de principiantes.
   - *¿La P2 tiene lo último de `extras` aunque la `main` de la P1 no lo tenga?* Sí: `diff -rq` de `app/` y `tests/` contra `extras` no dio diferencias. La `main` de la P2 es la de un repositorio nuevo, sin relación con la `main` de la P1.
 - **Pregunta de defensa:** si subiste por error un `terraform.tfstate` y después lo añades al `.gitignore`, ¿está resuelto?
+
+### Makefile
+- **Qué es:** un fichero con **atajos** de comandos para la herramienta `make`. Cada «objetivo» (`plan:`, `apply:`...) agrupa uno o varios comandos, que van en líneas que empiezan **por un tabulador** (con espacios, `make` da `missing separator`). Admite variables (`ENV ?= dev`: `dev` si no se indica otra) y dependencias entre objetivos (`plan: comprobar-env`).
+- **Para qué se usa:** no tener que recordar ni teclear comandos largos, lanzarlo todo desde la raíz sin cambiar de carpeta y que cualquiera (el profesor) use el proyecto con comandos sencillos. Lo pide el enunciado («uso de Makefile para la automatización de comandos»).
+- **Dónde y cómo se usa en mi proyecto:** `Makefile` en la raíz. `make <comando> ENV=dev|prod`, que usa `terraform -chdir=terraform/envs/$(ENV)`: `-chdir` hace que Terraform trabaje en la carpeta del entorno sin hacer `cd`. Objetivos: `help`, `init`, `fmt`, `validate`, `plan` (guarda `plan.tfplan`), `apply` (aplica ese plan exacto y lo borra), `destroy`, `output`, `ps` y `test` (tests de la API en un contenedor de un solo uso). `comprobar-env` hace fallar cualquier comando si `ENV` no es `dev` ni `prod`.
+- **Por qué así:** `plan -out` + `apply plan.tfplan` aplica exactamente lo revisado; si el estado cambia entre medias, Terraform lo rechaza («saved plan is stale»). El fichero del plan contiene secretos en claro: está en `.gitignore` y se borra tras el `apply`. `destroy` sigue pidiendo `yes`. El estilo de la ayuda (comentarios `##` que lee `awk`) viene del Makefile de la P1. Alternativas: scripts de shell (más verbosos, sin ayuda automática) o Taskfile/just (herramientas que habría que instalar).
+- **Dudas resueltas:**
+  - *¿El Makefile tiene todo lo de la P1 más lo necesario hasta ahora?* Tiene lo necesario para la fase 2, no todo lo de la P1. Equivalencias: `up-*` → `plan` + `apply`; `clean-*` → `destroy`; `ps-*` → `ps`; `test` → `test` (ahora por entorno); `fresh-*` → `destroy` + `plan` + `apply`. No tiene equivalente directo `down-*` (Terraform no «para»: crea o destruye). Se añadirán cuando hagan falta: `logs` y `stop-web`/`start-web` (fase 3, alta disponibilidad), `stop-cache`/`start-cache` (3.4), la subida de sprites (fase 4, sustituye a `sprites-*`), los objetivos de monitorización y alertas (fase 5), `test-infra` (6.2) y, si se hace, la copia de seguridad (6.3, `backup-*`). `test-migracion`, `seed-*` y `sprites-check-*` no se copiaron a la P2.
+  - *¿Qué hace cada comando y cómo se usa?* Siempre desde la raíz, con `ENV=dev` (por defecto) o `ENV=prod`. `make` o `make help`: la lista de comandos. `make init`: prepara la carpeta del entorno (provider y módulos), la primera vez o al añadir un módulo. `make fmt`: formatea todos los `.tf` (no lleva `ENV`). `make validate`: comprueba la configuración. `make plan`: enseña los cambios y los guarda en `plan.tfplan`. `make apply`: aplica ese plan exacto, sin preguntar, y lo borra (si no hay plan, avisa). `make destroy`: borra el entorno entero (pide `yes`). `make output`: la URL. `make ps`: los contenedores del entorno, también los parados. `make test`: los tests de la API. Flujo habitual: `make plan ENV=prod` → revisar → `make apply ENV=prod` → `make test ENV=prod`. Con un plan sin cambios, `make apply` dice `0 added, 0 changed, 0 destroyed`. Con `ENV=produccion` se para antes de tocar nada.
+  - *¿Qué significa el aviso «make: getcwd: No such file or directory»?* Que la terminal tenía como carpeta actual una referencia que ya no es válida (por ejemplo, si la carpeta se borró y se volvió a crear mientras estaba abierta). No es un fallo del Makefile; se arregla volviendo a entrar en la carpeta con `cd`.
+  - *¿Por qué `make` daba «No targets»?* Porque el `Makefile` estaba vacío (0 bytes): el contenido no se había guardado. Con el contenido guardado, `make` sin argumentos muestra la ayuda (`.DEFAULT_GOAL := help`).
+- **Pregunta de defensa:** ¿qué ejecuta exactamente `make plan ENV=prod` y dónde deja el plan? ¿Por qué `make apply` no pregunta `yes` y `make destroy` sí?
 
 ## Seguridad
 
