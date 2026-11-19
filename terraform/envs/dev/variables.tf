@@ -29,3 +29,8 @@ variable "puerto_web" {
   description = "Puerto de tu ordenador por el que se abre la web"
   type        = number
 }
+
+variable "docs_activadas" {
+  description = "Si es true, la web publica su documentación interactiva (/docs)"
+  type        = bool
+}

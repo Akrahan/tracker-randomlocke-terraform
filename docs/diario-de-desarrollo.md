@@ -127,3 +127,21 @@
 - **Pruebas:** `init` registró `red`, `base_datos` y `web`; `validate` correcto. El `plan` (previsto y obtenido) mostró los 8 recursos con «has moved to» y `Plan: 0 to add, 0 to change, 0 to destroy.`, más `+ url = "http://127.0.0.1:8100"`: los módulos son idénticos al código anterior. `apply`: `Apply complete! Resources: 0 added, 0 changed, 0 destroyed.` y `url = "http://127.0.0.1:8100"`. Después, `terraform state list` muestra las 8 direcciones nuevas (`module.red.docker_network.frontend`...), el segundo `plan` da «No changes», los contenedores conservan su hora de arranque (no se recrearon) y `/status` responde ok.
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Explicó el problema de las direcciones y los bloques `moved` (con la comparación de la agenda de contactos), qué hacen `outputs.tf` y `moved.tf`, en qué se diferencia de borrar y crear, y para qué se usa en la práctica; dio el código, lo revisó con `fmt`, `init`, `validate` y `plan`, y verificó la migración. El usuario escribió los ficheros y ejecutó el `apply`.
 - **Commit:** `refactor: move dev resources into reusable red, base_datos and web modules` (los tres módulos, los cambios de dev y `moved.tf`).
+
+### [Subpaso 2.1.6: Comprobar la migración y retirar moved.tf]
+- **Fecha:** 20 nov. 2026
+- **Archivos:** se borra `terraform/envs/dev/moved.tf`.
+- **Comandos:** tests de la API en un contenedor de un solo uso (`docker run --rm --network tracker-dev-frontend -e BASE_URL=http://tracker-dev-web:8000 ... pytest`), `rm terraform/envs/dev/moved.tf`, `terraform plan`, `git add -A terraform`.
+- **Justificación:** la web, que ahora sale de módulos, debe funcionar igual que antes. Los bloques `moved` solo hacen falta mientras exista un estado con direcciones viejas; dev ya está migrado y prod nacerá con módulos, así que se retiran para que dev y prod queden simétricos. La migración queda en el historial (commit `c377c1c`).
+- **Pruebas:** `51 passed in 4.66s` contra dev con módulos, sin partidas de prueba restantes. Sin `moved.tf`, el `plan` muestra `Refreshing state` con las direcciones `module.*` y da «No changes»: el estado ya tenía las direcciones nuevas.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Pasó los tests, explicó los pros y contras de borrar `moved.tf` (no es obligatorio; se recomienda por limpieza y simetría) y comprobó el commit. El usuario borró el fichero, ejecutó el `plan` e hizo el commit.
+- **Commit:** `chore: remove moved blocks after migrating dev state to modules` (hecho: `30d4970`).
+
+### [Subpaso 2.2.1: /docs configurable por entorno]
+- **Fecha:** 20 nov. 2026
+- **Archivos:** `terraform/modules/web/variables.tf` (entrada `docs_activadas`, tipo `bool`), `terraform/modules/web/main.tf` (`"ENABLE_DOCS=${var.docs_activadas}"` en lugar de `"ENABLE_DOCS=true"`), `terraform/envs/dev/variables.tf` (variable `docs_activadas`), `terraform/envs/dev/terraform.tfvars` (`docs_activadas = true`) y `terraform/envs/dev/main.tf` (`docs_activadas = var.docs_activadas` en `module "web"`).
+- **Comandos:** `terraform fmt`, `terraform validate`, `terraform plan` en dev.
+- **Justificación:** `ENABLE_DOCS` era lo único fijo en el módulo que debe ser distinto en prod (apagado por exposición mínima: no publicar el mapa de la API). Pasa a ser una entrada `bool` que cada entorno decide en su `terraform.tfvars`, como el puerto.
+- **Pruebas:** el primer `validate` falló con «Reference to undeclared input variable» y el aviso «Value for undeclared variable»: la variable estaba en el módulo y en el `tfvars`, pero no declarada en `envs/dev/variables.tf` (cada módulo tiene sus propias variables; el cambio no se había guardado). Tras declararla, `validate` correcto y `plan` «No changes»: el texto que recibe el contenedor sigue siendo `ENABLE_DOCS=true`.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Presentó el paso 2.2 y sus subpasos, dio los cinco cambios explicados, diagnosticó el error de la variable no declarada y revisó el resultado. El usuario hizo los cambios.
+- **Commit:** `feat: make API docs configurable per environment`.

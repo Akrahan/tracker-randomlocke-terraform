@@ -20,13 +20,14 @@ module "base_datos" {
 module "web" {
   source = "../../modules/web"
 
-  prefijo      = local.prefijo
-  ruta_app     = "${path.module}/../../../app"
-  red_frontend = module.red.frontend
-  red_backend  = module.red.backend
-  db_host      = module.base_datos.host
-  db_nombre    = var.db_nombre
-  db_usuario   = var.db_usuario
-  db_password  = var.db_password
-  puerto       = var.puerto_web
+  prefijo        = local.prefijo
+  ruta_app       = "${path.module}/../../../app"
+  red_frontend   = module.red.frontend
+  red_backend    = module.red.backend
+  db_host        = module.base_datos.host
+  db_nombre      = var.db_nombre
+  db_usuario     = var.db_usuario
+  db_password    = var.db_password
+  puerto         = var.puerto_web
+  docs_activadas = var.docs_activadas
 }

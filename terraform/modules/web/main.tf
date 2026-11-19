@@ -52,7 +52,7 @@ resource "docker_container" "web" {
   depends_on = [docker_container.preparar_db]
 
   env = concat(local.entorno_db, [
-    "ENABLE_DOCS=true",
+    "ENABLE_DOCS=${var.docs_activadas}",
     "INICIALIZAR_DB=false",
   ])
 
