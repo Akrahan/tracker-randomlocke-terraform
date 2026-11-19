@@ -85,9 +85,23 @@ Tracker_Randomlocke_P2/
 
 ### Fase 2 · Módulos y entornos (20 y 21 nov.)
 - **2.1** Pasar lo anterior a módulos reutilizables: red, base de datos y web (la caché, en el 2.3).
+  - **2.1.1** Qué es un módulo y su estructura (`terraform/modules/<nombre>/` con `main.tf`, `variables.tf`, `outputs.tf` y `versions.tf`). Entradas (variables), salidas (outputs) y cómo se llama a un módulo.
+  - **2.1.2** Módulo `red`: las dos redes; como salidas, sus nombres.
+  - **2.1.3** Módulo `base_datos`: volumen, imagen y contenedor de PostgreSQL; como salida, el nombre del host.
+  - **2.1.4** Módulo `web`: imagen, `preparar_db` y contenedor de la web. Se diseña pensando en que en la fase 3 tendrá varias réplicas.
+  - **2.1.5** `envs/dev` pasa a usar los tres módulos, con bloques `moved` para que Terraform **mueva** los recursos en el estado en lugar de destruirlos y crearlos. Predicción: el `plan` no debe añadir ni destruir nada, solo mover.
+  - **2.1.6** Comprobar: `plan` sin cambios reales, la web funciona y los tests pasan.
 - **2.2** `envs/dev` y `envs/prod` con su `terraform.tfvars`. Los dos a la vez, con nombres, redes y puertos separados.
+  - **2.2.1** Lo que cambia entre entornos se convierte en variables: `docs_activadas` (`ENABLE_DOCS`, encendida en dev y apagada en prod). Se aplica primero en dev (debe dar «No changes» en lo demás).
+  - **2.2.2** Crear `envs/prod` (mismos ficheros que dev, `terraform.tfvars` con `entorno = "prod"`, puerto 8200 y docs apagadas) y su propio `secrets.auto.tfvars` con **otras** credenciales.
+  - **2.2.3** `init` y `apply` de prod; comprobar que los dos entornos conviven: nombres, redes, puertos y estados separados; `destroy` de uno sin tocar el otro.
 - **2.3** Caché en prod: módulo de Redis activado solo en prod (variable del entorno, por ejemplo `cache_enabled = true`), con contraseña como variable `sensitive`, sin puertos publicados, y las variables que ya lee la app (`CACHE_ENABLED`, `CACHE_HOST`, `REDIS_PASSWORD`). Prueba: cabecera `X-Cache` `MISS` → `HIT`.
+  - **2.3.1** Módulo `cache`: contenedor de Redis con contraseña (`sensitive`), sin persistencia, solo en `backend`, con healthcheck.
+  - **2.3.2** Activarlo solo en prod con `count` y una variable `cache_activada`; pasar a la web `CACHE_ENABLED`, `CACHE_HOST` y `REDIS_PASSWORD`.
+  - **2.3.3** Comprobar: en prod, `X-Cache` `MISS` → `HIT` y «Caché: conectada»; en dev, el `plan` no cambia nada y sigue «no aplica».
 - **2.4** Makefile: `init`, `plan`, `apply` y `destroy` por entorno.
+  - **2.4.1** Objetivos con `ENV=dev|prod` usando `terraform -chdir=terraform/envs/$(ENV)`: `init`, `fmt`, `validate`, `plan`, `apply`, `destroy`, y `test` (los tests de la API en un contenedor de un solo uso).
+  - **2.4.2** Comprobar todo desde la raíz y cerrar la fase con su resumen.
 
 ### Fase 3 · Balanceador (22 y 23 nov.)
 - **3.1** Varias webs (2 en dev, 3 en prod) y mostrar en la web en qué instancia has caído (segundo cambio en la aplicación).
