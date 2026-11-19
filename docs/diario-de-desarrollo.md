@@ -167,3 +167,41 @@
   - **Independencia:** `terraform destroy` en prod borró solo sus 8 recursos (contenedores, redes y volumen). Dev siguió `Up 3 hours (healthy)` y respondiendo ok. Un nuevo `apply` recreó prod, y otra vez cuatro contenedores en marcha y los dos `plan` en «No changes».
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Revisó el `plan` de prod, hizo las comprobaciones de convivencia, aislamiento y tests, y explicó cuántos contenedores debe haber y por qué `docker ps` no enseña `preparar-db`. El usuario ejecutó los `apply` y el `destroy` de prod.
 - **Commit:** `feat: add prod environment using the same modules as dev` (terraform) y `docs: log prod environment creation and coexistence tests` (docs).
+
+### [Subpaso 2.3.1: Módulo cache (Redis)]
+- **Fecha:** 20 nov. 2026
+- **Archivos:** `terraform/modules/cache/versions.tf` (copiado de `red`), `variables.tf` (`prefijo`, `red_backend` y `password` con `sensitive`), `main.tf` (imagen `redis:7-alpine` con `keep_locally` y contenedor `${prefijo}-cache`: `user = "redis"`, contraseña por variable de entorno, `--requirepass`, sin persistencia (`--save ""`, `--appendonly no`), solo red `backend`, sin puertos, healthcheck `redis-cli ping` autenticado y `wait = true`) y `outputs.tf` (salida `host`). En `docs/`: concepto «Caché con Redis» y la duda sobre los ficheros de cada módulo.
+- **Comandos:** `rmdir` de una carpeta creada por error en `terraform/envs/prod/terraform/modules/cache` (vacía); `mkdir -p terraform/modules/cache` y `cp terraform/modules/red/versions.tf terraform/modules/cache/` desde la raíz; `terraform fmt -recursive modules`.
+- **Justificación:** la caché es un componente propio (como PostgreSQL) que cada entorno decidirá si usa. Es la misma configuración de Redis que el prod de la P1, sin volumen porque es una caché (los datos auténticos están en PostgreSQL) y con contraseña aunque esté en una red interna.
+- **Pruebas:** primero, `mkdir` y `cp` lanzados desde `envs/prod` crearon una carpeta en un sitio equivocado (vacía; se borró con `rmdir`, que solo borra carpetas vacías). Después, los tres ficheros no se habían guardado. Al final, los cuatro ficheros del módulo están correctos, en LF y sin cambios de `fmt`. El módulo aún no se usa, así que los `plan` no cambian.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Presentó el paso 2.3, dio el módulo explicado (configuración tomada del `docker-compose.prod.yml` de la P1), detectó la carpeta equivocada y los ficheros sin guardar, y repasó qué es cada fichero de un módulo. El usuario creó los ficheros.
+- **Commit:** irá con la activación en prod, en el subpaso 2.3.2 (`feat: add Redis cache module and enable it only in prod`).
+
+### [Subpaso 2.3.2: Activar la caché solo en prod y conectarla a la web]
+- **Fecha:** 20 nov. 2026
+- **Archivos:**
+  - `terraform/modules/web/variables.tf`: `cache_activada` (`bool`), `cache_host` y `cache_password` (`sensitive`), las tres con `default`.
+  - `terraform/modules/web/main.tf`: el `env` de la web añade `CACHE_ENABLED=true`, `CACHE_HOST` y `REDIS_PASSWORD` **solo si** `cache_activada` (`concat(..., var.cache_activada ? [...] : [])`).
+  - `terraform/envs/{dev,prod}/variables.tf`: `cache_activada` (sin `default`) y `redis_password` (`sensitive`, `default = ""`).
+  - `terraform/envs/{dev,prod}/main.tf` (idénticos): `module "cache"` con `count = var.cache_activada ? 1 : 0`, y en `module "web"` las líneas `cache_activada`, `cache_host = var.cache_activada ? module.cache[0].host : ""` y `cache_password`.
+  - `terraform.tfvars`: dev `cache_activada = false`, prod `true`. `envs/prod/secrets.auto.tfvars` (fuera de Git) con `redis_password` nuevo; las dos plantillas `.example` con la línea de `redis_password`.
+  - En `docs/`: dudas sobre el módulo `cache`, por qué se toca dev (código presente pero apagado) y dónde hace falta `apply`.
+- **Comandos:** `cp terraform/envs/dev/{variables,main}.tf terraform/envs/prod/`, `openssl rand -base64 24`, `terraform fmt`, `terraform init` (registra el módulo `cache`), `terraform validate`, `terraform plan` en los dos, `terraform apply` en prod.
+- **Justificación:** el mismo código da infraestructuras distintas según un valor del `tfvars`. `count` crea el módulo 0 o 1 veces y, con `count`, el módulo pasa a ser una lista (`module.cache[0]`), así que su salida se usa con una condición. Las variables de caché solo se añaden al `env` si está activada, para que la web de dev no se recree.
+- **Pruebas:** `main.tf`, `variables.tf` y el resto de `.tf` idénticos en dev y prod (`cmp`); los secretos de prod, entre comillas, con `redis_password` distinta de `db_password` (comparado sin leerlos). `plan` de dev: «No changes». `plan` de prod (previsto y obtenido): `+ module.cache[0].docker_image.redis`, `+ module.cache[0].docker_container.cache`, `module.web.docker_container.web must be replaced` (`env` forces replacement): `Plan: 3 to add, 0 to change, 1 to destroy.` Aplicado en prod.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Diseñó el `count` y el `env` condicional para no tocar dev, dio el código por partes y explicó por qué se edita dev, qué significa `module.cache[0]` y dónde hace falta `apply`; revisó ficheros, secretos (sin leerlos) y los dos `plan`. El usuario escribió los cambios, la contraseña de Redis y ejecutó el `apply`.
+- **Commit:** `feat: add Redis cache module and enable it only in prod`.
+
+### [Subpaso 2.3.3: Comprobar la caché en prod y que dev no cambia]
+- **Fecha:** 20 nov. 2026
+- **Archivos:** ninguno.
+- **Comandos:** `docker ps -a`, `curl` a `/status`, `docker inspect tracker-prod-cache` (redes, usuario, puertos, reinicio), `docker exec tracker-prod-cache redis-cli ping` (sin contraseña), `curl -D -` a `/moves` y `/species/6/learnset` en los dos entornos, `terraform plan` y `state list` en los dos, tests de la API en los dos y la web de prod en el navegador.
+- **Justificación:** demostrar que prod tiene la caché funcionando y protegida, y que dev, con el mismo código y la caché apagada, sigue igual.
+- **Pruebas:**
+  - **Contenedor:** `tracker-prod-cache` `Up (healthy)`, solo en `tracker-prod-backend`, usuario `redis`, sin puertos publicados (`6379/tcp` solo expuesto) y `unless-stopped`. `redis-cli ping` sin contraseña responde `NOAUTH Authentication required.`. No existe `tracker-dev-cache`.
+  - **Estado de la app:** `/status` de prod `{"estado":"ok","db":"ok","cache":"ok"}`, de dev `"cache":"no aplica"`; la web de prod muestra «Caché: conectada».
+  - **MISS → HIT:** `/moves` tres veces en prod: `X-Cache: MISS`, `HIT`, `HIT` (TTL 3600). En dev: `X-Cache: OFF`. `/species/6/learnset` en prod: `MISS` en 18,6 ms y `HIT` en 1,3 ms; en dev, `OFF` en 14,5 y 10,5 ms.
+  - **Terraform:** los dos `plan` en «No changes»; dev con 8 recursos en su estado y prod con 10 (los 8 de siempre más los 2 de la caché). `preparar-db` de prod no se volvió a ejecutar (misma imagen).
+  - **Tests:** `51 passed` en dev (4,55 s) y en prod (4,54 s).
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Buscó las rutas que usan la caché y ejecutó todas las comprobaciones y los tests. El usuario había hecho el `apply` de prod.
+- **Commit:** `docs: log Redis cache in prod with MISS/HIT checks`.
