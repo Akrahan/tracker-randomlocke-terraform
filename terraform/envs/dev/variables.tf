@@ -34,3 +34,15 @@ variable "docs_activadas" {
   description = "Si es true, la web publica su documentación interactiva (/docs)"
   type        = bool
 }
+
+variable "cache_activada" {
+  description = "Si es true, se crea la caché Redis y la web la usa"
+  type        = bool
+}
+
+variable "redis_password" {
+  description = "Contraseña de Redis (solo hace falta si cache_activada es true)"
+  type        = string
+  sensitive   = true
+  default     = ""
+}

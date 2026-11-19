@@ -49,3 +49,22 @@ variable "docs_activadas" {
   description = "Si es true, la web publica su documentación interactiva (/docs)"
   type        = bool
 }
+
+variable "cache_activada" {
+  description = "Si es true, la web usa la caché Redis"
+  type        = bool
+  default     = false
+}
+
+variable "cache_host" {
+  description = "Nombre del contenedor de Redis en la red (CACHE_HOST)"
+  type        = string
+  default     = ""
+}
+
+variable "cache_password" {
+  description = "Contraseña de Redis"
+  type        = string
+  sensitive   = true
+  default     = ""
+}

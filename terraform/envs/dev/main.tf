@@ -30,4 +30,16 @@ module "web" {
   db_password    = var.db_password
   puerto         = var.puerto_web
   docs_activadas = var.docs_activadas
+  cache_activada = var.cache_activada
+  cache_host     = var.cache_activada ? module.cache[0].host : ""
+  cache_password = var.redis_password
+}
+
+module "cache" {
+  source = "../../modules/cache"
+  count  = var.cache_activada ? 1 : 0
+
+  prefijo     = local.prefijo
+  red_backend = module.red.backend
+  password    = var.redis_password
 }

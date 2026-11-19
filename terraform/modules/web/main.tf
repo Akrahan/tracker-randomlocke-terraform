@@ -54,7 +54,11 @@ resource "docker_container" "web" {
   env = concat(local.entorno_db, [
     "ENABLE_DOCS=${var.docs_activadas}",
     "INICIALIZAR_DB=false",
-  ])
+    ], var.cache_activada ? [
+    "CACHE_ENABLED=true",
+    "CACHE_HOST=${var.cache_host}",
+    "REDIS_PASSWORD=${var.cache_password}",
+  ] : [])
 
   networks_advanced {
     name = var.red_frontend
