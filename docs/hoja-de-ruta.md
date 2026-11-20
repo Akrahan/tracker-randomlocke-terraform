@@ -104,9 +104,19 @@ Tracker_Randomlocke_P2/
   - **2.4.2** Comprobar todo desde la raíz y cerrar la fase con su resumen.
 
 ### Fase 3 · Balanceador (22 y 23 nov.)
+- **3.0** Ordenar `app/` antes de tocarla: los CSV en `app/datos/` y `schema.sql` en `app/db/` (añadido el 20 nov.).
 - **3.1** Varias webs (2 en dev, 3 en prod) y mostrar en la web en qué instancia has caído (segundo cambio en la aplicación).
+  - **3.1.1** La app dice qué instancia responde: variable `INSTANCIA` (la pone Terraform), campo en `/status`, cabecera `X-Instancia` y etiqueta en la página.
+  - **3.1.2** `count` en el módulo `web` con `replicas_web` (2 en dev y 3 en prod) y un puerto temporal por réplica.
+  - **3.1.3** Comprobar cada réplica por su puerto y pasar los tests.
 - **3.2** Elegir balanceador (Nginx, HAProxy o Traefik) y su política (round-robin, menos conexiones...), con los argumentos para la defensa.
+  - **3.2.1** Decisión: balanceador y política, con alternativas y argumentos.
+  - **3.2.2** Módulo `balanceador`: Nginx con su configuración generada por `templatefile` a partir de los nombres de las réplicas.
+  - **3.2.3** Las webs dejan de publicar puertos y solo publica Nginx; ajustar la salida y `make test`.
+  - **3.2.4** Comprobar el reparto: `X-Instancia` va rotando.
 - **3.3** Alta disponibilidad: el balanceador deja de mandar tráfico a una web caída y los contenedores se reinician solos. Prueba: tumbar una instancia.
+  - **3.3.1** Nginx: `max_fails`, `fail_timeout` y `proxy_next_upstream`; política de reinicio de los contenedores.
+  - **3.3.2** Objetivos `logs`, `stop-web` y `start-web` en el Makefile, y prueba de tumbar una web.
 - **3.4** Caché compartida entre réplicas (prod): una petición cae en una web y da `MISS`, la siguiente cae en otra y da `HIT`, porque todas usan el mismo Redis. Al modificar el equipo, la invalidación (`cache.delete`) vale para todas las réplicas. Prueba también de Redis caído: la web sigue sirviendo desde PostgreSQL (y se vuelve a medir el retraso de ~8 s de la Práctica 1).
 
 ### Fase 4 · MinIO (24 nov.)
