@@ -44,6 +44,6 @@ ps: comprobar-env ## Estado de los contenedores del entorno
 
 test: comprobar-env ## Pasa los tests de la API contra la web del entorno
 	docker run --rm --network tracker-$(ENV)-frontend \
-		-e BASE_URL=http://tracker-$(ENV)-web:8000 \
+		-e BASE_URL=http://tracker-$(ENV)-web-1:8000 \
 		-v "$(CURDIR)/tests:/tests:ro" python:3.12-slim \
 		sh -c "pip install --quiet --root-user-action=ignore pytest >/dev/null 2>&1 && python -m pytest -q -p no:cacheprovider /tests"

@@ -45,7 +45,8 @@ resource "docker_container" "preparar_db" {
 }
 
 resource "docker_container" "web" {
-  name    = "${var.prefijo}-web"
+  count   = var.replicas
+  name    = "${var.prefijo}-web-${count.index + 1}"
   image   = docker_image.web.image_id
   restart = "unless-stopped"
 
@@ -54,7 +55,7 @@ resource "docker_container" "web" {
   env = concat(local.entorno_db, [
     "ENABLE_DOCS=${var.docs_activadas}",
     "INICIALIZAR_DB=false",
-    "INSTANCIA=${var.prefijo}-web",
+    "INSTANCIA=${var.prefijo}-web-${count.index + 1}",
     ], var.cache_activada ? [
     "CACHE_ENABLED=true",
     "CACHE_HOST=${var.cache_host}",
@@ -71,7 +72,7 @@ resource "docker_container" "web" {
 
   ports {
     internal = 8000
-    external = var.puerto
+    external = var.puerto + count.index
     ip       = "127.0.0.1"
   }
 

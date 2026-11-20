@@ -68,3 +68,13 @@ variable "cache_password" {
   sensitive   = true
   default     = ""
 }
+
+variable "replicas" {
+  description = "Número de copias de la web"
+  type        = number
+
+  validation {
+    condition     = var.replicas >= 1
+    error_message = "Tiene que haber al menos una réplica de la web."
+  }
+}

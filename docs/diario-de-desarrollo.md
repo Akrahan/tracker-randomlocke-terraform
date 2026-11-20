@@ -241,3 +241,21 @@
 - **Pruebas:** `plan`: `3 to add, 0 to change, 3 to destroy` (imagen, `preparar_db` y web, por el cambio en `app/`). `/status` devuelve `"instancia":"tracker-dev-web"`; la cabecera `x-instancia: tracker-dev-web` sale también en `/moves`, no solo en `/status`; la página incluye el `span` de la etiqueta. `51 passed` en dev. Prod se actualizará en el 3.1.2.
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Explicó el objetivo de la fase y dio el código por partes; en la revisión detectó la cabecera dentro del `if` (solo salía en HTML/JS/CSS), el `span` entre el punto y el texto de la caché y la clase `pista` (gris sobre la cabecera), y a petición del usuario los corrigió y separó el commit de la reorganización. El usuario escribió el resto del código y aplicó.
 - **Commit:** `feat: show which web instance served each response`
+
+### [Subpaso 3.1.2: Varias webs con count]
+- **Fecha:** 21 nov. 2026
+- **Archivos:** `terraform/modules/web/variables.tf` (`replicas`, con validación `>= 1`), `terraform/modules/web/main.tf` (`count = var.replicas`, nombre e `INSTANCIA` `${prefijo}-web-${count.index + 1}`, puerto `var.puerto + count.index`), `terraform/modules/web/outputs.tf` (`urls` y `nombres`), `terraform/envs/{dev,prod}/variables.tf`, `main.tf`, `outputs.tf` y `terraform.tfvars` (`replicas_web = 2` en dev y `3` en prod) y `Makefile` (`make test` contra `tracker-$(ENV)-web-1`).
+- **Comandos:** `make plan`, `make apply`, `make ps`, `curl -sI http://127.0.0.1:<puerto>/status` y `make test`, en dev y en prod.
+- **Justificación:** el enunciado pide 2 webs en dev y 3 o más en prod; con `count` el número de réplicas es un valor del `tfvars` y el código del módulo es el mismo. El puerto por réplica es temporal, para probarlas una a una hasta que Nginx sea el único que publique (3.2.3).
+- **Pruebas:** `plan` de dev: `2 to add, 0 to change, 1 to destroy`, con `web[0]` «moved from web» (moved implícito al añadir `count`) y reemplazado por el cambio de nombre. `plan` de prod: `5 to add, 0 to change, 3 to destroy` (también imagen y `preparar_db`, que aún no tenían el 3.1.1). Tras el `apply`, todas las réplicas `healthy` (8100-8101 en dev y 8200-8202 en prod), cada puerto con su cabecera (`x-instancia: tracker-dev-web-1`, `-2`; `tracker-prod-web-1`, `-2`, `-3`), PostgreSQL y Redis sin tocar («Up 28 hours») y `51 passed` en los dos entornos.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Explicó `count`, `count.index`, `for` y *splat*, el moved implícito y por qué reemplazar una web no pierde datos; a petición del usuario escribió los cambios y generó los planes de los dos entornos. El usuario aplicó y ejecutó las pruebas.
+- **Commit:** `feat: run several web replicas per environment with count`
+
+### [Subpaso 3.1.3: Comprobar las réplicas una a una]
+- **Fecha:** 21 nov. 2026
+- **Archivos:** ninguno.
+- **Comandos:** los de prueba del 3.1.2 (`make ps`, `curl -sI` a cada puerto, `make test`).
+- **Justificación:** antes de poner Nginx delante hay que saber que cada réplica funciona por sí sola; si algo falla después, el problema estará en el balanceador y no en las webs.
+- **Pruebas:** las del 3.1.2: 2 réplicas en dev y 3 en prod, todas `healthy`, cada una con un nombre distinto y `51 passed` en los dos entornos.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Dio los comandos y lo esperado; el usuario los ejecutó.
+- **Commit:** va en `feat: run several web replicas per environment with count`.

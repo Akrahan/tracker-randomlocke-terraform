@@ -46,3 +46,8 @@ variable "redis_password" {
   sensitive   = true
   default     = ""
 }
+
+variable "replicas_web" {
+  description = "Número de copias de la web"
+  type        = number
+}

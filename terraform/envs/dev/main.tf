@@ -29,6 +29,7 @@ module "web" {
   db_usuario     = var.db_usuario
   db_password    = var.db_password
   puerto         = var.puerto_web
+  replicas       = var.replicas_web
   docs_activadas = var.docs_activadas
   cache_activada = var.cache_activada
   cache_host     = var.cache_activada ? module.cache[0].host : ""
