@@ -21,6 +21,8 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
 3. [Red y balanceo](#red-y-balanceo)
    - [Redes de Docker y segmentación (frontend/backend)](#redes-de-docker-y-segmentación-frontendbackend)
    - [Réplicas e identificación de la instancia](#réplicas-e-identificación-de-la-instancia)
+   - [Balanceador de carga: Nginx frente a HAProxy y Traefik](#balanceador-de-carga-nginx-frente-a-haproxy-y-traefik)
+   - [Política de reparto: round-robin, least_conn, ip_hash y weight](#política-de-reparto-round-robin-least_conn-ip_hash-y-weight)
 4. Alta disponibilidad
 5. Monitorización y logs
 6. Almacenamiento
@@ -211,6 +213,53 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
   - *¿Por qué cada réplica tiene su propio puerto?* Dos contenedores no pueden publicar el mismo puerto del ordenador. Es temporal, para probarlas una a una; en el 3.2.3 se quitan y solo publica Nginx.
   - *¿Por qué `count` y no `for_each`?* `for_each` crea copias a partir de un mapa con claves y sirve cuando son distintas entre sí. Las réplicas son idénticas y solo cambia cuántas hay.
 - **Pregunta de defensa:** ¿cómo demuestras que Nginx reparte las peticiones entre las réplicas?
+
+### Balanceador de carga: Nginx frente a HAProxy y Traefik
+- **Qué es:** un balanceador de carga es un programa que recibe todas las peticiones de los clientes y las reenvía a uno de varios servidores iguales (las réplicas). El cliente solo conoce la dirección del balanceador; no sabe cuántas webs hay detrás ni cuál le responde. Es como el encargado de la puerta de un súper que dice a cada cliente a qué caja ir.
+- **Para qué se usa:** repartir el trabajo entre varias réplicas, ser la única puerta de entrada (las webs dejan de publicar puertos) y dejar de enviar tráfico a una réplica caída, para que el servicio siga funcionando.
+- **Dónde y cómo se usa en mi proyecto:** un contenedor Nginx propio (módulo `balanceador`, subpaso 3.2.2), en la red `frontend`, que publica el único puerto de cada entorno (8100 en dev, 8200 en prod, solo en `127.0.0.1`). Su `nginx.conf` tiene un bloque `upstream` con los nombres de las réplicas, que Terraform rellena con `templatefile` a partir de la salida `module.web.nombres`. Ejemplo ficticio:
+  ```nginx
+  upstream webs {
+      server tracker-prod-web-1:8000;
+      server tracker-prod-web-2:8000;
+      server tracker-prod-web-3:8000;
+  }
+  ```
+- **Por qué así:** el profesor pidió un contenedor propio y no Docker Swarm (*routing mesh*). Entre los tres candidatos:
+
+  | | Nginx (elegido) | HAProxy | Traefik |
+  |---|---|---|---|
+  | Qué es | Servidor web, proxy inverso y balanceador | Balanceador puro | Proxy que se configura solo |
+  | Configuración | Fichero `nginx.conf` | Fichero `haproxy.cfg` | Etiquetas de los contenedores, leídas del socket de Docker |
+  | Comprobar si una web está viva | Pasiva (al fallar una petición real) | Activa (pregunta cada pocos segundos) | Activa |
+  | Servir estáticos / proxy a MinIO | Sí | No sirve ficheros | Solo proxy |
+
+  - **Nginx:** hace dos trabajos con un solo contenedor (repartir ahora y servir `/sprites/` desde MinIO en la fase 4, sin exponer MinIO); su configuración es un fichero que genera Terraform, así que cambiar `replicas_web` cambia el fichero solo; es el más extendido y ya se usó en la P1.
+  - **HAProxy, descartado:** su ventaja real es la comprobación activa de las webs (en Nginx gratuito solo es pasiva; la activa es de Nginx Plus, de pago). Pero no sirve ficheros, así que haría falta un Nginx más para MinIO: dos piezas en vez de una. La comprobación pasiva se compensa con `max_fails` y `proxy_next_upstream` (reintenta en otra web y el usuario no ve el error), el `healthcheck` de Docker y la política de reinicio (3.3).
+  - **Traefik, descartado:** para descubrir los contenedores necesita montar `/var/run/docker.sock`; quien tiene ese socket controla Docker entero, que equivale a ser *root* en la máquina, y choca con la exposición mínima. Además, decidir qué contenedores hay ya lo hace Terraform: serían dos herramientas decidiendo lo mismo.
+- **Dudas resueltas:**
+  - *¿Por qué Nginx y no los otros dos?* Ver «Por qué así»: una sola pieza para balanceo y estáticos, configuración generada por Terraform y sin dar acceso al socket de Docker. HAProxy obligaría a añadir otra pieza y Traefik, a dar permisos de administrador sobre Docker.
+  - *¿Qué problema tiene Nginx al recrear una web?* Traduce los nombres de las webs a IP al arrancar; si Terraform recrea una web y Docker le da otra IP, Nginx seguiría usando la vieja. Se resuelve al escribir el módulo (3.2.2).
+- **Pregunta de defensa:** ¿por qué no usaste Traefik, si se configura solo con los contenedores?
+
+### Política de reparto: round-robin, least_conn, ip_hash y weight
+- **Qué es:** la regla con la que el balanceador elige a qué réplica envía cada petición.
+
+  | Política | Cómo reparte | Cuándo conviene |
+  |---|---|---|
+  | **round-robin** (elegida; la de Nginx por defecto) | Por turnos: 1, 2, 3, 1, 2, 3… | Peticiones cortas y parecidas, réplicas iguales |
+  | **least_conn** | A la réplica con menos peticiones en curso | Peticiones de duración muy distinta |
+  | **ip_hash** | El mismo cliente (IP), siempre a la misma réplica («sesión pegajosa») | La web guarda sesiones en su memoria |
+  | **weight** | Por turnos, con pesos (`weight=2` recibe el doble) | Servidores de distinta potencia |
+- **Para qué se usa:** que la carga se reparta de forma justa y que ninguna réplica se sature mientras otras están libres.
+- **Dónde y cómo se usa en mi proyecto:** en el bloque `upstream` del `nginx.conf` (3.2.2). Round-robin no necesita ninguna directiva porque es el comportamiento por defecto; las otras serían una línea (`least_conn;`, `ip_hash;`) o un parámetro (`server ... weight=2;`).
+- **Por qué así:** round-robin porque las peticiones de la app son cortas y parecidas (especies, movimientos, equipo), las réplicas son idénticas (misma imagen y mismos recursos) y el reparto se ve en la demo (la placa `X-Instancia` rota `web-1 → web-2 → web-3`).
+  - **least_conn, descartada pero defendible:** evitaría amontonar peticiones en una web ocupada si alguna tardara mucho (la importación de partidas es la más pesada). Con esta carga se comporta prácticamente igual que round-robin; cambiarlo es una línea.
+  - **ip_hash, descartada:** solo hace falta si la web guarda estado en memoria, y esta app es **sin estado** (*stateless*): todo está en PostgreSQL o Redis, así que cualquier réplica atiende a cualquiera. Además, todas las pruebas desde el mismo ordenador irían siempre a la misma web y no se vería el reparto.
+  - **weight, descartada:** las réplicas son iguales; no hay ninguna más potente que deba recibir más.
+- **Dudas resueltas:**
+  - *¿Por qué round-robin y no las otras?* Ver «Por qué así»: carga homogénea, réplicas idénticas, app sin estado y reparto visible.
+- **Pregunta de defensa:** si la app guardara la sesión del usuario en la memoria de cada web, ¿qué política necesitarías y qué fallaría con round-robin?
 
 ## Automatización
 

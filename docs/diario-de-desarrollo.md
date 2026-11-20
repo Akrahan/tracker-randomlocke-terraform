@@ -259,3 +259,12 @@
 - **Pruebas:** las del 3.1.2: 2 réplicas en dev y 3 en prod, todas `healthy`, cada una con un nombre distinto y `51 passed` en los dos entornos.
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Dio los comandos y lo esperado; el usuario los ejecutó.
 - **Commit:** va en `feat: run several web replicas per environment with count`.
+
+### [Subpaso 3.2.1: Elegir balanceador y política de reparto]
+- **Fecha:** 21 nov. 2026
+- **Archivos:** `docs/hoja-de-ruta.md` (decisión), `docs/conceptos-para-estudiar.md` (conceptos «Balanceador de carga» y «Política de reparto»).
+- **Comandos:** ninguno (subpaso de decisión).
+- **Justificación:** **Nginx** con **round-robin**. Nginx reparte y, en la fase 4, servirá `/sprites/` desde MinIO sin exponerlo, con un `nginx.conf` que genera Terraform; round-robin encaja con peticiones cortas, réplicas idénticas y una app sin estado.
+- **Pruebas:** no aplica. Alternativas valoradas y descartadas: HAProxy (comprobación activa de las webs, pero no sirve ficheros: haría falta otra pieza), Traefik (necesita el socket de Docker, equivalente a *root*, y duplica lo que decide Terraform), least_conn (igual con esta carga; una línea si hiciera falta), ip_hash (no hay sesiones en memoria y ocultaría el reparto en las pruebas) y weight (réplicas iguales).
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Comparó los tres balanceadores y las cuatro políticas con sus argumentos y recomendó Nginx con round-robin; el usuario tomó la decisión.
+- **Commit:** `docs: choose Nginx with round-robin as load balancer`
