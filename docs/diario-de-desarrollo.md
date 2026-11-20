@@ -223,3 +223,12 @@
 - **Pruebas:** `validate` de dev: «Success!». `plan` de prod: «No changes» (lo ejecuta como `terraform -chdir=terraform/envs/prod plan -out=plan.tfplan`). `apply` de prod: `Apply complete! Resources: 0 added, 0 changed, 0 destroyed.` y `url = "http://127.0.0.1:8200"`; el `plan.tfplan` se borró después. `output`: la URL. `ps`: web, caché y base de datos de prod `healthy` y `preparar-db` `Exited (0)`. `test` de dev: `51 passed in 4.47s`. `ENV=produccion`: «ENV debe ser dev o prod (has puesto 'produccion')» y error antes de ejecutar nada. Hubo un aviso `make: getcwd: No such file or directory`, propio de la terminal (carpeta actual no válida), no del Makefile.
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Propuso las pruebas con sus predicciones, comprobó que el plan guardado se borra y explicó cada comando y cómo usarlo (documentado en conceptos). El usuario ejecutó todos los comandos.
 - **Commit:** `feat: add Makefile to run Terraform and tests per environment` (Makefile) y `docs: log Makefile and close modules and environments phase` (docs).
+
+### [Paso 3.0: Ordenar la carpeta de la aplicación]
+- **Fecha:** 20 nov. 2026
+- **Archivos:** `app/datos/` (los 11 `.csv`, movidos), `app/db/schema.sql` (movido) y `app/main.py` (rutas a los ficheros de datos).
+- **Comandos:** `git mv *.csv datos/`, `git mv schema.sql db/`, `make plan/apply/test ENV=dev` y lo mismo con `ENV=prod`.
+- **Justificación:** `app/` mezclaba código, datos y esquema; separarlos deja el código a la vista antes de los cambios de la fase 3. Se descartó convertir el código en paquete (`src/`), porque obligaba a cambiar los `import` y el `CMD` del Dockerfile sin aportar nada a la infraestructura.
+- **Pruebas:** las 12 rutas nuevas apuntan a ficheros que existen y ningún otro fichero (tests, Terraform, Makefile, Dockerfile) usaba los CSV por su ruta. `plan` de dev: `3 to add, 0 to change, 3 to destroy` (imagen, `preparar_db` y web, porque cambia el hash de `app/`; la base de datos y su volumen no se tocan). Tras el `apply`, `51 passed` en dev y en prod.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). A petición del usuario, propuso la estructura, movió los ficheros con `git mv` (conservan el historial), cambió las rutas de `main.py` (`Path(__file__).with_name(...)` → `DATOS / "..."`) y lanzó el `plan` de dev. El usuario aplicó y pasó los tests en los dos entornos.
+- **Commit:** `refactor: move app CSV data and SQL schema into subfolders`

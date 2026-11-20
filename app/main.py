@@ -57,18 +57,19 @@ CACHE_EQUIPO_TTL_S = 30
 CACHE_ESPECIES_TTL_S = 3600
 cache_estado = "ok" if CACHE_ENABLED else "no aplica"
 
-SCHEMA = Path(__file__).with_name("schema.sql")
-SPECIES = Path(__file__).with_name("species.csv")
-TYPES = Path(__file__).with_name("types.csv")
-SPECIES_TYPES = Path(__file__).with_name("species_types.csv")
-SPECIES_STATS = Path(__file__).with_name("species_stats.csv")
-GAME_IDS = Path(__file__).with_name("game_ids.csv")
-TYPE_EFFICACY = Path(__file__).with_name("type_efficacy.csv")
-NATURES = Path(__file__).with_name("natures.csv")
-MOVES = Path(__file__).with_name("moves.csv")
-SPECIES_MOVES = Path(__file__).with_name("species_moves.csv")
-ABILITIES = Path(__file__).with_name("abilities.csv")
-SPECIES_ABILITIES = Path(__file__).with_name("species_abilities.csv")
+DATOS = Path(__file__).parent / "datos"
+SCHEMA = Path(__file__).parent / "db" / "schema.sql"
+SPECIES = DATOS / "species.csv"
+TYPES = DATOS / "types.csv"
+SPECIES_TYPES = DATOS / "species_types.csv"
+SPECIES_STATS = DATOS / "species_stats.csv"
+GAME_IDS = DATOS / "game_ids.csv"
+TYPE_EFFICACY = DATOS / "type_efficacy.csv"
+NATURES = DATOS / "natures.csv"
+MOVES = DATOS / "moves.csv"
+SPECIES_MOVES = DATOS / "species_moves.csv"
+ABILITIES = DATOS / "abilities.csv"
+SPECIES_ABILITIES = DATOS / "species_abilities.csv"
 
 def conectar() -> psycopg.Connection[DictRow]:
     return psycopg.Connection[DictRow].connect(
