@@ -20,6 +20,7 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
    - [Caché con Redis](#caché-con-redis)
 3. [Red y balanceo](#red-y-balanceo)
    - [Redes de Docker y segmentación (frontend/backend)](#redes-de-docker-y-segmentación-frontendbackend)
+   - [Réplicas e identificación de la instancia](#réplicas-e-identificación-de-la-instancia)
 4. Alta disponibilidad
 5. Monitorización y logs
 6. Almacenamiento
@@ -198,6 +199,15 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
   - *¿`frontend` tiene acceso directo al exterior?* Hacia fuera (salida), sí: sus contenedores pueden conectarse a internet (Grafana lo necesitará para Telegram). Hacia dentro (entrada), no: desde fuera solo se llega a un contenedor si **publica** un puerto. Son dos direcciones distintas: `internal = true` corta la salida; no publicar puertos corta la entrada.
 - **Pregunta de defensa:** si Nginx está solo en `frontend`, ¿podría conectarse a PostgreSQL? ¿Y PostgreSQL podría descargar algo de internet?
 
+### Réplicas e identificación de la instancia
+- **Qué es:** una réplica es otra copia idéntica del mismo contenedor (misma imagen y misma configuración) que atiende peticiones a la vez que las demás. Un balanceador delante reparte las peticiones entre ellas. Identificar la instancia es que cada respuesta diga qué réplica la ha servido.
+- **Para qué se usa:** con una sola web, si cae, cae la aplicación, y toda la carga va a un único proceso. Con varias réplicas, el trabajo se reparte y la caída de una no tumba el servicio. Sin identificación, las respuestas de todas son iguales y no se puede demostrar que el reparto funciona.
+- **Dónde y cómo se usa en mi proyecto:** Terraform pasa a cada web su nombre en la variable de entorno `INSTANCIA` (`terraform/modules/web/main.tf`). La app (`app/main.py`) lo devuelve en el campo `instancia` de `/status` y en la cabecera `X-Instancia` de todas las respuestas. La página lo muestra como «Instancia: …» y lo actualiza al consultar `/status` cada pocos segundos. Ejemplo: `curl -sI http://127.0.0.1:8100/status` da `X-Instancia: tracker-dev-web`.
+- **Por qué así:** el nombre lo da Terraform, que es quien sabe cuántas réplicas hay y cómo se llaman. Alternativa descartada: usar solo el *hostname*, que en Docker es el id del contenedor (`3f2a9c…`); se deja como valor de reserva si falta la variable. La cabecera va en todas las respuestas, y no solo en `/status`, para poder comprobarla con `curl` en cualquier ruta.
+- **Dudas resueltas:**
+  - *¿Qué hacemos en la fase 3 y para qué son los cambios del 3.1.1?* La fase 3 pasa de una web por entorno a varias (2 en dev y 3 en prod) con Nginx delante, que reparte el tráfico y deja de enviarlo a una web caída. Antes hay que poder distinguir las webs: sin eso, todas responden lo mismo y no se ve el reparto. Los cambios del 3.1.1 son esa identificación: la variable `INSTANCIA` (Terraform), el campo de `/status` y la cabecera (backend) y la etiqueta de la página (frontend).
+- **Pregunta de defensa:** ¿cómo demuestras que Nginx reparte las peticiones entre las réplicas?
+
 ## Automatización
 
 ### Git: repositorio propio y primeros pasos
@@ -209,6 +219,7 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
   - *¿Qué va antes, el `.gitignore` o el repositorio?* El `.gitignore`, antes del primer `git add`. Lo que entra en un commit queda en el historial aunque luego se ignore. El repositorio de GitHub se crea vacío (sin README, licencia ni `.gitignore`) antes del primer `push`, para que no choque con los commits locales.
   - *¿Un repositorio con las dos prácticas en carpetas no sería mejor?* Es posible (monorepo), pero la portada sería la de la P1, el historial mezclaría las dos y habría dos copias de la app. Los submódulos (repositorios dentro de otro) complican el clonado (`--recursive`) y el README a prueba de principiantes.
   - *¿La P2 tiene lo último de `extras` aunque la `main` de la P1 no lo tenga?* Sí: `diff -rq` de `app/` y `tests/` contra `extras` no dio diferencias. La `main` de la P2 es la de un repositorio nuevo, sin relación con la `main` de la P1.
+  - *¿Qué quiere decir que un cambio «está preparado» y otro no?* Git tiene tres zonas: la carpeta de trabajo (lo que editas), el área de preparación o *staging* (lo que irá en el próximo commit) y el historial (los commits). `git add` pasa un cambio de la primera a la segunda y `git commit` guarda la segunda en el historial. `git mv` mueve el fichero **y** deja el movimiento preparado; editar un fichero con un editor (o con `sed`) no lo prepara. En `git status --short`, la letra de la **izquierda** es lo preparado y la de la **derecha** lo que no: `R ` (renombrado y preparado) frente a ` M` (modificado sin preparar). Si haces `commit` sin `git add`, solo entra lo preparado.
 - **Pregunta de defensa:** si subiste por error un `terraform.tfstate` y después lo añades al `.gitignore`, ¿está resuelto?
 
 ### Makefile

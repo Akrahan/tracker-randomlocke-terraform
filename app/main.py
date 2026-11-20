@@ -5,6 +5,7 @@ import os
 import threading
 import time
 import unicodedata
+import socket
 from contextlib import asynccontextmanager
 from functools import lru_cache
 from pathlib import Path
@@ -35,6 +36,7 @@ CACHE_HOST = os.environ.get("CACHE_HOST", "cache")
 CACHE_PASSWORD = os.environ.get("REDIS_PASSWORD")
 ENABLE_DOCS = os.environ.get("ENABLE_DOCS", "false").lower() == "true"
 INICIALIZAR_DB = os.environ.get("INICIALIZAR_DB", "true").lower() == "true"
+INSTANCIA = os.environ.get("INSTANCIA", socket.gethostname())
 
 # La imagen slim no conoce .woff2: sin esto, las tipografías se servirían como application/octet-stream.
 mimetypes.add_type("font/woff2", ".woff2")
@@ -376,7 +378,7 @@ def status(response: Response):
         estado = "degraded"
     else:
         estado = "ok"
-    return {"estado": estado, "db": "ok" if db_ok else "down", "cache": cache_estado}
+    return {"estado": estado, "db": "ok" if db_ok else "down", "cache": cache_estado, "instancia": INSTANCIA}
 
 
 class RunNueva(BaseModel):
@@ -1146,6 +1148,7 @@ async def no_cachear_interfaz(request, call_next):
     ruta = request.url.path
     if ruta == "/" or ruta.endswith((".html", ".js", ".css")):
         respuesta.headers["Cache-Control"] = "no-cache"
+    respuesta.headers["X-Instancia"] = INSTANCIA
     return respuesta
 
 

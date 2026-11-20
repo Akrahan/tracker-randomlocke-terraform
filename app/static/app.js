@@ -19,6 +19,7 @@ async function actualizarEstado() {
     const datos = await respuesta.json();
     const dbOk = datos.db === "ok";
     mostrarEstado(dbOk, dbOk ? "BD conectada" : "BD caída", datos.cache);
+    $("estado-instancia").textContent = "Instancia: " + (datos.instancia ?? "?");
     if (dbOk && dbAnterior === false) recuperar();
     dbAnterior = dbOk;
   } catch {

@@ -232,3 +232,12 @@
 - **Pruebas:** las 12 rutas nuevas apuntan a ficheros que existen y ningún otro fichero (tests, Terraform, Makefile, Dockerfile) usaba los CSV por su ruta. `plan` de dev: `3 to add, 0 to change, 3 to destroy` (imagen, `preparar_db` y web, porque cambia el hash de `app/`; la base de datos y su volumen no se tocan). Tras el `apply`, `51 passed` en dev y en prod.
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). A petición del usuario, propuso la estructura, movió los ficheros con `git mv` (conservan el historial), cambió las rutas de `main.py` (`Path(__file__).with_name(...)` → `DATOS / "..."`) y lanzó el `plan` de dev. El usuario aplicó y pasó los tests en los dos entornos.
 - **Commit:** `refactor: move app CSV data and SQL schema into subfolders`
+
+### [Subpaso 3.1.1: Que la app diga qué instancia responde]
+- **Fecha:** 21 nov. 2026
+- **Archivos:** `app/main.py` (variable `INSTANCIA`, campo `instancia` en `/status` y cabecera `X-Instancia` en el middleware), `app/static/index.html` (etiqueta `estado-instancia`), `app/static/app.js` (la rellena en cada consulta a `/status`) y `terraform/modules/web/main.tf` (`INSTANCIA=${var.prefijo}-web` en el `env` de la web).
+- **Comandos:** `make plan ENV=dev`, `make apply ENV=dev`, `curl -sI http://127.0.0.1:8100/status`, `make test ENV=dev`.
+- **Justificación:** con varias réplicas detrás de Nginx todas responden igual; para demostrar el reparto (fase 3.2) cada respuesta debe decir quién la sirvió. El nombre lo pone Terraform, que sabe cuántas réplicas hay; el *hostname* (id del contenedor) queda solo como reserva.
+- **Pruebas:** `plan`: `3 to add, 0 to change, 3 to destroy` (imagen, `preparar_db` y web, por el cambio en `app/`). `/status` devuelve `"instancia":"tracker-dev-web"`; la cabecera `x-instancia: tracker-dev-web` sale también en `/moves`, no solo en `/status`; la página incluye el `span` de la etiqueta. `51 passed` en dev. Prod se actualizará en el 3.1.2.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Explicó el objetivo de la fase y dio el código por partes; en la revisión detectó la cabecera dentro del `if` (solo salía en HTML/JS/CSS), el `span` entre el punto y el texto de la caché y la clase `pista` (gris sobre la cabecera), y a petición del usuario los corrigió y separó el commit de la reorganización. El usuario escribió el resto del código y aplicó.
+- **Commit:** `feat: show which web instance served each response`
