@@ -4,8 +4,9 @@ resolver 127.0.0.11 valid=10s ipv6=off;
 upstream webs {
     # Sin directiva de política: round-robin (por turnos), la de Nginx por defecto
     zone webs 64k;
+    # 2 fallos en 10 s: la web queda fuera 10 s; después se la vuelve a probar
 %{ for w in webs ~}
-    server ${w}:${puerto_webs} resolve;
+    server ${w}:${puerto_webs} resolve max_fails=2 fail_timeout=10s;
 %{ endfor ~}
 }
 
@@ -22,6 +23,12 @@ server {
 
     location / {
         proxy_pass http://webs;
+        # Si una web no responde, se reintenta en otra. No se reintenta con 503: es la respuesta
+        # de la app cuando falla la BD (común a todas), y la página debe seguir viendo «BD caída»
+        proxy_next_upstream error timeout http_502 http_504;
+        proxy_next_upstream_tries 3;
+        # Por defecto espera 60 s a conectar: con una web apagada, el reintento tardaría un minuto
+        proxy_connect_timeout 2s;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

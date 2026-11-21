@@ -295,3 +295,12 @@
 - **Pruebas:** dev `web-2, web-1, web-2, web-1`; prod `web-3, web-2, web-1, web-3, web-2, web-1`. Cada réplica recibe su turno y el ciclo se repite (round-robin; el orden de partida depende del orden en que Nginx resuelve las direcciones).
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Dio los comandos y lo esperado; el usuario los ejecutó.
 - **Commit:** va en `feat: publish only Nginx and route tests through the load balancer`.
+
+### [Subpaso 3.3.1: Conmutación por error en Nginx]
+- **Fecha:** 21 nov. 2026
+- **Archivos:** `terraform/modules/balanceador/nginx.conf.tftpl` (`max_fails=2 fail_timeout=10s` en cada `server`; `proxy_next_upstream error timeout http_502 http_504`, `proxy_next_upstream_tries 3` y `proxy_connect_timeout 2s` en `location /`).
+- **Comandos:** `make plan` y `make apply` en los dos entornos; `make ps`, `curl -sI http://127.0.0.1:<puerto>/status` en bucle y `make test`.
+- **Justificación:** alta disponibilidad con la comprobación pasiva de Nginx: si una web no responde, la petición se reintenta en otra y la web queda apartada 10 s. No se reintenta con 503 (la app lo devuelve cuando falla la BD, común a todas) ni peticiones `POST`/`PATCH` ya enviadas (no duplicar datos). El reinicio automático ya lo daba `restart = "unless-stopped"`.
+- **Pruebas:** `plan`: `1 to add, 0 to change, 1 to destroy` en cada entorno (solo Nginx, porque cambia el contenido de `upload`); la configuración generada para prod tiene las 3 webs con `max_fails` y `fail_timeout`. Tras el `apply`, el balanceador `healthy`, las webs sin tocar («Up 11 minutes»), las placas siguen rotando (dev `2, 1, 2, 1`; prod `3, 1, 2, 3, 1, 2`) y `51 passed` en los dos entornos. La prueba de tumbar una web es el 3.3.2.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Explicó la comprobación pasiva, cada directiva y por qué no se reintenta con 503; a petición del usuario lo escribió, validó y generó los planes, y lo documentó en conceptos («Alta disponibilidad»). El usuario aplicó y ejecutó las pruebas de prod; Claude repitió la de dev.
+- **Commit:** `feat: add Nginx failover with retries and passive health checks`

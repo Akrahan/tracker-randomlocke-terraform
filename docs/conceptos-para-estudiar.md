@@ -24,7 +24,8 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
    - [Balanceador de carga: Nginx frente a HAProxy y Traefik](#balanceador-de-carga-nginx-frente-a-haproxy-y-traefik)
    - [Política de reparto: round-robin, least_conn, ip_hash y weight](#política-de-reparto-round-robin-least_conn-ip_hash-y-weight)
    - [Nginx como balanceador: configuración generada por Terraform](#nginx-como-balanceador-configuración-generada-por-terraform)
-4. Alta disponibilidad
+4. [Alta disponibilidad](#alta-disponibilidad)
+   - [Conmutación por error en Nginx y reinicio de contenedores](#conmutación-por-error-en-nginx-y-reinicio-de-contenedores)
 5. Monitorización y logs
 6. [Almacenamiento](#almacenamiento)
    - [Almacenamiento de objetos (S3) y MinIO](#almacenamiento-de-objetos-s3-y-minio)
@@ -291,6 +292,36 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
   - *¿Por qué en el 3.2.2 Nginx aún no publica puerto?* Las webs siguen ocupando 8100 y 8101 (prod: 8200-8202). Se prueba desde dentro del contenedor (`docker exec tracker-dev-balanceador wget -qS -O /dev/null http://127.0.0.1/status`) y en el 3.2.3 la puerta pasa de las webs a Nginx. Así cada cambio es pequeño y se comprueba por separado.
   - *¿Por qué hay que hacer `make init` otra vez?* Cada módulo nuevo se tiene que instalar en `.terraform/modules`; sin `init`, el `plan` da «Module not installed».
 - **Pregunta de defensa:** si en prod pasas a `replicas_web = 4`, ¿qué recursos cambia el `plan` además de crear la web nueva, y por qué?
+
+## Alta disponibilidad
+
+### Conmutación por error en Nginx y reinicio de contenedores
+- **Qué es:** alta disponibilidad (HA) es que el servicio siga funcionando aunque falle una de sus piezas. Aquí tiene dos partes:
+  - **Conmutación por error (*failover*):** si una réplica no responde, el balanceador reintenta la petición en otra y deja de enviarle tráfico durante un rato; cuando se recupera, vuelve a usarla sola.
+  - **Reinicio automático:** si el proceso de un contenedor muere, Docker lo vuelve a arrancar.
+
+  Nginx gratuito hace una **comprobación pasiva**: no pregunta por su cuenta si las webs están vivas (eso es la comprobación activa de HAProxy o de Nginx Plus); lo descubre cuando una petición real falla.
+  ```
+  petición → web-2 ✗ (no responde)
+           └→ reintento en web-3 ✓  → el usuario recibe la respuesta normal
+  web-2 acumula 2 fallos → «fuera» 10 s → pasados los 10 s, Nginx la vuelve a probar
+  ```
+- **Para qué se usa:** que tumbar una web (por un fallo, un despliegue o falta de memoria) no se note para el usuario: sin esto, Nginx le seguiría mandando su turno de peticiones y esas peticiones darían error.
+- **Dónde y cómo se usa en mi proyecto:** en `terraform/modules/balanceador/nginx.conf.tftpl`:
+  - En cada `server` del `upstream`: `max_fails=2 fail_timeout=10s`. Con 2 fallos dentro de una ventana de 10 s, la web queda marcada como no disponible durante 10 s; después, Nginx le envía una petición de prueba y, si responde, vuelve al turno.
+  - En `location /`:
+    - `proxy_next_upstream error timeout http_502 http_504;`: cuándo reintentar en la siguiente web: no se pudo conectar (`error`, la web está apagada), no respondió a tiempo (`timeout`) o respondió con un error de pasarela (`502`, `504`).
+    - `proxy_next_upstream_tries 3;`: como mucho 3 intentos, para no dar vueltas si se cae todo.
+    - `proxy_connect_timeout 2s;`: por defecto Nginx espera **60 s** a que una web acepte la conexión, así que con una web apagada el reintento tardaría un minuto. En la red interna una web viva conecta en milisegundos.
+  - En todos los módulos, `restart = "unless-stopped"`: si el proceso termina, Docker lo vuelve a arrancar; si lo paras tú (`docker stop`), no. Por eso en el 3.3.2 se puede tumbar una web a mano sin que Docker la resucite.
+  - Cambiar la configuración solo recrea Nginx (`1 to add, 1 to destroy` por entorno; el contenido de `upload` obliga a recrear el contenedor), con un corte de un par de segundos; las webs no se tocan.
+- **Por qué así:** la comprobación pasiva con reintento cubre el caso real (una web que deja de responder) sin piezas nuevas; la activa obligaría a cambiar de balanceador (HAProxy) o a pagar Nginx Plus. Decisiones finas:
+  - **No se reintenta con `http_503`:** la app devuelve 503 en `/status` cuando **la base de datos** está caída, y la página lo muestra como «BD caída» (P1). Como todas las webs comparten la BD, reintentar probaría las 3, las marcaría todas como caídas y Nginx devolvería su propio **502** en vez del JSON de la app: la página pasaría a decir «Sin conexión con la web». Un 503 de la app no significa que esa web esté mal, sino un problema común que otra web no arregla.
+  - **Sin `non_idempotent`:** por defecto, Nginx no reintenta un `POST` o `PATCH` que ya había llegado a enviar a una web, para no duplicar datos (por ejemplo, crear dos veces la misma partida). Solo los reintenta si no se llegaron a enviar (fallo al conectar), así que una web caída no hace perder la petición ni la duplica.
+  - **El `healthcheck` de Docker no reinicia:** Docker sin Swarm no reinicia un contenedor por estar `unhealthy`, solo si el proceso termina. El `healthcheck` sirve para que Terraform espere (`wait = true`) y para verlo en `docker ps`; quitar del reparto a una web enferma es trabajo de Nginx.
+- **Dudas resueltas:**
+  - *¿Qué hace el 3.3.1 y cómo funciona cada directiva?* Ver «Qué es» y «Dónde y cómo»: Nginx descubre el fallo con la propia petición, la reintenta en otra web (`proxy_next_upstream`), aparta la web caída (`max_fails`/`fail_timeout`) y no hace esperar al usuario (`proxy_connect_timeout`). El reinicio lo da `restart = "unless-stopped"`, que ya tenían todos los módulos.
+- **Pregunta de defensa:** con `max_fails=2 fail_timeout=10s`, si tumbas `web-2`, ¿cuántas peticiones de usuario reciben un error?
 
 ## Almacenamiento
 
