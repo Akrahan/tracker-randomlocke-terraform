@@ -121,7 +121,7 @@ Tracker_Randomlocke_P2/
 - **3.4** Caché compartida entre réplicas (prod): una petición cae en una web y da `MISS`, la siguiente cae en otra y da `HIT`, porque todas usan el mismo Redis. Al modificar el equipo, la invalidación (`cache.delete`) vale para todas las réplicas. Prueba también de Redis caído: la web sigue sirviendo desde PostgreSQL (y se vuelve a medir el retraso de ~8 s de la Práctica 1).
 
 ### Fase 4 · MinIO (24 nov.)
-- **4.1** Contenedor de MinIO, bucket y script de inicialización que sube los sprites. Ojo: en la P1 el servicio de sprites también usaba `scripts/revisar_sprites.py`, que no se copió a la P2; comprobar si hace falta.
+- **4.1** Contenedor de MinIO, bucket y script de inicialización que sube los sprites. Ojo: en la P1 el servicio de sprites también usaba `scripts/revisar_sprites.py`, que no se copió a la P2; comprobar si hace falta. Comprobar también qué imagen y versión de MinIO usar (fijando la etiqueta), porque en 2025 cambió la distribución de su edición gratuita.
 - **4.2** La web muestra los sprites desde MinIO a través de una ruta de Nginx que reenvía a MinIO; MinIO no publica puertos. El navegador ya pide los dibujos en `/sprites/<id>.png` y `/sprites/shiny/<id>.png` (`app/static/app.js`): si Nginx sirve esa misma ruta desde MinIO, quizá no haga falta tocar la app. Los sprites (unos 2050 PNG: 1025 especies, normal y variocolor) se suben **una sola vez** con el script de inicialización, no al arrancar las webs.
 
 ### Fase 5 · Monitorización, logs y alertas (25 y 26 nov.)

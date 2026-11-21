@@ -44,3 +44,11 @@ module "cache" {
   red_backend = module.red.backend
   password    = var.redis_password
 }
+
+module "balanceador" {
+  source = "../../modules/balanceador"
+
+  prefijo      = local.prefijo
+  red_frontend = module.red.frontend
+  webs         = module.web.nombres
+}

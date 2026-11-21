@@ -268,3 +268,12 @@
 - **Pruebas:** no aplica. Alternativas valoradas y descartadas: HAProxy (comprobación activa de las webs, pero no sirve ficheros: haría falta otra pieza), Traefik (necesita el socket de Docker, equivalente a *root*, y duplica lo que decide Terraform), least_conn (igual con esta carga; una línea si hiciera falta), ip_hash (no hay sesiones en memoria y ocultaría el reparto en las pruebas) y weight (réplicas iguales).
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Comparó los tres balanceadores y las cuatro políticas con sus argumentos y recomendó Nginx con round-robin; el usuario tomó la decisión.
 - **Commit:** `docs: choose Nginx with round-robin as load balancer`
+
+### [Subpaso 3.2.2: Módulo balanceador con Nginx]
+- **Fecha:** 21 nov. 2026
+- **Archivos:** `terraform/modules/balanceador/` (`versions.tf`, `variables.tf`, `nginx.conf.tftpl`, `main.tf`, `outputs.tf`) y el bloque `module "balanceador"` en `terraform/envs/dev/main.tf` y `terraform/envs/prod/main.tf`.
+- **Comandos:** `make init`, `make plan`, `make apply` y `make ps` en los dos entornos; `docker exec tracker-<env>-balanceador wget -qS -O /dev/null http://127.0.0.1/status` en bucle.
+- **Justificación:** Nginx (`nginx:1.28-alpine`, solo en `frontend`) reparte por turnos entre las réplicas; su `upstream` lo genera Terraform con `templatefile` a partir de `module.web.nombres` y lo mete con `upload`, así que cambiar `replicas_web` cambia la configuración sola. Aún sin puerto publicado: la puerta pasa de las webs a Nginx en el 3.2.3.
+- **Pruebas:** `fmt`, `init` y `validate` correctos; `plan`: `2 to add, 0 to change, 0 to destroy` en cada entorno (imagen y contenedor de Nginx; las webs, la BD y Redis no se tocan). La configuración generada para prod tiene las 3 líneas `server tracker-prod-web-N:8000 resolve;`. Tras el `apply`, `tracker-<env>-balanceador` `healthy` con `80/tcp` (expuesto, no publicado). Rotación desde dentro: dev `web-1, web-2, web-1, web-2`; prod `web-3, web-1, web-2, web-3, web-1, web-2` (round-robin; el turno no tiene por qué empezar en `web-1`).
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). A petición del usuario, escribió el módulo y lo conectó en los dos entornos, generó los planes, revisó la configuración generada y documentó el funcionamiento de Nginx en conceptos. El usuario aplicó y ejecutó las pruebas.
+- **Commit:** `feat: add Nginx load balancer module with round-robin upstream`

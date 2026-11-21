@@ -23,9 +23,11 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
    - [Réplicas e identificación de la instancia](#réplicas-e-identificación-de-la-instancia)
    - [Balanceador de carga: Nginx frente a HAProxy y Traefik](#balanceador-de-carga-nginx-frente-a-haproxy-y-traefik)
    - [Política de reparto: round-robin, least_conn, ip_hash y weight](#política-de-reparto-round-robin-least_conn-ip_hash-y-weight)
+   - [Nginx como balanceador: configuración generada por Terraform](#nginx-como-balanceador-configuración-generada-por-terraform)
 4. Alta disponibilidad
 5. Monitorización y logs
-6. Almacenamiento
+6. [Almacenamiento](#almacenamiento)
+   - [Almacenamiento de objetos (S3) y MinIO](#almacenamiento-de-objetos-s3-y-minio)
 7. [Automatización](#automatización)
    - [Git: repositorio propio y primeros pasos](#git-repositorio-propio-y-primeros-pasos)
    - [Makefile](#makefile)
@@ -260,6 +262,52 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
 - **Dudas resueltas:**
   - *¿Por qué round-robin y no las otras?* Ver «Por qué así»: carga homogénea, réplicas idénticas, app sin estado y reparto visible.
 - **Pregunta de defensa:** si la app guardara la sesión del usuario en la memoria de cada web, ¿qué política necesitarías y qué fallaría con round-robin?
+
+### Nginx como balanceador: configuración generada por Terraform
+- **Qué es:** Nginx funciona como **proxy inverso**: recibe la petición del cliente, abre otra petición hacia una web de su lista (el `upstream`), espera la respuesta y se la devuelve al cliente. El cliente nunca habla directamente con la web. Su comportamiento se define en un fichero de configuración con bloques:
+  - **`upstream webs { server ...; }`**: el grupo de servidores entre los que reparte. Sin directiva de política, reparte por turnos (round-robin).
+  - **`server { listen 80; ... }`**: el «mostrador» que escucha peticiones en un puerto.
+  - **`location / { proxy_pass http://webs; }`**: qué hacer según la ruta. `/` (todo) se reenvía al grupo `webs`.
+- **Para qué se usa:** ser la única puerta de entrada y repartir las peticiones entre las réplicas, sin que el cliente sepa cuántas hay.
+- **Dónde y cómo se usa en mi proyecto:** módulo `terraform/modules/balanceador/`:
+  - **`nginx.conf.tftpl`:** plantilla de la configuración. Terraform la rellena con `templatefile(...)`, pasándole la lista `module.web.nombres` (salida del módulo `web`). Un bucle de plantilla escribe una línea `server` por réplica:
+    ```
+    %{ for w in webs ~}
+        server ${w}:${puerto_webs} resolve;
+    %{ endfor ~}
+    ```
+    En prod genera `server tracker-prod-web-1:8000 resolve;` (y `-2`, `-3`). `%{ ... }` son instrucciones de la plantilla y `${...}` valores que pone Terraform; el `~` quita el salto de línea sobrante. Las variables de Nginx (`$host`, `$remote_addr`) llevan `$` sin llaves, y Terraform no las toca.
+  - **`main.tf`:** imagen `nginx:1.28-alpine` (versión fijada) y contenedor `${prefijo}-balanceador`, solo en la red `frontend` (no necesita ver la base de datos). El bloque `upload` mete la configuración generada en `/etc/nginx/conf.d/default.conf` del contenedor, sin volumen ni fichero suelto en el disco.
+  - **`envs/*/main.tf`:** `module "balanceador" { webs = module.web.nombres ... }`. Esa referencia crea una dependencia implícita: Nginx se crea después de las webs.
+  - **Cada línea de la configuración tiene un motivo:**
+    - `resolver 127.0.0.11 valid=10s` + `resolve` en cada `server` + `zone webs 64k`: Nginx traduce los nombres a IP al arrancar; si Terraform recrea una web y Docker le da otra IP, Nginx seguiría usando la vieja. Con `resolve` vuelve a preguntar al DNS interno de Docker (`127.0.0.11`) cada 10 s. `zone` es memoria compartida entre los procesos de Nginx, obligatoria para `resolve`. Está en Nginx gratuito desde la versión 1.27.3; por eso la imagen 1.28.
+    - `client_max_body_size 6m`: la app acepta guardados del juego de hasta 5 MB (`LIMITE_BYTES` en `guardado_anil.py`). El límite por defecto de Nginx es 1 MB: sin esta línea, las subidas grandes darían **413** (*Request Entity Too Large*) antes de llegar a la web.
+    - `location = /nginx-salud { return 200; }`: comprobación de salud del propio Nginx, para su `healthcheck` (`wget` contra `127.0.0.1/nginx-salud`). No se usa `/status`, porque pasa a las webs: Nginx saldría «unhealthy» cuando fallan ellas, aunque él esté bien.
+    - `server_tokens off`: no dice su versión en las respuestas (exposición mínima: no dar pistas a un atacante).
+    - `proxy_set_header Host`, `X-Real-IP`, `X-Forwarded-For`, `X-Forwarded-Proto`: sin ellas, la web creería que todas las peticiones vienen de Nginx. Con ellas conoce el nombre pedido y la IP real del cliente (útil para los logs, fase 5).
+- **Por qué así:** la configuración la genera Terraform a partir de las réplicas que crea, así que cambiar `replicas_web` cambia el `upstream` sin tocar el fichero a mano. Alternativas descartadas: escribir el `nginx.conf` a mano (se desincroniza al cambiar el número de réplicas), montarlo desde el disco con un volumen (otro fichero que gestionar fuera del estado) o usar `/status` como healthcheck de Nginx (mezcla su salud con la de las webs).
+- **Dudas resueltas:**
+  - *¿Cómo funciona Nginx y qué hace cada parte del módulo?* Ver «Qué es» y «Dónde y cómo»: plantilla con bucle → `templatefile` → `upload` al contenedor → Nginx reenvía `/` al `upstream` por turnos.
+  - *¿Por qué en el 3.2.2 Nginx aún no publica puerto?* Las webs siguen ocupando 8100 y 8101 (prod: 8200-8202). Se prueba desde dentro del contenedor (`docker exec tracker-dev-balanceador wget -qS -O /dev/null http://127.0.0.1/status`) y en el 3.2.3 la puerta pasa de las webs a Nginx. Así cada cambio es pequeño y se comprueba por separado.
+  - *¿Por qué hay que hacer `make init` otra vez?* Cada módulo nuevo se tiene que instalar en `.terraform/modules`; sin `init`, el `plan` da «Module not installed».
+- **Pregunta de defensa:** si en prod pasas a `replicas_web = 4`, ¿qué recursos cambia el `plan` además de crear la web nueva, y por qué?
+
+## Almacenamiento
+
+### Almacenamiento de objetos (S3) y MinIO
+- **Qué es:** el almacenamiento de objetos guarda ficheros enteros (imágenes, vídeos, documentos) dentro de **buckets**, y cada fichero se pide por una URL a través de HTTP (`GET /bucket/carpeta/fichero.png`). No es un disco con carpetas reales ni una base de datos: es un «Drive» al que se habla por HTTP. El estándar de facto es la API de **Amazon S3**. **MinIO** es un servidor que habla esa misma API y se ejecuta en un contenedor propio: un S3 «de casa».
+- **Para qué se usa:** separar los ficheros estáticos y multimedia del código y de la base de datos. La imagen de la web no tiene que llevar dentro miles de ficheros, todas las réplicas leen los mismos y se pueden cambiar sin reconstruir nada. En la nube real, es donde se guardan siempre estos ficheros (S3, Google Cloud Storage, Azure Blob).
+- **Dónde y cómo se usa en mi proyecto (fase 4):** un MinIO por entorno, en la red interna y sin publicar puertos. Un bucket con los ~2050 sprites (1025 especies, normal y variocolor), subidos **una sola vez** por un script de inicialización. El navegador ya pide `/sprites/<id>.png`; Nginx reenvía esa ruta a MinIO, solo para lectura. Ejemplo ficticio: `GET /sprites/25.png` → Nginx → `http://tracker-prod-minio:9000/sprites/25.png`.
+- **Por qué así:** lo pide el enunciado (simular el almacenamiento de una nube) y el profesor lo aclaró en clase (17 nov.): MinIO simula S3, guarda estáticos y multimedia, no datos de la base de datos, y hay uno por entorno. Alternativas:
+  - **AWS S3 real:** sería la nube de verdad, pero necesita cuenta y tarjeta, sale de la máquina y no se gestiona con el provider de Docker.
+  - **LocalStack:** simula muchos servicios de AWS (S3 incluido); es más pesado y está pensado para probar código contra AWS, no para servir ficheros.
+  - **SeaweedFS, Garage o Ceph (RGW):** otros servidores compatibles con S3; Ceph está pensado para clústeres grandes y los otros dos son menos conocidos y documentados.
+  - **Volumen de Docker o ficheros dentro de la imagen** (como en la P1): lo más simple, pero no simula la nube, cada réplica necesitaría su copia o montar el volumen, y cambiar un fichero obliga a reconstruir la imagen.
+  - **MinIO, elegido:** compatible con S3 (el mismo código serviría contra AWS S3 cambiando la dirección), un solo contenedor ligero, consola web para ver los ficheros y es el que nombra el enunciado.
+- **Dudas resueltas:**
+  - *¿Por qué MinIO? ¿No hay otras opciones? ¿Para qué se usa en la fase 4?* Lo pide el enunciado para simular el almacenamiento S3 de una nube; las alternativas (S3 real, LocalStack, SeaweedFS, Garage, Ceph, volumen o imagen) se descartan por los motivos de «Por qué así». En la fase 4 guarda los sprites de los Pokémon, que la web pide en `/sprites/...` y Nginx sirve desde MinIO sin exponerlo.
+  - *¿Se puede seguir usando la imagen de MinIO?* En 2025, MinIO cambió la distribución de su edición gratuita (recortó funciones de la consola y dejó de publicar imágenes nuevas de forma habitual). Las versiones ya publicadas se pueden seguir descargando fijando la etiqueta concreta. Se comprobará al empezar la fase 4 qué imagen y versión usar.
+- **Pregunta de defensa:** ¿por qué los sprites van en MinIO y no dentro de la imagen de la web o en PostgreSQL?
 
 ## Automatización
 

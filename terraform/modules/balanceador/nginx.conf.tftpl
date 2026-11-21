@@ -1,0 +1,30 @@
+# DNS interno de Docker: Nginx vuelve a preguntar cada 10 s por si una web cambia de IP
+resolver 127.0.0.11 valid=10s ipv6=off;
+
+upstream webs {
+    # Sin directiva de política: round-robin (por turnos), la de Nginx por defecto
+    zone webs 64k;
+%{ for w in webs ~}
+    server ${w}:${puerto_webs} resolve;
+%{ endfor ~}
+}
+
+server {
+    listen 80;
+    server_tokens off;
+    # La app acepta guardados de hasta 5 MB; el límite por defecto de Nginx es 1 MB
+    client_max_body_size 6m;
+
+    location = /nginx-salud {
+        access_log off;
+        return 200 "ok\n";
+    }
+
+    location / {
+        proxy_pass http://webs;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
