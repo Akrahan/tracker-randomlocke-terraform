@@ -6,8 +6,10 @@
 ENV ?= dev
 TF  := terraform -chdir=terraform/envs/$(ENV)
 PLAN := terraform/envs/$(ENV)/plan.tfplan
+SERVICIO ?= balanceador
+WEB ?= 1
 
-.PHONY: help comprobar-env init fmt validate plan apply destroy output ps test
+.PHONY: help comprobar-env init fmt validate plan apply destroy output ps test logs stop-web start-web
 
 help: ## Muestra esta ayuda
 	@awk 'BEGIN {FS = ":.*## "; print "\nUso: make <comando> ENV=dev|prod (por defecto, dev)\n"} /^[a-zA-Z0-9_-]+:.*## / {printf "  %-10s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -42,8 +44,17 @@ output: comprobar-env ## Muestra las salidas del entorno (la URL de la web)
 ps: comprobar-env ## Estado de los contenedores del entorno
 	docker ps -a --filter name=tracker-$(ENV)- --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
 
-test: comprobar-env ## Pasa los tests de la API contra la web del entorno
+test: comprobar-env ## Pasa los tests de la API a través de Nginx
 	docker run --rm --network tracker-$(ENV)-frontend \
 		-e BASE_URL=http://tracker-$(ENV)-balanceador \
 		-v "$(CURDIR)/tests:/tests:ro" python:3.12-slim \
 		sh -c "pip install --quiet --root-user-action=ignore pytest >/dev/null 2>&1 && python -m pytest -q -p no:cacheprovider /tests"
+
+logs: comprobar-env ## Últimas líneas del log de un contenedor (SERVICIO=balanceador, web-1, db...)
+	docker logs --tail 30 tracker-$(ENV)-$(SERVICIO)
+
+stop-web: comprobar-env ## Para una réplica de la web, para probar la alta disponibilidad (WEB=2)
+	docker stop tracker-$(ENV)-web-$(WEB)
+
+start-web: comprobar-env ## Vuelve a arrancar una réplica parada (WEB=2)
+	docker start tracker-$(ENV)-web-$(WEB)
