@@ -26,7 +26,7 @@ variable "db_password" {
 }
 
 variable "puerto_web" {
-  description = "Puerto de tu ordenador por el que se abre la web"
+  description = "Puerto de tu ordenador por el que se entra a la aplicación (lo publica Nginx)"
   type        = number
 }
 

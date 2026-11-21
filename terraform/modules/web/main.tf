@@ -70,12 +70,6 @@ resource "docker_container" "web" {
     name = var.red_backend
   }
 
-  ports {
-    internal = 8000
-    external = var.puerto + count.index
-    ip       = "127.0.0.1"
-  }
-
   healthcheck {
     test         = ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/status', timeout=3)"]
     interval     = "10s"

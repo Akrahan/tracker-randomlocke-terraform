@@ -12,6 +12,12 @@ resource "docker_container" "balanceador" {
     name = var.red_frontend
   }
 
+  ports {
+    internal = 80
+    external = var.puerto
+    ip       = "127.0.0.1"
+  }
+
   upload {
     content = templatefile("${path.module}/nginx.conf.tftpl", {
       webs        = var.webs

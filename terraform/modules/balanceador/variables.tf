@@ -18,3 +18,8 @@ variable "puerto_webs" {
   type        = number
   default     = 8000
 }
+
+variable "puerto" {
+  description = "Puerto de este ordenador por el que se entra a la aplicación (la única puerta)"
+  type        = number
+}

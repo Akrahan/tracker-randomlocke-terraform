@@ -1,4 +1,4 @@
-output "urls" {
-  description = "Dirección de cada réplica de la web (temporal, hasta que esté Nginx)"
-  value       = module.web.urls
+output "url" {
+  description = "Dirección de la aplicación de este entorno (entrada por Nginx)"
+  value       = module.balanceador.url
 }

@@ -28,7 +28,6 @@ module "web" {
   db_nombre      = var.db_nombre
   db_usuario     = var.db_usuario
   db_password    = var.db_password
-  puerto         = var.puerto_web
   replicas       = var.replicas_web
   docs_activadas = var.docs_activadas
   cache_activada = var.cache_activada
@@ -51,4 +50,5 @@ module "balanceador" {
   prefijo      = local.prefijo
   red_frontend = module.red.frontend
   webs         = module.web.nombres
+  puerto       = var.puerto_web
 }

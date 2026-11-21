@@ -277,3 +277,21 @@
 - **Pruebas:** `fmt`, `init` y `validate` correctos; `plan`: `2 to add, 0 to change, 0 to destroy` en cada entorno (imagen y contenedor de Nginx; las webs, la BD y Redis no se tocan). La configuración generada para prod tiene las 3 líneas `server tracker-prod-web-N:8000 resolve;`. Tras el `apply`, `tracker-<env>-balanceador` `healthy` con `80/tcp` (expuesto, no publicado). Rotación desde dentro: dev `web-1, web-2, web-1, web-2`; prod `web-3, web-1, web-2, web-3, web-1, web-2` (round-robin; el turno no tiene por qué empezar en `web-1`).
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). A petición del usuario, escribió el módulo y lo conectó en los dos entornos, generó los planes, revisó la configuración generada y documentó el funcionamiento de Nginx en conceptos. El usuario aplicó y ejecutó las pruebas.
 - **Commit:** `feat: add Nginx load balancer module with round-robin upstream`
+
+### [Subpaso 3.2.3: Solo Nginx publica puerto]
+- **Fecha:** 21 nov. 2026
+- **Archivos:** `terraform/modules/web/` (sin bloque `ports`, sin variable `puerto` y sin salida `urls`; queda `nombres`), `terraform/modules/balanceador/` (variable `puerto`, bloque `ports` `127.0.0.1:<puerto> → 80` y salida `url`), `terraform/envs/{dev,prod}/main.tf`, `outputs.tf` y `variables.tf` (`puerto_web` pasa al balanceador; salida única `url`) y `Makefile` (`make test` contra `http://tracker-$(ENV)-balanceador`).
+- **Comandos:** `make plan`, `make apply`, `make ps`, `curl -sI http://127.0.0.1:<puerto>/status` en bucle, `curl` al puerto antiguo de una réplica y `make test`, en los dos entornos.
+- **Justificación:** exposición mínima: una sola puerta de entrada por entorno (Nginx, solo en `127.0.0.1`), para que nadie pueda saltarse el balanceador y todo el tráfico pase por él. La dirección para el usuario no cambia (8100 y 8200); cambia quién hay detrás.
+- **Pruebas:** `plan`: dev `3 to add, 0 to change, 3 to destroy` y prod `4 to add, 0 to change, 4 to destroy` (cambiar los puertos de un contenedor obliga a recrearlo). Terraform creó Nginx después de las webs (depende de `module.web.nombres`), con el puerto ya libre, sin «port is already allocated». `ps`: solo el balanceador con `127.0.0.1:8100->80/tcp` (prod `8200`); las webs `8000/tcp`, sin publicar. El puerto antiguo de una réplica (8101, 8201) da `000`. `51 passed` en los dos entornos a través de Nginx. PostgreSQL y Redis sin tocar.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Explicó el cambio y el orden de creación; a petición del usuario lo escribió, validó y generó los planes. El usuario aplicó y ejecutó las pruebas.
+- **Commit:** `feat: publish only Nginx and route tests through the load balancer`
+
+### [Subpaso 3.2.4: Comprobar el reparto desde fuera]
+- **Fecha:** 21 nov. 2026
+- **Archivos:** ninguno.
+- **Comandos:** `for i in 1 2 3 4; do curl -sI http://127.0.0.1:8100/status | grep -i instancia; done` (prod: 6 vueltas contra 8200).
+- **Justificación:** demostrar con la cabecera `X-Instancia` que Nginx reparte por turnos entre todas las réplicas, ahora entrando como un usuario, por la única puerta.
+- **Pruebas:** dev `web-2, web-1, web-2, web-1`; prod `web-3, web-2, web-1, web-3, web-2, web-1`. Cada réplica recibe su turno y el ciclo se repite (round-robin; el orden de partida depende del orden en que Nginx resuelve las direcciones).
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Dio los comandos y lo esperado; el usuario los ejecutó.
+- **Commit:** va en `feat: publish only Nginx and route tests through the load balancer`.
