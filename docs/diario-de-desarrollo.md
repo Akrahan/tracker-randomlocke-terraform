@@ -367,3 +367,30 @@
 - **Pruebas:** con el MinIO de prueba: bucket creado, 3 dibujos subidos, segunda preparación sin error; sin credenciales, `GET` de un dibujo `200 image/png` y listar, `PUT` y `DELETE` `403`. `plan`: `2 to add, 0 to change, 0 to destroy` en cada entorno. Tras el `apply`, en dev y en prod: `bucket «sprites» creado`, `en el bucket: 0 · por subir: 2050` y `subidos: 2050 · ya estaban: 0 · errores: 0`; el contenedor `Exited (0)`. En prod, sin credenciales: `/sprites/25.png`, `/sprites/shiny/25.png`, `/sprites/1025.png` y `/sprites/shiny/1025.png` `200 image/png`, y `/sprites/` (listar) `403`. Después, `plan` «No changes» en los dos entornos.
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). A petición del usuario, escribió el script, su imagen y los cambios del módulo, lo probó contra un MinIO de prueba y generó los planes; explicó cada script con un ejemplo y comprobó el resultado. El usuario aplicó.
 - **Commit:** `feat: add init container that uploads sprites to MinIO`
+
+### [Subpaso 4.2.1: Nginx sirve los dibujos desde MinIO]
+- **Fecha:** 24 nov. 2026
+- **Archivos:** `terraform/modules/balanceador/variables.tf` (`red_almacenamiento`, `minio_host`, `bucket`), `main.tf` (Nginx también en la red `almacenamiento`; `minio_host` y `bucket` a la plantilla), `nginx.conf.tftpl` (`upstream minio` con `resolve` y `location /sprites/` con `limit_except GET` y `proxy_pass http://minio/<bucket>/`); `module "balanceador"` en `terraform/envs/{dev,prod}/main.tf`.
+- **Comandos:** `make fmt`, `validate`, `make plan` y `make apply` en los dos entornos; `nginx -t` con la configuración generada.
+- **Justificación:** Nginx tenía una sola regla («todo a las webs») y no estaba en la red de MinIO, así que `/sprites/25.png` acababa en una web y daba 404. Con una regla más concreta para `/sprites/` y acceso a la red `almacenamiento` (no a `backend`), los dibujos llegan desde MinIO sin tocar la app ni publicar MinIO.
+- **Pruebas:** `validate` correcto; la configuración generada para prod tiene `server tracker-prod-minio:9000 resolve` y `proxy_pass http://minio/sprites/`; `nginx -t`: `syntax is ok`. `plan`: `3 to add, 0 to change, 3 to destroy` en cada entorno (Nginx, y la imagen y el contenedor del script de dibujos porque cambió un comentario de `subir_sprites.py`). El script volvió a ejecutarse sin subir nada (`subidos: 0 · ya estaban: 2050 · errores: 0`).
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Explicó cómo enruta Nginx hoy y qué cambia, dio la guía por partes y, a petición del usuario, corrigió el bloque de red que había quedado fuera del `resource` y escribió la plantilla y la conexión en los entornos; generó los planes y validó la configuración. El usuario aplicó.
+- **Commit:** `feat: serve sprites from MinIO through Nginx as read-only`
+
+### [Subpaso 4.2.2: Comprobar los dibujos y el acceso de solo lectura]
+- **Fecha:** 24 nov. 2026
+- **Archivos:** ninguno.
+- **Comandos:** `docker logs tracker-prod-subir-sprites`; `curl` a `/sprites/25.png`, `/sprites/shiny/25.png`, `/sprites/` y `/sprites/99999.png`, y `PUT` y `DELETE` a `/sprites/...` por `http://127.0.0.1:8200` (y `8100` en dev); `make test` en los dos entornos; `plan` final.
+- **Justificación:** demostrar que los dibujos se sirven desde MinIO a través de la única puerta y que nadie puede modificarlos, con dos capas: Nginx corta lo que no es `GET` y MinIO no deja listar ni escribir sin credenciales.
+- **Pruebas:** dibujo y variocolor `200 image/png` en prod y en dev, con `Cache-Control: public, max-age=86400` y `Server: nginx` (MinIO no se ve). `PUT` y `DELETE`: `403` con la página HTML de Nginx (primera capa: `limit_except`). Listar `/sprites/`: `403` con el XML `AccessDenied` de MinIO (segunda capa: la política del bucket). Un dibujo que no existe: `404`. `51 passed` en prod (5,30 s) y en dev (5,27 s). `plan` «No changes» en los dos entornos.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Dio las pruebas y su resultado esperado y comprobó quién responde cada 403 (Nginx o MinIO); el usuario ejecutó las de prod.
+- **Commit:** va en `feat: serve sprites from MinIO through Nginx as read-only`.
+
+### [Subpaso 4.2.3: Makefile y cierre de la fase 4]
+- **Fecha:** 24 nov. 2026
+- **Archivos:** `docs/resumenes/fase-4.md` (nuevo), `docs/hoja-de-ruta.md` (4.2.3 y «Mapa de límites»).
+- **Comandos:** `make logs ENV=prod SERVICIO=minio`, `make logs ENV=prod SERVICIO=subir-sprites`, `make ps`.
+- **Justificación:** no hacen falta objetivos nuevos en el Makefile: `logs` con `SERVICIO` ya sirve para MinIO y para el script, y los dibujos se suben solos con el `apply`. Se cierra la fase con su resumen y se actualiza el mapa de límites para la exposición.
+- **Pruebas:** `make logs ... SERVICIO=minio` muestra `Version: RELEASE.2026-11-23T00-10-37Z` sin `FATAL`; `SERVICIO=subir-sprites`, `subidos: 0 · ya estaban: 2050 · errores: 0`. Los 16 contenedores esperados en su estado (webs, balanceadores, BD y Redis `healthy`; MinIO `Up`; `preparar-db` y `subir-sprites` `Exited (0)`). Sin secretos ni estado en el repositorio.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Comprobó los objetivos del Makefile, escribió el resumen de la fase y actualizó la hoja de ruta.
+- **Commit:** `docs: close storage phase with summary and limits map`

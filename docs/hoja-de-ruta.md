@@ -142,11 +142,16 @@ Tracker_Randomlocke_P2/
 - **4.2** La web muestra los sprites desde MinIO a través de una ruta de Nginx que reenvía a MinIO; MinIO no publica puertos. El navegador ya pide los dibujos en `/sprites/<id>.png` y `/sprites/shiny/<id>.png` (`app/static/app.js`): si Nginx sirve esa misma ruta desde MinIO, no hace falta tocar la app. Los sprites (unos 2050 PNG: 1025 especies, normal y variocolor) se suben **una sola vez** con el script de inicialización, no al arrancar las webs.
   - **4.2.1** Nginx: `location /sprites/` reenvía a MinIO, solo `GET`.
   - **4.2.2** Comprobar: dibujos en la página, `/sprites/25.png` con `200 image/png`, MinIO inaccesible desde fuera, `PUT` rechazado y tests.
-  - **4.2.3** Makefile y cierre de la fase (`fase-4.md`).
+  - **4.2.3** Makefile y cierre de la fase (`fase-4.md`). Sin objetivos nuevos: `make logs ENV=<env> SERVICIO=minio` y `SERVICIO=subir-sprites` ya sirven.
 
 ### Fase 5 · Monitorización, logs y alertas (25 y 26 nov.)
 - **5.1** Prometheus y cAdvisor (estado, CPU y memoria de cada contenedor) y Grafana con fuentes de datos y panel creados automáticamente.
 - **5.2** Logs centralizados (Loki y su recolector) consultables desde Grafana.
+- **Seguridad de la monitorización (pedido el 24 nov., se aplica en 5.1-5.3):**
+  - **Red propia `monitorizacion`, interna:** Prometheus, cAdvisor, Loki y su recolector solo hablan entre ellos y con Grafana; ninguno publica puertos.
+  - **Grafana no se expone a cualquiera:** su panel se publica solo en `127.0.0.1` (como las demás consolas), nunca en todas las interfaces.
+  - **Contraseñas:** usuario y contraseña de administrador de Grafana como variables `sensitive` en `secrets.auto.tfvars` (distintas en dev y prod), sin el `admin/admin` por defecto; registro de usuarios nuevos y acceso anónimo desactivados.
+  - **Salida a internet solo para quien la necesita:** Grafana necesita salida para enviar las alertas a Telegram, así que, además de `monitorizacion`, va en una red con salida; el resto de la monitorización, no. El token del bot y el ID del chat, `sensitive`.
 - **5.3** Alertas en prod (web caída, CPU alta...) con umbrales elegidos y justificados, enviadas a Telegram (crear antes el bot con @BotFather; lo hago yo), y cómo dispararlas en la demo: un generador de carga (por ejemplo `hey` en un contenedor o un script) que suba la CPU por encima del umbral.
   - Propuesta (24 nov., a decidir en el 5.3): las reglas de alerta en los dos entornos (mismo módulo), pero el envío a Telegram solo en prod, con una variable del `tfvars`; en dev se ven en Grafana. Ver «Alertas por entorno» en conceptos.
 
@@ -168,9 +173,33 @@ Tracker_Randomlocke_P2/
   - **Caché compartida y Redis caído:** `MISS` en una réplica y `HIT` en otra; `make stop-cache` y la web sigue funcionando.
   - **MinIO, monitorización y alertas** (fases 4 y 5): sprites servidos a través de Nginx, Grafana con métricas y logs, alerta en Telegram.
   - **Tests:** `make test` en los dos entornos.
+  - **Recorrido por los límites:** la exposición consiste en entender el código. Por cada defensa, decir **qué se limita, dónde está en el código y cómo se demuestra** (ver «Mapa de límites para la exposición» al final de este documento). El guion puede enseñar cada fragmento con `grep -n` y a continuación su prueba.
   - **Cambio en directo:** el profesor pedirá un cambio y habrá que predecir el `plan` antes de ejecutarlo; dejar preparado un ejemplo (por ejemplo, `replicas_web = 4` en prod).
 
   Detalles a decidir al hacerlo: la limpieza inicial pide confirmación (borra los datos de los dos entornos); `postgres:16` y `redis:7-alpine` se conservan porque los usa la P1 (`keep_locally`); el guion no imprime credenciales; y conviene un modo «sin pausas» para ensayarlo. Va después de las fases 4-6 para que incluya MinIO, la monitorización y las pruebas.
 - **7.3** Probar el README desde cero: clonar el repositorio en una carpeta limpia y seguir **solo** sus pasos, sin saltarse ninguno, como alguien que no conoce la infraestructura. Después, ensayo de la demo con `make demo`, guía de defensa y archivo comprimido para el campus.
 
 Hay un día de margen entre fases. Las fases 4 y 5 son las más nuevas: ir más despacio.
+
+## Mapa de límites para la exposición (borrador vivo, 24 nov.)
+
+La presentación es explicar el código: qué está limitado o separado, dónde y por qué. Se completa en cada fase y se usa en `make demo` (7.2) y en la guía de defensa. Se cita por fichero y palabra clave (los números de línea cambian).
+
+| Qué se limita o separa | Dónde (fichero → buscar) | Cómo se demuestra |
+|---|---|---|
+| **Una sola puerta de entrada** | `modules/balanceador/main.tf` → `ports` con `ip = "127.0.0.1"`; las webs, MinIO, BD y Redis sin `ports` | `make ps`: solo el balanceador tiene flecha; el puerto antiguo de una web da `000` |
+| **Solo desde este ordenador** | `ip = "127.0.0.1"` (no `0.0.0.0`) | Desde otro equipo de la wifi no se llega |
+| **Redes separadas por función** | `modules/red/main.tf` → `frontend`, `backend` (`internal = true`), `almacenamiento` (`internal = true`) | Desde `frontend`, `tracker-prod-minio` y la BD no se resuelven (`gaierror`); Nginx está en `frontend` y `almacenamiento`, nunca en `backend` (`modules/balanceador/main.tf` → `networks_advanced`) |
+| **Sin salida a internet** | `internal = true` en `backend` y `almacenamiento` | La BD, Redis y MinIO no pueden descargar nada |
+| **Entornos aislados** | Prefijo `tracker-<entorno>` y un estado por carpeta (`envs/dev`, `envs/prod`) | Desde dev, `tracker-prod-db` no se resuelve; `destroy` de prod no toca dev |
+| **Secretos fuera del código** | `sensitive = true` en las variables; valores en `secrets.auto.tfvars` (`.gitignore`) | `git ls-files` sin secretos ni estado; el `plan` muestra `(sensitive value)` |
+| **Contenedores sin *root*** | `USER appuser` (web y script de dibujos), `user = "redis"`, MinIO con el usuario 65532 | El volumen de MinIO en `/home/nonroot` (el problema de permisos del 4.1.2) |
+| **Imágenes fijadas** | `@sha256:` en MinIO; versiones en `nginx:1.28-alpine`, `postgres:16`, `redis:7-alpine`, `requirements.txt` | El `plan` no cambia aunque salgan versiones nuevas |
+| **Redis con contraseña y sin disco** | `modules/cache/main.tf` → `--requirepass`, `--save ""`, `--appendonly no` | `redis-cli ping` sin contraseña da `NOAUTH` |
+| **Dibujos de solo lectura (dos capas)** | `nginx.conf.tftpl` → `limit_except GET`; `subir_sprites.py` → `POLITICA` (`s3:GetObject`) | `PUT`/`DELETE` a `/sprites/...` dan `403`; listar `/sprites/` da `403` |
+| **MinIO sin consola** | `modules/storage/main.tf` → `MINIO_BROWSER=off` | No hay panel web de MinIO |
+| **Tamaño de subida** | `nginx.conf.tftpl` → `client_max_body_size 6m`; `app/guardado_anil.py` → `LIMITE_BYTES`, `PROFUNDIDAD_MAXIMA` | Test del guardado de más de 5 MB: `413` de la app |
+| **Nginx no da pistas** | `nginx.conf.tftpl` → `server_tokens off` | Las cabeceras no muestran la versión de Nginx |
+| **Alta disponibilidad** | `nginx.conf.tftpl` → `max_fails`, `proxy_next_upstream`, `proxy_connect_timeout`, `resolve`; `restart = "unless-stopped"` | `make stop-web WEB=2`: 9/9 peticiones `200`; vuelve sola con `start-web` |
+| **Comprobaciones antes de crear** | `validation` (réplicas, contraseña de MinIO) y `postcondition` (`preparar_db`, `subir_sprites`) | Un valor no válido falla en el `plan`; un script que falla para el `apply` |
+| **Monitorización** (fase 5) | Red `monitorizacion` interna, Grafana solo en `127.0.0.1` con contraseña `sensitive` | Se completará en la fase 5 |
