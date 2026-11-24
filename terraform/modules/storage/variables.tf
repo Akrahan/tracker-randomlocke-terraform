@@ -24,3 +24,19 @@ variable "password" {
     error_message = "MinIO exige una contraseña de al menos 8 caracteres."
   }
 }
+
+variable "red_salida" {
+  description = "Red con salida a internet para el script de inicialización (descarga los dibujos)"
+  type        = string
+}
+
+variable "ruta_sprites" {
+  description = "Carpeta con el script de inicialización de los dibujos y su Dockerfile"
+  type        = string
+}
+
+variable "bucket" {
+  description = "Nombre del bucket de los dibujos (coincide con la ruta /sprites/ que pide el navegador)"
+  type        = string
+  default     = "sprites"
+}

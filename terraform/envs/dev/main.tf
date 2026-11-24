@@ -58,6 +58,8 @@ module "storage" {
 
   prefijo            = local.prefijo
   red_almacenamiento = module.red.almacenamiento
+  red_salida         = module.red.frontend
+  ruta_sprites       = "${path.module}/../../../scripts/sprites"
   usuario            = var.minio_usuario
   password           = var.minio_password
 }

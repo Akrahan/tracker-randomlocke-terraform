@@ -34,3 +34,52 @@ resource "docker_container" "minio" {
     container_path = "/home/nonroot"
   }
 }
+
+# Script de inicialización (contenedor de un solo uso, como preparar_db): crea el bucket, le pone
+# lectura pública de sus objetos y sube los dibujos que falten. Si cambia el script, se vuelve a ejecutar.
+resource "docker_image" "sprites" {
+  name = "${var.prefijo}-sprites:latest"
+  build {
+    context    = var.ruta_sprites
+    dockerfile = "${var.ruta_sprites}/Dockerfile"
+    builder    = "default"
+  }
+
+  triggers = {
+    codigo = sha1(join("", [
+      for f in sort(fileset(var.ruta_sprites, "**")) :
+      filesha1("${var.ruta_sprites}/${f}") if !strcontains(f, "__pycache__")
+    ]))
+  }
+}
+
+resource "docker_container" "subir_sprites" {
+  name     = "${var.prefijo}-subir-sprites"
+  image    = docker_image.sprites.image_id
+  must_run = false
+  attach   = true
+  logs     = true
+
+  env = [
+    "MINIO_ENDPOINT=http://${docker_container.minio.name}:9000",
+    "MINIO_USUARIO=${var.usuario}",
+    "MINIO_PASSWORD=${var.password}",
+    "BUCKET=${var.bucket}",
+  ]
+
+  # almacenamiento: para hablar con MinIO; red_salida (frontend): para descargar los dibujos de internet
+  networks_advanced {
+    name = var.red_almacenamiento
+  }
+
+  networks_advanced {
+    name = var.red_salida
+  }
+
+  lifecycle {
+    postcondition {
+      condition     = self.exit_code == 0
+      error_message = "La subida de los dibujos a MinIO ha fallado (código de salida distinto de 0)."
+    }
+  }
+}
