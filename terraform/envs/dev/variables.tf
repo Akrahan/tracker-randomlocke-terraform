@@ -51,3 +51,15 @@ variable "replicas_web" {
   description = "Número de copias de la web"
   type        = number
 }
+
+variable "minio_usuario" {
+  description = "Usuario administrador de MinIO"
+  type        = string
+  sensitive   = true
+}
+
+variable "minio_password" {
+  description = "Contraseña del administrador de MinIO (8 caracteres como mínimo)"
+  type        = string
+  sensitive   = true
+}

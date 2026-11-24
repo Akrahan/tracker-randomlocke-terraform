@@ -26,7 +26,8 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
    - [Nginx como balanceador: configuración generada por Terraform](#nginx-como-balanceador-configuración-generada-por-terraform)
 4. [Alta disponibilidad](#alta-disponibilidad)
    - [Conmutación por error en Nginx y reinicio de contenedores](#conmutación-por-error-en-nginx-y-reinicio-de-contenedores)
-5. Monitorización y logs
+5. [Monitorización y logs](#monitorización-y-logs)
+   - [Alertas por entorno](#alertas-por-entorno)
 6. [Almacenamiento](#almacenamiento)
    - [Almacenamiento de objetos (S3) y MinIO](#almacenamiento-de-objetos-s3-y-minio)
 7. [Automatización](#automatización)
@@ -330,6 +331,17 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
   - *¿El `413` del log de Nginx es un error?* No: es la respuesta de la app (JSON de 64 bytes) al test que sube un guardado de más de 5 MB. Con `client_max_body_size 6m`, Nginx deja pasar el cuerpo y quien lo rechaza es la app, como en la P1. El aviso «request body is buffered to a temporary file» es normal: Nginx guarda en disco los cuerpos que no caben en su búfer de memoria.
 - **Pregunta de defensa:** con `max_fails=2 fail_timeout=10s`, si tumbas `web-2`, ¿cuántas peticiones de usuario reciben un error?
 
+## Monitorización y logs
+
+### Alertas por entorno
+- **Qué es:** una alerta es una regla que vigila una métrica (por ejemplo, «una web lleva 1 minuto caída» o «la CPU pasa del 80 % durante 2 minutos») y, cuando se cumple, avisa por un canal (aquí, un mensaje de Telegram). Hay dos partes: la **regla** (qué se vigila y con qué umbral) y la **notificación** (a quién y por dónde se avisa).
+- **Para qué se usa:** enterarse de un problema sin estar mirando los paneles.
+- **Dónde y cómo se usa en mi proyecto:** fase 5 (5.3). El enunciado pide en prod «monitorización activa y configurada para enviar alertas» y poder disparar alguna en la demo; en dev, monitorización activa «sin alta disponibilidad», sin mencionar alertas.
+- **Por qué así:** propuesta (a decidir en el 5.3): las **reglas** existen en los dos entornos (mismo módulo, mismo código), pero el **envío a Telegram** solo se activa en prod con una variable del `tfvars` (como `cache_activada`). En dev, las alertas se ven en Grafana sin molestar a nadie. Alternativas: solo en prod (cumple, pero dev no prueba las reglas antes de llevarlas a prod); también avisos de dev a Telegram (cumple, pero mezcla avisos de pruebas con los de producción y acostumbra a ignorarlos; si se hiciera, en otro chat y con el entorno en el mensaje).
+- **Dudas resueltas:**
+  - *¿Las alertas se pueden poner en dev y en prod, o solo en prod?* El enunciado solo las exige en prod, pero los requisitos son mínimos: ponerlas también en dev no está prohibido. Lo habitual es que dev tenga las mismas reglas (para probarlas) pero no envíe avisos, o los envíe a otro canal: si dev, que se rompe a menudo por las pruebas, avisa al mismo chat que prod, se acaba ignorando el chat entero («fatiga de alertas»).
+- **Pregunta de defensa:** ¿por qué dev no envía alertas a Telegram si tiene las mismas reglas que prod?
+
 ## Almacenamiento
 
 ### Almacenamiento de objetos (S3) y MinIO
@@ -368,6 +380,9 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
     - **Programa `/usr/bin/minio` y nada más:** es lo que se ejecuta al arrancar el contenedor (`Entrypoint`). Imagen mínima: sin *shell*, sin `curl` ni otras herramientas. Menos piezas = menos fallos de seguridad y menos que pueda usar un atacante. Consecuencia: el *healthcheck* no puede usar `curl` ni `wget` dentro del contenedor y se resolverá de otra forma.
     - **Usuario 65532, no *root*:** dentro del contenedor, MinIO se ejecuta con un usuario sin privilegios (65532 es el número que Chainguard usa para «nadie especial»). Si alguien lograra entrar por un fallo de MinIO, no tendría permisos de administrador. Consecuencia: la carpeta de datos (el volumen) tiene que poder escribirla ese usuario.
     - **Arquitecturas `amd64` y `arm64`:** el tipo de procesador para el que está compilada. `amd64` son los PC con Intel o AMD (como este ordenador); `arm64`, los Mac con chip Apple o los servidores ARM. Docker descarga sola la que corresponde.
+  - *¿Cuál era el problema del volumen al probar la imagen? (4.1.2)* Permisos. Un volumen nuevo es como un trastero vacío cuya cerradura es del administrador del edificio (*root*). MinIO, en esta imagen, trabaja como un empleado sin llave maestra (usuario 65532). Si el trastero se monta en `/data`, que es de *root*, MinIO no puede guardar nada y se para: `FATAL Unable to initialize backend: file access denied`. Si se monta en `/home/nonroot`, la «casa» de ese usuario dentro de la imagen, Docker le pone al volumen vacío el mismo dueño que tenía esa carpeta (65532): MinIO ya tiene llave, arranca y guarda en `/home/nonroot/datos`. Comprobado con un contenedor de prueba (borrado después): con `/data`, error; con `/home/nonroot`, arranca (`RELEASE.2026-11-23`) y `/minio/health/live` responde 200. Alternativas descartadas: ejecutar MinIO como *root* (funciona, pero le da la llave maestra y anula la ventaja de seguridad) o un contenedor auxiliar que cambie el dueño del volumen antes de arrancar (`chown`; otra pieza más que mantener).
+  - *¿Qué significan el aviso y el `127.0.0.1:9000` del log de MinIO?* `WARNING: Host local has more than 0 drives of set. A host failure will result in data becoming unavailable` avisa de que hay un solo disco y un solo servidor: si se pierde, se pierden los datos (no hay copias). Es aceptable aquí: los sprites se pueden volver a subir con el script; en producción real se usarían varios discos o servidores. `API: http://172.27.0.2:9000  http://127.0.0.1:9000` son las direcciones **dentro del contenedor** (su IP en la red `almacenamiento` y su propio *localhost*), no puertos publicados en el ordenador: `make ps` no muestra ningún puerto en MinIO.
+  - *¿La «API» del log de MinIO es una API externa? ¿Los dibujos se piden a otra web en cada visita?* No. «API» ahí es la **puerta de servicio de MinIO**: la dirección por la que otros programas le piden o le dan ficheros (API S3, puerto 9000). Los dibujos se descargan **una sola vez** del repositorio público PokeAPI/sprites con el script de inicialización (4.1.3) y quedan guardados en MinIO; después, cada visita pide `/sprites/25.png` a Nginx, que lo coge de MinIO dentro de la máquina, sin salir a internet ni depender de otra web. Igual con los datos del juego (especies, movimientos...): vienen de los CSV de `app/datos/` cargados en PostgreSQL al preparar la base de datos. En funcionamiento, la app no llama a ninguna API externa.
   - *¿Se puede seguir usando la imagen de MinIO?* La oficial, no: en 2025 MinIO dejó de publicar imágenes nuevas y en 2026 desapareció `minio/minio` de Docker Hub (comprobado el 24 nov.). Decisión del 4.1.1: `cgr.dev/chainguard/minio`, fijada por su huella `@sha256:` y con `keep_locally = true` (motivos y alternativas descartadas en la duda «¿Por qué no está la imagen de MinIO de siempre y por qué Chainguard?» y en la hoja de ruta).
 - **Pregunta de defensa:** ¿por qué los sprites van en MinIO y no dentro de la imagen de la web o en PostgreSQL?
 
@@ -434,6 +449,7 @@ Conceptos necesarios para entender y defender la práctica, ordenados por temas.
   - *¿Por qué falló con «Variables not allowed»?* En un `.tfvars`, los textos van **entre comillas dobles**; sin ellas, Terraform interpreta el valor como una expresión (una referencia a variable), lo que no está permitido ahí, y la variable se queda sin valor (`No value for required variable`). Las comillas no forman parte del valor.
   - *¿Puedo cambiar la contraseña más adelante?* La imagen de PostgreSQL solo usa `POSTGRES_USER` y `POSTGRES_PASSWORD` **la primera vez**, con el volumen vacío. Si se cambian después, el contenedor se recrea, pero la base de datos mantiene la contraseña antigua guardada en el volumen. En dev, para cambiarla habría que borrar también el volumen.
   - *¿Qué pasa si alguien clona el repositorio sin crear `secrets.auto.tfvars`?* El `plan` falla con `No value for required variable` para `db_usuario` y `db_password`, o se las pide por la terminal. La plantilla `.example` le indica qué fichero crear.
+  - *¿Cómo se genera una contraseña segura?* En WSL, con `openssl rand -hex 16`: 32 caracteres aleatorios (0-9 y a-f), sin símbolos que den problemas entre comillas. Para no verla en pantalla ni dejarla en el historial del chat, se puede escribir directamente al final del fichero de secretos: `echo "minio_password = \"$(openssl rand -hex 16)\"" >> terraform/envs/dev/secrets.auto.tfvars` (el `>>` añade al final sin borrar lo que hay; un solo `>` vaciaría el fichero). Cada entorno, su propia contraseña. Nunca se pega en un chat ni en un documento.
 - **Pregunta de defensa:** si `sensitive = true` oculta la contraseña en el `plan`, ¿por qué no se puede subir `terraform.tfstate` a Git?
 
 ### Subida de archivos: defensas contra ficheros maliciosos y abusos

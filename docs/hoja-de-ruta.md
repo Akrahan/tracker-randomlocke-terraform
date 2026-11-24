@@ -148,6 +148,7 @@ Tracker_Randomlocke_P2/
 - **5.1** Prometheus y cAdvisor (estado, CPU y memoria de cada contenedor) y Grafana con fuentes de datos y panel creados automáticamente.
 - **5.2** Logs centralizados (Loki y su recolector) consultables desde Grafana.
 - **5.3** Alertas en prod (web caída, CPU alta...) con umbrales elegidos y justificados, enviadas a Telegram (crear antes el bot con @BotFather; lo hago yo), y cómo dispararlas en la demo: un generador de carga (por ejemplo `hey` en un contenedor o un script) que suba la CPU por encima del umbral.
+  - Propuesta (24 nov., a decidir en el 5.3): las reglas de alerta en los dos entornos (mismo módulo), pero el envío a Telegram solo en prod, con una variable del `tfvars`; en dev se ven en Grafana. Ver «Alertas por entorno» en conceptos.
 
 ### Fase 6 · Pruebas (27 nov.)
 - **6.1** Los tests de la API, pasando por el balanceador.

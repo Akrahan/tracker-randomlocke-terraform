@@ -52,3 +52,12 @@ module "balanceador" {
   webs         = module.web.nombres
   puerto       = var.puerto_web
 }
+
+module "storage" {
+  source = "../../modules/storage"
+
+  prefijo            = local.prefijo
+  red_almacenamiento = module.red.almacenamiento
+  usuario            = var.minio_usuario
+  password           = var.minio_password
+}
