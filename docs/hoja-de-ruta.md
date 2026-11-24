@@ -39,6 +39,16 @@ Un paso por turno: Claude explica, yo escribo, Claude revisa y yo hago el commit
 
 - **`.gitignore` más robusto para los `.env`:** sustituir la lista por nombre (`.env.dev`, `.env.prod`) por `.env.*` + `!.env.*.example`. Aplicar si aparecen más entornos o al revisar la seguridad en la fase 6 o 7. Ver «.gitignore» en `conceptos-para-estudiar.md`.
 
+## Ideas para después de la práctica (fuera del alcance de la entrega)
+
+- **Publicar la web con un límite gratuito de importaciones (23 nov.):** importar el guardado del juego (actualización automática del equipo) sería gratis **una vez al día**; para volver a importar el mismo día, el usuario vería un anuncio. No entra en la práctica (el README es solo de infraestructura y no se publica la web). Lo que haría falta si se hace:
+  - **Cuentas de usuario:** el límite tiene que ir por usuario. Por IP no sirve: varias personas comparten una IP (casa, universidad) y una persona puede cambiarla.
+  - **Contador en el servidor**, nunca en el navegador (se borra o se falsea): en Redis con caducidad de un día (`INCR` + `EXPIRE`) o en PostgreSQL si debe sobrevivir a un reinicio de Redis.
+  - **Anuncio con recompensa verificado por el servidor:** la red de anuncios debe confirmar al servidor que se vio el anuncio; si solo lo dice el navegador, cualquiera se salta el anuncio.
+  - **Requisitos legales en la UE:** consentimiento de cookies y de anuncios personalizados (RGPD), aviso legal y política de privacidad.
+  - **Propiedad intelectual:** la app usa nombres y dibujos de Pokémon. Cobrar o poner anuncios en una herramienta de fans con material de Nintendo / The Pokémon Company puede acabar en una reclamación y en el cierre de la web. Habría que informarse antes de monetizar.
+  - **Seguridad de la subida en una web pública:** ver «Subida de archivos» en `conceptos-para-estudiar.md` (lo que ya está hecho y lo que faltaría).
+
 ## Mejoras detectadas en la Práctica 1 (las pide el enunciado)
 
 Salen de las limitaciones de la guía de defensa de la Práctica 1 (las de la retrospectiva son personales: entender puertos y redes, defender con seguridad y depender menos de la IA, y se trabajan con el modo tutor y los hábitos de abajo). Se citarán en el README y en la defensa.
@@ -47,7 +57,7 @@ Salen de las limitaciones de la guía de defensa de la Práctica 1 (las de la re
 |---|---|---|
 | Cada web preparaba la base de datos al arrancar | Se prepara una sola vez; con varias réplicas es obligatorio para que no compitan | 1.4 |
 | Una sola web: si caía, la app caía | Varias réplicas detrás de Nginx, con reparto y conmutación si una falla | 3.1-3.3 |
-| La primera lectura tras caer Redis tardaba ~8 s (resolución DNS de Docker Desktop) | Volver a medirlo y, si sigue, reducir el tiempo de espera de conexión a Redis | 3.4 / 6.2 |
+| La primera lectura tras caer Redis tardaba ~8 s (resolución DNS de Docker Desktop) | Medido de nuevo (21 nov.): ~1,7-2,6 s la primera lectura de cada réplica y después ~25 ms; las escrituras tardaban ~1,7 s cada una con Redis caído (la invalidación no miraba si la caché estaba marcada como caída). Corregido en el 3.4.3: escrituras en ~0,015 s y tests sin Redis en 4,9 s | 3.4 |
 | La verificación en limpio usó capas de imagen en caché | Prueba desde cero con construcción sin caché | 7.2 |
 | Sin visibilidad del sistema | Métricas, logs centralizados y alertas | 5.1-5.3 |
 | Estáticos dentro de la imagen o en un volumen | Almacenamiento tipo S3 (MinIO) detrás de Nginx | 4.1-4.2 |
@@ -119,6 +129,9 @@ Tracker_Randomlocke_P2/
   - **3.3.1** Nginx: `max_fails`, `fail_timeout` y `proxy_next_upstream`; política de reinicio de los contenedores.
   - **3.3.2** Objetivos `logs`, `stop-web` y `start-web` en el Makefile, y prueba de tumbar una web.
 - **3.4** Caché compartida entre réplicas (prod): una petición cae en una web y da `MISS`, la siguiente cae en otra y da `HIT`, porque todas usan el mismo Redis. Al modificar el equipo, la invalidación (`cache.delete`) vale para todas las réplicas. Prueba también de Redis caído: la web sigue sirviendo desde PostgreSQL (y se vuelve a medir el retraso de ~8 s de la Práctica 1).
+  - **3.4.1** Caché compartida e invalidación, sin cambios de código: con una partida de prueba, `GET /runs/<id>/team` da `MISS` en una réplica y `HIT` en las otras; tras registrar una captura (`invalidar_equipo`), la siguiente lectura vuelve a ser `MISS` en cualquier réplica.
+  - **3.4.2** Objetivos `stop-cache` y `start-cache` en el Makefile; con Redis parado, la web sigue respondiendo desde PostgreSQL (`X-Cache: DEGRADED`, «Caché: caída») y se mide cuánto tarda la primera lectura.
+  - **3.4.3** (añadido el 21 nov. por lo medido en el 3.4.2) `invalidar_equipo` no intenta borrar en Redis si la caché está marcada como caída (tercer cambio en la aplicación); volver a medir.
 
 ### Fase 4 · MinIO (24 nov.)
 - **4.1** Contenedor de MinIO, bucket y script de inicialización que sube los sprites. Ojo: en la P1 el servicio de sprites también usaba `scripts/revisar_sprites.py`, que no se copió a la P2; comprobar si hace falta. Comprobar también qué imagen y versión de MinIO usar (fijando la etiqueta), porque en 2025 cambió la distribución de su edición gratuita.
@@ -136,6 +149,20 @@ Tracker_Randomlocke_P2/
 
 ### Fase 7 · Entrega (28 y 29 nov.)
 - **7.1** README: guía de instalación y prueba, partes del proyecto, diagrama de arquitectura, y tests con sus salidas.
-- **7.2** Probar el README desde cero: clonar el repositorio en una carpeta limpia y seguir **solo** sus pasos, sin saltarse ninguno, como alguien que no conoce la infraestructura. Después, ensayo de la demo, guía de defensa y archivo comprimido para el campus.
+- **7.2** **`make demo`: presentación semiautomática desde cero (importante, pedido el 24 nov.).** Un guion (`scripts/demo.sh`, lanzado con `make demo`) que parte de **nada**: sin contenedores, redes, volúmenes ni bases de datos, y sin las imágenes propias construidas (`tracker-*-web`). Lo crea todo con Terraform y avanza por partes: cada parte explica en una línea qué se va a ver, ejecuta sus comandos, muestra el resultado y espera a que se pulse **Enter**. Partes previstas:
+  - **Punto de partida:** `docker ps -a`, `docker network ls`, `docker volume ls` e imágenes filtradas por `tracker-`, todo vacío.
+  - **El código:** árbol de `terraform/` (módulos y entornos), un módulo representativo, los dos `terraform.tfvars` (la única diferencia entre dev y prod) y fragmentos concretos (`count`, `templatefile` del `nginx.conf`, bloque `upstream`, `max_fails` / `proxy_next_upstream`, caché con `count`). Nunca los `secrets.auto.tfvars` ni el estado.
+  - **Despliegue desde cero:** `make init`, `make plan` (resumen) y `make apply` de dev y de prod, con lo que tarda.
+  - **Lo creado:** `make ps` de los dos entornos, redes `frontend` / `backend`, volúmenes, imágenes.
+  - **Exposición mínima y conectividad:** solo Nginx (y las consolas de administración, si las hay, en `127.0.0.1`) publica puerto; las webs, la BD, Redis y MinIO no; desde la web de dev no se resuelve la BD de prod; la BD no tiene salida a internet (`backend` interna).
+  - **Balanceador:** las placas `X-Instancia` rotando y la página en el navegador.
+  - **Alta disponibilidad:** `make stop-web`, peticiones sin errores, `make logs` de Nginx y `make start-web`.
+  - **Caché compartida y Redis caído:** `MISS` en una réplica y `HIT` en otra; `make stop-cache` y la web sigue funcionando.
+  - **MinIO, monitorización y alertas** (fases 4 y 5): sprites servidos a través de Nginx, Grafana con métricas y logs, alerta en Telegram.
+  - **Tests:** `make test` en los dos entornos.
+  - **Cambio en directo:** el profesor pedirá un cambio y habrá que predecir el `plan` antes de ejecutarlo; dejar preparado un ejemplo (por ejemplo, `replicas_web = 4` en prod).
+
+  Detalles a decidir al hacerlo: la limpieza inicial pide confirmación (borra los datos de los dos entornos); `postgres:16` y `redis:7-alpine` se conservan porque los usa la P1 (`keep_locally`); el guion no imprime credenciales; y conviene un modo «sin pausas» para ensayarlo. Va después de las fases 4-6 para que incluya MinIO, la monitorización y las pruebas.
+- **7.3** Probar el README desde cero: clonar el repositorio en una carpeta limpia y seguir **solo** sus pasos, sin saltarse ninguno, como alguien que no conoce la infraestructura. Después, ensayo de la demo con `make demo`, guía de defensa y archivo comprimido para el campus.
 
 Hay un día de margen entre fases. Las fases 4 y 5 son las más nuevas: ir más despacio.

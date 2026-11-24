@@ -313,3 +313,30 @@
 - **Pruebas:** con `web-2` en `Exited (0)`, las 9 peticiones dieron `200 OK`, alternando solo `web-3` y `web-1`; `51 passed` con 2 de 3 webs. En el log de Nginx, `tracker-prod-web-2 could not be resolved (3: Host not found)`: Docker quitó el nombre de su DNS y Nginx, con `resolve`, la sacó del reparto. En el mismo log, un `413` de 64 bytes (respuesta JSON de la app al test de un guardado demasiado grande, no la página de Nginx: `client_max_body_size 6m` deja pasar el cuerpo y decide la app) y el aviso de cuerpo guardado en fichero temporal (normal en peticiones grandes). Tras `make start-web` y 15 s, `web-2` volvió al turno (`3, 1, 2, 3, 1, 2`) sin tocar Nginx. Después, `plan` de prod: «No changes» (sin deriva).
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Diseñó la prueba con sus predicciones y, a petición del usuario, escribió los objetivos del Makefile y los comprobó con `make -n`; interpretó el log de Nginx y comprobó que no quedaba deriva. El usuario ejecutó la prueba.
 - **Commit:** `feat: add Makefile targets to stop, start and inspect containers`
+
+### [Subpaso 3.4.1: Caché compartida entre réplicas e invalidación]
+- **Fecha:** 21 nov. 2026
+- **Archivos:** ninguno (prueba sin cambios de código).
+- **Comandos:** contra prod (`http://127.0.0.1:8200`): `POST /runs` (partida de prueba), 3 × `GET /runs/<id>/team` mirando `X-Cache`, `X-Latency-Ms` y `X-Instancia`, `POST /runs/<id>/events` (una captura), otras 3 lecturas y `DELETE /runs/<id>`.
+- **Justificación:** con varias réplicas, la caché solo sirve si es común: lo que guarda una web debe valer para las demás y la invalidación de una debe valer para todas. Por eso Redis es un contenedor aparte y no una caché en memoria de cada web.
+- **Pruebas:** antes de la captura: `MISS` en `web-1` (12,2 ms), `HIT` en `web-2` (0,9 ms) y en `web-3` (1,0 ms). Captura registrada en `web-1` (`201`). Después: `MISS` en `web-2` (10,8 ms), `HIT` en `web-3` y `web-1`, y el equipo ya con `['Pikachu']`. Partida borrada (`204`).
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Explicó la caché compartida y, a petición del usuario, ejecutó la prueba y documentó los resultados.
+- **Commit:** va en `feat: add Makefile targets to stop and start Redis` (con el 3.4.2).
+
+### [Subpaso 3.4.2: Redis caído con varias réplicas]
+- **Fecha:** 21 nov. 2026
+- **Archivos:** `Makefile` (objetivos `stop-cache` y `start-cache`; columna de la ayuda más ancha para los nombres largos).
+- **Comandos:** `make stop-cache ENV=prod`, lecturas de `/moves` con `curl -w "%{time_total}"`, `/status` de cada réplica, `make test ENV=prod`, escrituras (`POST /runs/<id>/events`) cronometradas, `make start-cache ENV=prod`.
+- **Justificación:** comprobar que la caída de Redis no tumba la aplicación (Redis es una mejora, no una dependencia) y volver a medir el retraso de ~8 s de la P1, como estaba previsto en las mejoras detectadas.
+- **Pruebas:** con Redis, `HIT` en ~17-28 ms. Con Redis parado: todas las respuestas `200` con `X-Cache: DEGRADED`; `/status` de las 3 réplicas `"estado":"degraded"`, `"cache":"caida"`. La primera lectura de cada réplica tardó 2,59 s, 1,70 s y 1,70 s, y las siguientes ~25 ms (el vigilante ya la había marcado como caída). `51 passed`, pero en **207,59 s** (normalmente ~5 s): cada escritura tarda ~1,7 s con Redis parado (1,68 s y 1,71 s medidas, frente a 0,018 s con Redis), porque `invalidar_equipo` intenta `cache.delete` sin mirar `cache_estado` y la búsqueda DNS del contenedor parado no la corta `socket_connect_timeout`. Con `make start-cache`, Redis `healthy` en 6 s, `/status` `"ok"`, y `/moves` `MISS` y después `HIT` (vuelve vacío, sin persistencia); las escrituras vuelven a 0,017 s.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). A petición del usuario, escribió los objetivos del Makefile, ejecutó la prueba, detectó la lentitud de las escrituras y la confirmó con una medición aislada; lo documentó en conceptos y en la hoja de ruta.
+- **Commit:** `feat: add Makefile targets to stop and start Redis`
+
+### [Subpaso 3.4.3: Escrituras rápidas con Redis caído]
+- **Fecha:** 21 nov. 2026
+- **Archivos:** `app/main.py` (`invalidar_equipo`: `if cache is None or cache_estado != "ok": return`, con comentario del motivo).
+- **Comandos:** `make plan` y `make apply` en los dos entornos; la medición del 3.4.2 repetida (escrituras cronometradas y `make test ENV=prod` con `make stop-cache` / `make start-cache`); `make test` en dev y prod y `plan` final.
+- **Justificación:** con Redis caído, cada escritura esperaba ~1,7 s intentando borrar una clave en un Redis que la app ya sabía caído. Ahora la invalidación sigue la misma regla que las lecturas. Es seguro porque Redis no tiene persistencia: al volver está vacío.
+- **Pruebas:** `plan`: dev `4 to add, 0 to change, 4 to destroy` y prod `5 to add, 0 to change, 5 to destroy` (imagen, `preparar_db` y webs; Nginx no se recreó y siguió repartiendo entre las webs nuevas gracias a `resolve`: `web-2, web-3, web-1`). Con Redis parado: escrituras `201` en 0,016 / 0,014 / 0,013 s (antes 1,68-1,71 s), lecturas ~0,024 s y `51 passed in 4.91s` (antes 207,59 s). Con Redis de vuelta: `/moves` `MISS` y después `HIT`, `/status` `"ok"`, `51 passed` en prod (4,83 s) y en dev (4,80 s), y `plan` «No changes» en los dos entornos.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Detectó la causa en el 3.4.2, propuso la corrección y, con el visto bueno del usuario, la escribió y generó los planes; volvió a medir tras el `apply` del usuario y lo documentó.
+- **Commit:** `fix: skip Redis invalidation while the cache is marked as down`
