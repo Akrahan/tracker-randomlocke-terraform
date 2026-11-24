@@ -341,7 +341,9 @@ def leer_especies(prefijo: str, limit: int):
 
 
 def invalidar_equipo(run_id: int) -> None:
-    if cache is None:
+    # Con la caché marcada como caída no se intenta borrar: cada intento esperaba ~1,7 s (búsqueda DNS del
+    # contenedor parado). Redis no guarda nada en disco, así que al volver está vacío y no hay nada viejo que borrar.
+    if cache is None or cache_estado != "ok":
         return
     try:
         cache.delete(f"team:{run_id}")
