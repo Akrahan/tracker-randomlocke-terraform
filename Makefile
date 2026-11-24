@@ -9,10 +9,10 @@ PLAN := terraform/envs/$(ENV)/plan.tfplan
 SERVICIO ?= balanceador
 WEB ?= 1
 
-.PHONY: help comprobar-env init fmt validate plan apply destroy output ps test logs stop-web start-web
+.PHONY: help comprobar-env init fmt validate plan apply destroy output ps test logs stop-web start-web stop-cache start-cache
 
 help: ## Muestra esta ayuda
-	@awk 'BEGIN {FS = ":.*## "; print "\nUso: make <comando> ENV=dev|prod (por defecto, dev)\n"} /^[a-zA-Z0-9_-]+:.*## / {printf "  %-10s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+	@awk 'BEGIN {FS = ":.*## "; print "\nUso: make <comando> ENV=dev|prod (por defecto, dev)\n"} /^[a-zA-Z0-9_-]+:.*## / {printf "  %-12s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 	@echo ""
 
 comprobar-env:
@@ -58,3 +58,9 @@ stop-web: comprobar-env ## Para una réplica de la web, para probar la alta disp
 
 start-web: comprobar-env ## Vuelve a arrancar una réplica parada (WEB=2)
 	docker start tracker-$(ENV)-web-$(WEB)
+
+stop-cache: comprobar-env ## Para Redis, para probar que la web sigue sin caché (solo prod)
+	docker stop tracker-$(ENV)-cache
+
+start-cache: comprobar-env ## Vuelve a arrancar Redis (solo prod)
+	docker start tracker-$(ENV)-cache
