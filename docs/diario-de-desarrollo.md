@@ -340,3 +340,12 @@
 - **Pruebas:** `plan`: dev `4 to add, 0 to change, 4 to destroy` y prod `5 to add, 0 to change, 5 to destroy` (imagen, `preparar_db` y webs; Nginx no se recreó y siguió repartiendo entre las webs nuevas gracias a `resolve`: `web-2, web-3, web-1`). Con Redis parado: escrituras `201` en 0,016 / 0,014 / 0,013 s (antes 1,68-1,71 s), lecturas ~0,024 s y `51 passed in 4.91s` (antes 207,59 s). Con Redis de vuelta: `/moves` `MISS` y después `HIT`, `/status` `"ok"`, `51 passed` en prod (4,83 s) y en dev (4,80 s), y `plan` «No changes» en los dos entornos.
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Detectó la causa en el 3.4.2, propuso la corrección y, con el visto bueno del usuario, la escribió y generó los planes; volvió a medir tras el `apply` del usuario y lo documentó.
 - **Commit:** `fix: skip Redis invalidation while the cache is marked as down`
+
+### [Subpaso 4.1.1: Elegir la imagen de MinIO]
+- **Fecha:** 24 nov. 2026
+- **Archivos:** `docs/hoja-de-ruta.md` (decisión y subpasos de la fase 4), `docs/conceptos-para-estudiar.md` (dudas sobre MinIO).
+- **Comandos:** `docker manifest inspect` de las imágenes candidatas; consulta de la API de Docker Hub para `minio/minio`; `docker buildx imagetools inspect cgr.dev/chainguard/minio:latest` (huella y configuración, sin descargar la imagen); `curl` a `/sprites/25.png` en prod.
+- **Justificación:** el enunciado prefiere MinIO, pero su imagen oficial ya no existe. Se elige **`cgr.dev/chainguard/minio`**, que es MinIO compilado desde su código público (AGPL) y mantenido por Chainguard, fijado por su huella para que la versión no cambie.
+- **Pruebas:** `minio/minio` en Docker Hub: 404 en la API y `denied` en el manifiesto; `quay.io/minio/minio:latest`: «no such manifest». Disponibles: `cgr.dev/chainguard/minio`, `bitnamilegacy/minio`, `pgsty/minio`, `dxflrs/garage`, `chrislusf/seaweedfs` y `rustfs/rustfs`. Chainguard: huella `sha256:f2e56aceb4d38ad9b05c901270946e2353b19f86ba4396f25cf75b15b455b38c`, construida el 24 nov. 2026, `amd64` y `arm64`, punto de entrada `/usr/bin/minio`, usuario 65532 (no *root*). Situación de partida: `/sprites/25.png` en prod da 404.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Comprobó qué imágenes existen, buscó qué pasó con MinIO, comparó las alternativas y explicó las dudas (qué es MinIO, diferencia con un volumen y con una base de datos, licencia); el usuario tomó la decisión.
+- **Commit:** `docs: choose Chainguard MinIO image and plan storage phase`
