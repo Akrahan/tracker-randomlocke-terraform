@@ -12,6 +12,11 @@ resource "docker_container" "balanceador" {
     name = var.red_frontend
   }
 
+  # Para llegar a MinIO (los dibujos); Nginx no entra en backend, así que no ve la base de datos
+  networks_advanced {
+    name = var.red_almacenamiento
+  }
+
   ports {
     internal = 80
     external = var.puerto
@@ -22,6 +27,8 @@ resource "docker_container" "balanceador" {
     content = templatefile("${path.module}/nginx.conf.tftpl", {
       webs        = var.webs
       puerto_webs = var.puerto_webs
+      minio_host  = var.minio_host
+      bucket      = var.bucket
     })
     file = "/etc/nginx/conf.d/default.conf"
   }

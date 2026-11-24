@@ -10,6 +10,12 @@ upstream webs {
 %{ endfor ~}
 }
 
+# MinIO (los dibujos); como las webs, con resolve por si cambia de IP
+upstream minio {
+    zone minio 64k;
+    server ${minio_host}:9000 resolve;
+}
+
 server {
     listen 80;
     server_tokens off;
@@ -19,6 +25,15 @@ server {
     location = /nginx-salud {
         access_log off;
         return 200 "ok\n";
+    }
+
+    # Los dibujos se piden a MinIO, solo para leer (las webs no los tienen)
+    location /sprites/ {
+        limit_except GET {
+            deny all;
+        }
+        proxy_pass http://minio/${bucket}/;
+        proxy_set_header Host ${minio_host}:9000;
     }
 
     location / {

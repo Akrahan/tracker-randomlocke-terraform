@@ -23,3 +23,18 @@ variable "puerto" {
   description = "Puerto de este ordenador por el que se entra a la aplicación (la única puerta)"
   type        = number
 }
+
+variable "red_almacenamiento" {
+  description = "Red interna de MinIO, para servir los dibujos"
+  type        = string
+}
+
+variable "minio_host" {
+  description = "Nombre del contenedor de MinIO en la red"
+  type        = string
+}
+
+variable "bucket" {
+  description = "Bucket con los dibujos (de lectura pública)"
+  type        = string
+}

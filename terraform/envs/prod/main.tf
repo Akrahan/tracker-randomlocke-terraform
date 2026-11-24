@@ -47,10 +47,13 @@ module "cache" {
 module "balanceador" {
   source = "../../modules/balanceador"
 
-  prefijo      = local.prefijo
-  red_frontend = module.red.frontend
-  webs         = module.web.nombres
-  puerto       = var.puerto_web
+  prefijo            = local.prefijo
+  red_frontend       = module.red.frontend
+  red_almacenamiento = module.red.almacenamiento
+  webs               = module.web.nombres
+  minio_host         = module.storage.host
+  bucket             = module.storage.bucket
+  puerto             = var.puerto_web
 }
 
 module "storage" {
