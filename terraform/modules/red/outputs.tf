@@ -12,3 +12,8 @@ output "almacenamiento" {
   description = "Nombre de la red de almacenamiento (interna: MinIO, Nginx y el script de inicialización)"
   value       = docker_network.almacenamiento.name
 }
+
+output "monitorizacion" {
+  description = "Nombre de la red de monitorización (interna: cAdvisor, Prometheus, Loki, Alloy y Grafana)"
+  value       = docker_network.monitorizacion.name
+}

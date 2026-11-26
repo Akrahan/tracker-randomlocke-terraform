@@ -63,3 +63,8 @@ variable "minio_password" {
   type        = string
   sensitive   = true
 }
+
+variable "gid_docker" {
+  description = "Grupo (número) dueño del socket de Docker, para Telegraf. Lo pasa el Makefile (TF_VAR_gid_docker)"
+  type        = number
+}

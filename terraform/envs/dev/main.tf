@@ -66,3 +66,11 @@ module "storage" {
   usuario            = var.minio_usuario
   password           = var.minio_password
 }
+
+module "monitorizacion" {
+  source = "../../modules/monitorizacion"
+
+  prefijo            = local.prefijo
+  red_monitorizacion = module.red.monitorizacion
+  gid_docker         = var.gid_docker
+}

@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 15s # cada cuánto pregunta a Telegraf
+
+scrape_configs:
+  # Telegraf ya filtra los contenedores de este entorno (container_name_include)
+  - job_name: telegraf
+    static_configs:
+      - targets: ["${telegraf}:9273"]
+
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]

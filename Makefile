@@ -8,6 +8,8 @@ TF  := terraform -chdir=terraform/envs/$(ENV)
 PLAN := terraform/envs/$(ENV)/plan.tfplan
 SERVICIO ?= balanceador
 WEB ?= 1
+# Grupo dueño del socket de Docker (cambia en cada ordenador): Telegraf lo necesita para leer la API sin ser root
+export TF_VAR_gid_docker := $(shell stat -c '%g' /var/run/docker.sock 2>/dev/null)
 
 .PHONY: help comprobar-env init fmt validate plan apply destroy output ps test logs stop-web start-web stop-cache start-cache
 

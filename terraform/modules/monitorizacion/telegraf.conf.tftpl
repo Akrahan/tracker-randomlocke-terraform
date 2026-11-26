@@ -1,0 +1,17 @@
+# Telegraf: pregunta a la API de Docker (por el socket) por el estado, la CPU y la memoria
+# de cada contenedor de este entorno y lo publica en formato Prometheus en el puerto 9273.
+[agent]
+  interval = "10s"
+  omit_hostname = true
+
+[[inputs.docker]]
+  endpoint = "unix:///var/run/docker.sock"
+  # Solo los contenedores de este entorno (tracker-dev-* o tracker-prod-*)
+  container_name_include = ["${prefijo}-*"]
+  # Sin las etiquetas de cada contenedor: menos datos de relleno
+  docker_label_exclude = ["*"]
+  timeout = "5s"
+
+[[outputs.prometheus_client]]
+  listen = ":9273"
+  metric_version = 2

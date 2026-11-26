@@ -11,3 +11,8 @@ resource "docker_network" "almacenamiento" {
   name     = "${var.prefijo}-almacenamiento"
   internal = true
 }
+
+resource "docker_network" "monitorizacion" {
+  name     = "${var.prefijo}-monitorizacion"
+  internal = true
+}
