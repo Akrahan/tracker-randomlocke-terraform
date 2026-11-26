@@ -1,0 +1,43 @@
+# Loki en un solo proceso (modo monolítico), guardando en su volumen (/loki).
+# Igual en los dos entornos: cada uno tiene su propio Loki y su propio volumen.
+auth_enabled: false # un solo inquilino; solo le llegan Alloy y Grafana por la red interna
+
+server:
+  http_listen_port: 3100
+  log_level: warn
+
+common:
+  instance_addr: 127.0.0.1
+  path_prefix: /loki
+  replication_factor: 1 # una sola copia: no hay más Loki con los que repartir
+  ring:
+    kvstore:
+      store: inmemory
+  storage:
+    filesystem:
+      chunks_directory: /loki/chunks # los trozos comprimidos de cada flujo
+      rules_directory: /loki/rules
+
+# Formato del índice: tsdb y esquema v13, los recomendados en Loki 3
+schema_config:
+  configs:
+    - from: 2026-01-01
+      store: tsdb
+      object_store: filesystem
+      schema: v13
+      index:
+        prefix: index_
+        period: 24h
+
+# Retención: 7 días, como las métricas de Prometheus
+limits_config:
+  retention_period: 168h
+
+compactor:
+  working_directory: /loki/compactor
+  retention_enabled: true # el compactador borra lo que pasa de la retención
+  delete_request_store: filesystem
+
+# Que no envíe datos de uso a Grafana Labs
+analytics:
+  reporting_enabled: false

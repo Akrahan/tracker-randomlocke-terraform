@@ -13,6 +13,16 @@ resource "docker_image" "grafana" {
   keep_locally = true
 }
 
+resource "docker_image" "loki" {
+  name         = "grafana/loki:3.7.4"
+  keep_locally = true
+}
+
+resource "docker_image" "alloy" {
+  name         = "grafana/alloy:v1.22.0"
+  keep_locally = true
+}
+
 # Telegraf (en lugar de cAdvisor): pregunta a la API de Docker por el estado, la CPU y la memoria de cada
 # contenedor. Con Docker Desktop + WSL, cAdvisor no ve los contenedores (le prestan las carpetas de Ubuntu);
 # la API, por el socket, sí llega al motor. Solo el socket; sin puertos y en la red interna.
@@ -87,6 +97,84 @@ resource "docker_container" "prometheus" {
   wait = true
 }
 
+resource "docker_volume" "loki" {
+  name = "${var.prefijo}-loki-datos"
+}
+
+# Loki: guarda los logs de este entorno 7 días y responde a las búsquedas de Grafana.
+# Sin puertos y en la red interna. Sin healthcheck en Docker: la imagen es mínima
+# (sin shell ni wget, como MinIO); Alloy reintenta los envíos si aún no está listo.
+resource "docker_container" "loki" {
+  name    = "${var.prefijo}-loki"
+  image   = docker_image.loki.image_id
+  restart = "unless-stopped"
+
+  command = ["-config.file=/etc/loki/config.yaml"]
+
+  upload {
+    content = file("${path.module}/loki.yaml")
+    file    = "/etc/loki/config.yaml"
+  }
+
+  networks_advanced {
+    name = var.red_monitorizacion
+  }
+
+  # Loki se ejecuta como el usuario 10001, dueño de /loki en la imagen: Docker copia ese dueño al volumen vacío
+  volumes {
+    volume_name    = docker_volume.loki.name
+    container_path = "/loki"
+  }
+}
+
+resource "docker_volume" "alloy" {
+  name = "${var.prefijo}-alloy-datos"
+}
+
+# Alloy: recoge los logs de los contenedores de este entorno por la API de Docker (el socket,
+# como Telegraf) y los envía a Loki. Sin puertos y en la red interna.
+resource "docker_container" "alloy" {
+  name    = "${var.prefijo}-alloy"
+  image   = docker_image.alloy.image_id
+  restart = "unless-stopped"
+
+  command = [
+    "run", "/etc/alloy/config.alloy",
+    "--storage.path=/var/lib/alloy/data",
+    "--disable-reporting",
+  ]
+
+  upload {
+    content = templatefile("${path.module}/alloy.config.tftpl", {
+      prefijo = var.prefijo
+      loki    = "http://${docker_container.loki.name}:3100"
+    })
+    file = "/etc/alloy/config.alloy"
+  }
+
+  networks_advanced {
+    name = var.red_monitorizacion
+  }
+
+  # Solo el socket de Docker (el :ro no lo hace de solo lectura: ver conceptos)
+  volumes {
+    host_path      = "/var/run/docker.sock"
+    container_path = "/var/run/docker.sock"
+    read_only      = true
+  }
+
+  # Posiciones: por qué línea va de cada contenedor. /var/lib/alloy/data ya es del usuario alloy
+  volumes {
+    volume_name    = docker_volume.alloy.name
+    container_path = "/var/lib/alloy/data"
+  }
+
+  # La imagen se ejecuta como root: se usa su usuario alloy (mínimo privilegio)
+  # y se le añade el grupo dueño del socket, como a Telegraf
+  user      = "alloy"
+  group_add = [tostring(var.gid_docker)]
+}
+
 resource "docker_volume" "grafana" {
   name = "${var.prefijo}-grafana-datos"
 }
@@ -115,8 +203,9 @@ resource "docker_container" "grafana" {
   upload {
     content = templatefile("${path.module}/grafana-datasources.yml.tftpl", {
       prometheus = "http://${docker_container.prometheus.name}:9090"
+      loki       = "http://${docker_container.loki.name}:3100"
     })
-    file = "/etc/grafana/provisioning/datasources/prometheus.yml"
+    file = "/etc/grafana/provisioning/datasources/fuentes.yml"
   }
 
   upload {

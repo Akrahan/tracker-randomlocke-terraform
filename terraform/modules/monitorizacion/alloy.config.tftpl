@@ -1,0 +1,41 @@
+// Alloy: recoge los logs de los contenedores de este entorno por la API de Docker (el socket)
+// y los envía a Loki. Cadena de bloques: descubrir → etiquetar → leer → enviar.
+
+// 1. Descubrir: qué contenedores hay cuyo nombre contiene "${prefijo}-" (se repite solo:
+//    las réplicas nuevas aparecen sin tocar nada)
+discovery.docker "contenedores" {
+  host = "unix:///var/run/docker.sock"
+
+  filter {
+    name   = "name"
+    values = ["${prefijo}-"]
+  }
+}
+
+// 2. Etiquetar: "/tracker-dev-web-1" → container_name="tracker-dev-web-1"
+//    (el mismo nombre de etiqueta que usa Telegraf en las métricas)
+discovery.relabel "contenedores" {
+  targets = []
+
+  rule {
+    source_labels = ["__meta_docker_container_name"]
+    regex         = "/(.*)"
+    target_label  = "container_name"
+  }
+}
+
+// 3. Leer: sigue los logs de cada contenedor (como docker logs -f) y apunta por dónde va
+//    en --storage.path (su volumen), para no reenviar ni perder líneas si se reinicia
+loki.source.docker "contenedores" {
+  host          = "unix:///var/run/docker.sock"
+  targets       = discovery.docker.contenedores.targets
+  relabel_rules = discovery.relabel.contenedores.rules
+  forward_to    = [loki.write.loki.receiver]
+}
+
+// 4. Enviar: por lotes a Loki, por la red interna monitorizacion
+loki.write "loki" {
+  endpoint {
+    url = "${loki}/loki/api/v1/push"
+  }
+}
