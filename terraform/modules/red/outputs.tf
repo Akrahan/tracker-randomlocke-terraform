@@ -17,3 +17,8 @@ output "monitorizacion" {
   description = "Nombre de la red de monitorización (interna: cAdvisor, Prometheus, Loki, Alloy y Grafana)"
   value       = docker_network.monitorizacion.name
 }
+
+output "grafana" {
+  description = "Nombre de la red de Grafana (no interna: puerto publicado y salida a Telegram; solo Grafana)"
+  value       = docker_network.grafana.name
+}

@@ -50,6 +50,10 @@ Un paso por turno: Claude explica, yo escribo, Claude revisa y yo hago el commit
 
 - **`.gitignore` más robusto para los `.env`:** sustituir la lista por nombre (`.env.dev`, `.env.prod`) por `.env.*` + `!.env.*.example`. Aplicar si aparecen más entornos o al revisar la seguridad en la fase 6 o 7. Ver «.gitignore» en `conceptos-para-estudiar.md`.
 
+- **Proxy del socket de Docker para Telegraf y Alloy (26 nov.):** con el socket directo se podría crear un contenedor en una red con salida y rodear la red interna. Un proxy (por ejemplo `tecnativa/docker-socket-proxy`, con solo `CONTAINERS=1` y lectura) limitaría las peticiones a las de lectura que necesitan. Valorar en la fase 6 o 7 si da tiempo.
+
+- **Webs sin salida a internet (26 nov.):** `frontend` no es interna (Nginx publica su puerto en ella), así que las webs tienen salida a internet sin necesitarla. Mejora: una red interna aparte entre Nginx y las webs, y `frontend` solo para Nginx. Valorar en la fase 6 si sobra tiempo.
+
 ## Ideas para después de la práctica (fuera del alcance de la entrega)
 
 - **Publicar la web con un límite gratuito de importaciones (23 nov.):** importar el guardado del juego (actualización automática del equipo) sería gratis **una vez al día**; para volver a importar el mismo día, el usuario vería un anuncio. No entra en la práctica (el README es solo de infraestructura y no se publica la web). Lo que haría falta si se hace:
@@ -203,6 +207,7 @@ Tracker_Randomlocke_P2/
   - **Caché compartida y Redis caído:** `MISS` en una réplica y `HIT` en otra; `make stop-cache` y la web sigue funcionando.
   - **MinIO, monitorización y alertas** (fases 4 y 5): sprites servidos a través de Nginx, Grafana con métricas y logs, alerta en Telegram.
   - **Tests:** `make test` en los dos entornos.
+  - **Grafana:** abrir `/d/contenedores`, leer los 4 gráficos, pulsar *Edit* en uno para enseñar su consulta PromQL, enseñar ese mismo gráfico en `panel-contenedores.json` (panel como código) y hacer una consulta en directo en **Explore**.
   - **Por qué Telegraf y no cAdvisor:** explicar con el dibujo de las dos máquinas (Ubuntu pide, `docker-desktop` tiene los contenedores) qué falló con cAdvisor, cómo se comprobó (Prometheus sin contenedores) y por qué Telegraf sí funciona (pregunta a la API). Enseñar la consulta a Prometheus con los contenedores del entorno.
   - **Recorrido por los límites:** la exposición consiste en entender el código. Por cada defensa, decir **qué se limita, dónde está en el código y cómo se demuestra** (ver «Mapa de límites para la exposición» al final de este documento). El guion puede enseñar cada fragmento con `grep -n` y a continuación su prueba.
   - **Cambio en directo:** el profesor pedirá un cambio y habrá que predecir el `plan` antes de ejecutarlo; dejar preparado un ejemplo (por ejemplo, `replicas_web = 4` en prod).
@@ -233,5 +238,5 @@ La presentación es explicar el código: qué está limitado o separado, dónde 
 | **Nginx no da pistas** | `nginx.conf.tftpl` → `server_tokens off` | Las cabeceras no muestran la versión de Nginx |
 | **Alta disponibilidad** | `nginx.conf.tftpl` → `max_fails`, `proxy_next_upstream`, `proxy_connect_timeout`, `resolve`; `restart = "unless-stopped"` | `make stop-web WEB=2`: 9/9 peticiones `200`; vuelve sola con `start-web` |
 | **Comprobaciones antes de crear** | `validation` (réplicas, contraseña de MinIO) y `postcondition` (`preparar_db`, `subir_sprites`) | Un valor no válido falla en el `plan`; un script que falla para el `apply` |
-| **Monitorización** (fase 5) | Red `monitorizacion` interna; Grafana solo en `127.0.0.1` con contraseña `sensitive`; Telegraf y Alloy con solo el socket de Docker (`:ro`), sin puertos (el `:ro` no hace de solo lectura al socket: por eso imagen oficial fijada y red interna) | Se completará en la fase 5 |
+| **Monitorización** (fase 5) | Red `monitorizacion` interna; Grafana solo en `127.0.0.1` con contraseña `sensitive`; Telegraf y Alloy con solo el socket de Docker (`:ro`), sin puertos (el `:ro` no hace de solo lectura al socket: por eso imagen oficial fijada y red interna) | Grafana: sin contraseña, con credenciales falsas o al registrarse, `401`; solo en `127.0.0.1:3100/3200`; red `grafana` solo con Grafana |
 | **Recolector según el entorno de ejecución** | `modules/monitorizacion/main.tf` → Telegraf (API de Docker) en lugar de cAdvisor | Consulta a Prometheus: aparecen los contenedores `tracker-<entorno>-…`; con cAdvisor, ninguno |

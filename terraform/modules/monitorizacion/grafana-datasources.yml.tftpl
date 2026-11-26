@@ -1,0 +1,11 @@
+# Fuente de datos creada al arrancar Grafana (provisioning): Prometheus de este entorno.
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    uid: prometheus
+    type: prometheus
+    access: proxy
+    url: ${prometheus}
+    isDefault: true
+    editable: false

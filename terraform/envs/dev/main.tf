@@ -73,4 +73,8 @@ module "monitorizacion" {
   prefijo            = local.prefijo
   red_monitorizacion = module.red.monitorizacion
   gid_docker         = var.gid_docker
+  red_grafana        = module.red.grafana
+  puerto_grafana     = var.puerto_grafana
+  grafana_usuario    = var.grafana_usuario
+  grafana_password   = var.grafana_password
 }

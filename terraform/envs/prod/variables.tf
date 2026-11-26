@@ -68,3 +68,20 @@ variable "gid_docker" {
   description = "Grupo (número) dueño del socket de Docker, para Telegraf. Lo pasa el Makefile (TF_VAR_gid_docker)"
   type        = number
 }
+
+variable "puerto_grafana" {
+  description = "Puerto de tu ordenador por el que se abre Grafana (solo en 127.0.0.1)"
+  type        = number
+}
+
+variable "grafana_usuario" {
+  description = "Usuario administrador de Grafana"
+  type        = string
+  sensitive   = true
+}
+
+variable "grafana_password" {
+  description = "Contraseña del administrador de Grafana (12 caracteres como mínimo)"
+  type        = string
+  sensitive   = true
+}

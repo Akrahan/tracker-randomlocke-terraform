@@ -1,0 +1,11 @@
+# Indica a Grafana que cargue los paneles de esta carpeta al arrancar (provisioning).
+apiVersion: 1
+
+providers:
+  - name: tracker
+    folder: Tracker
+    type: file
+    disableDeletion: true
+    allowUiUpdates: false
+    options:
+      path: /etc/grafana/dashboards

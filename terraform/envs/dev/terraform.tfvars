@@ -4,3 +4,4 @@ puerto_web     = 8100
 replicas_web   = 2
 docs_activadas = true
 cache_activada = false
+puerto_grafana = 3100
