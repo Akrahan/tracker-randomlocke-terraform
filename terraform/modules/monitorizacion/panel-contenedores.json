@@ -1,7 +1,7 @@
 {
   "uid": "contenedores",
   "title": "Contenedores",
-  "description": "Estado, CPU y memoria de cada contenedor de este entorno (datos de Telegraf vía Prometheus). El desplegable «Contenedor» filtra todos los gráficos.",
+  "description": "Estado, CPU y memoria de cada contenedor de este entorno (Telegraf vía Prometheus) y sus logs (Alloy vía Loki). El desplegable «Contenedor» filtra todos los gráficos; «Buscar en los logs» filtra el texto de los logs.",
   "tags": [
     "tracker"
   ],
@@ -135,6 +135,57 @@
           "legendFormat": "{{container_name}}"
         }
       ]
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Líneas de log por minuto",
+      "gridPos": {
+        "x": 0,
+        "y": 14,
+        "w": 24,
+        "h": 6
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by (container_name) (count_over_time({container_name=~\"$contenedor\"} |~ \"(?i)$buscar\" [1m]))",
+          "legendFormat": "{{container_name}}"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "logs",
+      "title": "Logs",
+      "gridPos": {
+        "x": 0,
+        "y": 20,
+        "w": 24,
+        "h": 12
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "loki"
+      },
+      "options": {
+        "showTime": true,
+        "showLabels": false,
+        "wrapLogMessage": true,
+        "enableLogDetails": true,
+        "sortOrder": "Descending",
+        "dedupStrategy": "none"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "{container_name=~\"$contenedor\"} |~ \"(?i)$buscar\""
+        }
+      ]
     }
   ],
   "templating": {
@@ -164,6 +215,16 @@
           "value": [
             "$__all"
           ]
+        }
+      },
+      {
+        "type": "textbox",
+        "name": "buscar",
+        "label": "Buscar en los logs",
+        "query": "",
+        "current": {
+          "text": "",
+          "value": ""
         }
       }
     ]
