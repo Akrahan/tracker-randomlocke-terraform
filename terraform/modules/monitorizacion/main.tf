@@ -1,3 +1,20 @@
+# Contenedores que deberían estar en marcha, escritos como una lista en PromQL para las alertas
+# «Web caída» y «Servicio caído». Cada nombre se convierte en una serie con valor 1 y etiqueta
+# container_name (label_replace sobre vector(1)); «or» las junta. Ejemplo con 2 webs:
+#   label_replace(vector(1), "container_name", "tracker-dev-web-1", "", "") or
+#   label_replace(vector(1), "container_name", "tracker-dev-web-2", "", "")
+locals {
+  nombres_webs      = [for i in range(1, var.replicas_web + 1) : "${var.prefijo}-web-${i}"]
+  nombres_servicios = [for s in var.servicios_criticos : "${var.prefijo}-${s}"]
+
+  webs_esperadas = join(" or ", [
+    for n in local.nombres_webs : "label_replace(vector(1), \"container_name\", \"${n}\", \"\", \"\")"
+  ])
+  servicios_esperados = join(" or ", [
+    for n in local.nombres_servicios : "label_replace(vector(1), \"container_name\", \"${n}\", \"\", \"\")"
+  ])
+}
+
 resource "docker_image" "telegraf" {
   name         = "telegraf:1.38"
   keep_locally = true
@@ -27,9 +44,10 @@ resource "docker_image" "alloy" {
 # contenedor. Con Docker Desktop + WSL, cAdvisor no ve los contenedores (le prestan las carpetas de Ubuntu);
 # la API, por el socket, sí llega al motor. Solo el socket; sin puertos y en la red interna.
 resource "docker_container" "telegraf" {
-  name    = "${var.prefijo}-telegraf"
-  image   = docker_image.telegraf.image_id
-  restart = "unless-stopped"
+  name     = "${var.prefijo}-telegraf"
+  image    = docker_image.telegraf.image_id
+  restart  = "unless-stopped"
+  must_run = false # un plan no borra el contenedor si está parado (ver modules/web)
 
   upload {
     content = templatefile("${path.module}/telegraf.conf.tftpl", {
@@ -59,9 +77,10 @@ resource "docker_volume" "prometheus" {
 
 # Prometheus: pregunta a Telegraf cada 15 s y guarda el historial (7 días) de este entorno.
 resource "docker_container" "prometheus" {
-  name    = "${var.prefijo}-prometheus"
-  image   = docker_image.prometheus.image_id
-  restart = "unless-stopped"
+  name     = "${var.prefijo}-prometheus"
+  image    = docker_image.prometheus.image_id
+  restart  = "unless-stopped"
+  must_run = false # un plan no borra el contenedor si está parado (ver modules/web)
 
   command = [
     "--config.file=/etc/prometheus/prometheus.yml",
@@ -105,9 +124,10 @@ resource "docker_volume" "loki" {
 # Sin puertos y en la red interna. Sin healthcheck en Docker: la imagen es mínima
 # (sin shell ni wget, como MinIO); Alloy reintenta los envíos si aún no está listo.
 resource "docker_container" "loki" {
-  name    = "${var.prefijo}-loki"
-  image   = docker_image.loki.image_id
-  restart = "unless-stopped"
+  name     = "${var.prefijo}-loki"
+  image    = docker_image.loki.image_id
+  restart  = "unless-stopped"
+  must_run = false # un plan no borra el contenedor si está parado (ver modules/web)
 
   command = ["-config.file=/etc/loki/config.yaml"]
 
@@ -134,9 +154,10 @@ resource "docker_volume" "alloy" {
 # Alloy: recoge los logs de los contenedores de este entorno por la API de Docker (el socket,
 # como Telegraf) y los envía a Loki. Sin puertos y en la red interna.
 resource "docker_container" "alloy" {
-  name    = "${var.prefijo}-alloy"
-  image   = docker_image.alloy.image_id
-  restart = "unless-stopped"
+  name     = "${var.prefijo}-alloy"
+  image    = docker_image.alloy.image_id
+  restart  = "unless-stopped"
+  must_run = false # un plan no borra el contenedor si está parado (ver modules/web)
 
   command = [
     "run", "/etc/alloy/config.alloy",
@@ -183,9 +204,10 @@ resource "docker_volume" "grafana" {
 # (provisioning), sin configurar nada a mano. Cerrado: sin acceso anónimo ni registro, contraseña
 # sensitive, puerto solo en 127.0.0.1.
 resource "docker_container" "grafana" {
-  name    = "${var.prefijo}-grafana"
-  image   = docker_image.grafana.image_id
-  restart = "unless-stopped"
+  name     = "${var.prefijo}-grafana"
+  image    = docker_image.grafana.image_id
+  restart  = "unless-stopped"
+  must_run = false # un plan no borra el contenedor si está parado (ver modules/web)
 
   env = [
     "GF_SECURITY_ADMIN_USER=${var.grafana_usuario}",
@@ -198,6 +220,8 @@ resource "docker_container" "grafana" {
     "GF_ANALYTICS_CHECK_FOR_UPDATES=false",
     "GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES=false",
     "GF_NEWS_NEWS_FEED_ENABLED=false",
+    # Sin /metrics: respondía sin contraseña con cifras internas de Grafana y nadie lo usa
+    "GF_METRICS_ENABLED=false",
   ]
 
   upload {
@@ -221,11 +245,25 @@ resource "docker_container" "grafana" {
   # Reglas de alerta (web caída, CPU alta, servicio caído y errores 5xx), iguales en los dos entornos
   upload {
     content = templatefile("${path.module}/grafana-alertas.yml.tftpl", {
-      prefijo      = var.prefijo
-      replicas_web = var.replicas_web
-      servicios    = var.servicios_criticos
+      prefijo             = var.prefijo
+      replicas_web        = var.replicas_web
+      webs_esperadas      = local.webs_esperadas
+      servicios_esperados = local.servicios_esperados
     })
     file = "/etc/grafana/provisioning/alerting/alertas.yml"
+  }
+
+  # Aviso por Telegram: solo si telegram_activado (prod). En dev el bloque no existe
+  # y las alertas solo se ven en Grafana.
+  dynamic "upload" {
+    for_each = var.telegram_activado ? [1] : []
+    content {
+      content = templatefile("${path.module}/grafana-telegram.yml.tftpl", {
+        token   = var.telegram_token
+        chat_id = var.telegram_chat_id
+      })
+      file = "/etc/grafana/provisioning/alerting/telegram.yml"
+    }
   }
 
   # monitorizacion (interna): para preguntar a Prometheus.

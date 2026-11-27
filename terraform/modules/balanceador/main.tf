@@ -4,9 +4,10 @@ resource "docker_image" "nginx" {
 }
 
 resource "docker_container" "balanceador" {
-  name    = "${var.prefijo}-balanceador"
-  image   = docker_image.nginx.image_id
-  restart = "unless-stopped"
+  name     = "${var.prefijo}-balanceador"
+  image    = docker_image.nginx.image_id
+  restart  = "unless-stopped"
+  must_run = false # un plan no borra el contenedor si está parado (ver modules/web)
 
   networks_advanced {
     name = var.red_frontend

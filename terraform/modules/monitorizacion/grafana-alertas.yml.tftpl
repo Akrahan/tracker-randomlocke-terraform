@@ -8,8 +8,9 @@ groups:
     folder: Tracker
     interval: 30s # cada cuánto se evalúan las reglas
     rules:
-      # Web caída: hay menos webs en marcha de las que se desplegaron. Telegraf solo informa
-      # de los contenedores encendidos: una web parada desaparece del recuento.
+      # Web caída: qué webs de las desplegadas no están en marcha, por su nombre.
+      # La consulta crea la lista de webs esperadas (web-1 … web-N, desde replicas_web) y quita
+      # (unless) las que Telegraf ve encendidas: lo que queda son las caídas, una alerta por cada una.
       - uid: web-caida
         title: Web caída
         condition: C
@@ -22,7 +23,9 @@ groups:
             model:
               refId: A
               instant: true
-              expr: count(docker_container_status_uptime_ns{container_name=~"${prefijo}-web-.+"})
+              expr: >-
+                (${webs_esperadas})
+                unless on(container_name) docker_container_status_uptime_ns
           - refId: C
             datasourceUid: __expr__
             model:
@@ -31,17 +34,18 @@ groups:
               expression: A
               conditions:
                 - evaluator:
-                    type: lt
+                    type: gt
                     params:
-                      - ${replicas_web}
+                      - 0
         for: 1m # 1 minuto seguido: un reinicio de unos segundos no avisa
-        noDataState: Alerting # sin ninguna web, el recuento ni siquiera existe: también es caída
+        noDataState: OK # sin resultados = no falta ninguna web
         execErrState: Error
         labels:
           severidad: critica
+          entorno: ${prefijo}
         annotations:
-          summary: "${prefijo}: webs en marcha {{ $values.A.Value }} de ${replicas_web}"
-          description: Nginx sigue repartiendo entre las que quedan, pero hay menos margen. Revisar con make ps y make logs.
+          summary: "{{ $labels.container_name }} no está en marcha (de ${replicas_web} webs)"
+          description: Si quedan otras webs, Nginx reparte entre ellas. Ver por qué con make logs ENV=… SERVICIO=web-N.
 
       # CPU alta: un contenedor usa más del 80 % de un núcleo durante 2 minutos. El porcentaje
       # de Telegraf es por núcleo (con 8 núcleos, el máximo es 800 %); una web (un solo
@@ -75,12 +79,14 @@ groups:
         execErrState: Error
         labels:
           severidad: aviso
+          entorno: ${prefijo}
         annotations:
           summary: "{{ $labels.container_name }}: CPU al {{ printf \"%.0f\" $values.A.Value }} % de un núcleo"
           description: Más del 80 % de un núcleo durante 2 minutos.
 
-      # Servicio caído: falta alguna pieza sin la que la app no funciona bien (Nginx, la base de
-      # datos, MinIO y, en prod, la caché). "Web caída" no lo ve: las webs siguen encendidas.
+      # Servicio caído: qué pieza imprescindible (Nginx, la base de datos, MinIO y, en prod, la
+      # caché) no está en marcha, por su nombre. "Web caída" no lo ve: las webs siguen encendidas.
+      # Misma consulta que "Web caída", con la lista de servicios_criticos.
       - uid: servicio-caido
         title: Servicio caído
         condition: C
@@ -93,7 +99,9 @@ groups:
             model:
               refId: A
               instant: true
-              expr: count(docker_container_status_uptime_ns{container_name=~"${prefijo}-(${join("|", servicios)})"})
+              expr: >-
+                (${servicios_esperados})
+                unless on(container_name) docker_container_status_uptime_ns
           - refId: C
             datasourceUid: __expr__
             model:
@@ -102,17 +110,18 @@ groups:
               expression: A
               conditions:
                 - evaluator:
-                    type: lt
+                    type: gt
                     params:
-                      - ${length(servicios)}
+                      - 0
         for: 1m
-        noDataState: Alerting # si no queda ninguno, el recuento no existe: también es caída
+        noDataState: OK # sin resultados = no falta ningún servicio
         execErrState: Error
         labels:
           severidad: critica
+          entorno: ${prefijo}
         annotations:
-          summary: "${prefijo}: servicios en marcha {{ $values.A.Value }} de ${length(servicios)} (${join(", ", servicios)})"
-          description: Sin Nginx o sin la base de datos la app no funciona. Revisar con make ps.
+          summary: "{{ $labels.container_name }} no está en marcha"
+          description: Sin Nginx o sin la base de datos la app no funciona. Ver por qué con make logs ENV=… SERVICIO=….
 
       # Errores 5xx: más de 10 respuestas de error del servidor en 5 minutos, contadas en los
       # logs de Nginx (Loki). Lo que de verdad nota el usuario: la web responde, pero mal.
@@ -145,6 +154,7 @@ groups:
         execErrState: Error
         labels:
           severidad: critica
+          entorno: ${prefijo}
         annotations:
           summary: "${prefijo}: {{ $values.A.Value }} errores 5xx en Nginx en los últimos 5 minutos"
           description: Buscar las líneas en el panel Contenedores (Buscar en los logs) o en Explore.

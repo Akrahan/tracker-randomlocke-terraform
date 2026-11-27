@@ -80,4 +80,7 @@ module "monitorizacion" {
   replicas_web       = var.replicas_web
   # Piezas sin las que la app no funciona bien: la alerta «Servicio caído» las vigila
   servicios_criticos = concat(["balanceador", "db", "minio"], var.cache_activada ? ["cache"] : [])
+  telegram_activado  = var.telegram_activado
+  telegram_token     = var.telegram_token
+  telegram_chat_id   = var.telegram_chat_id
 }

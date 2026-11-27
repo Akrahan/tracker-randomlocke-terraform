@@ -50,6 +50,12 @@ resource "docker_container" "web" {
   image   = docker_image.web.image_id
   restart = "unless-stopped"
 
+  # must_run = false: si el contenedor está parado (make stop-*), un terraform plan no lo borra.
+  # Con el valor por defecto (true), el provider de Docker borra los contenedores parados al
+  # leer el estado, incluso en un plan (pasó con web-2 el 27 nov.). Docker lo sigue
+  # reiniciando solo si se cae (restart), y make start-* lo vuelve a arrancar.
+  must_run = false
+
   depends_on = [docker_container.preparar_db]
 
   env = concat(local.entorno_db, [

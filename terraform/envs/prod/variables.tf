@@ -85,3 +85,33 @@ variable "grafana_password" {
   type        = string
   sensitive   = true
 }
+
+variable "telegram_activado" {
+  description = "Si las alertas se envían a Telegram (solo en prod; en dev se ven en Grafana)"
+  type        = bool
+  default     = false
+}
+
+variable "telegram_token" {
+  description = "Token del bot de Telegram (lo da @BotFather). Solo hace falta si telegram_activado es true"
+  type        = string
+  sensitive   = true
+  default     = ""
+
+  validation {
+    condition     = !var.telegram_activado || can(regex("^[0-9]+:[A-Za-z0-9_-]+$", var.telegram_token))
+    error_message = "Con telegram_activado = true hace falta un telegram_token válido (número:letras) en secrets.auto.tfvars."
+  }
+}
+
+variable "telegram_chat_id" {
+  description = "ID del chat al que escribe el bot (el número de \"chat\":{\"id\": en getUpdates)"
+  type        = string
+  sensitive   = true
+  default     = ""
+
+  validation {
+    condition     = !var.telegram_activado || can(regex("^-?[0-9]+$", var.telegram_chat_id))
+    error_message = "Con telegram_activado = true hace falta un telegram_chat_id numérico en secrets.auto.tfvars."
+  }
+}

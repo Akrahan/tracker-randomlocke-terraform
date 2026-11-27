@@ -9,9 +9,10 @@ resource "docker_volume" "datos" {
 }
 
 resource "docker_container" "minio" {
-  name    = "${var.prefijo}-minio"
-  image   = docker_image.minio.image_id
-  restart = "unless-stopped"
+  name     = "${var.prefijo}-minio"
+  image    = docker_image.minio.image_id
+  restart  = "unless-stopped"
+  must_run = false # un plan no borra el contenedor si está parado (ver modules/web)
 
   # MinIO guarda los ficheros en esta carpeta, dentro del volumen
   command = ["server", "/home/nonroot/datos"]

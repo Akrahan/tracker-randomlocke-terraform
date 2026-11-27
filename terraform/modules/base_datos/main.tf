@@ -8,9 +8,10 @@ resource "docker_image" "postgres" {
 }
 
 resource "docker_container" "db" {
-  name    = "${var.prefijo}-db"
-  image   = docker_image.postgres.image_id
-  restart = "unless-stopped"
+  name     = "${var.prefijo}-db"
+  image    = docker_image.postgres.image_id
+  restart  = "unless-stopped"
+  must_run = false # un plan no borra el contenedor si está parado (ver modules/web)
 
   env = [
     "POSTGRES_DB=${var.db_nombre}",

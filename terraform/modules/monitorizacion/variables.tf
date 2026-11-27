@@ -49,3 +49,20 @@ variable "servicios_criticos" {
   description = "Servicios sin los que la app no funciona (sin el prefijo): la alerta «Servicio caído» salta si falta alguno"
   type        = list(string)
 }
+
+variable "telegram_activado" {
+  description = "Si Grafana envía las alertas a Telegram"
+  type        = bool
+}
+
+variable "telegram_token" {
+  description = "Token del bot de Telegram"
+  type        = string
+  sensitive   = true
+}
+
+variable "telegram_chat_id" {
+  description = "ID del chat de Telegram"
+  type        = string
+  sensitive   = true
+}

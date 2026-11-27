@@ -1,0 +1,65 @@
+# A quién avisa Grafana (provisioning). Solo se carga si telegram_activado = true (prod).
+# El token y el chat llegan de variables sensitive (secrets.auto.tfvars, fuera de Git);
+# jsonencode los escribe entre comillas y con los caracteres especiales escapados.
+apiVersion: 1
+
+# Plantilla del mensaje (lenguaje de plantillas de Go), en hora de Madrid. Cada mensaje es una
+# foto del grupo (una regla): primero lo resuelto desde el último aviso y después lo que sigue mal.
+#   tracker-prod
+#   ✅ Resuelto (1)
+#   • Web caída: tracker-prod-web-2 (de las 16:43 a las 17:01)
+#   🔴 Sigue pendiente (2)
+#   • Web caída (critica): tracker-prod-web-1 no está en marcha (de 3 webs) · desde las 17:02
+#   Qué hacer: … (una sola vez: el grupo es de una sola regla)
+templates:
+  - orgId: 1
+    name: tracker
+    template: |
+      {{ define "tracker.mensaje" -}}
+      <b>{{ .CommonLabels.entorno }}</b>
+      {{- if .Alerts.Resolved }}
+
+      ✅ <b>Resuelto ({{ len .Alerts.Resolved }})</b>
+      {{- range .Alerts.Resolved }}
+      • {{ .Labels.alertname }}{{ if .Labels.container_name }}: {{ .Labels.container_name }}{{ end }} (de las {{ .StartsAt | tz "Europe/Madrid" | date "15:04" }} a las {{ .EndsAt | tz "Europe/Madrid" | date "15:04" }})
+      {{- end }}
+      {{- end }}
+      {{- if .Alerts.Firing }}
+
+      🔴 <b>{{ if .Alerts.Resolved }}Sigue pendiente{{ else }}Problemas{{ end }} ({{ len .Alerts.Firing }})</b>
+      {{- range .Alerts.Firing }}
+      • <b>{{ .Labels.alertname }}</b> ({{ .Labels.severidad }}): {{ .Annotations.summary }} · desde las {{ .StartsAt | tz "Europe/Madrid" | date "15:04" }}
+      {{- end }}
+
+      Qué hacer: {{ (index .Alerts.Firing 0).Annotations.description }}
+      <i>Las horas son de confirmación: el fallo empezó 1-2 min antes.</i>
+      {{- else }}
+
+      Nada pendiente de esta alerta.
+      {{- end }}
+      {{- end }}
+
+# Punto de contacto: por dónde se avisa
+contactPoints:
+  - orgId: 1
+    name: Telegram
+    receivers:
+      - uid: telegram
+        type: telegram
+        settings:
+          bottoken: ${jsonencode(token)}
+          chatid: ${jsonencode(chat_id)}
+          parse_mode: HTML # para la negrita (<b>)
+          message: '{{ template "tracker.mensaje" . }}'
+        disableResolveMessage: false # avisa también cuando se resuelve
+
+# Política: todas las alertas van a Telegram, agrupadas por regla
+policies:
+  - orgId: 1
+    receiver: Telegram
+    group_by:
+      - grafana_folder
+      - alertname
+    group_wait: 30s # espera 30 s para juntar las alertas que saltan a la vez en un solo mensaje
+    group_interval: 5m # cambios en un grupo ya avisado: como mucho un mensaje cada 5 min
+    repeat_interval: 4h # si sigue sin resolverse, lo recuerda cada 4 h
