@@ -484,3 +484,21 @@
 - **Pruebas:** `plan` de dev «No changes» al añadir Telegram (el bloque no existe con `telegram_activado = false`); en prod solo se recrea Grafana y el token sale como `(sensitive value)`. Botón *Test* y `make stop-web WEB=2 ENV=prod`: el aviso llega a Telegram en 2-4 minutos (detección + `for 1m` + `group_wait`; tiempos aceptados por el usuario) y el de resuelta en hasta ~5. Con las reglas con nombre: «tracker-prod-web-2 no está en marcha (de 3 webs)». Plantilla con secciones probada en tres casos (tres problemas, uno resuelto y dos pendientes, todo resuelto). Al final: `web-2` de nuevo en marcha, Grafana de prod con `alertas.yml` y `telegram.yml` y el de dev solo con `alertas.yml`, `51 passed` y `plan` «No changes» en los dos entornos. Incidencia corregida aparte: un `plan` borraba los contenedores parados (ver la entrada de la corrección).
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Guio la creación del bot y la obtención del ID sin ver los secretos, avisó de la filtración del token en una captura, implementó el aviso, las reglas con nombre y la plantilla a petición del usuario, y comprobó la configuración sin mostrar valores. El usuario creó el bot, guardó los secretos, decidió el formato del mensaje y los tiempos, aplicó y probó en su móvil.
 - **Commit:** `feat: add Telegram alerts in prod and keep stopped containers on plan`
+
+### [Subpaso 5.3.3: Cierre de la fase 5]
+- **Fecha:** 27 nov. 2026
+- **Archivos:** `docs/resumenes/fase-5.md` (nuevo), `docs/hoja-de-ruta.md` (mapa de límites repasado: redes `monitorizacion` y `grafana`, salida a internet solo para Grafana, usuarios sin *root* de la monitorización, imágenes fijadas de la fase 5, alertas con nombre y fila nueva «Un `plan` no borra contenedores parados»).
+- **Comandos:** ninguno nuevo; se reutilizan las comprobaciones del 5.3.2 (`51 passed` y `plan` «No changes» en los dos entornos).
+- **Justificación:** cerrar la fase con su resumen y dejar el mapa de límites al día para la exposición y `make demo`. La regla «Reinicios» y el generador de carga para «CPU alta» quedan fuera (ideas en «Más alertas»; para la demo basta «Web caída» con `make stop-web`).
+- **Pruebas:** —
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Redactó el resumen y repasó el mapa de límites a partir de lo hecho y comprobado.
+- **Commit:** `docs: close monitoring phase with summary and limits map`
+
+### [Subpaso 6.1: Tests de la API a través del balanceador]
+- **Fecha:** 27 nov. 2026
+- **Archivos:** ninguno (los tests y `make test` son de las fases 2 y 3).
+- **Comandos:** `make test ENV=dev` y `make test ENV=prod` (contenedor `python:3.12-slim` de un solo uso en la red `frontend`, con `BASE_URL=http://tracker-<entorno>-balanceador`).
+- **Justificación:** los tests de la API pasan por Nginx, como un usuario, así que prueban a la vez la app, el reparto entre réplicas, la base de datos y, en prod, la caché, con toda la infraestructura de las fases 3-5 desplegada.
+- **Pruebas:** `51 passed in 5.05s` (dev) y `51 passed in 5.11s` (prod).
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Lanzó los tests y anotó las salidas para el README.
+- **Commit:** va con el 6.2.
