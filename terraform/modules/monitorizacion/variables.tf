@@ -39,3 +39,13 @@ variable "grafana_password" {
     error_message = "La contraseña de Grafana debe tener al menos 12 caracteres."
   }
 }
+
+variable "replicas_web" {
+  description = "Número de webs desplegadas: la alerta «Web caída» salta si hay menos en marcha"
+  type        = number
+}
+
+variable "servicios_criticos" {
+  description = "Servicios sin los que la app no funciona (sin el prefijo): la alerta «Servicio caído» salta si falta alguno"
+  type        = list(string)
+}

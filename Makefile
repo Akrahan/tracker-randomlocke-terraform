@@ -11,7 +11,7 @@ WEB ?= 1
 # Grupo dueño del socket de Docker (cambia en cada ordenador): Telegraf lo necesita para leer la API sin ser root
 export TF_VAR_gid_docker := $(shell stat -c '%g' /var/run/docker.sock 2>/dev/null)
 
-.PHONY: help comprobar-env init fmt validate plan apply destroy output ps test logs stop-web start-web stop-cache start-cache
+.PHONY: help comprobar-env init fmt validate plan apply destroy output web grafana ps test logs stop-web start-web stop-cache start-cache
 
 help: ## Muestra esta ayuda
 	@awk 'BEGIN {FS = ":.*## "; print "\nUso: make <comando> ENV=dev|prod (por defecto, dev)\n"} /^[a-zA-Z0-9_-]+:.*## / {printf "  %-12s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -42,6 +42,18 @@ destroy: comprobar-env ## Destruye el entorno entero (pide confirmación)
 
 output: comprobar-env ## Muestra las salidas del entorno (la URL de la web)
 	$(TF) output
+
+# Abre "$$url" en el navegador: explorer.exe abre el de Windows desde WSL (devuelve error
+# aunque funcione, de ahí el || true); en Linux, xdg-open. Solo direcciones, nunca credenciales.
+ABRIR = if command -v explorer.exe >/dev/null; then explorer.exe "$$url" || true; \
+	elif command -v xdg-open >/dev/null; then xdg-open "$$url"; \
+	else echo "Ábrelo en el navegador"; fi
+
+web: comprobar-env ## Abre la web del entorno en el navegador (a través de Nginx)
+	@url="$$($(TF) output -raw url)"; echo "Web de $(ENV): $$url"; $(ABRIR)
+
+grafana: comprobar-env ## Abre el panel de Grafana del entorno en el navegador (pide usuario y contraseña)
+	@url="$$($(TF) output -raw grafana)/d/contenedores"; echo "Grafana de $(ENV): $$url"; $(ABRIR)
 
 ps: comprobar-env ## Estado de los contenedores del entorno
 	docker ps -a --filter name=tracker-$(ENV)- --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"

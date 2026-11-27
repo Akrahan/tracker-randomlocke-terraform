@@ -77,4 +77,7 @@ module "monitorizacion" {
   puerto_grafana     = var.puerto_grafana
   grafana_usuario    = var.grafana_usuario
   grafana_password   = var.grafana_password
+  replicas_web       = var.replicas_web
+  # Piezas sin las que la app no funciona bien: la alerta «Servicio caído» las vigila
+  servicios_criticos = concat(["balanceador", "db", "minio"], var.cache_activada ? ["cache"] : [])
 }

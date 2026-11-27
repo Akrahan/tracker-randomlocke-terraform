@@ -218,6 +218,16 @@ resource "docker_container" "grafana" {
     file    = "/etc/grafana/dashboards/contenedores.json"
   }
 
+  # Reglas de alerta (web caída, CPU alta, servicio caído y errores 5xx), iguales en los dos entornos
+  upload {
+    content = templatefile("${path.module}/grafana-alertas.yml.tftpl", {
+      prefijo      = var.prefijo
+      replicas_web = var.replicas_web
+      servicios    = var.servicios_criticos
+    })
+    file = "/etc/grafana/provisioning/alerting/alertas.yml"
+  }
+
   # monitorizacion (interna): para preguntar a Prometheus.
   # grafana (no interna, solo Grafana): para publicar su puerto y, en el 5.3, salir a Telegram.
   networks_advanced {

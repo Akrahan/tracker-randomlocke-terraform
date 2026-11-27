@@ -1,0 +1,150 @@
+# Reglas de alerta creadas al arrancar Grafana (provisioning), iguales en los dos entornos.
+# A qué canal se avisa (Telegram solo en prod) se decide aparte, en el 5.3.2.
+apiVersion: 1
+
+groups:
+  - orgId: 1
+    name: contenedores
+    folder: Tracker
+    interval: 30s # cada cuánto se evalúan las reglas
+    rules:
+      # Web caída: hay menos webs en marcha de las que se desplegaron. Telegraf solo informa
+      # de los contenedores encendidos: una web parada desaparece del recuento.
+      - uid: web-caida
+        title: Web caída
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: prometheus
+            model:
+              refId: A
+              instant: true
+              expr: count(docker_container_status_uptime_ns{container_name=~"${prefijo}-web-.+"})
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              refId: C
+              type: threshold
+              expression: A
+              conditions:
+                - evaluator:
+                    type: lt
+                    params:
+                      - ${replicas_web}
+        for: 1m # 1 minuto seguido: un reinicio de unos segundos no avisa
+        noDataState: Alerting # sin ninguna web, el recuento ni siquiera existe: también es caída
+        execErrState: Error
+        labels:
+          severidad: critica
+        annotations:
+          summary: "${prefijo}: webs en marcha {{ $values.A.Value }} de ${replicas_web}"
+          description: Nginx sigue repartiendo entre las que quedan, pero hay menos margen. Revisar con make ps y make logs.
+
+      # CPU alta: un contenedor usa más del 80 % de un núcleo durante 2 minutos. El porcentaje
+      # de Telegraf es por núcleo (con 8 núcleos, el máximo es 800 %); una web (un solo
+      # proceso) no puede pasar mucho del 100 %, así que 80 % es estar casi al límite.
+      - uid: cpu-alta
+        title: CPU alta
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: prometheus
+            model:
+              refId: A
+              instant: true
+              expr: max by (container_name) (docker_container_cpu_usage_percent{container_name=~"${prefijo}-.+", cpu="cpu-total"})
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              refId: C
+              type: threshold
+              expression: A
+              conditions:
+                - evaluator:
+                    type: gt
+                    params:
+                      - 80
+        for: 2m # 2 minutos seguidos: los picos de arranque (Grafana ~120 % unos segundos) no avisan
+        noDataState: OK
+        execErrState: Error
+        labels:
+          severidad: aviso
+        annotations:
+          summary: "{{ $labels.container_name }}: CPU al {{ printf \"%.0f\" $values.A.Value }} % de un núcleo"
+          description: Más del 80 % de un núcleo durante 2 minutos.
+
+      # Servicio caído: falta alguna pieza sin la que la app no funciona bien (Nginx, la base de
+      # datos, MinIO y, en prod, la caché). "Web caída" no lo ve: las webs siguen encendidas.
+      - uid: servicio-caido
+        title: Servicio caído
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: prometheus
+            model:
+              refId: A
+              instant: true
+              expr: count(docker_container_status_uptime_ns{container_name=~"${prefijo}-(${join("|", servicios)})"})
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              refId: C
+              type: threshold
+              expression: A
+              conditions:
+                - evaluator:
+                    type: lt
+                    params:
+                      - ${length(servicios)}
+        for: 1m
+        noDataState: Alerting # si no queda ninguno, el recuento no existe: también es caída
+        execErrState: Error
+        labels:
+          severidad: critica
+        annotations:
+          summary: "${prefijo}: servicios en marcha {{ $values.A.Value }} de ${length(servicios)} (${join(", ", servicios)})"
+          description: Sin Nginx o sin la base de datos la app no funciona. Revisar con make ps.
+
+      # Errores 5xx: más de 10 respuestas de error del servidor en 5 minutos, contadas en los
+      # logs de Nginx (Loki). Lo que de verdad nota el usuario: la web responde, pero mal.
+      - uid: errores-5xx
+        title: Errores 5xx
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: loki
+            model:
+              refId: A
+              queryType: instant
+              expr: 'sum(count_over_time({container_name="${prefijo}-balanceador"} |~ `HTTP/[0-9.]+" 5[0-9]{2} ` [5m]))'
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              refId: C
+              type: threshold
+              expression: A
+              conditions:
+                - evaluator:
+                    type: gt
+                    params:
+                      - 10
+        for: 0s # ya se cuentan 5 minutos en la consulta
+        noDataState: OK # sin líneas 5xx no hay nada que contar: todo bien
+        execErrState: Error
+        labels:
+          severidad: critica
+        annotations:
+          summary: "${prefijo}: {{ $values.A.Value }} errores 5xx en Nginx en los últimos 5 minutos"
+          description: Buscar las líneas en el panel Contenedores (Buscar en los logs) o en Explore.
