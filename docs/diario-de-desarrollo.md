@@ -502,3 +502,30 @@
 - **Pruebas:** `51 passed in 5.05s` (dev) y `51 passed in 5.11s` (prod).
 - **Asistencia de IA:** Claude Code (Claude Opus 5.5). Lanzó los tests y anotó las salidas para el README.
 - **Commit:** va con el 6.2.
+
+### [Subpaso 6.2: Pruebas de la infraestructura (make test-infra)]
+- **Fecha:** 27 nov. 2026
+- **Archivos:** `scripts/test-infra.sh` (nuevo), `Makefile` (objetivo `test-infra`), `docs/pruebas/test-infra-dev.txt` y `test-infra-prod.txt` (salidas para el README), `docs/conceptos-para-estudiar.md` («Pruebas de la infraestructura»).
+- **Comandos:** `make test-infra ENV=dev` y `make test-infra ENV=prod`.
+- **Justificación:** demostrar de forma repetible cada fila del mapa de límites (puerta única, reparto, alta disponibilidad, caché compartida, MinIO de solo lectura, redes y entornos aislados, Grafana cerrado, monitorización con datos, alertas, secretos fuera de Git), con salidas reales para el README y la defensa.
+- **Pruebas:** primera ejecución en dev, 20 correctas y 2 fallidas, ambas del guion (rango por defecto de la API de etiquetas de Loki; `grep -q` con `pipefail`); corregidas, **dev 22/22 y prod 23/23** (prod tiene además la prueba de caché: `MISS` en `web-3` y `HIT` en `web-1`). Destacado: 30 peticiones repartidas 15/15 (dev) y 10/10/10 (prod); con `web-2` parada, 20/20 `200` y `terraform plan` «No changes» sin borrarla; Prometheus y Loki con los 10 / 12 contenedores del entorno y ninguno de fuera.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Diseñó y escribió el guion a petición del usuario, lo ejecutó, corrigió sus dos fallos y guardó las salidas.
+- **Commit:** `test: add infrastructure tests with make test-infra`
+
+### [Subpaso 6.3: Prueba de la alerta en Telegram]
+- **Fecha:** 27 nov. 2026
+- **Archivos:** ninguno.
+- **Comandos:** `make stop-web WEB=2 ENV=prod` (17:37:44), espera de 3,5 minutos, `make start-web WEB=2 ENV=prod` (17:41:21), espera de 5,5 minutos; logs de Grafana filtrados (sin mostrar el token).
+- **Justificación:** la alerta en Telegram tarda minutos y se comprueba en el móvil, así que no cabe en el guion automático; se hace a mano, como en la demo.
+- **Pruebas:** `web-2` volvió a *healthy*; 0 errores de envío a Telegram en los logs de Grafana durante la caída y la resolución. Recepción confirmada por el usuario: a las 17:41, «🔴 Problemas (1) · Web caída (critica): tracker-prod-web-2 no está en marcha (de 3 webs) · desde las 17:40» con el «qué hacer»; a las 17:46, «✅ Resuelto (1) · Web caída: tracker-prod-web-2 (de las 17:40 a las 17:42) · Nada pendiente de esta alerta». Tiempos: parada 17:37:44 → aviso 17:41 (~3,5 min); arranque 17:41:21 → resuelta registrada 17:42 y enviada 17:46 (espera de `group_interval`, 5 min). Nota: `make test-infra ENV=prod` también para `web-2` un momento (unos 40-60 s con el `plan`), por debajo o cerca del minuto de `for`.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Ejecutó la prueba a petición del usuario y revisó los logs.
+- **Commit:** va con el 6.2.
+
+### [Subpaso 6.4: Limpieza de los volúmenes de prueba de cAdvisor]
+- **Fecha:** 27 nov. 2026
+- **Archivos:** ninguno.
+- **Comandos:** `docker volume inspect` de `prueba-rootfs-p2`, `prueba-sys-p2`, `prueba-varrun-p2` y `prueba-docker-p2` (sin montarlos); `docker volume rm` de uno en uno, comprobando entre cada uno que Docker respondía y que no había contenedores `unhealthy`; `make test` y `make plan`.
+- **Justificación:** eran volúmenes de enlace (`type: none`, `o: rbind,ro`, hacia `/`, `/sys`, `/var/run` y `/var/lib/docker`) que quedaron de la prueba de cAdvisor del 26 nov. No guardaban datos propios y ningún contenedor los usaba (no estaban montados): borrarlos solo elimina su definición, no las carpetas a las que apuntan. Lo que rompió Docker Desktop el 26 nov. fue borrar un contenedor que los tenía montados.
+- **Pruebas:** tras cada borrado, Docker 29.8.1 respondiendo, 14 contenedores `tracker-*` *healthy* y 0 *unhealthy*; quedan 0 volúmenes `prueba-*`. Después, `51 passed` y `plan` «No changes» en los dos entornos.
+- **Asistencia de IA:** Claude Code (Claude Opus 5.5). Revisó los volúmenes y los borró con permiso explícito del usuario, uno a uno y comprobando Docker entre cada uno.
+- **Commit:** va con el de la fase 6.

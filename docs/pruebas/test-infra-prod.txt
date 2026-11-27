@@ -1,0 +1,64 @@
+Pruebas de infraestructura · entorno prod · 27/11/2026 17:36
+
+▶ 1. Una sola puerta de entrada (solo Nginx y Grafana publican puerto, y en 127.0.0.1)
+     tracker-prod-grafana 127.0.0.1:3200->3000/tcp
+     tracker-prod-balanceador 127.0.0.1:8200->80/tcp
+  ✅ ningún otro contenedor publica puertos
+  ✅ todos los puertos publicados están en 127.0.0.1
+
+▶ 2. Reparto entre réplicas (round-robin de Nginx)
+          10 tracker-prod-web-1
+          10 tracker-prod-web-2
+          10 tracker-prod-web-3
+  ✅ 30 peticiones repartidas entre las 3 réplicas
+
+▶ 3. Alta disponibilidad: con web-2 parada, la web sigue respondiendo
+     códigos con web-2 parada:
+            20 200
+  ✅ 20/20 respuestas 200 con una réplica parada
+     terraform plan con web-2 parada (no debe borrarla: must_run = false)…
+  ✅ plan «No changes» y web-2 sigue existiendo (parada)
+  ✅ web-2 vuelve a estar healthy
+
+▶ 4. Caché compartida entre réplicas (solo si el entorno tiene caché)
+     1.ª lectura: MISS @tracker-prod-web-3 · 2.ª lectura: HIT @tracker-prod-web-1   (partida de prueba 677, ya borrada)
+  ✅ MISS y después HIT (en réplicas distintas: la caché es común)
+
+▶ 5. Dibujos desde MinIO a través de Nginx, solo lectura
+     GET 25.png: 200 image/png · PUT: 403 · DELETE: 403 · listar: 403
+  ✅ el dibujo se sirve (200 image/png)
+  ✅ subir, borrar y listar dan 403
+
+▶ 6. Redes separadas y entornos aislados
+     tracker-prod-frontend: internal=false
+     tracker-prod-backend: internal=true
+     tracker-prod-almacenamiento: internal=true
+     tracker-prod-monitorizacion: internal=true
+     tracker-prod-grafana: internal=false
+  ✅ backend, almacenamiento y monitorizacion son internas (sin salida a internet)
+  ✅ control: desde frontend se resuelve el balanceador
+  ✅ desde frontend no se ven la base de datos, MinIO ni Loki
+  ✅ la monitorización de prod ve su Loki, pero no el Loki ni la BD de dev
+
+▶ 7. Grafana cerrado
+     salud: 200 · sin contraseña: 401 · credenciales falsas: 401 · /metrics: 302
+  ✅ Grafana funciona y pide usuario y contraseña
+  ✅ /metrics no da datos sin contraseña
+
+▶ 8. La monitorización tiene datos de todos los contenedores del entorno
+     contenedores en marcha: 12 · en Prometheus: 12 · en Loki: 12
+  ✅ Prometheus tiene CPU y memoria de todos (Telegraf)
+  ✅ Loki tiene los logs de todos (Alloy)
+  ✅ solo contenedores de prod (nada del otro entorno ni de la P1)
+
+▶ 9. Alertas creadas desde el código (Telegram solo en prod)
+     ficheros de alertas en Grafana: alertas.yml telegram.yml
+  ✅ Grafana cargó las reglas de alerta
+  ✅ 4 reglas: web caída, CPU alta, servicio caído y errores 5xx
+  ✅ prod tiene el aviso por Telegram
+
+▶ 10. Secretos y estado fuera de Git
+  ✅ ni secrets.auto.tfvars, ni .env, ni terraform.tfstate, ni planes en Git
+  ✅ secrets.auto.tfvars de prod está ignorado
+
+Resultado (prod): 23 correctas, 0 fallidas

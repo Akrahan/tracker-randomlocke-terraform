@@ -11,7 +11,7 @@ WEB ?= 1
 # Grupo dueño del socket de Docker (cambia en cada ordenador): Telegraf lo necesita para leer la API sin ser root
 export TF_VAR_gid_docker := $(shell stat -c '%g' /var/run/docker.sock 2>/dev/null)
 
-.PHONY: help comprobar-env init fmt validate plan apply destroy output web grafana ps test logs stop-web start-web stop-cache start-cache
+.PHONY: help comprobar-env init fmt validate plan apply destroy output web grafana ps test test-infra logs stop-web start-web stop-cache start-cache
 
 help: ## Muestra esta ayuda
 	@awk 'BEGIN {FS = ":.*## "; print "\nUso: make <comando> ENV=dev|prod (por defecto, dev)\n"} /^[a-zA-Z0-9_-]+:.*## / {printf "  %-12s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -63,6 +63,9 @@ test: comprobar-env ## Pasa los tests de la API a través de Nginx
 		-e BASE_URL=http://tracker-$(ENV)-balanceador \
 		-v "$(CURDIR)/tests:/tests:ro" python:3.12-slim \
 		sh -c "pip install --quiet --root-user-action=ignore pytest >/dev/null 2>&1 && python -m pytest -q -p no:cacheprovider /tests"
+
+test-infra: comprobar-env ## Pruebas de la infraestructura (puertos, reparto, alta disponibilidad, redes, alertas...)
+	@URL="$$($(TF) output -raw url)" GRAFANA="$$($(TF) output -raw grafana)" bash scripts/test-infra.sh $(ENV)
 
 logs: comprobar-env ## Últimas líneas del log de un contenedor (SERVICIO=balanceador, web-1, db...)
 	docker logs --tail 30 tracker-$(ENV)-$(SERVICIO)
