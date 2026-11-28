@@ -70,32 +70,7 @@ Un paso por turno: Claude explica, yo escribo, Claude revisa y yo hago el commit
 
 ## Ideas para después de la práctica (fuera del alcance de la entrega)
 
-- **Publicar la web con un límite gratuito de importaciones (23 nov.):** importar el guardado del juego (actualización automática del equipo) sería gratis **una vez al día**; para volver a importar el mismo día, el usuario vería un anuncio. No entra en la práctica (el README es solo de infraestructura y no se publica la web). Lo que haría falta si se hace:
-  - **Cuentas de usuario:** el límite tiene que ir por usuario. Por IP no sirve: varias personas comparten una IP (casa, universidad) y una persona puede cambiarla.
-  - **Contador en el servidor**, nunca en el navegador (se borra o se falsea): en Redis con caducidad de un día (`INCR` + `EXPIRE`) o en PostgreSQL si debe sobrevivir a un reinicio de Redis.
-  - **Anuncio con recompensa verificado por el servidor:** la red de anuncios debe confirmar al servidor que se vio el anuncio; si solo lo dice el navegador, cualquiera se salta el anuncio.
-  - **Requisitos legales en la UE:** consentimiento de cookies y de anuncios personalizados (RGPD), aviso legal y política de privacidad.
-  - **Propiedad intelectual:** la app usa nombres y dibujos de Pokémon. Cobrar o poner anuncios en una herramienta de fans con material de Nintendo / The Pokémon Company puede acabar en una reclamación y en el cierre de la web. Habría que informarse antes de monetizar.
-  - **Seguridad de la subida en una web pública:** ver «Subida de archivos» en `conceptos-para-estudiar.md` (lo que ya está hecho y lo que faltaría).
-- **Publicar la web en internet con dominio propio (26 nov.):** qué haría falta, en orden:
-  - **Servidor Linux en la nube** (un VPS pequeño, de unos pocos euros al mes) con **Docker Engine instalado directamente**: en Linux el motor y quien da las órdenes son la misma máquina, así que cAdvisor funcionaría tal cual. Terraform y los módulos sirven casi sin cambios (el provider apuntaría al Docker del servidor).
-  - **Monitorización en el servidor:** volver a cAdvisor (estándar, más barato y con más detalle; allí funciona) más `node-exporter` para la máquina; Telegraf también valdría. Solo cambia el recolector y las consultas de Grafana.
-  - **Dominio y DNS:** comprar el dominio y apuntar su registro `A` a la IP del servidor.
-  - **HTTPS:** certificado gratuito de Let's Encrypt en Nginx (o Caddy, que lo renueva solo); redirigir HTTP a HTTPS.
-  - **Exposición:** Nginx publicaría los puertos 80 y 443 en `0.0.0.0` (todo internet), y el resto seguiría igual: sin puertos. Cortafuegos (`ufw`) que solo abra 22, 80 y 443 (ojo: los puertos que Docker publica en `0.0.0.0` se saltan `ufw`, así que todo lo que no sea Nginx debe seguir en `127.0.0.1` o sin puertos); SSH solo con clave, sin contraseña; Grafana y las consolas, nunca abiertas a internet (por un túnel SSH o una VPN).
-  - **Secretos y estado:** contraseñas largas y distintas; el estado de Terraform fuera del portátil y con copia (por ejemplo, en un almacenamiento S3 cifrado).
-  - **Copias de seguridad:** `pg_dump` diario de PostgreSQL guardado fuera del servidor, y prueba de restaurarlo.
-  - **Rendimiento y coste:** los dibujos podrían servirse desde una CDN; límite de peticiones en Nginx (`limit_req`).
-  - **Mantenimiento:** actualizaciones de seguridad del sistema y de las imágenes, y las alertas de Telegram activas.
-  - **Más alertas** (anotado el 27 nov.; no forman parte de la entrega ni de la presentación): además de web caída, CPU alta, servicio caído y errores 5xx, en un servidor real convendrían:
-    - **Web encendida pero colgada:** `docker_container_health_failing_streak >= 3` (falla su *healthcheck*; Nginx ya la aparta, pero conviene saberlo).
-    - **Reinicios en bucle:** `increase(docker_container_status_restart_count[10m]) > 3` (se cae y Docker la levanta sin parar).
-    - **Monitorización ciega:** `up{job="telegraf"} == 0` (hoy saltaría «Web caída» por falta de datos, con un mensaje engañoso); y un aviso periódico de «sigo vivo» (*watchdog*) para saber que el propio Grafana avisa.
-    - **Memoria alta:** poner límites de memoria a los contenedores (`memory` en `docker_container`) y avisar al pasar del 80-90 % de su límite (sin límite, el porcentaje es sobre toda la máquina y no sirve).
-    - **De la máquina** (con `node-exporter`): disco casi lleno, CPU y memoria totales altas.
-    - **Del servicio:** tiempo de respuesta alto (latencia de Nginx en los logs) y certificado HTTPS a punto de caducar.
-    - **Desde fuera:** una comprobación externa (*uptime monitoring*) que avise si la web no responde desde internet, aunque todo el servidor (y Grafana con él) esté caído.
-  - **Legal:** aviso legal, privacidad y cookies (RGPD) y el riesgo de propiedad intelectual de Pokémon (ver la idea anterior).
+Trasladadas el 28 nov. a [`despues-de-la-practica.md`](despues-de-la-practica.md), un documento propio para no mezclarlas con la entrega. Incluye qué decisiones de la práctica conviene replantear en un despliegue real, cómo publicar la web con dominio y HTTPS, el reparto de carga (`least_conn` frente a round-robin), la seguridad pendiente, más alertas y la idea del límite gratuito de importaciones.
 
 ## Mejoras detectadas en la Práctica 1 (las pide el enunciado)
 
